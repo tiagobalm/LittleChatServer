@@ -16,8 +16,24 @@ public class UserRequests {
         return false;
     }
 
-    public static boolean checkPassword(String username, String password) {
-        String sql = "SELECT password FROM User WHERE username = ?";
+    public static void registerUser(String username, String password) {
+        String sql = "INSERT INTO User(username, password) VALUES (?, ?);";
+
+        try (Connection conn = getConn();
+             PreparedStatement pstmt  = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, username);
+            pstmt.setString(2, password);
+
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+
+    private static ResultSet getUserInfo(String username) {
+        String sql = "SELECT userID FROM User WHERE username = ?";
 
         try (Connection conn = getConn();
              PreparedStatement pstmt  = conn.prepareStatement(sql)) {
@@ -25,7 +41,22 @@ public class UserRequests {
             pstmt.setString(1, username);
             ResultSet rs  = pstmt.executeQuery();
 
-            if (rs.next() && rs.getString("password").equals(password) )
+            if (rs.next() )
+                return rs;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return null;
+    }
+
+
+    public static boolean checkPassword(String username, String password) {
+        try {
+            ResultSet rs = getUserInfo(username);
+            if (rs != null &&
+                rs.next() &&
+                rs.getString("password").equals(password) )
                 return true;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -34,20 +65,29 @@ public class UserRequests {
         return false;
     }
 
-    private static void insertUserConnection(String username, String ip, int port) {
+    private static boolean insertUserConnection(String username, String ip, int port) {
+        int userID;
         String sql = "INSERT INTO UserConnect(username, ip, port) VALUES (?, ?, ?);";
 
         try (Connection conn = getConn();
              PreparedStatement pstmt  = conn.prepareStatement(sql)) {
 
-            pstmt.setString(1, username);
-            pstmt.setString(2, username);
+            ResultSet rs = getUserInfo(username);
+            if ( rs == null || !rs.next() )
+                return false;
+
+            userID = rs.getInt("userID");
+
+            pstmt.setInt(1, userID);
+            pstmt.setString(2, ip);
             pstmt.setInt(3, port);
 
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+
+        return true;
     }
 
     private static boolean userConnected(String username) {
@@ -68,18 +108,4 @@ public class UserRequests {
         return false;
     }
 
-    public static void registerUser(String username, String password) {
-        String sql = "INSERT INTO User(username, password) VALUES (?, ?);";
-
-        try (Connection conn = getConn();
-             PreparedStatement pstmt  = conn.prepareStatement(sql)) {
-
-            pstmt.setString(1, username);
-            pstmt.setString(2, password);
-
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
 }
