@@ -33,11 +33,8 @@ public class Database {
 
     private Connection connect() throws SQLException {
         // SQLite connection string
-        System.out.println(databaseURL == null ? "null" : "not null");
-        String url = "jdbc:sqlite:" + databaseURL.toExternalForm(); //C://sqlite/db/test.db";
-        Connection conn = null;
-        conn = DriverManager.getConnection(url);
-        return conn;
+        String url = "jdbc:sqlite:" + databaseURL.toExternalForm();
+        return DriverManager.getConnection(url);
     }
 
 }
