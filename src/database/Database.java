@@ -1,14 +1,10 @@
 package database;
 
-import javax.xml.crypto.Data;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- * Created by vasco on 05-05-2017.
- */
 public class Database {
     private static final URL databaseURL;
     private static Database ourInstance;
