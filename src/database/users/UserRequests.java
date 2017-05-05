@@ -10,7 +10,7 @@ public class UserRequests {
     }
 
     public static boolean validateUser(String username, String password) {
-        String sql = "SELECT password FROM warehouses WHERE username = ?";
+        String sql = "SELECT password FROM User WHERE username = ?";
 
         try (Connection conn = getConn();
              PreparedStatement pstmt  = conn.prepareStatement(sql)) {
