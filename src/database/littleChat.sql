@@ -48,3 +48,5 @@ CREATE TABLE UserRoom (
 				ON UPDATE CASCADE,
 	PRIMARY KEY(userID, roomID)
 );
+
+INSERT INTO User(username, password) VALUES ('vascoUP', 'vascoUP');
