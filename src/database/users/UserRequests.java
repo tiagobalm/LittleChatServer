@@ -10,7 +10,7 @@ public class UserRequests {
 
     public static boolean loginUser(String username, String password, String ip, int port) {
         if( checkPassword(username, password) && !userConnected(username) ) {
-            insertUserConnection(username, ip, port);
+            //insertUserConnection(username, ip, port);
             return true;
         }
         return false;
