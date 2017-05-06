@@ -10,10 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EchoServer {
-    private static final String keystorePath = EchoServer.class.getResource("../keystore").getPath();
-    private static final String keystorePass = "gruposdis";
-    private static final String truststorePath = EchoServer.class.getResource("../truststore").getPath();
-    private static final String truststorePass = "gruposdis";
+    private static final String keystorePath = EchoServer.class.getResource("../keys/server.private").getPath();
+    private static final String keystorePass = "littlechat";
+    private static final String truststorePath = EchoServer.class.getResource("../keys/truststore").getPath();
+    private static final String truststorePass = "littlechat";
 
     private static boolean serverListening = true;
     private static SSLServerSocket sslserversocket;
@@ -22,20 +22,23 @@ public class EchoServer {
     private static DataOutputStream os;
 
     public static void main(String[] args) {
-        System.out.println(keystorePath);
-        System.out.println(keystorePass);
-        System.out.println(truststorePath);
-        System.out.println(truststorePass);
+        System.setProperty("javax.net.ssl.keyStore", keystorePath);
+        System.setProperty("javax.net.ssl.keyStorePassword", keystorePass);
+        System.setProperty("javax.net.ssl.trustStore", truststorePath);
+        System.setProperty("javax.net.ssl.trustStorePassword", truststorePass);
         SSLServerSocketFactory factory = (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
 
         try {
             sslserversocket = (SSLServerSocket) factory.createServerSocket(PORT);
             sslserversocket.setNeedClientAuth(true);
+
             String[] ciphers = new String[1];
-            ciphers[0] ="TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256";
+            ciphers[0] ="TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256";
             sslserversocket.setEnabledCipherSuites(ciphers);
+
             while (serverListening) {
                 System.out.println("Waiting for client");
+
                 // Accept return a new socket to handle the client.
                 SSLSocket sslsocket = (SSLSocket) sslserversocket.accept();
 
