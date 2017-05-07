@@ -12,7 +12,7 @@ public class Database {
         databaseURL = Database.class.getResource("database.db");
         try {
             ourInstance = new Database();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -23,7 +23,9 @@ public class Database {
         return ourInstance;
     }
 
-    public Connection getConn() {
+    public Connection getConn() throws SQLException {
+        if( conn.isClosed() )
+            conn = connect();
         return conn;
     }
 
