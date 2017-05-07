@@ -1,6 +1,7 @@
 package communication;
 
 import Workers.Worker;
+import database.users.UserRequests;
 
 import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
@@ -23,6 +24,8 @@ public class EchoServer {
     private static int numberOfWorkerThreads = 20;
 
     public static void main(String[] args) {
+        UserRequests.deleteUserConnections();
+
         System.setProperty("javax.net.ssl.keyStore", keystorePath);
         System.setProperty("javax.net.ssl.keyStorePassword", keystorePass);
         System.setProperty("javax.net.ssl.trustStore", truststorePath);

@@ -2,17 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="327ad98e-5c2b-4b3a-805e-2a02ff6aeb3f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sqlite-jdbc-3.16.1.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/sqlite_jdbc_3_16_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sqlite_jdbc_3_16_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/321b15e9-ca66-4a6c-b41c-57f491f58e2f/_metadata_/metadata" afterPath="$PROJECT_DIR$/.idea/dataSources/321b15e9-ca66-4a6c-b41c-57f491f58e2f/_metadata_/metadata" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/321b15e9-ca66-4a6c-b41c-57f491f58e2f/_metadata_/metadata.keystream" afterPath="$PROJECT_DIR$/.idea/dataSources/321b15e9-ca66-4a6c-b41c-57f491f58e2f/_metadata_/metadata.keystream" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/321b15e9-ca66-4a6c-b41c-57f491f58e2f/_metadata_/metadata.keystream.len" afterPath="$PROJECT_DIR$/.idea/dataSources/321b15e9-ca66-4a6c-b41c-57f491f58e2f/_metadata_/metadata.keystream.len" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/321b15e9-ca66-4a6c-b41c-57f491f58e2f/_metadata_/metadata.len" afterPath="$PROJECT_DIR$/.idea/dataSources/321b15e9-ca66-4a6c-b41c-57f491f58e2f/_metadata_/metadata.len" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/321b15e9-ca66-4a6c-b41c-57f491f58e2f/_metadata_/metadata_i" afterPath="$PROJECT_DIR$/.idea/dataSources/321b15e9-ca66-4a6c-b41c-57f491f58e2f/_metadata_/metadata_i" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/321b15e9-ca66-4a6c-b41c-57f491f58e2f/_metadata_/metadata_i.len" afterPath="$PROJECT_DIR$/.idea/dataSources/321b15e9-ca66-4a6c-b41c-57f491f58e2f/_metadata_/metadata_i.len" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LittleChatServer.iml" afterPath="$PROJECT_DIR$/LittleChatServer.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Workers/Worker.java" afterPath="$PROJECT_DIR$/src/Workers/Worker.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/communication/EchoServer.java" afterPath="$PROJECT_DIR$/src/communication/EchoServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/database/Database.java" afterPath="$PROJECT_DIR$/src/database/Database.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/database/users/UserRequests.java" afterPath="$PROJECT_DIR$/src/database/users/UserRequests.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -81,7 +78,53 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file leaf-file-name="Database.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/database/Database.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="31" column="44" lean-forward="true" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EchoServer.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/communication/EchoServer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="600">
+              <caret line="30" column="57" lean-forward="true" selection-start-line="30" selection-start-column="57" selection-end-line="30" selection-end-column="57" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserRequests.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/database/users/UserRequests.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="196">
+              <caret line="91" column="44" lean-forward="false" selection-start-line="91" selection-start-column="23" selection-end-line="91" selection-end-column="44" />
+              <folding>
+                <element signature="method#getConn#0;class#UserRequests#0" expanded="false" />
+                <element signature="method#loginUser#0;class#UserRequests#0" expanded="false" />
+                <element signature="method#registerUser#0;class#UserRequests#0" expanded="false" />
+                <element signature="method#checkPassword#0;class#UserRequests#0" expanded="false" />
+                <element signature="method#getUserID#0;class#UserRequests#0" expanded="false" />
+                <element signature="method#userConnected#0;class#UserRequests#0" expanded="false" />
+                <marker date="1494174830783" expanded="true" signature="712:762" ph="INSERT INTO User... " />
+                <marker date="1494174830783" expanded="true" signature="1199:1243" ph="SELECT passw... User" />
+                <marker date="1494174830783" expanded="true" signature="1745:1787" ph="SELECT passw... User" />
+                <marker date="1494174830783" expanded="true" signature="2369:2430" ph="INSERT INTO UserConnect... " />
+                <marker date="1494174830783" expanded="true" signature="2863:2889" ph="DELETE FROM " />
+                <marker date="1494174830783" expanded="true" signature="3264:3309" ph="SELECT * FRO... UserConnection" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -101,11 +144,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/database/Database.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/Workers/Worker.java" />
-        <option value="$PROJECT_DIR$/src/communication/EchoServer.java" />
         <option value="$PROJECT_DIR$/src/database/users/UserRequests.java" />
+        <option value="$PROJECT_DIR$/src/database/Database.java" />
+        <option value="$PROJECT_DIR$/src/communication/EchoServer.java" />
       </list>
     </option>
   </component>
@@ -136,9 +179,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -185,6 +226,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -640,7 +683,8 @@
       <workItem from="1494077072225" duration="51000" />
       <workItem from="1494086756024" duration="121000" />
       <workItem from="1494106006435" duration="7100000" />
-      <workItem from="1494170279301" duration="3936000" />
+      <workItem from="1494170279301" duration="4030000" />
+      <workItem from="1494174591175" duration="272000" />
     </task>
     <task id="LOCAL-00001" summary="EchoServer working">
       <created>1494086864893</created>
@@ -649,14 +693,22 @@
       <option name="project" value="LOCAL" />
       <updated>1494086864893</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Working on the database">
+      <created>1494174254495</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1494174254495</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11208000" />
+    <option name="totallyTimeSpent" value="11574000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="63" y="-6" width="1303" height="774" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -669,24 +721,24 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32662538" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.679868" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25377885" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25775656" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22991249" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3993808" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.679868" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -698,11 +750,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="EchoServer working" />
-    <option name="LAST_COMMIT_MESSAGE" value="EchoServer working" />
+    <MESSAGE value="Working on the database" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working on the database" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -725,16 +778,17 @@
           <caret line="27" column="26" lean-forward="true" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
           <folding>
             <element signature="method#getConn#0;class#UserRequests#0" expanded="false" />
+            <element signature="method#loginUser#0;class#UserRequests#0" expanded="false" />
             <element signature="method#registerUser#0;class#UserRequests#0" expanded="false" />
             <element signature="method#checkPassword#0;class#UserRequests#0" expanded="false" />
             <element signature="method#getUserID#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#insertUserConnection#0;class#UserRequests#0" expanded="false" />
             <element signature="method#userConnected#0;class#UserRequests#0" expanded="false" />
-            <marker date="1494174132449" expanded="true" signature="712:762" ph="INSERT INTO User... " />
-            <marker date="1494174132449" expanded="true" signature="1199:1243" ph="SELECT passw... User" />
-            <marker date="1494174132449" expanded="true" signature="1745:1787" ph="SELECT passw... User" />
-            <marker date="1494174132449" expanded="true" signature="2369:2430" ph="INSERT INTO UserConnect... " />
-            <marker date="1494174132449" expanded="true" signature="2915:2960" ph="SELECT * FRO... UserConnection" />
+            <marker date="1494174830783" expanded="true" signature="712:762" ph="INSERT INTO User... " />
+            <marker date="1494174830783" expanded="true" signature="1199:1243" ph="SELECT passw... User" />
+            <marker date="1494174830783" expanded="true" signature="1745:1787" ph="SELECT passw... User" />
+            <marker date="1494174830783" expanded="true" signature="2369:2430" ph="INSERT INTO UserConnect... " />
+            <marker date="1494174830783" expanded="true" signature="2863:2889" ph="DELETE FROM " />
+            <marker date="1494174830783" expanded="true" signature="3264:3309" ph="SELECT * FRO... UserConnection" />
           </folding>
         </state>
       </provider>
@@ -749,14 +803,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="51" lean-forward="false" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java" />
     <entry file="file://$PROJECT_DIR$/src/Workers/Worker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="940">
@@ -809,7 +856,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -817,49 +863,31 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/database/littleChat.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="28" lean-forward="false" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java" />
     <entry file="dbDummy://dbtable:/97f381e5/321b15e9-ca66-4a6c-b41c-57f491f58e2f/main.User">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/97f381e5/321b15e9-ca66-4a6c-b41c-57f491f58e2f/main.UserConnection">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -873,41 +901,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/communication/EchoServer.java">
+    <entry file="file://$PROJECT_DIR$/src/database/littleChat.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="39" column="33" lean-forward="true" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="-240">
+          <caret line="6" column="28" lean-forward="false" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/database/users/UserRequests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="16" column="55" lean-forward="true" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
+        <state relative-caret-position="196">
+          <caret line="91" column="44" lean-forward="false" selection-start-line="91" selection-start-column="23" selection-end-line="91" selection-end-column="44" />
           <folding>
             <element signature="method#getConn#0;class#UserRequests#0" expanded="false" />
+            <element signature="method#loginUser#0;class#UserRequests#0" expanded="false" />
             <element signature="method#registerUser#0;class#UserRequests#0" expanded="false" />
             <element signature="method#checkPassword#0;class#UserRequests#0" expanded="false" />
             <element signature="method#getUserID#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#insertUserConnection#0;class#UserRequests#0" expanded="false" />
             <element signature="method#userConnected#0;class#UserRequests#0" expanded="false" />
-            <marker date="1494174132449" expanded="true" signature="712:762" ph="INSERT INTO User... " />
-            <marker date="1494174132449" expanded="true" signature="1199:1243" ph="SELECT passw... User" />
-            <marker date="1494174132449" expanded="true" signature="1745:1787" ph="SELECT passw... User" />
-            <marker date="1494174132449" expanded="true" signature="2369:2430" ph="INSERT INTO UserConnect... " />
-            <marker date="1494174132449" expanded="true" signature="2915:2960" ph="SELECT * FRO... UserConnection" />
+            <marker date="1494174830783" expanded="true" signature="712:762" ph="INSERT INTO User... " />
+            <marker date="1494174830783" expanded="true" signature="1199:1243" ph="SELECT passw... User" />
+            <marker date="1494174830783" expanded="true" signature="1745:1787" ph="SELECT passw... User" />
+            <marker date="1494174830783" expanded="true" signature="2369:2430" ph="INSERT INTO UserConnect... " />
+            <marker date="1494174830783" expanded="true" signature="2863:2889" ph="DELETE FROM " />
+            <marker date="1494174830783" expanded="true" signature="3264:3309" ph="SELECT * FRO... UserConnection" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/database/Database.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="32" column="25" lean-forward="false" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+        <state relative-caret-position="340">
+          <caret line="31" column="44" lean-forward="true" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/communication/EchoServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="30" column="57" lean-forward="true" selection-start-line="30" selection-start-column="57" selection-end-line="30" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

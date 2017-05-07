@@ -89,6 +89,17 @@ public class UserRequests {
         }
     }
 
+    public static void deleteUserConnections() {
+        String sql = "DELETE FROM UserConnection;";
+
+        try (Connection conn = getConn();
+             PreparedStatement pstmt  = conn.prepareStatement(sql)) {
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public static boolean userConnected(String username) {
         int userID = getUserID(username);
         String sql = "SELECT * FROM UserConnection WHERE userID = ?";
