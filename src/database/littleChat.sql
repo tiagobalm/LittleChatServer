@@ -1,11 +1,11 @@
 PRAGMA foreign_keys = ON;
 
-DROP TABLE IF EXISTS User;
 DROP TABLE IF EXISTS UserConnection;
 DROP TABLE IF EXISTS Message;
-DROP TABLE IF EXISTS Room;
 DROP TABLE IF EXISTS Friend;
 DROP TABLE IF EXISTS UserRoom;
+DROP TABLE IF EXISTS User;
+DROP TABLE IF EXISTS Room;
 
 CREATE TABLE User (
 	userID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -41,9 +41,9 @@ CREATE TABLE Room (
 CREATE TABLE Friend (
 	firstUserID INTEGER,
 	secondUserID INTEGER,
-	FOREIGN KEY(firstUserID) REFERENCES User(firstUserID)
+	FOREIGN KEY(firstUserID) REFERENCES User(userID)
 				ON UPDATE CASCADE,
-	FOREIGN KEY(secondUserID) REFERENCES User(secondUserID)
+	FOREIGN KEY(secondUserID) REFERENCES User(userID)
 				ON UPDATE CASCADE,
 	PRIMARY KEY(firstUserID, secondUserID)
 );
@@ -59,5 +59,7 @@ CREATE TABLE UserRoom (
 );
 
 INSERT INTO User(username, password) VALUES ('vascoUP', 'vascoUP');
+INSERT INTO User(username, password) VALUES('saraUP', 'saraUP');
 INSERT INTO Room(name) VALUES('sala1');
 INSERT INTO UserRoom(userID, roomID) VALUES (1,1);
+INSERT INTO Friend(firstUserID, secondUserID) VALUES(1,2);

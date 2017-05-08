@@ -144,4 +144,28 @@ public class UserRequests {
 
         return null;
     }
+
+    public static Integer[] getFriends(int userID) {
+
+        String sql = "SELECT secondUserID FROM Friend WHERE firstUserID = ?";
+
+        try (Connection conn = getConn();
+             PreparedStatement pstmt  = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(userID, userID);
+            ResultSet rs  = pstmt.executeQuery();
+
+            List<Integer> friends = new ArrayList<Integer>();
+
+            if (rs.next())
+                friends.add(rs.getInt("secondUserID"));
+            Integer[] friendsArray = new Integer[friends.size()];
+            friendsArray = friends.toArray(friendsArray);
+            return friendsArray;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return null;
+    }
 }

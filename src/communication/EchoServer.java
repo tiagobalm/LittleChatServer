@@ -7,6 +7,7 @@ import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
 import javax.net.ssl.SSLSocket;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
@@ -33,7 +34,8 @@ public class EchoServer {
         SSLServerSocketFactory factory = (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
 
         executor = Executors.newScheduledThreadPool(numberOfWorkerThreads);
-
+        Integer[] i = UserRequests.getFriends(1);
+        System.out.println(Arrays.toString(i));
         try {
             sslserversocket = (SSLServerSocket) factory.createServerSocket(PORT);
             sslserversocket.setNeedClientAuth(true);
