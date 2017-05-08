@@ -59,3 +59,5 @@ CREATE TABLE UserRoom (
 );
 
 INSERT INTO User(username, password) VALUES ('vascoUP', 'vascoUP');
+INSERT INTO Room(name) VALUES('sala1');
+INSERT INTO UserRoom(userID, roomID) VALUES (1,1);

@@ -2,6 +2,8 @@ package database.users;
 
 import database.Database;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserRequests {
     private static Connection getConn() {
@@ -117,5 +119,29 @@ public class UserRequests {
         }
 
         return false;
+    }
+
+    public static Integer[] getUserRooms(int userID) {
+    
+        String sql = "SELECT roomID FROM UserRoom WHERE UserID = ?";
+
+        try (Connection conn = getConn();
+             PreparedStatement pstmt  = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(userID, userID);
+            ResultSet rs  = pstmt.executeQuery();
+
+            List<Integer> rooms = new ArrayList<Integer>();
+            
+            if (rs.next())
+                rooms.add(rs.getInt("roomID"));
+            Integer[] roomsArray = new Integer[rooms.size()];
+            roomsArray = rooms.toArray(roomsArray);
+            return roomsArray;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return null;
     }
 }
