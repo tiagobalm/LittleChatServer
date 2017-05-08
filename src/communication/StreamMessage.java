@@ -1,4 +1,4 @@
-package Workers;
+package communication;
 
 import javax.net.ssl.SSLSocket;
 import java.io.DataInputStream;
@@ -38,7 +38,7 @@ public class StreamMessage {
         return new String(request);
     }
 
-    void write(byte[] message) throws IOException {
+    public void write(byte[] message) throws IOException {
         os.write(message);
     }
 

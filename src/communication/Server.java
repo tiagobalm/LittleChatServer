@@ -1,7 +1,8 @@
 package communication;
 
-import Workers.*;
+import worker.*;
 import database.users.UserRequests;
+import org.jetbrains.annotations.Contract;
 
 import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
@@ -93,6 +94,7 @@ public class Server {
     }
 
 
+    @Contract(pure = true)
     public static Server getOurInstance() {
         return ourInstance;
     }

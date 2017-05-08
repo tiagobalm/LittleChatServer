@@ -1,6 +1,8 @@
 package database.users;
 
 import database.Database;
+import org.jetbrains.annotations.Nullable;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +24,10 @@ public class UserRequests {
         return false;
     }
 
-    public static void registerUser(String username, String password) {
+    public static boolean registerUser(String username, String password) {
+        if( getUserID(username) >= 0 )
+            return false;
+
         String sql = "INSERT INTO User(username, password) VALUES (?, ?);";
 
         try (Connection conn = getConn();
@@ -35,6 +40,8 @@ public class UserRequests {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+
+        return true;
     }
 
     private static boolean checkPassword(String username, String password) {
@@ -121,6 +128,7 @@ public class UserRequests {
         return false;
     }
 
+    @Nullable
     public static Integer[] getUserRooms(Integer userID) {
     
         String sql = "SELECT roomID FROM UserRoom WHERE UserID = ?";
@@ -145,6 +153,7 @@ public class UserRequests {
         return null;
     }
 
+    @Nullable
     public static Integer[] getFriends(Integer userID) {
 
         String sql = "SELECT secondUserID FROM Friend WHERE firstUserID = ?";
@@ -169,6 +178,7 @@ public class UserRequests {
         return null;
     }
 
+    @Nullable
     public static Integer[] getMessagesFromRoom(Integer roomID) {
 
         String sql = "SELECT * FROM Message WHERE roomID = ?";

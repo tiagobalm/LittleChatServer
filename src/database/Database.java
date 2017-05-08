@@ -1,5 +1,7 @@
 package database;
 
+import org.jetbrains.annotations.Contract;
+
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,6 +21,7 @@ public class Database {
 
     private Connection conn;
 
+    @Contract(pure = true)
     public static Database getInstance() {
         return ourInstance;
     }

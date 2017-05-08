@@ -1,7 +1,6 @@
 package communication;
 
-import Workers.MessageDecode;
-import Workers.StreamMessage;
+import worker.WorkMessage;
 
 import javax.net.ssl.SSLSocket;
 
@@ -18,7 +17,7 @@ public class ClientConnection {
                     String message = streamMessage.read();
                     String usr;
 
-                    if( (usr = MessageDecode.getUserName(message)) == null )
+                    if( (usr = WorkMessage.getUserName(message)) == null )
                         continue;
                     username = usr;
 
