@@ -34,8 +34,15 @@ public class EchoServer {
         SSLServerSocketFactory factory = (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
 
         executor = Executors.newScheduledThreadPool(numberOfWorkerThreads);
+        Integer[] a = UserRequests.getUserRooms(1);
+        System.out.println(Arrays.toString(a));
+
         Integer[] i = UserRequests.getFriends(1);
         System.out.println(Arrays.toString(i));
+
+        Integer[] u = UserRequests.getMessagesFromRoom(1);
+        System.out.println(Arrays.toString(u));
+
         try {
             sslserversocket = (SSLServerSocket) factory.createServerSocket(PORT);
             sslserversocket.setNeedClientAuth(true);

@@ -121,7 +121,7 @@ public class UserRequests {
         return false;
     }
 
-    public static Integer[] getUserRooms(int userID) {
+    public static Integer[] getUserRooms(Integer userID) {
     
         String sql = "SELECT roomID FROM UserRoom WHERE UserID = ?";
 
@@ -133,7 +133,7 @@ public class UserRequests {
 
             List<Integer> rooms = new ArrayList<Integer>();
             
-            if (rs.next())
+            while (rs.next())
                 rooms.add(rs.getInt("roomID"));
             Integer[] roomsArray = new Integer[rooms.size()];
             roomsArray = rooms.toArray(roomsArray);
@@ -145,7 +145,7 @@ public class UserRequests {
         return null;
     }
 
-    public static Integer[] getFriends(int userID) {
+    public static Integer[] getFriends(Integer userID) {
 
         String sql = "SELECT secondUserID FROM Friend WHERE firstUserID = ?";
 
@@ -157,11 +157,35 @@ public class UserRequests {
 
             List<Integer> friends = new ArrayList<Integer>();
 
-            if (rs.next())
+            while (rs.next())
                 friends.add(rs.getInt("secondUserID"));
             Integer[] friendsArray = new Integer[friends.size()];
             friendsArray = friends.toArray(friendsArray);
             return friendsArray;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return null;
+    }
+
+    public static Integer[] getMessagesFromRoom(Integer roomID) {
+
+        String sql = "SELECT * FROM Message WHERE roomID = ?";
+
+        try (Connection conn = getConn();
+             PreparedStatement pstmt  = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(roomID, roomID);
+            ResultSet rs  = pstmt.executeQuery();
+
+            List<Integer> messages = new ArrayList<Integer>();
+
+            while (rs.next())
+                messages.add(rs.getInt("messageID"));
+            Integer[] roomsArray = new Integer[messages.size()];
+            roomsArray = messages.toArray(roomsArray);
+            return roomsArray;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

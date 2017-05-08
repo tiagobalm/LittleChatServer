@@ -60,6 +60,12 @@ CREATE TABLE UserRoom (
 
 INSERT INTO User(username, password) VALUES ('vascoUP', 'vascoUP');
 INSERT INTO User(username, password) VALUES('saraUP', 'saraUP');
+INSERT INTO User(username, password) VALUES('tiagoUP', 'tiagoUP');
 INSERT INTO Room(name) VALUES('sala1');
+INSERT INTO Room(name) VALUES('sala2');
 INSERT INTO UserRoom(userID, roomID) VALUES (1,1);
+INSERT INTO UserRoom(userID, roomID) VALUES (2,2);
 INSERT INTO Friend(firstUserID, secondUserID) VALUES(1,2);
+INSERT INTO Friend(firstUserID, secondUserID) VALUES(1,3);
+INSERT INTO Message(userID, roomID, message, sentDate) VALUES (1,1,'Ola', "2017-05-08 15:22:00");
+INSERT INTO Message(userID, roomID, message, sentDate) VALUES (2,1,'Oi', "2017-05-08 15:22:00");
