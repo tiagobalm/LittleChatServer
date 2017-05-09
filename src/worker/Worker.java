@@ -1,6 +1,7 @@
 package worker;
 
 import communication.Server;
+import message.WorkMessage;
 
 
 public class Worker implements Runnable{

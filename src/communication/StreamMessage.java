@@ -8,11 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StreamMessage {
+    private static SSLSocket sslSocket;
     private static DataInputStream is;
     private static DataOutputStream os;
 
 
     public StreamMessage(SSLSocket sslSocket) {
+        this.sslSocket = sslSocket;
         try {
             is = new DataInputStream(sslSocket.getInputStream());
             os = new DataOutputStream(sslSocket.getOutputStream());
@@ -22,16 +24,20 @@ public class StreamMessage {
         }
     }
 
-    public String read() {
+    public void close() {
+        try {
+            sslSocket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String read() throws IOException {
         List<Byte> requestList = new ArrayList<>();
         byte character;
 
-        try {
-            while ((character = is.readByte()) != 0)
-                requestList.add(character);
-        } catch (IOException ignore) {
-            return null;
-        }
+        while ((character = is.readByte()) != 0)
+            requestList.add(character);
 
         byte[] request = byteListToByteArray(requestList);
 

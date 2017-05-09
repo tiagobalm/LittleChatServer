@@ -1,36 +1,52 @@
 package communication;
 
-import worker.WorkMessage;
+import message.WorkMessage;
 
 import javax.net.ssl.SSLSocket;
+import java.io.IOException;
 
 public class ClientConnection {
     private StreamMessage streamMessage;
     private String username;
+    private Thread read;
 
     ClientConnection(SSLSocket sslSocket) {
         streamMessage = new StreamMessage(sslSocket);
 
-        Thread read = new Thread(() -> {
+        read = new Thread(() -> {
+            String message;
             while (true) {
                 try {
-                    String message = streamMessage.read();
-                    String usr;
+                    message = streamMessage.read();
+                } catch (IOException e) {
+                    this.close();
+                    return ;
+                }
 
-                    if( (usr = WorkMessage.getUserName(message)) == null )
-                        continue;
-                    username = usr;
+                String usr;
+                if( (usr = WorkMessage.getUserName(message)) == null )
+                    continue;
+                username = usr;
 
-                    System.out.println("New user: " + username);
+                System.out.println("New user: " + username);
+                try {
                     Server.getOurInstance().getMessages().put(message);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    this.close();
+                    return ;
                 }
             }
         });
 
         read.setDaemon(true);
         read.start();
+    }
+
+    public void close() {
+        System.out.println((username == null ? "Unknown client" : username) + " disconnect");
+        Server.getOurInstance().getClientSet().remove(this);
+        streamMessage.close();
+        read.interrupt();
     }
 
     public String getUsername() {

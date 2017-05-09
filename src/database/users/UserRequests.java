@@ -18,13 +18,13 @@ public class UserRequests {
 
     public static boolean loginUser(String username, String password, String ip, int port) {
         if( checkPassword(username, password) && !userConnected(username) ) {
-            //insertUserConnection(username, ip, port);
+            insertUserConnection(username, ip, port);
             return true;
         }
         return false;
     }
 
-    public static boolean registerUser(String username, String password) {
+    public static boolean registerUser(String username, String password, String ip, int port) {
         if( getUserID(username) >= 0 )
             return false;
 
@@ -40,6 +40,8 @@ public class UserRequests {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+
+        insertUserConnection(username, ip, port);
 
         return true;
     }

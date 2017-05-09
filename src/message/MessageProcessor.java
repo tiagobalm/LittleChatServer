@@ -1,4 +1,4 @@
-package worker;
+package message;
 
 public interface MessageProcessor {
     void decode();
