@@ -8,7 +8,9 @@ import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
 import javax.net.ssl.SSLSocket;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.*;
 
@@ -26,12 +28,13 @@ public class Server {
     private SSLServerSocket sslserversocket;
     private ExecutorService executor;
 
-    private Set<ClientConnection> clientSet;
-    private BlockingQueue<String> messages;
-
+    private ArrayList<ClientConnection> unknownClients;
+    private ConcurrentHashMap<String, ClientConnection> connectedClients;
+    private BlockingQueue<Map.Entry<ClientConnection, String>> messages;
 
     private Server() {
-        clientSet = new LinkedHashSet<>();
+        unknownClients = new ArrayList<>();
+        connectedClients = new ConcurrentHashMap<>();
         messages = new LinkedBlockingQueue<>();
         startServer();
         startAcceptThread();
@@ -66,7 +69,7 @@ public class Server {
             while(true) {
                 try {
                     SSLSocket sslsocket = (SSLSocket) sslserversocket.accept();
-                    clientSet.add(new ClientConnection(sslsocket));
+                    unknownClients.add(new ClientConnection(sslsocket));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -99,12 +102,21 @@ public class Server {
         return ourInstance;
     }
 
-    public BlockingQueue<String> getMessages() {
+    public BlockingQueue<Map.Entry<ClientConnection, String>> getMessages() {
         return messages;
     }
 
-    public Set<ClientConnection> getClientSet() {
-        return clientSet;
+    public ArrayList<ClientConnection> getUnknownClients() {
+        return unknownClients;
+    }
+
+    public ConcurrentHashMap<String, ClientConnection> getConnectedClients() {
+        return connectedClients;
+    }
+
+    public void registerClient(String username, ClientConnection client) {
+        connectedClients.put(username, client);
+        unknownClients.remove(client);
     }
 
     public static void main(String[] args) {

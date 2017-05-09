@@ -1,7 +1,10 @@
 package worker;
 
+import communication.ClientConnection;
 import communication.Server;
 import message.WorkMessage;
+
+import java.util.Map;
 
 
 public class Worker implements Runnable{
@@ -13,18 +16,16 @@ public class Worker implements Runnable{
     @Override
     public void run() {
         while (true) {
-            String message;
+            Map.Entry<ClientConnection, String> entry;
             try {
-                System.out.println("Waiting message");
-                message = Server.getOurInstance().getMessages().take();
-                System.out.println("Message received");
+                entry = Server.getOurInstance().getMessages().take();
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 continue;
             }
 
-            System.out.println("Process message: " + message);
-            WorkMessage processor = new WorkMessage(message);
+            System.out.println("Process message: " + entry.getValue());
+            WorkMessage processor = new WorkMessage(entry.getKey(), entry.getValue());
             processor.decode();
         }
     }
