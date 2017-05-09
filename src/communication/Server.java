@@ -119,6 +119,10 @@ public class Server {
         unknownClients.remove(client);
     }
 
+    public void logoutClient(String username) {
+        connectedClients.remove(username);
+    }
+
     public static void main(String[] args) {
         System.out.println("Server initialized");
     }

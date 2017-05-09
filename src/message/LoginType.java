@@ -6,19 +6,19 @@ import database.users.UserRequests;
 
 import java.io.IOException;
 
-import static message.MessageConstants.registerSize;
+import static message.MessageConstants.loginSize;
 
-public class RegisterMessage extends ReactMessage {
-    RegisterMessage(String[] message) {
+public class LoginType extends ReactMessage {
+    LoginType(String[] message) {
         super(message);
     }
 
     public void react(ClientConnection client) throws IOException {
-        if( message.length != registerSize )
+        if( message.length != loginSize )
             return ;
         String username = message[1], password = message[2],
                 ip = message[3], port = message[4];
-        if (UserRequests.registerUser(username, password, ip, Integer.parseInt(port))) {
+        if (UserRequests.loginUser(username, password, ip, Integer.parseInt(port))) {
             client.getStreamMessage().write("True\0".getBytes());
             Server.getOurInstance().registerClient(username, client);
         }

@@ -100,6 +100,20 @@ public class UserRequests {
         }
     }
 
+    public static void deleteUserConnection(String username) {
+        int userID = getUserID(username);
+        String sql = "DELETE FROM UserConnection WHERE userID = ?;";
+
+        try (Connection conn = getConn();
+             PreparedStatement pstmt  = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, userID);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public static void deleteUserConnections() {
         String sql = "DELETE FROM UserConnection;";
 

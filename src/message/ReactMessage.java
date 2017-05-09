@@ -26,9 +26,11 @@ public abstract class ReactMessage {
         String messageType = parameters[0];
         switch (messageType) {
             case loginType:
-                return new LoginMessage(parameters);
+                return new LoginType(parameters);
             case registerType:
-                return new RegisterMessage(parameters);
+                return new RegisterType(parameters);
+            case logoutType:
+                return new LogoutType(parameters);
         }
 
         return null;
