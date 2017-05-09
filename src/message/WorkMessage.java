@@ -15,7 +15,9 @@ public class WorkMessage implements MessageProcessor {
 
     @Override
     public void decode() {
+        System.out.println("Decode");
         if( reactMessage == null ) return ;
+        System.out.println("After if");
         try { reactMessage.react(clientConnection);
         } catch (IOException e) {
             e.printStackTrace();

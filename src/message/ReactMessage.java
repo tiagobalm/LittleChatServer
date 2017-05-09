@@ -24,6 +24,7 @@ public abstract class ReactMessage {
             return null;
 
         String messageType = parameters[0];
+        System.out.println("Message react to : " + messageType);
         switch (messageType) {
             case loginType:
                 return new LoginType(parameters);
