@@ -28,9 +28,9 @@ CREATE TABLE Message (
 	message VARCHAR(1000),
 	sentDate DATETIME,
 	FOREIGN KEY(userID) REFERENCES User(userID)
-				ON UPDATE CASCADE,
+		ON UPDATE CASCADE,
 	FOREIGN KEY(roomID) REFERENCES Room(roomID)
-				ON UPDATE CASCADE
+		ON UPDATE CASCADE
 );
 
 CREATE TABLE Room (
@@ -42,9 +42,9 @@ CREATE TABLE Friend (
 	firstUserID INTEGER,
 	secondUserID INTEGER,
 	FOREIGN KEY(firstUserID) REFERENCES User(userID)
-				ON UPDATE CASCADE,
+		ON UPDATE CASCADE,
 	FOREIGN KEY(secondUserID) REFERENCES User(userID)
-				ON UPDATE CASCADE,
+		ON UPDATE CASCADE,
 	PRIMARY KEY(firstUserID, secondUserID)
 );
 
@@ -52,20 +52,51 @@ CREATE TABLE UserRoom (
 	userID INTEGER,
 	roomID INTEGER,
 	FOREIGN KEY(userID) REFERENCES User(userID)
-				ON UPDATE CASCADE,
+		ON UPDATE CASCADE,
 	FOREIGN KEY(roomID) REFERENCES Room(roomID)
-				ON UPDATE CASCADE,
+		ON UPDATE CASCADE,
 	PRIMARY KEY(userID, roomID)
 );
 
 INSERT INTO User(username, password) VALUES ('vascoUP', 'vascoUP');
 INSERT INTO User(username, password) VALUES('saraUP', 'saraUP');
 INSERT INTO User(username, password) VALUES('tiagoUP', 'tiagoUP');
-INSERT INTO Room(name) VALUES('sala1');
-INSERT INTO Room(name) VALUES('sala2');
+INSERT INTO User(username, password) VALUES('arianaUP', 'arianaUP');
+
+INSERT INTO Room(name) VALUES('Chat Room 1');
+INSERT INTO Room(name) VALUES('Chat Room 2');
+INSERT INTO Room(name) VALUES('Chat Room 3');
+INSERT INTO Room(name) VALUES('Chat Room 4');
+INSERT INTO Room(name) VALUES('Chat Room 5');
+
 INSERT INTO UserRoom(userID, roomID) VALUES (1,1);
+INSERT INTO UserRoom(userID, roomID) VALUES (1,2);
 INSERT INTO UserRoom(userID, roomID) VALUES (2,2);
+INSERT INTO UserRoom(userID, roomID) VALUES (2,3);
+INSERT INTO UserRoom(userID, roomID) VALUES (2,5);
+INSERT INTO UserRoom(userID, roomID) VALUES (3,4);
+INSERT INTO UserRoom(userID, roomID) VALUES (3,5);
+INSERT INTO UserRoom(userID, roomID) VALUES (4,1);
+INSERT INTO UserRoom(userID, roomID) VALUES (4,3);
+INSERT INTO UserRoom(userID, roomID) VALUES (4,4);
+
 INSERT INTO Friend(firstUserID, secondUserID) VALUES(1,2);
-INSERT INTO Friend(firstUserID, secondUserID) VALUES(1,3);
-INSERT INTO Message(userID, roomID, message, sentDate) VALUES (1,1,'Ola', "2017-05-08 15:22:00");
-INSERT INTO Message(userID, roomID, message, sentDate) VALUES (2,1,'Oi', "2017-05-08 15:22:00");
+INSERT INTO Friend(firstUserID, secondUserID) VALUES(1,4);
+INSERT INTO Friend(firstUserID, secondUserID) VALUES(2,1);
+INSERT INTO Friend(firstUserID, secondUserID) VALUES(2,3);
+INSERT INTO Friend(firstUserID, secondUserID) VALUES(2,4);
+INSERT INTO Friend(firstUserID, secondUserID) VALUES(3,2);
+INSERT INTO Friend(firstUserID, secondUserID) VALUES(3,4);
+INSERT INTO Friend(firstUserID, secondUserID) VALUES(4,1);
+INSERT INTO Friend(firstUserID, secondUserID) VALUES(4,2);
+INSERT INTO Friend(firstUserID, secondUserID) VALUES(4,3);
+
+INSERT INTO Message(userID, roomID, message, sentDate) VALUES (1,1,'Hi friends!', "2017-05-08 15:22:00");
+INSERT INTO Message(userID, roomID, message, sentDate) VALUES (4,1,'Oi amiguinho', "2017-05-08 15:23:00");
+INSERT INTO Message(userID, roomID, message, sentDate) VALUES (1,2,'Oi amiguinho', "2017-05-09 15:00:00");
+INSERT INTO Message(userID, roomID, message, sentDate) VALUES (2,2,'Estou ocupado, não posso falar', "2017-05-09 15:00:40");
+INSERT INTO Message(userID, roomID, message, sentDate) VALUES (2,3,'Temos que falar', "2017-05-06 00:00:00");
+INSERT INTO Message(userID, roomID, message, sentDate) VALUES (2,5,'Hoje não fiz nada', "2017-05-11 05:00:00");
+INSERT INTO Message(userID, roomID, message, sentDate) VALUES (3,5,'Nem eu! Que seca', "2017-05-11 05:02:00");
+INSERT INTO Message(userID, roomID, message, sentDate) VALUES (3,4,'Que chato que ele é', "2017-05-11 06:40:00");
+INSERT INTO Message(userID, roomID, message, sentDate) VALUES (4,4,'...', "2017-05-11 06:40:56");
