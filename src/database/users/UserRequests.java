@@ -147,10 +147,10 @@ public class UserRequests {
     public static List<String> getUserRooms(int userID) {
         String sql =
                 "SELECT Room.name AS name, " +
-                        "Room.roomID AS roomID " +
+                        "Room.roomID AS ID " +
                 "FROM Room, UserRoom " +
                 "WHERE UserRoom.userID = ? " +
-                "AND roomID = UserRoom.roomID";
+                "AND ID = UserRoom.roomID";
 
         try (Connection conn = getConn();
              PreparedStatement pstmt  = conn.prepareStatement(sql)) {
@@ -161,10 +161,12 @@ public class UserRequests {
             List<String> rooms = new ArrayList<>();
             
             while (rs.next()) {
-                int roomID = rs.getInt("roomID");
+                int roomID = rs.getInt("ID");
                 String roomName = rs.getString("name");
                 rooms.add(roomID + "\0" + roomName);
             }
+            for( String str : rooms )
+                System.out.println(str);
             return rooms;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -183,28 +185,28 @@ public class UserRequests {
         return getFriends(userID, false);
     }
 
+    @Nullable
     private static List<String> getFriends(int userID, boolean accepted) {
         String sql =
             "SELECT username " +
-                    "FROM User, Friend " +
-                    "WHERE firstUserID = ? " +
-                    "AND friendStatus = ? " +
-                    "AND (" +
-                    "firstUserID = User.userID " +
-                    "OR secondUserID = User.userID" +
-                    ")";
+            "FROM User, Friend " +
+            "WHERE friendStatus = ? " +
+            "AND firstUserID = ? " +
+            "AND secondUserID = User.userID";
 
         try (Connection conn = getConn();
              PreparedStatement pstmt  = conn.prepareStatement(sql)) {
 
-            pstmt.setInt(1, userID);
-            pstmt.setBoolean(2, accepted);
+            pstmt.setInt(1, accepted ? 1 : 0);
+            pstmt.setInt(2, userID);
             ResultSet rs  = pstmt.executeQuery();
 
             List<String> friends = new ArrayList<>();
 
             while (rs.next())
                 friends.add(rs.getString("username"));
+            for( String str : friends )
+                System.out.println(str);
             return friends;
         } catch (SQLException e) {
             System.out.println(e.getMessage());

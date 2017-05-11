@@ -18,7 +18,6 @@ public class LogoutType extends ReactMessage {
         String[] parameters = message.getHeader().split(" ");
         if( parameters.length != logoutSize || client.getClientID() == null )
             return ;
-
         UserRequests.deleteUserConnection(client.getClientID());
         client.getStreamMessage().write(new Message(logoutType, ""));
         client.setClientID(null);

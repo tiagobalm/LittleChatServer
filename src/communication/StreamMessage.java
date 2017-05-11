@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StreamMessage {
-    private static SSLSocket sslSocket;
-    private static ObjectInputStream is;
-    private static ObjectOutputStream os;
+    private SSLSocket sslSocket;
+    private ObjectInputStream is;
+    private ObjectOutputStream os;
 
 
     public StreamMessage(SSLSocket sslSocket) {
@@ -35,11 +35,14 @@ public class StreamMessage {
         }
     }
 
-    public Message read() throws IOException, ClassNotFoundException {
+    public synchronized Message read() throws IOException, ClassNotFoundException {
         return (Message) is.readObject();
     }
 
     public void write(Message message) throws IOException {
-        os.writeObject(message);
+        synchronized (os) {
+            os.writeObject(message);
+            os.flush();
+        }
     }
 }
