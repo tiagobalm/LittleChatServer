@@ -4,10 +4,11 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Message {
-    private String header, message, serverAnswer;
+public class Message implements Serializable {
+    private String header, message;
     private ArrayList<String> optionalMessage;
     private BufferedImage image;
 
@@ -40,8 +41,4 @@ public class Message {
     public BufferedImage getImage() {
         return image;
     }
-    public String getServerAnswer() {
-        return serverAnswer;
-    }
-
 }

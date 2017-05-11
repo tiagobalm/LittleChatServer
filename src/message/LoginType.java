@@ -20,10 +20,10 @@ public class LoginType extends ReactMessage {
         String username = parameters[1], password = parameters[2],
                 ip = parameters[3], port = parameters[4];
         if (UserRequests.loginUser(username, password, ip, Integer.parseInt(port))) {
-            client.getStreamMessage().write(new Message("True\0", ""));
+            client.getStreamMessage().write(new Message("LOGIN", "True"));
             Server.getOurInstance().registerClient(username, client);
         }
         else
-            client.getStreamMessage().write(new Message("False\0", ""));
+            client.getStreamMessage().write(new Message("LOGIN", "False"));
     }
 }
