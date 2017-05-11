@@ -197,7 +197,7 @@ public class UserRequests {
     @Nullable
     public static Integer[] getMessagesFromRoom(Integer roomID, Integer limit) {
 
-        String sql = "SELECT * FROM Message WHERE roomID = ? LIMIT ?";
+        String sql = "SELECT * FROM Message WHERE roomID = ? ORDER BY messageID DESC LIMIT ?";
 
         try (Connection conn = getConn();
              PreparedStatement pstmt  = conn.prepareStatement(sql)) {
