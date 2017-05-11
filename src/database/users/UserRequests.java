@@ -194,14 +194,15 @@ public class UserRequests {
     }
 
     @Nullable
-    public static Integer[] getMessagesFromRoom(Integer roomID) {
+    public static Integer[] getMessagesFromRoom(Integer roomID, Integer limit) {
 
-        String sql = "SELECT * FROM Message WHERE roomID = ?";
+        String sql = "SELECT * FROM Message WHERE roomID = ? LIMIT ?";
 
         try (Connection conn = getConn();
              PreparedStatement pstmt  = conn.prepareStatement(sql)) {
 
             pstmt.setInt(roomID, roomID);
+            pstmt.setInt(limit, limit);
             ResultSet rs  = pstmt.executeQuery();
 
             List<Integer> messages = new ArrayList<Integer>();
