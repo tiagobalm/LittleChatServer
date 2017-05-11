@@ -5,17 +5,21 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 
 public class Message implements Serializable {
     private String header, message;
-    private ArrayList<String> optionalMessage;
+    private List<String> optionalMessage;
     private BufferedImage image;
 
     public Message(String header, String message) {
         this.header = header;
-
         this.message = message;
+    }
+
+    public Message(String header, List<String> optionalMessage) {
+        this.header = header;
+        this.optionalMessage = optionalMessage;
     }
 
     public Message(String path) {
@@ -26,7 +30,7 @@ public class Message implements Serializable {
         }
     }
 
-    public ArrayList<String> getOptionalMessage() {
+    public List<String> getOptionalMessage() {
         return optionalMessage;
     }
 

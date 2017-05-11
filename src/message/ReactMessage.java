@@ -32,6 +32,14 @@ public abstract class ReactMessage {
                 return new RegisterType(message);
             case logoutType:
                 return new LogoutType(message);
+            case getRoomsType:
+                return new GetRoomsType(message);
+            case getFriendsType:
+                return new GetFriendsType(message);
+            case getFriendRequestsType:
+                return new GetFriendRequestsType(message);
+            case getMessagesType:
+                return new GetMessagesType(message);
         }
 
         return null;

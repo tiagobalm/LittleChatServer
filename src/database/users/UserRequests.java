@@ -144,9 +144,13 @@ public class UserRequests {
     }
 
     @Nullable
-    public static Integer[] getUserRooms(Integer userID) {
-    
-        String sql = "SELECT roomID FROM UserRoom WHERE UserID = ?";
+    public static List<String> getUserRooms(int userID) {
+        String sql =
+                "SELECT Room.name AS name, " +
+                        "Room.roomID AS roomID " +
+                "FROM Room, UserRoom " +
+                "WHERE UserRoom.userID = ? " +
+                "AND roomID = UserRoom.roomID";
 
         try (Connection conn = getConn();
              PreparedStatement pstmt  = conn.prepareStatement(sql)) {
@@ -154,13 +158,14 @@ public class UserRequests {
             pstmt.setInt(userID, userID);
             ResultSet rs  = pstmt.executeQuery();
 
-            List<Integer> rooms = new ArrayList<Integer>();
+            List<String> rooms = new ArrayList<>();
             
-            while (rs.next())
-                rooms.add(rs.getInt("roomID"));
-            Integer[] roomsArray = new Integer[rooms.size()];
-            roomsArray = rooms.toArray(roomsArray);
-            return roomsArray;
+            while (rs.next()) {
+                int roomID = rs.getInt("roomID");
+                String roomName = rs.getString("name");
+                rooms.add(roomID + "\0" + roomName);
+            }
+            return rooms;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -169,9 +174,17 @@ public class UserRequests {
     }
 
     @Nullable
-    public static Integer[] getFriends(Integer userID) {
+    public static List<String> getFriends(int userID) {
 
-        String sql = "SELECT secondUserID FROM Friend WHERE firstUserID = ?";
+        String sql =
+                "SELECT username " +
+                "FROM User, Friend " +
+                "WHERE firstUserID = ? " +
+                "AND friendStatus = 1 " +
+                "AND (" +
+                    "firstUserID = User.userID " +
+                    "OR secondUserID = User.userID" +
+                ")";
 
         try (Connection conn = getConn();
              PreparedStatement pstmt  = conn.prepareStatement(sql)) {
@@ -179,13 +192,11 @@ public class UserRequests {
             pstmt.setInt(userID, userID);
             ResultSet rs  = pstmt.executeQuery();
 
-            List<Integer> friends = new ArrayList<Integer>();
+            List<String> friends = new ArrayList<>();
 
             while (rs.next())
-                friends.add(rs.getInt("secondUserID"));
-            Integer[] friendsArray = new Integer[friends.size()];
-            friendsArray = friends.toArray(friendsArray);
-            return friendsArray;
+                friends.add(rs.getString("username"));
+            return friends;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -194,9 +205,18 @@ public class UserRequests {
     }
 
     @Nullable
-    public static Integer[] getMessagesFromRoom(Integer roomID, Integer limit) {
+    public static List<String> getFriendRequests(int userID) {
+        return null;
+    }
 
-        String sql = "SELECT * FROM Message WHERE roomID = ? LIMIT ?";
+    @Nullable
+    public static List<String> getMessagesFromRoom(Integer roomID, Integer limit) {
+        String sql =
+                "SELECT username, message " +
+                "FROM User, Message " +
+                "WHERE roomID = ?" +
+                "AND Message.userID = User.userID " +
+                "LIMIT ?";
 
         try (Connection conn = getConn();
              PreparedStatement pstmt  = conn.prepareStatement(sql)) {
@@ -205,17 +225,16 @@ public class UserRequests {
             pstmt.setInt(limit, limit);
             ResultSet rs  = pstmt.executeQuery();
 
-            List<Integer> messages = new ArrayList<Integer>();
-
-            while (rs.next())
-                messages.add(rs.getInt("messageID"));
-            Integer[] roomsArray = new Integer[messages.size()];
-            roomsArray = messages.toArray(roomsArray);
-            return roomsArray;
+            List<String> messages = new ArrayList<>();
+            while (rs.next()) {
+                String username = rs.getString("username");
+                String message = rs.getString("message");
+                messages.add(username + "\0" + message);
+            }
+            return messages;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
         return null;
     }
 }

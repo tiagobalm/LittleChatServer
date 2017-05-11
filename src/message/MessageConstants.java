@@ -10,6 +10,19 @@ public class MessageConstants {
     public static final String registerType = "REGISTER";
     public static final int registerSize= 5;
 
+    public static final String getRoomsType = "GETROOMS";
+    public static final int getRoomsSize = 1;
+
+    public static final String getFriendsType = "GETFRIENDS";
+    public static final int getFriendsSize = 1;
+
+    public static final String getFriendRequestsType = "GETFRIENDREQUESTS";
+    public static final int getFriendRequestsSize = 1;
+
+    public static final String getMessagesType = "GETMESSAGES";
+    public static final int getMessagesSize = 2;
+
+    /*
     public static final String messageType = "MESSAGE";
     public static final int messageSize= 3;
 
@@ -24,4 +37,5 @@ public class MessageConstants {
 
     public static final String requestIPType = "REQUESTIP";
     public static final int requestIPSize= 3;
+    */
 }

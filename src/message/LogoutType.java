@@ -13,6 +13,7 @@ public class LogoutType extends ReactMessage {
         super(message);
     }
 
+    @Override
     public void react(ClientConnection client) throws IOException {
         String[] parameters = message.getHeader().split(" ");
         if( parameters.length != logoutSize || client.getClientID() == null )
