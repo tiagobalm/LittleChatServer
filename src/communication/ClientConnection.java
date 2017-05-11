@@ -8,6 +8,7 @@ import java.util.AbstractMap;
 
 public class ClientConnection {
     private StreamMessage streamMessage;
+    private Integer clientID;
     private Thread read;
 
     ClientConnection(SSLSocket sslSocket) {
@@ -41,6 +42,14 @@ public class ClientConnection {
         //Server.getOurInstance().getClientSet().remove(this);
         streamMessage.close();
         read.interrupt();
+    }
+
+    public void setClientID(Integer id) {
+        clientID = id;
+    }
+
+    public Integer getClientID() {
+        return clientID;
     }
 
     public StreamMessage getStreamMessage() {

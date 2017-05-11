@@ -1,12 +1,12 @@
 package message;
 
 import communication.ClientConnection;
-import communication.Server;
 import database.users.UserRequests;
 
 import java.io.IOException;
 
 import static message.MessageConstants.logoutSize;
+import static message.MessageConstants.logoutType;
 
 public class LogoutType extends ReactMessage {
     LogoutType(Message message) {
@@ -15,11 +15,11 @@ public class LogoutType extends ReactMessage {
 
     public void react(ClientConnection client) throws IOException {
         String[] parameters = message.getHeader().split(" ");
-        if( parameters.length != logoutSize )
+        if( parameters.length != logoutSize || client.getClientID() == null )
             return ;
-        String username = parameters[1];
-        UserRequests.deleteUserConnection(username);
-        client.getStreamMessage().write(new Message("Logout\0", ""));
-        Server.getOurInstance().logoutClient(username);
+
+        UserRequests.deleteUserConnection(client.getClientID());
+        client.getStreamMessage().write(new Message(logoutType, ""));
+        client.setClientID(null);
     }
 }

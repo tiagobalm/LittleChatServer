@@ -64,7 +64,7 @@ public class UserRequests {
         return false;
     }
 
-    private static int getUserID(String username) {
+    public static int getUserID(String username) {
         String sql = "SELECT userID FROM User WHERE username = ?";
 
         try (Connection conn = getConn();
@@ -100,8 +100,7 @@ public class UserRequests {
         }
     }
 
-    public static void deleteUserConnection(String username) {
-        int userID = getUserID(username);
+    public static void deleteUserConnection(int userID) {
         String sql = "DELETE FROM UserConnection WHERE userID = ?;";
 
         try (Connection conn = getConn();
