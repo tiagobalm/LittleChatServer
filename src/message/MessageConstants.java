@@ -5,7 +5,7 @@ public class MessageConstants {
     public static final int loginSize= 5;
 
     public static final String logoutType = "LOGOUT";
-    public static final int logoutSize= 2;
+    public static final int logoutSize= 1;
 
     public static final String registerType = "REGISTER";
     public static final int registerSize= 5;

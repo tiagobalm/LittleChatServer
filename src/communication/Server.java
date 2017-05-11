@@ -29,13 +29,9 @@ public class Server {
     private SSLServerSocket sslserversocket;
     private ExecutorService executor;
 
-    private ArrayList<ClientConnection> unknownClients;
-    private ConcurrentHashMap<String, ClientConnection> connectedClients;
     private BlockingQueue<Map.Entry<ClientConnection, Message>> messages;
 
     private Server() {
-        unknownClients = new ArrayList<>();
-        connectedClients = new ConcurrentHashMap<>();
         messages = new LinkedBlockingQueue<>();
         startServer();
         startAcceptThread();
@@ -71,7 +67,7 @@ public class Server {
                 try {
                     SSLSocket sslsocket = (SSLSocket) sslserversocket.accept();
                     System.out.println("New client");
-                    unknownClients.add(new ClientConnection(sslsocket));
+                    new ClientConnection(sslsocket);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -107,7 +103,7 @@ public class Server {
     public BlockingQueue<Map.Entry<ClientConnection, Message>> getMessages() {
         return messages;
     }
-
+/*
     public ArrayList<ClientConnection> getUnknownClients() {
         return unknownClients;
     }
@@ -124,7 +120,7 @@ public class Server {
     public void logoutClient(String username) {
         connectedClients.remove(username);
     }
-
+*/
     public static void main(String[] args) {
         System.out.println("Server initialized");
     }
