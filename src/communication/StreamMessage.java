@@ -1,23 +1,24 @@
 package communication;
 
+import message.Message;
+
 import javax.net.ssl.SSLSocket;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class StreamMessage {
     private static SSLSocket sslSocket;
-    private static DataInputStream is;
-    private static DataOutputStream os;
+    private static ObjectInputStream is;
+    private static ObjectOutputStream os;
 
 
     public StreamMessage(SSLSocket sslSocket) {
         this.sslSocket = sslSocket;
         try {
-            is = new DataInputStream(sslSocket.getInputStream());
-            os = new DataOutputStream(sslSocket.getOutputStream());
+            os = new ObjectOutputStream(sslSocket.getOutputStream());
+            os.flush();
+            is = new ObjectInputStream(sslSocket.getInputStream());
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(-1);
@@ -26,33 +27,19 @@ public class StreamMessage {
 
     public void close() {
         try {
+            is.close();
+            os.close();
             sslSocket.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public String read() throws IOException {
-        List<Byte> requestList = new ArrayList<>();
-        byte character;
-
-        while ((character = is.readByte()) != 0)
-            requestList.add(character);
-
-        byte[] request = byteListToByteArray(requestList);
-
-        return new String(request);
+    public Message read() throws IOException, ClassNotFoundException {
+        return (Message) is.readObject();
     }
 
-    public void write(byte[] message) throws IOException {
-        os.write(message);
-    }
-
-
-    private byte[] byteListToByteArray(List<Byte> bytes) {
-        byte[] result = new byte[bytes.size()];
-        for (int i = 0; i < bytes.size(); i++)
-            result[i] = bytes.get(i);
-        return result;
+    public void write(Message message) throws IOException {
+        os.writeObject(message);
     }
 }

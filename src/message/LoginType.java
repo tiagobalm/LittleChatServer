@@ -9,20 +9,21 @@ import java.io.IOException;
 import static message.MessageConstants.loginSize;
 
 public class LoginType extends ReactMessage {
-    LoginType(String[] message) {
+    LoginType(Message message) {
         super(message);
     }
 
     public void react(ClientConnection client) throws IOException {
-        if( message.length != loginSize )
+        String[] parameters = message.getHeader().split(" ");
+        if( parameters.length != loginSize )
             return ;
-        String username = message[1], password = message[2],
-                ip = message[3], port = message[4];
+        String username = parameters[1], password = parameters[2],
+                ip = parameters[3], port = parameters[4];
         if (UserRequests.loginUser(username, password, ip, Integer.parseInt(port))) {
-            client.getStreamMessage().write("True\0".getBytes());
+            client.getStreamMessage().write(new Message("True\0", ""));
             Server.getOurInstance().registerClient(username, client);
         }
         else
-            client.getStreamMessage().write("False\0".getBytes());
+            client.getStreamMessage().write(new Message("False\0", ""));
     }
 }

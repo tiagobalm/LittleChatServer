@@ -1,5 +1,6 @@
 package communication;
 
+import message.Message;
 import worker.*;
 import database.users.UserRequests;
 import org.jetbrains.annotations.Contract;
@@ -30,7 +31,7 @@ public class Server {
 
     private ArrayList<ClientConnection> unknownClients;
     private ConcurrentHashMap<String, ClientConnection> connectedClients;
-    private BlockingQueue<Map.Entry<ClientConnection, String>> messages;
+    private BlockingQueue<Map.Entry<ClientConnection, Message>> messages;
 
     private Server() {
         unknownClients = new ArrayList<>();
@@ -69,6 +70,7 @@ public class Server {
             while(true) {
                 try {
                     SSLSocket sslsocket = (SSLSocket) sslserversocket.accept();
+                    System.out.println("New client");
                     unknownClients.add(new ClientConnection(sslsocket));
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -102,7 +104,7 @@ public class Server {
         return ourInstance;
     }
 
-    public BlockingQueue<Map.Entry<ClientConnection, String>> getMessages() {
+    public BlockingQueue<Map.Entry<ClientConnection, Message>> getMessages() {
         return messages;
     }
 

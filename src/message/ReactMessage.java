@@ -8,8 +8,8 @@ import java.io.IOException;
 import static message.MessageConstants.*;
 
 public abstract class ReactMessage {
-    protected String[] message;
-    ReactMessage(String[] message) {
+    protected Message message;
+    ReactMessage(Message message) {
         this.message = message;
     }
 
@@ -18,8 +18,8 @@ public abstract class ReactMessage {
     }
 
     @Nullable
-    static ReactMessage getReactMessage(String message) {
-        String[] parameters = message.split(" ");
+    public static ReactMessage getReactMessage(Message message) {
+        String[] parameters = message.getHeader().split(" ");
         if( parameters.length < 1 )
             return null;
 
@@ -27,11 +27,11 @@ public abstract class ReactMessage {
         System.out.println("Message react to : " + messageType);
         switch (messageType) {
             case loginType:
-                return new LoginType(parameters);
+                return new LoginType(message);
             case registerType:
-                return new RegisterType(parameters);
+                return new RegisterType(message);
             case logoutType:
-                return new LogoutType(parameters);
+                return new LogoutType(message);
         }
 
         return null;

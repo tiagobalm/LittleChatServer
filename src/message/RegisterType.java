@@ -9,20 +9,21 @@ import java.io.IOException;
 import static message.MessageConstants.registerSize;
 
 public class RegisterType extends ReactMessage {
-    RegisterType(String[] message) {
+    RegisterType(Message message) {
         super(message);
     }
 
     public void react(ClientConnection client) throws IOException {
-        if( message.length != registerSize )
+        String[] parameters = message.getHeader().split(" ");
+        if( parameters.length != registerSize )
             return ;
-        String username = message[1], password = message[2],
-                ip = message[3], port = message[4];
+        String username = parameters[1], password = parameters[2],
+                ip = parameters[3], port = parameters[4];
         if (UserRequests.registerUser(username, password, ip, Integer.parseInt(port))) {
-            client.getStreamMessage().write("True\0".getBytes());
+            client.getStreamMessage().write(new Message("True\0", ""));
             Server.getOurInstance().registerClient(username, client);
         }
         else
-            client.getStreamMessage().write("False\0".getBytes());
+            client.getStreamMessage().write(new Message("False\0", ""));
     }
 }

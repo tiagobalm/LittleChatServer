@@ -9,16 +9,17 @@ import java.io.IOException;
 import static message.MessageConstants.logoutSize;
 
 public class LogoutType extends ReactMessage {
-    LogoutType(String[] message) {
+    LogoutType(Message message) {
         super(message);
     }
 
     public void react(ClientConnection client) throws IOException {
-        if( message.length != logoutSize )
+        String[] parameters = message.getHeader().split(" ");
+        if( parameters.length != logoutSize )
             return ;
-        String username = message[1];
+        String username = parameters[1];
         UserRequests.deleteUserConnection(username);
-        client.getStreamMessage().write("Logout\0".getBytes());
+        client.getStreamMessage().write(new Message("Logout\0", ""));
         Server.getOurInstance().logoutClient(username);
     }
 }
