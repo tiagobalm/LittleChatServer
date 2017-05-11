@@ -155,7 +155,7 @@ public class UserRequests {
         try (Connection conn = getConn();
              PreparedStatement pstmt  = conn.prepareStatement(sql)) {
 
-            pstmt.setInt(userID, userID);
+            pstmt.setInt(1, userID);
             ResultSet rs  = pstmt.executeQuery();
 
             List<String> rooms = new ArrayList<>();
@@ -175,21 +175,30 @@ public class UserRequests {
 
     @Nullable
     public static List<String> getFriends(int userID) {
+        return getFriends(userID, true);
+    }
 
+    @Nullable
+    public static List<String> getFriendRequests(int userID) {
+        return getFriends(userID, false);
+    }
+
+    private static List<String> getFriends(int userID, boolean accepted) {
         String sql =
-                "SELECT username " +
-                "FROM User, Friend " +
-                "WHERE firstUserID = ? " +
-                "AND friendStatus = 1 " +
-                "AND (" +
+            "SELECT username " +
+                    "FROM User, Friend " +
+                    "WHERE firstUserID = ? " +
+                    "AND friendStatus = ? " +
+                    "AND (" +
                     "firstUserID = User.userID " +
                     "OR secondUserID = User.userID" +
-                ")";
+                    ")";
 
         try (Connection conn = getConn();
              PreparedStatement pstmt  = conn.prepareStatement(sql)) {
 
-            pstmt.setInt(userID, userID);
+            pstmt.setInt(1, userID);
+            pstmt.setBoolean(2, accepted);
             ResultSet rs  = pstmt.executeQuery();
 
             List<String> friends = new ArrayList<>();
@@ -205,11 +214,6 @@ public class UserRequests {
     }
 
     @Nullable
-    public static List<String> getFriendRequests(int userID) {
-        return null;
-    }
-
-    @Nullable
     public static List<String> getMessagesFromRoom(Integer roomID, Integer limit) {
         String sql =
                 "SELECT username, message " +
@@ -221,8 +225,8 @@ public class UserRequests {
         try (Connection conn = getConn();
              PreparedStatement pstmt  = conn.prepareStatement(sql)) {
 
-            pstmt.setInt(roomID, roomID);
-            pstmt.setInt(limit, limit);
+            pstmt.setInt(1, roomID);
+            pstmt.setInt(2, limit);
             ResultSet rs  = pstmt.executeQuery();
 
             List<String> messages = new ArrayList<>();

@@ -19,7 +19,7 @@ public class GetFriendRequestsType  extends ReactMessage{
         String[] params = message.getHeader().split(" ");
         if( params.length != getFriendRequestsSize || client.getClientID() == null )
             return ;
-        //List<String> friends = UserRequests.getFriends(client.getClientID());
-        //client.getStreamMessage().write(new Message(getFriendRequestsType, friends));
+        List<String> friends = UserRequests.getFriendRequests(client.getClientID());
+        client.getStreamMessage().write(new Message(getFriendRequestsType, friends));
     }
 }
