@@ -41,6 +41,7 @@ CREATE TABLE Room (
 CREATE TABLE Friend (
 	firstUserID INTEGER,
 	secondUserID INTEGER,
+	friendStatus BOOLEAN DEFAULT 0,
 	FOREIGN KEY(firstUserID) REFERENCES User(userID)
 		ON UPDATE CASCADE,
 	FOREIGN KEY(secondUserID) REFERENCES User(userID)
@@ -80,16 +81,16 @@ INSERT INTO UserRoom(userID, roomID) VALUES (4,1);
 INSERT INTO UserRoom(userID, roomID) VALUES (4,3);
 INSERT INTO UserRoom(userID, roomID) VALUES (4,4);
 
-INSERT INTO Friend(firstUserID, secondUserID) VALUES(1,2);
-INSERT INTO Friend(firstUserID, secondUserID) VALUES(1,4);
-INSERT INTO Friend(firstUserID, secondUserID) VALUES(2,1);
-INSERT INTO Friend(firstUserID, secondUserID) VALUES(2,3);
-INSERT INTO Friend(firstUserID, secondUserID) VALUES(2,4);
-INSERT INTO Friend(firstUserID, secondUserID) VALUES(3,2);
-INSERT INTO Friend(firstUserID, secondUserID) VALUES(3,4);
-INSERT INTO Friend(firstUserID, secondUserID) VALUES(4,1);
-INSERT INTO Friend(firstUserID, secondUserID) VALUES(4,2);
-INSERT INTO Friend(firstUserID, secondUserID) VALUES(4,3);
+INSERT INTO Friend(firstUserID, secondUserID, friendStatus) VALUES(1,2,1);
+INSERT INTO Friend(firstUserID, secondUserID, friendStatus) VALUES(1,4,1);
+INSERT INTO Friend(firstUserID, secondUserID, friendStatus) VALUES(2,1,1);
+INSERT INTO Friend(firstUserID, secondUserID, friendStatus) VALUES(2,3,1);
+INSERT INTO Friend(firstUserID, secondUserID, friendStatus) VALUES(2,4,1);
+INSERT INTO Friend(firstUserID, secondUserID, friendStatus) VALUES(3,2,1);
+INSERT INTO Friend(firstUserID, secondUserID, friendStatus) VALUES(3,4,1);
+INSERT INTO Friend(firstUserID, secondUserID, friendStatus) VALUES(4,1,1);
+INSERT INTO Friend(firstUserID, secondUserID, friendStatus) VALUES(4,2,1);
+INSERT INTO Friend(firstUserID, secondUserID, friendStatus) VALUES(4,3,1);
 
 INSERT INTO Message(userID, roomID, message, sentDate) VALUES (1,1,'Hi friends!', "2017-05-08 15:22:00");
 INSERT INTO Message(userID, roomID, message, sentDate) VALUES (4,1,'Oi amiguinho', "2017-05-08 15:23:00");
