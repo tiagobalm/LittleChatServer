@@ -21,4 +21,7 @@ class MessageConstants {
 
     static final String getMessagesType = "GETMESSAGES";
     static final int getMessagesSize = 2;
+
+    static final String messageType = "MESSAGE";
+    static final int messageSize = 2;
 }

@@ -9,10 +9,7 @@ import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
 import javax.net.ssl.SSLSocket;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.*;
 
 public class Server {
@@ -29,9 +26,11 @@ public class Server {
     private SSLServerSocket sslserversocket;
     private ExecutorService executor;
 
+    private List<ClientConnection> connectedClients;
     private BlockingQueue<Map.Entry<ClientConnection, Message>> messages;
 
     private Server() {
+        connectedClients = new ArrayList<>();
         messages = new LinkedBlockingQueue<>();
         startServer();
         startAcceptThread();
@@ -67,7 +66,7 @@ public class Server {
                 try {
                     SSLSocket sslsocket = (SSLSocket) sslserversocket.accept();
                     System.out.println("New client");
-                    new ClientConnection(sslsocket);
+                    connectedClients.add(new ClientConnection(sslsocket));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -103,24 +102,11 @@ public class Server {
     public BlockingQueue<Map.Entry<ClientConnection, Message>> getMessages() {
         return messages;
     }
-/*
-    public ArrayList<ClientConnection> getUnknownClients() {
-        return unknownClients;
-    }
 
-    public ConcurrentHashMap<String, ClientConnection> getConnectedClients() {
+    public List<ClientConnection> getConnectedClients() {
         return connectedClients;
     }
 
-    public void registerClient(String username, ClientConnection client) {
-        connectedClients.put(username, client);
-        unknownClients.remove(client);
-    }
-
-    public void logoutClient(String username) {
-        connectedClients.remove(username);
-    }
-*/
     public static void main(String[] args) {
         System.out.println("Server initialized");
     }

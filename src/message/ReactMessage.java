@@ -23,9 +23,9 @@ public abstract class ReactMessage {
         if( parameters.length < 1 )
             return null;
 
-        String messageType = parameters[0];
-        System.out.println("Message react to : " + messageType);
-        switch (messageType) {
+        String mType = parameters[0];
+        System.out.println("Message react to : " + mType);
+        switch (mType) {
             case loginType:
                 return new LoginType(message);
             case registerType:
@@ -40,6 +40,8 @@ public abstract class ReactMessage {
                 return new GetFriendRequestsType(message);
             case getMessagesType:
                 return new GetMessagesType(message);
+            case messageType:
+                return new MessageType(message);
         }
 
         return null;

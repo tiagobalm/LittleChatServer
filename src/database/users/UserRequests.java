@@ -83,6 +83,25 @@ public class UserRequests {
         return -1;
     }
 
+    @Nullable
+    public static String getUsername(int userID) {
+        String sql = "SELECT username FROM User WHERE username = ?";
+
+        try (Connection conn = getConn();
+             PreparedStatement pstmt  = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, userID);
+            ResultSet rs  = pstmt.executeQuery();
+
+            if ( rs != null && rs.next() )
+                return rs.getString("username");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return null;
+    }
+
     private static void insertUserConnection(String username, String ip, int port) {
         int userID = getUserID(username);
         String sql = "INSERT INTO UserConnection(userID, ip, port) VALUES (?, ?, ?);";
@@ -165,8 +184,32 @@ public class UserRequests {
                 String roomName = rs.getString("name");
                 rooms.add(roomID + "\0" + roomName);
             }
-            for( String str : rooms )
-                System.out.println(str);
+            return rooms;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return null;
+    }
+
+    public static List<Integer> getRoomUsers(int roomID) {
+        String sql =
+                "SELECT userID " +
+                "FROM UserRoom " +
+                "WHERE UserRoom.roomID = ? ";
+
+        try (Connection conn = getConn();
+             PreparedStatement pstmt  = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, roomID);
+            ResultSet rs  = pstmt.executeQuery();
+
+            List<Integer> rooms = new ArrayList<>();
+
+            while (rs.next()) {
+                int userID = rs.getInt("username");
+                rooms.add(userID);
+            }
             return rooms;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
