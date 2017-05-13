@@ -4,6 +4,9 @@ import database.Database;
 import org.jetbrains.annotations.Nullable;
 
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -113,6 +116,77 @@ public class UserRequests {
             pstmt.setString(2, ip);
             pstmt.setInt(3, port);
 
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private static void insertMessages(int userID, int roomID, String content, String date){
+       String sql = "INSERT INTO Message(userID, roomID, message, sentDate) VALUES (?, ?, ?, ?);";
+
+        try (Connection conn = getConn();
+             PreparedStatement pstmt  = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, userID);
+            pstmt.setInt(2, roomID);
+            pstmt.setString(3, content);
+            pstmt.setString(4, date);
+
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private static void insertFriends(int friend1, int friend2){
+        String sql = "INSERT INTO Friend(firstUserID, secondUserID) VALUES (?, ?);";
+
+        try (Connection conn = getConn();
+             PreparedStatement pstmt  = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, friend1);
+            pstmt.setInt(2, friend2);
+
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        String SecondSql = "INSERT INTO Friend(firstUserID, secondUserID) VALUES (?, ?);";
+
+        try (Connection conn = getConn();
+             PreparedStatement pstmt  = conn.prepareStatement(SecondSql)) {
+
+            pstmt.setInt(1, friend2);
+            pstmt.setInt(2, friend1);
+
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void updateFriendshipStatus(int friend1, int friend2){
+        String sql = "UPDATE Friend SET friendStatus = 1 WHERE firstUserID = ? AND secondUserID = ?;";
+
+        try (Connection conn = getConn();
+             PreparedStatement pstmt  = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, friend1);
+            pstmt.setInt(2, friend2);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        String SecondSql = "UPDATE Friend SET friendStatus = 1 WHERE firstUserID = ? AND secondUserID = ?;";
+
+        try (Connection conn = getConn();
+             PreparedStatement pstmt  = conn.prepareStatement(SecondSql)) {
+
+            pstmt.setInt(1, friend2);
+            pstmt.setInt(2, friend1);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
