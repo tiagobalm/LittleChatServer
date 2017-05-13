@@ -4,10 +4,11 @@ import communication.ClientConnection;
 import communication.Server;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
-import static database.users.UserRequests.getRoomUsers;
-import static database.users.UserRequests.getUsername;
+import static database.users.UserRequests.*;
 import static message.MessageConstants.messageSize;
 import static message.MessageConstants.messageType;
 
@@ -25,13 +26,12 @@ public class MessageType extends ReactMessage {
         int roomID = Integer.parseInt(parameters[1]);
         String messageBody = message.getMessage();
         String username = getUsername(client.getClientID());
+        String date = new SimpleDateFormat("dd-MM-yy").format(new Date());
+        System.out.println("Date:" + date);
+
+        insertMessages(client.getClientID(), roomID, messageBody, date);
+
         Message sendMessage = new Message(messageType + " " + username + " " + roomID, messageBody);
-
-        /*
-                IMPORTANT ASS SHIT:
-                    INSERT MESSAGE INTO THE DATABASE
-         */
-
         send(sendMessage, roomID, client.getClientID());
     }
 

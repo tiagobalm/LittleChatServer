@@ -5,6 +5,7 @@ import communication.ClientConnection;
 import java.io.IOException;
 
 import static database.users.UserRequests.getUserID;
+import static database.users.UserRequests.insertFriends;
 import static message.MessageConstants.friendRequestSize;
 
 public class FriendRequestType extends ReactMessage {
@@ -18,11 +19,7 @@ public class FriendRequestType extends ReactMessage {
         if( parameters.length != friendRequestSize || client.getClientID() == null )
             return ;
         int userID = getUserID(parameters[1]);
-
-        /*
-                IMPORTANT ASS SHIT:
-                    INSERT REQUEST INTO THE DATABASE
-         */
+        insertFriends(client.getClientID(), userID);
 
         notifyUser(message, userID);
     }

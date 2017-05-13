@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="327ad98e-5c2b-4b3a-805e-2a02ff6aeb3f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/message/AnswerFriendType.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/message/FriendRequestType.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/database/users/UserRequests.java" afterPath="$PROJECT_DIR$/src/database/users/UserRequests.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/MessageConstants.java" afterPath="$PROJECT_DIR$/src/message/MessageConstants.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/AnswerFriendType.java" afterPath="$PROJECT_DIR$/src/message/AnswerFriendType.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/FriendRequestType.java" afterPath="$PROJECT_DIR$/src/message/FriendRequestType.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/MessageType.java" afterPath="$PROJECT_DIR$/src/message/MessageType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/ReactMessage.java" afterPath="$PROJECT_DIR$/src/message/ReactMessage.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -97,117 +95,7 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="UserRequests.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/database/users/UserRequests.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="195" column="32" lean-forward="false" selection-start-line="195" selection-start-column="32" selection-end-line="195" selection-end-column="32" />
-              <folding>
-                <element signature="method#getConn#0;class#UserRequests#0" expanded="false" />
-                <element signature="method#loginUser#0;class#UserRequests#0" expanded="false" />
-                <element signature="method#registerUser#0;class#UserRequests#0" expanded="false" />
-                <element signature="method#checkPassword#0;class#UserRequests#0" expanded="false" />
-                <element signature="method#getUserID#0;class#UserRequests#0" expanded="false" />
-                <element signature="method#insertUserConnection#0;class#UserRequests#0" expanded="false" />
-                <element signature="method#deleteUserConnection#0;class#UserRequests#0" expanded="false" />
-                <element signature="method#deleteUserConnections#0;class#UserRequests#0" expanded="false" />
-                <element signature="method#userConnected#0;class#UserRequests#0" expanded="false" />
-                <element signature="method#getUsername#0;class#UserRequests#0" expanded="false" />
-                <element signature="method#getUserRooms#0;class#UserRequests#0" expanded="false" />
-                <element signature="method#getRoomUsers#0;class#UserRequests#0" expanded="false" />
-                <element signature="method#getFriends#1;class#UserRequests#0" expanded="false" />
-                <element signature="method#getMessagesFromRoom#0;class#UserRequests#0" expanded="false" />
-                <marker date="1494666143467" expanded="true" signature="895:945" ph="INSERT INTO User... " />
-                <marker date="1494666143467" expanded="true" signature="1455:1499" ph="SELECT passw... User" />
-                <marker date="1494666143467" expanded="true" signature="2000:2042" ph="SELECT userI... User" />
-                <marker date="1494666143467" expanded="true" signature="2624:2685" ph="INSERT INTO UserConnection... " />
-                <marker date="1494666143467" expanded="true" signature="3127:3170" ph="DELETE FROM " />
-                <marker date="1494666143467" expanded="true" signature="3531:3557" ph="DELETE FROM " />
-                <marker date="1494666143467" expanded="true" signature="3932:3977" ph="SELECT * FRO... UserConnection" />
-                <marker date="1494666143467" expanded="true" signature="4448:4492" ph="SELECT usern... User" />
-                <marker date="1494666143467" expanded="true" signature="5021:5227" ph="SELECT Room.... Room" />
-                <marker date="1494666143467" expanded="true" signature="5957:6052" ph="SELECT userI... UserRoom" />
-                <marker date="1494666143467" expanded="true" signature="5957:6054" ph="SELECT userI... UserRoom" />
-                <marker date="1494666143467" expanded="true" signature="6960:7135" ph="SELECT usern... User" />
-                <marker date="1494666143467" expanded="true" signature="7894:8078" ph="SELECT usern... User" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MessageConstants.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/message/MessageConstants.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="30" column="40" lean-forward="false" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReactMessage.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/message/ReactMessage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="31" column="31" lean-forward="false" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
-              <folding>
-                <element signature="method#react#0;class#ReactMessage#0" expanded="false" />
-                <element signature="method#notifyUser#0;class#ReactMessage#0" expanded="false" />
-                <element signature="method#send#0;class#ReactMessage#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginType.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/message/LoginType.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="24" column="21" lean-forward="true" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
-              <folding>
-                <element signature="e#251#252#0" expanded="true" />
-                <element signature="e#281#282#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MessageType.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/message/MessageType.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="19" column="67" lean-forward="true" selection-start-line="19" selection-start-column="67" selection-end-line="22" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FriendRequestType.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/message/FriendRequestType.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="26" column="16" lean-forward="false" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AnswerFriendType.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/message/AnswerFriendType.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-50">
-              <caret line="2" column="38" lean-forward="false" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -257,13 +145,13 @@
         <option value="$PROJECT_DIR$/src/message/LoginType.java" />
         <option value="$PROJECT_DIR$/src/communication/StreamMessage.java" />
         <option value="$PROJECT_DIR$/src/communication/Server.java" />
-        <option value="$PROJECT_DIR$/src/database/users/UserRequests.java" />
         <option value="$PROJECT_DIR$/src/message/NotifyRoom.java" />
-        <option value="$PROJECT_DIR$/src/message/MessageType.java" />
         <option value="$PROJECT_DIR$/src/message/MessageConstants.java" />
-        <option value="$PROJECT_DIR$/src/message/AnswerFriendType.java" />
-        <option value="$PROJECT_DIR$/src/message/FriendRequestType.java" />
         <option value="$PROJECT_DIR$/src/message/ReactMessage.java" />
+        <option value="$PROJECT_DIR$/src/message/MessageType.java" />
+        <option value="$PROJECT_DIR$/src/message/FriendRequestType.java" />
+        <option value="$PROJECT_DIR$/src/message/AnswerFriendType.java" />
+        <option value="$PROJECT_DIR$/src/database/users/UserRequests.java" />
       </list>
     </option>
   </component>
@@ -912,7 +800,7 @@
       <workItem from="1494614480074" duration="207000" />
       <workItem from="1494619688263" duration="3574000" />
       <workItem from="1494666089710" duration="53000" />
-      <workItem from="1494666935026" duration="2907000" />
+      <workItem from="1494666935026" duration="3617000" />
     </task>
     <task id="LOCAL-00001" summary="EchoServer working">
       <created>1494086864893</created>
@@ -1012,11 +900,18 @@
       <option name="project" value="LOCAL" />
       <updated>1494623006329</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Added all other messages">
+      <created>1494669861130</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1494669861130</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56652000" />
+    <option name="totallyTimeSpent" value="57362000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1029,7 +924,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="63" y="-6" width="1303" height="774" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1041,13 +935,14 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32662538" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3441358" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34365326" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22991249" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22991249" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22991249" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980111" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980111" sideWeight="0.4827586" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1060,7 +955,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980111" sideWeight="0.51724136" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1108,7 +1002,8 @@
     <MESSAGE value="Message consts has package private" />
     <MESSAGE value="Fixed communication problems" />
     <MESSAGE value="Added some functionality to the message messageType" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added some functionality to the message messageType" />
+    <MESSAGE value="Added all other messages" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added all other messages" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1264,14 +1159,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/communication/ClientConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/communication/StreamMessage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -1308,42 +1195,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/database/users/UserRequests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="195" column="32" lean-forward="false" selection-start-line="195" selection-start-column="32" selection-end-line="195" selection-end-column="32" />
-          <folding>
-            <element signature="method#getConn#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#loginUser#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#registerUser#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#checkPassword#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#getUserID#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#insertUserConnection#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#deleteUserConnection#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#deleteUserConnections#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#userConnected#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#getUsername#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#getUserRooms#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#getRoomUsers#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#getFriends#1;class#UserRequests#0" expanded="false" />
-            <element signature="method#getMessagesFromRoom#0;class#UserRequests#0" expanded="false" />
-            <marker date="1494666143467" expanded="true" signature="895:945" ph="INSERT INTO User... " />
-            <marker date="1494666143467" expanded="true" signature="1455:1499" ph="SELECT passw... User" />
-            <marker date="1494666143467" expanded="true" signature="2000:2042" ph="SELECT userI... User" />
-            <marker date="1494666143467" expanded="true" signature="2624:2685" ph="INSERT INTO UserConnection... " />
-            <marker date="1494666143467" expanded="true" signature="3127:3170" ph="DELETE FROM " />
-            <marker date="1494666143467" expanded="true" signature="3531:3557" ph="DELETE FROM " />
-            <marker date="1494666143467" expanded="true" signature="3932:3977" ph="SELECT * FRO... UserConnection" />
-            <marker date="1494666143467" expanded="true" signature="4448:4492" ph="SELECT usern... User" />
-            <marker date="1494666143467" expanded="true" signature="5021:5227" ph="SELECT Room.... Room" />
-            <marker date="1494666143467" expanded="true" signature="5957:6052" ph="SELECT userI... UserRoom" />
-            <marker date="1494666143467" expanded="true" signature="5957:6054" ph="SELECT userI... UserRoom" />
-            <marker date="1494666143467" expanded="true" signature="6960:7135" ph="SELECT usern... User" />
-            <marker date="1494666143467" expanded="true" signature="7894:8078" ph="SELECT usern... User" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/message/NotifyRoom.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -1360,20 +1211,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/message/AnswerFriendType.java">
+    <entry file="file://$PROJECT_DIR$/src/message/MessageType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-50">
-          <caret line="2" column="38" lean-forward="false" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
-          <folding />
+        <state relative-caret-position="276">
+          <caret line="33" column="22" lean-forward="false" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/message/MessageType.java">
+    <entry file="file://$PROJECT_DIR$/src/message/FriendRequestType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="19" column="67" lean-forward="true" selection-start-line="19" selection-start-column="67" selection-end-line="22" selection-end-column="20" />
+        <state relative-caret-position="350">
+          <caret line="20" column="46" lean-forward="true" selection-start-line="20" selection-start-column="46" selection-end-line="20" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/message/AnswerFriendType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/message/LoginType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="17" column="38" lean-forward="true" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
+          <folding>
+            <element signature="e#251#252#0" expanded="true" />
+            <element signature="e#281#282#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1390,24 +1264,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/message/LoginType.java">
+    <entry file="file://$PROJECT_DIR$/src/database/users/UserRequests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="24" column="21" lean-forward="true" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+        <state relative-caret-position="117">
+          <caret line="11" column="13" lean-forward="true" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
           <folding>
-            <element signature="e#251#252#0" expanded="true" />
-            <element signature="e#281#282#0" expanded="true" />
+            <element signature="method#userConnected#0;class#UserRequests#0" expanded="false" />
+            <element signature="method#getRoomUsers#0;class#UserRequests#0" expanded="false" />
+            <element signature="method#getFriends#1;class#UserRequests#0" expanded="false" />
+            <element signature="method#getMessagesFromRoom#0;class#UserRequests#0" expanded="false" />
+            <marker date="1494670543356" expanded="true" signature="996:1046" ph="INSERT INTO User... " />
+            <marker date="1494670543356" expanded="true" signature="1556:1600" ph="SELECT passw... User" />
+            <marker date="1494670543356" expanded="true" signature="2101:2143" ph="SELECT userI... User" />
+            <marker date="1494670543356" expanded="true" signature="2725:2786" ph="INSERT INTO UserConnection... " />
+            <marker date="1494670543356" expanded="true" signature="3262:3336" ph="INSERT INTO Message... " />
+            <marker date="1494670543356" expanded="true" signature="4083:4160" ph="UPDATE Frien... " />
+            <marker date="1494670543356" expanded="false" signature="4718:5073" ph="{...}" />
+            <marker date="1494670543356" expanded="true" signature="4742:4785" ph="DELETE FROM " />
+            <marker date="1494670543356" expanded="false" signature="5122:5422" ph="{...}" />
+            <marker date="1494670543356" expanded="true" signature="5146:5172" ph="DELETE FROM " />
+            <marker date="1494670543356" expanded="true" signature="5548:5593" ph="SELECT * FRO... UserConnection" />
+            <marker date="1494670543356" expanded="false" signature="6040:6525" ph="{...}" />
+            <marker date="1494670543356" expanded="true" signature="6064:6108" ph="SELECT usern... User" />
+            <marker date="1494670543356" expanded="true" signature="6637:6860" ph="SELECT Room.... Room" />
+            <marker date="1494670543356" expanded="true" signature="7590:7685" ph="SELECT userI... UserRoom" />
+            <marker date="1494670543356" expanded="true" signature="7590:7687" ph="SELECT userI... UserRoom" />
+            <marker date="1494670543356" expanded="true" signature="8593:8768" ph="SELECT usern... User" />
+            <marker date="1494670543356" expanded="true" signature="9527:9711" ph="SELECT usern... User" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/message/FriendRequestType.java">
+    <entry file="file://$PROJECT_DIR$/src/communication/ClientConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="26" column="16" lean-forward="false" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="20">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

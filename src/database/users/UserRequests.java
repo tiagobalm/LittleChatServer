@@ -3,10 +3,10 @@ package database.users;
 import database.Database;
 import org.jetbrains.annotations.Nullable;
 
-import java.sql.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -103,7 +103,7 @@ public class UserRequests {
         }
     }
 
-    private static void insertMessages(int userID, int roomID, String content, String date){
+    public static void insertMessages(int userID, int roomID, String content, String date) {
        String sql = "INSERT INTO Message(userID, roomID, message, sentDate) VALUES (?, ?, ?, ?);";
 
         try (Connection conn = getConn();
@@ -120,51 +120,21 @@ public class UserRequests {
         }
     }
 
-    private static void insertFriends(int friend1, int friend2){
+    public static void insertFriends(int friend1, int friend2) {
         String sql = "INSERT INTO Friend(firstUserID, secondUserID) VALUES (?, ?);";
-
-        try (Connection conn = getConn();
-             PreparedStatement pstmt  = conn.prepareStatement(sql)) {
-
-            pstmt.setInt(1, friend1);
-            pstmt.setInt(2, friend2);
-
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-
-        String SecondSql = "INSERT INTO Friend(firstUserID, secondUserID) VALUES (?, ?);";
-
-        try (Connection conn = getConn();
-             PreparedStatement pstmt  = conn.prepareStatement(SecondSql)) {
-
-            pstmt.setInt(1, friend2);
-            pstmt.setInt(2, friend1);
-
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
+        friendQuery(sql, friend1, friend2);
+        friendQuery(sql, friend2, friend1);
     }
 
     public static void updateFriendshipStatus(int friend1, int friend2){
         String sql = "UPDATE Friend SET friendStatus = 1 WHERE firstUserID = ? AND secondUserID = ?;";
+        friendQuery(sql, friend1, friend2);
+        friendQuery(sql, friend2, friend1);
+    }
 
+    private static void friendQuery(String query, int friend1, int friend2) {
         try (Connection conn = getConn();
-             PreparedStatement pstmt  = conn.prepareStatement(sql)) {
-
-            pstmt.setInt(1, friend1);
-            pstmt.setInt(2, friend2);
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-
-        String SecondSql = "UPDATE Friend SET friendStatus = 1 WHERE firstUserID = ? AND secondUserID = ?;";
-
-        try (Connection conn = getConn();
-             PreparedStatement pstmt  = conn.prepareStatement(SecondSql)) {
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
 
             pstmt.setInt(1, friend2);
             pstmt.setInt(2, friend1);
@@ -198,7 +168,7 @@ public class UserRequests {
         }
     }
 
-    public static boolean userConnected(String username) {
+    private static boolean userConnected(String username) {
         int userID = getUserID(username);
         String sql = "SELECT * FROM UserConnection WHERE userID = ?";
 
@@ -243,7 +213,7 @@ public class UserRequests {
                         "Room.roomID AS ID " +
                 "FROM Room, UserRoom " +
                 "WHERE UserRoom.userID = ? " +
-                "AND ID = UserRoom.roomID";
+                        "AND Room.roomID = UserRoom.roomID";
 
         try (Connection conn = getConn();
              PreparedStatement pstmt  = conn.prepareStatement(sql)) {
