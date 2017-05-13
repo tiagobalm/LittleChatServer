@@ -1,9 +1,11 @@
 package message;
 
 import communication.ClientConnection;
+import communication.Server;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
+import java.util.List;
 
 import static message.MessageConstants.*;
 
@@ -42,8 +44,38 @@ public abstract class ReactMessage {
                 return new GetMessagesType(message);
             case messageType:
                 return new MessageType(message);
+            case friendRequestType:
+                return new FriendRequestType(message);
+            case answerFriendType:
+                return new AnswerFriendType(message);
         }
 
         return null;
+    }
+
+    void notifyUser(Message message, int userID) {
+        synchronized (Server.getOurInstance().getConnectedClients()) {
+            List<ClientConnection> clients = Server.getOurInstance().getConnectedClients();
+            for( ClientConnection c : clients ) {
+                if( c.getClientID() != null &&
+                        c.getClientID().equals(userID)) {
+                    send(c, message);
+                    return ;
+                }
+            }
+        }
+    }
+
+    private void send(ClientConnection c, Message message) {
+        Thread thread = new Thread(() -> {
+            try {
+                c.getStreamMessage().write(message);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        thread.setDaemon(true);
+        thread.start();
     }
 }

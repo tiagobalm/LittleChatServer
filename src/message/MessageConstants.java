@@ -24,4 +24,10 @@ class MessageConstants {
 
     static final String messageType = "MESSAGE";
     static final int messageSize = 2;
+
+    static final String friendRequestType = "FRIENDREQUEST";
+    static final int friendRequestSize = 2;
+
+    static final String answerFriendType = "ANSWERFRIEND";
+    static final int answerFriendSize = 2;
 }

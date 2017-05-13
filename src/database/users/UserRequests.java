@@ -83,25 +83,6 @@ public class UserRequests {
         return -1;
     }
 
-    @Nullable
-    public static String getUsername(int userID) {
-        String sql = "SELECT username FROM User WHERE username = ?";
-
-        try (Connection conn = getConn();
-             PreparedStatement pstmt  = conn.prepareStatement(sql)) {
-
-            pstmt.setInt(1, userID);
-            ResultSet rs  = pstmt.executeQuery();
-
-            if ( rs != null && rs.next() )
-                return rs.getString("username");
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-
-        return null;
-    }
-
     private static void insertUserConnection(String username, String ip, int port) {
         int userID = getUserID(username);
         String sql = "INSERT INTO UserConnection(userID, ip, port) VALUES (?, ?, ?);";
@@ -163,6 +144,25 @@ public class UserRequests {
     }
 
     @Nullable
+    public static String getUsername(int userID) {
+        String sql = "SELECT username FROM User WHERE username = ?";
+
+        try (Connection conn = getConn();
+             PreparedStatement pstmt  = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, userID);
+            ResultSet rs  = pstmt.executeQuery();
+
+            if ( rs != null && rs.next() )
+                return rs.getString("username");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return null;
+    }
+
+    @Nullable
     public static List<String> getUserRooms(int userID) {
         String sql =
                 "SELECT Room.name AS name, " +
@@ -192,6 +192,7 @@ public class UserRequests {
         return null;
     }
 
+    @Nullable
     public static List<Integer> getRoomUsers(int roomID) {
         String sql =
                 "SELECT userID " +
