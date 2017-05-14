@@ -27,7 +27,6 @@ public class MessageType extends ReactMessage {
         String messageBody = message.getMessage();
         String username = getUsername(client.getClientID());
         String date = new SimpleDateFormat("dd-MM-yy").format(new Date());
-        System.out.println("Date:" + date);
 
         insertMessages(client.getClientID(), roomID, messageBody, date);
 
@@ -44,9 +43,8 @@ public class MessageType extends ReactMessage {
             List<ClientConnection> clients = Server.getOurInstance().getConnectedClients();
             for( ClientConnection c : clients ) {
                 Integer clientID = c.getClientID();
-                if(clientID != null && !clientID.equals(userID) && roomUsers.contains(clientID)) {
+                if(clientID != null && !clientID.equals(userID) && roomUsers.contains(clientID))
                     c.getStreamMessage().write(message);
-                }
             }
         }
     }

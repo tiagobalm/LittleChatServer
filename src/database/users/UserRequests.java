@@ -194,7 +194,7 @@ public class UserRequests {
 
     @Nullable
     public static String getUsername(int userID) {
-        String sql = "SELECT username FROM User WHERE username = ?";
+        String sql = "SELECT username FROM User WHERE userID = ?";
 
         try (Connection conn = getConn();
              PreparedStatement pstmt  = conn.prepareStatement(sql)) {

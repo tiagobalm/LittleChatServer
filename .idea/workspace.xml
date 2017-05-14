@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="327ad98e-5c2b-4b3a-805e-2a02ff6aeb3f" name="Default" comment="">
+    <list default="true" id="327ad98e-5c2b-4b3a-805e-2a02ff6aeb3f" name="Default" comment="Message exchange working">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/database/users/UserRequests.java" afterPath="$PROJECT_DIR$/src/database/users/UserRequests.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/MessageType.java" afterPath="$PROJECT_DIR$/src/message/MessageType.java" />
@@ -75,64 +75,23 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="MessageType.java" pinned="false" current-in-tab="false">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="MessageType.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/message/MessageType.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="42" column="36" lean-forward="false" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
+            <state relative-caret-position="396">
+              <caret line="45" column="26" lean-forward="true" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StreamMessage.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/communication/StreamMessage.java">
+      <file leaf-file-name="MessageConstants.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/message/MessageConstants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="43" column="36" lean-forward="true" selection-start-line="43" selection-start-column="36" selection-end-line="43" selection-end-column="36" />
+            <state relative-caret-position="200">
+              <caret line="25" column="36" lean-forward="false" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserRequests.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/database/users/UserRequests.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-224">
-              <caret line="244" column="32" lean-forward="false" selection-start-line="244" selection-start-column="32" selection-end-line="244" selection-end-column="32" />
-              <folding>
-                <element signature="method#getConn#0;class#UserRequests#0" expanded="false" />
-                <element signature="method#loginUser#0;class#UserRequests#0" expanded="false" />
-                <element signature="method#registerUser#0;class#UserRequests#0" expanded="false" />
-                <element signature="method#checkPassword#0;class#UserRequests#0" expanded="false" />
-                <element signature="method#getUserID#0;class#UserRequests#0" expanded="false" />
-                <element signature="method#insertUserConnection#0;class#UserRequests#0" expanded="false" />
-                <element signature="method#insertFriends#0;class#UserRequests#0" expanded="false" />
-                <element signature="method#updateFriendshipStatus#0;class#UserRequests#0" expanded="false" />
-                <element signature="method#friendQuery#0;class#UserRequests#0" expanded="false" />
-                <element signature="method#deleteUserConnection#0;class#UserRequests#0" expanded="false" />
-                <element signature="method#deleteUserConnections#0;class#UserRequests#0" expanded="false" />
-                <element signature="method#userConnected#0;class#UserRequests#0" expanded="false" />
-                <element signature="method#getUsername#0;class#UserRequests#0" expanded="false" />
-                <element signature="method#getUserRooms#0;class#UserRequests#0" expanded="false" />
-                <element signature="method#getFriends#1;class#UserRequests#0" expanded="false" />
-                <marker date="1494783910506" expanded="true" signature="996:1046" ph="INSERT INTO User... " />
-                <marker date="1494783910506" expanded="true" signature="1575:1619" ph="SELECT passw... User" />
-                <marker date="1494783910506" expanded="true" signature="2140:2182" ph="SELECT userI... User" />
-                <marker date="1494783910506" expanded="true" signature="2784:2845" ph="INSERT INTO UserConnection... " />
-                <marker date="1494783910506" expanded="true" signature="3341:3415" ph="INSERT INTO Message... " />
-                <marker date="1494783910506" expanded="true" signature="4183:4260" ph="UPDATE Frien... " />
-                <marker date="1494783910506" expanded="true" signature="4861:4904" ph="DELETE FROM " />
-                <marker date="1494783910506" expanded="true" signature="5284:5310" ph="DELETE FROM " />
-                <marker date="1494783910506" expanded="true" signature="5705:5750" ph="SELECT * FRO... UserConnection" />
-                <marker date="1494783910506" expanded="true" signature="6240:6284" ph="SELECT usern... User" />
-                <marker date="1494783910506" expanded="true" signature="6832:7055" ph="SELECT Room.... Room" />
-                <marker date="1494783910506" expanded="true" signature="7804:7899" ph="SELECT userI... UserRoom" />
-                <marker date="1494783910506" expanded="true" signature="7804:7901" ph="SELECT userI... UserRoom" />
-                <marker date="1494783910506" expanded="true" signature="8824:8999" ph="SELECT usern... User" />
-                <marker date="1494783910506" expanded="true" signature="9777:9961" ph="SELECT usern... User" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -197,14 +156,14 @@
         <option value="$PROJECT_DIR$/src/message/LoginType.java" />
         <option value="$PROJECT_DIR$/src/communication/Server.java" />
         <option value="$PROJECT_DIR$/src/message/NotifyRoom.java" />
-        <option value="$PROJECT_DIR$/src/message/MessageConstants.java" />
         <option value="$PROJECT_DIR$/src/message/ReactMessage.java" />
         <option value="$PROJECT_DIR$/src/message/FriendRequestType.java" />
         <option value="$PROJECT_DIR$/src/message/AnswerFriendType.java" />
-        <option value="$PROJECT_DIR$/src/database/users/UserRequests.java" />
         <option value="dbtable:/97f381e5/321b15e9-ca66-4a6c-b41c-57f491f58e2f/main.Message" />
-        <option value="$PROJECT_DIR$/src/message/MessageType.java" />
         <option value="$PROJECT_DIR$/src/communication/StreamMessage.java" />
+        <option value="$PROJECT_DIR$/src/database/users/UserRequests.java" />
+        <option value="$PROJECT_DIR$/src/message/MessageConstants.java" />
+        <option value="$PROJECT_DIR$/src/message/MessageType.java" />
       </list>
     </option>
   </component>
@@ -257,8 +216,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -303,48 +260,10 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LittleChatServer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LittleChatServer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LittleChatServer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LittleChatServer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="users" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -836,7 +755,8 @@
       <workItem from="1494619688263" duration="3574000" />
       <workItem from="1494666089710" duration="53000" />
       <workItem from="1494666935026" duration="4226000" />
-      <workItem from="1494781758623" duration="4062000" />
+      <workItem from="1494781758623" duration="4116000" />
+      <workItem from="1494789272536" duration="2948000" />
     </task>
     <task id="LOCAL-00001" summary="EchoServer working">
       <created>1494086864893</created>
@@ -950,11 +870,18 @@
       <option name="project" value="LOCAL" />
       <updated>1494670562607</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Fixed some issues concerning user messages">
+      <created>1494786165599</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1494786165599</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62033000" />
+    <option name="totallyTimeSpent" value="65035000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -970,35 +897,35 @@
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980111" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22991249" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980111" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980111" sideWeight="0.4827586" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3993808" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3111455" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34365326" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32662538" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23389022" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23389022" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22991249" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980111" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980111" sideWeight="0.4827586" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3993808" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980111" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980111" sideWeight="0.51724136" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1047,7 +974,8 @@
     <MESSAGE value="Fixed communication problems" />
     <MESSAGE value="Added some functionality to the message messageType" />
     <MESSAGE value="Added all other messages" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added all other messages" />
+    <MESSAGE value="Fixed some issues concerning user messages" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed some issues concerning user messages" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1165,13 +1093,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/message/GetMessagesType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="22" column="18" lean-forward="false" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hs_err_pid4647.log" />
     <entry file="file://$PROJECT_DIR$/hs_err_pid6631.log" />
     <entry file="file://$PROJECT_DIR$/src/worker/Worker.java">
@@ -1226,14 +1147,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/message/NotifyRoom.java" />
-    <entry file="file://$PROJECT_DIR$/src/message/MessageConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="30" column="40" lean-forward="false" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/message/FriendRequestType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="350">
@@ -1286,7 +1199,6 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1301,18 +1213,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/message/MessageType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="42" column="36" lean-forward="false" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/database/users/UserRequests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-224">
-          <caret line="244" column="32" lean-forward="false" selection-start-line="244" selection-start-column="32" selection-end-line="244" selection-end-column="32" />
+        <state relative-caret-position="106">
+          <caret line="203" column="0" lean-forward="true" selection-start-line="203" selection-start-column="0" selection-end-line="203" selection-end-column="0" />
           <folding>
             <element signature="method#getConn#0;class#UserRequests#0" expanded="false" />
             <element signature="method#loginUser#0;class#UserRequests#0" expanded="false" />
@@ -1326,32 +1230,55 @@
             <element signature="method#deleteUserConnection#0;class#UserRequests#0" expanded="false" />
             <element signature="method#deleteUserConnections#0;class#UserRequests#0" expanded="false" />
             <element signature="method#userConnected#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#getUsername#0;class#UserRequests#0" expanded="false" />
             <element signature="method#getUserRooms#0;class#UserRequests#0" expanded="false" />
             <element signature="method#getFriends#1;class#UserRequests#0" expanded="false" />
-            <marker date="1494783910506" expanded="true" signature="996:1046" ph="INSERT INTO User... " />
-            <marker date="1494783910506" expanded="true" signature="1575:1619" ph="SELECT passw... User" />
-            <marker date="1494783910506" expanded="true" signature="2140:2182" ph="SELECT userI... User" />
-            <marker date="1494783910506" expanded="true" signature="2784:2845" ph="INSERT INTO UserConnection... " />
-            <marker date="1494783910506" expanded="true" signature="3341:3415" ph="INSERT INTO Message... " />
-            <marker date="1494783910506" expanded="true" signature="4183:4260" ph="UPDATE Frien... " />
-            <marker date="1494783910506" expanded="true" signature="4861:4904" ph="DELETE FROM " />
-            <marker date="1494783910506" expanded="true" signature="5284:5310" ph="DELETE FROM " />
-            <marker date="1494783910506" expanded="true" signature="5705:5750" ph="SELECT * FRO... UserConnection" />
-            <marker date="1494783910506" expanded="true" signature="6240:6284" ph="SELECT usern... User" />
-            <marker date="1494783910506" expanded="true" signature="6832:7055" ph="SELECT Room.... Room" />
-            <marker date="1494783910506" expanded="true" signature="7804:7899" ph="SELECT userI... UserRoom" />
-            <marker date="1494783910506" expanded="true" signature="7804:7901" ph="SELECT userI... UserRoom" />
-            <marker date="1494783910506" expanded="true" signature="8824:8999" ph="SELECT usern... User" />
-            <marker date="1494783910506" expanded="true" signature="9777:9961" ph="SELECT usern... User" />
+            <marker date="1494790773177" expanded="true" signature="996:1046" ph="INSERT INTO User... " />
+            <marker date="1494790773177" expanded="true" signature="1575:1619" ph="SELECT passw... User" />
+            <marker date="1494790773177" expanded="true" signature="2140:2182" ph="SELECT userI... User" />
+            <marker date="1494790773177" expanded="true" signature="2784:2845" ph="INSERT INTO UserConnection... " />
+            <marker date="1494790773177" expanded="true" signature="3341:3415" ph="INSERT INTO Message... " />
+            <marker date="1494790773177" expanded="true" signature="4183:4260" ph="UPDATE Frien... " />
+            <marker date="1494790773177" expanded="true" signature="4861:4904" ph="DELETE FROM " />
+            <marker date="1494790773177" expanded="true" signature="5284:5310" ph="DELETE FROM " />
+            <marker date="1494790773177" expanded="true" signature="5705:5750" ph="SELECT * FRO... UserConnection" />
+            <marker date="1494790773177" expanded="true" signature="6240:6282" ph="SELECT usern... User" />
+            <marker date="1494790773177" expanded="true" signature="6830:7053" ph="SELECT Room.... Room" />
+            <marker date="1494790773177" expanded="true" signature="7802:7897" ph="SELECT userI... UserRoom" />
+            <marker date="1494790773177" expanded="true" signature="7802:7899" ph="SELECT userI... UserRoom" />
+            <marker date="1494790773177" expanded="true" signature="8822:8997" ph="SELECT usern... User" />
+            <marker date="1494790773177" expanded="true" signature="9775:9959" ph="SELECT usern... User" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/communication/StreamMessage.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="41" column="16" lean-forward="false" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/message/GetMessagesType.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
-          <caret line="43" column="36" lean-forward="true" selection-start-line="43" selection-start-column="36" selection-end-line="43" selection-end-column="36" />
+          <caret line="22" column="18" lean-forward="false" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/message/MessageConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="25" column="36" lean-forward="false" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/message/MessageType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="45" column="26" lean-forward="true" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
           <folding />
         </state>
       </provider>
