@@ -41,7 +41,7 @@ public class UserRequests {
 
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("SQLException: " + e.getMessage());
         }
 
         insertUserConnection(username, ip, port);
@@ -61,7 +61,8 @@ public class UserRequests {
             if ( rs.next() )
                 return rs.getString("password").equals(password);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("SQLException: " + e.getMessage());
+
         }
 
         return false;
@@ -80,7 +81,8 @@ public class UserRequests {
                 return rs.getInt("userID");
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("SQLException: " + e.getMessage());
+
         }
 
         return -1;
@@ -99,7 +101,8 @@ public class UserRequests {
 
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+
+            System.out.println("SQLException: " + e.getMessage());
         }
     }
 
@@ -116,8 +119,10 @@ public class UserRequests {
 
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("SQLException: " + e.getMessage());
         }
+
+
     }
 
     public static void insertFriends(int friend1, int friend2) {
@@ -140,7 +145,7 @@ public class UserRequests {
             pstmt.setInt(2, friend1);
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("SQLException: " + e.getMessage());
         }
     }
 
@@ -153,7 +158,7 @@ public class UserRequests {
             pstmt.setInt(1, userID);
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("SQLException: " + e.getMessage());
         }
     }
 
@@ -164,7 +169,7 @@ public class UserRequests {
              PreparedStatement pstmt  = conn.prepareStatement(sql)) {
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("SQLException: " + e.getMessage());
         }
     }
 
@@ -181,7 +186,7 @@ public class UserRequests {
             if (rs.next())
                 return true;
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("SQLException: " + e.getMessage());
         }
 
         return false;
@@ -200,7 +205,7 @@ public class UserRequests {
             if ( rs != null && rs.next() )
                 return rs.getString("username");
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("SQLException: " + e.getMessage());
         }
 
         return null;
@@ -230,7 +235,7 @@ public class UserRequests {
             }
             return rooms;
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("SQLException: " + e.getMessage());
         }
 
         return null;
@@ -252,12 +257,12 @@ public class UserRequests {
             List<Integer> rooms = new ArrayList<>();
 
             while (rs.next()) {
-                int userID = rs.getInt("username");
+                int userID = rs.getInt("userID");
                 rooms.add(userID);
             }
             return rooms;
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("SQLException: " + e.getMessage());
         }
 
         return null;
@@ -297,7 +302,7 @@ public class UserRequests {
                 System.out.println(str);
             return friends;
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("SQLException: " + e.getMessage());
         }
 
         return null;
@@ -327,7 +332,7 @@ public class UserRequests {
             }
             return messages;
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("SQLException: " + e.getMessage());
         }
         return null;
     }

@@ -37,15 +37,16 @@ public class MessageType extends ReactMessage {
 
     private void send(Message message, int roomID, int userID) throws IOException {
         List<Integer> roomUsers = getRoomUsers(roomID);
+        if( roomUsers == null )
+            return;
 
         synchronized (Server.getOurInstance().getConnectedClients()) {
             List<ClientConnection> clients = Server.getOurInstance().getConnectedClients();
             for( ClientConnection c : clients ) {
-                if( c.getClientID() != null &&
-                        !c.getClientID().equals(userID) &&
-                        roomUsers != null &&
-                        roomUsers.contains(c.getClientID()) )
+                Integer clientID = c.getClientID();
+                if(clientID != null && !clientID.equals(userID) && roomUsers.contains(clientID)) {
                     c.getStreamMessage().write(message);
+                }
             }
         }
     }
