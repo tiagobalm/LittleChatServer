@@ -54,16 +54,9 @@ public abstract class ReactMessage {
     }
 
     void notifyUser(Message message, int userID) {
-        synchronized (Server.getOurInstance().getConnectedClients()) {
-            List<ClientConnection> clients = Server.getOurInstance().getConnectedClients();
-            for( ClientConnection c : clients ) {
-                if( c.getClientID() != null &&
-                        c.getClientID().equals(userID)) {
-                    send(c, message);
-                    return ;
-                }
-            }
-        }
+        ClientConnection c = Server.getOurInstance().getClientByID(userID);
+        if( c != null )
+            send(c, message);
     }
 
     private void send(ClientConnection c, Message message) {

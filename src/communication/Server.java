@@ -1,6 +1,7 @@
 package communication;
 
 import message.Message;
+import org.jetbrains.annotations.Nullable;
 import worker.*;
 import database.users.UserRequests;
 import org.jetbrains.annotations.Contract;
@@ -27,10 +28,12 @@ public class Server {
     private ExecutorService executor;
 
     private List<ClientConnection> connectedClients;
+    private Map<Integer, ClientConnection> knownClients;
     private BlockingQueue<Map.Entry<ClientConnection, Message>> messages;
 
     private Server() {
         connectedClients = new ArrayList<>();
+        knownClients = new HashMap<>();
         messages = new LinkedBlockingQueue<>();
         startServer();
         startAcceptThread();
@@ -65,8 +68,7 @@ public class Server {
             while(true) {
                 try {
                     SSLSocket sslsocket = (SSLSocket) sslserversocket.accept();
-                    System.out.println("New client");
-                    connectedClients.add(new ClientConnection(sslsocket));
+                    new ClientConnection(sslsocket);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -105,6 +107,22 @@ public class Server {
 
     public List<ClientConnection> getConnectedClients() {
         return connectedClients;
+    }
+
+    @Nullable
+    public ClientConnection getClientByID(Integer id) {
+        return knownClients.get(id);
+    }
+
+    public void addClientID(Integer id, ClientConnection client) {
+        client.setClientID(id);
+        knownClients.put(id, client);
+    }
+
+    public void removeByID(Integer id) {
+        ClientConnection c = knownClients.get(id);
+        knownClients.remove(id);
+        c.setClientID(null);
     }
 
     public static void main(String[] args) {
