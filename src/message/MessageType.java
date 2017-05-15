@@ -38,7 +38,6 @@ public class MessageType extends ReactMessage {
         List<Integer> roomUsers = getRoomUsers(roomID);
         if( roomUsers == null )
             return;
-
         synchronized (Server.getOurInstance().getConnectedClients()) {
             List<ClientConnection> clients = Server.getOurInstance().getConnectedClients();
             for( ClientConnection c : clients ) {
