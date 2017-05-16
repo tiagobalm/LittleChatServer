@@ -1,5 +1,8 @@
 package communication;
 
+import backupconnection.BackUpConnection;
+import backupconnection.BackUpServerConnection;
+import backupconnection.MainServerConnection;
 import message.Message;
 import org.jetbrains.annotations.Nullable;
 import worker.*;
@@ -22,19 +25,45 @@ public class Server {
     private static final int PORT = 15000;
     private static final int numberOfWorkerThreads = 20;
 
-    private static Server ourInstance = new Server();
+    private static Server ourInstance;
 
     private SSLServerSocket sslserversocket;
+    private StreamMessage backupChannel;
 
     private Map<Integer, ClientConnection> knownClients;
     private BlockingQueue<Map.Entry<ClientConnection, Message>> messages;
 
-    private Server() {
+    private Server(boolean isBackUpServer) {
         knownClients = new HashMap<>();
         messages = new LinkedBlockingQueue<>();
+
+        setSystemSettings();
+        startBackUpConnection(isBackUpServer);
+        BackUpConnection.getInstance().waitProtocol();
+
         startServer();
         startAcceptThread();
         startWorkerThreads();
+    }
+
+    private static void createServer(boolean isBackUpServer) throws Exception {
+        if( ourInstance != null )
+            throw new Exception("Singleton class Server initiated twice");
+        ourInstance = new Server(isBackUpServer);
+    }
+
+
+    private void startBackUpConnection(boolean isBackUpServer) {
+        try {
+            if( isBackUpServer )
+                BackUpServerConnection.initBackUpConnection();
+            else
+                MainServerConnection.initBackUpConnection();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        backupChannel = BackUpConnection.getInstance().getBackupChannel();
     }
 
     private void startServer() {
@@ -102,6 +131,7 @@ public class Server {
         return messages;
     }
 
+
     @Nullable
     public ClientConnection getClientByID(Integer id) {
         return knownClients.get(id);
@@ -118,7 +148,14 @@ public class Server {
         c.setClientID(null);
     }
 
+
     public static void main(String[] args) {
+        if( args.length != 1 ) return;
+        try { createServer(Objects.equals("true", args[0]));
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
         System.out.println("Server initialized");
     }
 }
