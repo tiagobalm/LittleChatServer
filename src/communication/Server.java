@@ -26,7 +26,6 @@ public class Server {
 
     private SSLServerSocket sslserversocket;
 
-    private ClientConnection serveConnection;
     private Map<Integer, ClientConnection> knownClients;
     private BlockingQueue<Map.Entry<ClientConnection, Message>> messages;
 
