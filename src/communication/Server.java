@@ -25,14 +25,12 @@ public class Server {
     private static Server ourInstance = new Server();
 
     private SSLServerSocket sslserversocket;
-    private ExecutorService executor;
 
-    private List<ClientConnection> connectedClients;
+    private ClientConnection serveConnection;
     private Map<Integer, ClientConnection> knownClients;
     private BlockingQueue<Map.Entry<ClientConnection, Message>> messages;
 
     private Server() {
-        connectedClients = new ArrayList<>();
         knownClients = new HashMap<>();
         messages = new LinkedBlockingQueue<>();
         startServer();
@@ -81,7 +79,7 @@ public class Server {
 
     private void startWorkerThreads() {
         System.out.println("Starting worker threads");
-        executor = Executors.newFixedThreadPool(numberOfWorkerThreads);
+        ExecutorService executor = Executors.newFixedThreadPool(numberOfWorkerThreads);
         for( int i = 0; i < numberOfWorkerThreads; i++ ) {
             Thread thread = new Thread(new Worker());
             executor.execute(thread);
@@ -103,10 +101,6 @@ public class Server {
 
     public BlockingQueue<Map.Entry<ClientConnection, Message>> getMessages() {
         return messages;
-    }
-
-    public List<ClientConnection> getConnectedClients() {
-        return connectedClients;
     }
 
     @Nullable
