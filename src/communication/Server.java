@@ -36,6 +36,7 @@ public class Server {
     private Server(boolean isBackUpServer) {
         knownClients = new HashMap<>();
         messages = new LinkedBlockingQueue<>();
+        startWorkerThreads();
 
         setSystemSettings();
         startBackUpConnection(isBackUpServer);
@@ -43,7 +44,6 @@ public class Server {
 
         startServer();
         startAcceptThread();
-        startWorkerThreads();
     }
 
     private static void createServer(boolean isBackUpServer) throws Exception {

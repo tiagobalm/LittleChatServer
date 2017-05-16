@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="327ad98e-5c2b-4b3a-805e-2a02ff6aeb3f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/backupconnection/BackUpConnection.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/backupconnection/BackUpServerConnection.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/backupconnection/MainServerConnection.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/communication/BackUpConnection.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/communication/Server.java" afterPath="$PROJECT_DIR$/src/communication/Server.java" />
     </list>
@@ -82,16 +78,14 @@
       <file leaf-file-name="Server.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/communication/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+            <state relative-caret-position="336">
+              <caret line="40" column="28" lean-forward="true" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#Server#0;class#Server#0" expanded="false" />
                 <element signature="method#createServer#0;class#Server#0" expanded="false" />
                 <element signature="method#startBackUpConnection#0;class#Server#0" expanded="false" />
                 <element signature="method#startServer#0;class#Server#0" expanded="false" />
                 <element signature="method#startAcceptThread#0;class#Server#0" expanded="false" />
-                <element signature="method#startWorkerThreads#0;class#Server#0" expanded="false" />
                 <element signature="method#setSystemSettings#0;class#Server#0" expanded="false" />
                 <element signature="method#addClientID#0;class#Server#0" expanded="false" />
                 <element signature="method#removeByID#0;class#Server#0" expanded="false" />
@@ -1102,11 +1096,18 @@
       <option name="project" value="LOCAL" />
       <updated>1494949438693</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Communication between servers established">
+      <created>1494952898398</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1494952898398</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75308000" />
+    <option name="totallyTimeSpent" value="75363000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1226,7 +1227,8 @@
     <MESSAGE value="First backup file commit" />
     <MESSAGE value="Improving user storage" />
     <MESSAGE value="Added first backup server class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added first backup server class" />
+    <MESSAGE value="Communication between servers established" />
+    <option name="LAST_COMMIT_MESSAGE" value="Communication between servers established" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1501,16 +1503,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/communication/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+        <state relative-caret-position="336">
+          <caret line="40" column="28" lean-forward="true" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#Server#0;class#Server#0" expanded="false" />
             <element signature="method#createServer#0;class#Server#0" expanded="false" />
             <element signature="method#startBackUpConnection#0;class#Server#0" expanded="false" />
             <element signature="method#startServer#0;class#Server#0" expanded="false" />
             <element signature="method#startAcceptThread#0;class#Server#0" expanded="false" />
-            <element signature="method#startWorkerThreads#0;class#Server#0" expanded="false" />
             <element signature="method#setSystemSettings#0;class#Server#0" expanded="false" />
             <element signature="method#addClientID#0;class#Server#0" expanded="false" />
             <element signature="method#removeByID#0;class#Server#0" expanded="false" />
