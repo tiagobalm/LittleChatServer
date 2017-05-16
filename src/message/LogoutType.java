@@ -1,9 +1,11 @@
 package message;
 
 import communication.ClientConnection;
+import communication.Server;
 import database.users.UserRequests;
 
 import java.io.IOException;
+import java.io.Serializable;
 
 import static message.MessageConstants.logoutSize;
 import static message.MessageConstants.logoutType;
@@ -20,6 +22,6 @@ public class LogoutType extends ReactMessage {
             return ;
         UserRequests.deleteUserConnection(client.getClientID());
         client.getStreamMessage().write(new Message(logoutType, ""));
-        client.setClientID(null);
+        Server.getOurInstance().removeByID(client.getClientID());
     }
 }

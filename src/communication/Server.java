@@ -1,6 +1,7 @@
 package communication;
 
 import message.Message;
+import org.jetbrains.annotations.Nullable;
 import worker.*;
 import database.users.UserRequests;
 import org.jetbrains.annotations.Contract;
@@ -24,13 +25,13 @@ public class Server {
     private static Server ourInstance = new Server();
 
     private SSLServerSocket sslserversocket;
-    private ExecutorService executor;
 
-    private List<ClientConnection> connectedClients;
+    private ClientConnection serveConnection;
+    private Map<Integer, ClientConnection> knownClients;
     private BlockingQueue<Map.Entry<ClientConnection, Message>> messages;
 
     private Server() {
-        connectedClients = new ArrayList<>();
+        knownClients = new HashMap<>();
         messages = new LinkedBlockingQueue<>();
         startServer();
         startAcceptThread();
@@ -65,8 +66,7 @@ public class Server {
             while(true) {
                 try {
                     SSLSocket sslsocket = (SSLSocket) sslserversocket.accept();
-                    System.out.println("New client");
-                    connectedClients.add(new ClientConnection(sslsocket));
+                    new ClientConnection(sslsocket);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -79,7 +79,7 @@ public class Server {
 
     private void startWorkerThreads() {
         System.out.println("Starting worker threads");
-        executor = Executors.newFixedThreadPool(numberOfWorkerThreads);
+        ExecutorService executor = Executors.newFixedThreadPool(numberOfWorkerThreads);
         for( int i = 0; i < numberOfWorkerThreads; i++ ) {
             Thread thread = new Thread(new Worker());
             executor.execute(thread);
@@ -103,8 +103,20 @@ public class Server {
         return messages;
     }
 
-    public List<ClientConnection> getConnectedClients() {
-        return connectedClients;
+    @Nullable
+    public ClientConnection getClientByID(Integer id) {
+        return knownClients.get(id);
+    }
+
+    public void addClientID(Integer id, ClientConnection client) {
+        client.setClientID(id);
+        knownClients.put(id, client);
+    }
+
+    public void removeByID(Integer id) {
+        ClientConnection c = knownClients.get(id);
+        knownClients.remove(id);
+        c.setClientID(null);
     }
 
     public static void main(String[] args) {

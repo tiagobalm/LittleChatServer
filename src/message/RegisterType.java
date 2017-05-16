@@ -23,7 +23,7 @@ public class RegisterType extends ReactMessage {
         String username = parameters[1], password = parameters[2],
                 ip = parameters[3], port = parameters[4];
         if (UserRequests.registerUser(username, password, ip, Integer.parseInt(port))) {
-            client.setClientID(UserRequests.getUserID(username));
+            Server.getOurInstance().addClientID(UserRequests.getUserID(username), client);
             client.getStreamMessage().write(new Message("LOGIN", "True"));
         }
         else
