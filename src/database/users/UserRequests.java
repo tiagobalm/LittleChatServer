@@ -131,6 +131,50 @@ public class UserRequests {
         friendQuery(sql, friend2, friend1);
     }
 
+    public static void insertUserRoom(int userID, int roomID){
+        String sql = "INSERT INTO UserRoom(userID, roomID) VALUES (?, ?);";
+
+        try (Connection conn = getConn();
+             PreparedStatement pstmt  = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, userID);
+            pstmt.setInt(2, roomID);
+
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private static void insertRoom(String roomName){
+        String sql = "INSERT INTO Room(name) VALUES (?);";
+
+        try (Connection conn = getConn();
+             PreparedStatement pstmt  = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, roomName);
+
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void updateRoomName(int roomID, String newRoomName){
+        String sql = "UPDATE Room SET name = ? WHERE roomID = ?;";
+
+        try (Connection conn = getConn();
+             PreparedStatement pstmt  = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, newRoomName);
+            pstmt.setInt(2, roomID);
+
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public static void updateFriendshipStatus(int friend1, int friend2){
         String sql = "UPDATE Friend SET friendStatus = 1 WHERE firstUserID = ? AND secondUserID = ?;";
         friendQuery(sql, friend1, friend2);
@@ -170,6 +214,21 @@ public class UserRequests {
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println("SQLException: " + e.getMessage());
+        }
+    }
+
+    public static void deleteUserFromRoom(int userID, int roomID) {
+        String sql = "DELETE FROM UserRoom WHERE roomID = ? AND userID = ?;";
+
+        try (Connection conn = getConn();
+             PreparedStatement pstmt  = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, roomID);
+            pstmt.setInt(1, userID);
+
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
     }
 
