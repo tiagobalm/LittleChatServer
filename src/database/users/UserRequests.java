@@ -4,6 +4,8 @@ import database.Database;
 import database.Queries;
 import org.jetbrains.annotations.Nullable;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,6 +13,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static database.Database.getSalt;
+import static database.Database.getSecurePassword;
 import static database.Queries.getNext;
 
 public class UserRequests {
@@ -66,11 +70,21 @@ public class UserRequests {
                 String pass = rs.getString("password");
                 pstmt.close();
                 rs.close();
-                return pass.equals(password);
+
+                byte[] salt = getSalt();
+                String regeneratedPasswordToVerify = getSecurePassword(password, salt);
+
+                if(pass.equals(password) || pass.equals(regeneratedPasswordToVerify))
+                    return true;
+                return false;
             }
         } catch (SQLException e) {
             System.out.println("SQLException: " + e.getMessage());
 
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (NoSuchProviderException e) {
+            e.printStackTrace();
         }
 
         return false;
