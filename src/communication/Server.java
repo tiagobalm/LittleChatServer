@@ -1,5 +1,8 @@
 package communication;
 
+import backupconnection.BackUpConnection;
+import backupconnection.BackUpServerConnection;
+import backupconnection.MainServerConnection;
 import message.Message;
 import org.jetbrains.annotations.Nullable;
 import worker.*;
@@ -19,26 +22,57 @@ public class Server {
     private static final String truststorePath = Server.class.getResource("../keys/truststore").getPath();
     private static final String truststorePass = "littlechat";
 
-    private static final int PORT = 15000;
+    private static final int MAIN_PORT = 15000;
+    private static final int BACKUP_PORT = 14999;
     private static final int numberOfWorkerThreads = 20;
 
-    private static Server ourInstance = new Server();
+    private static Server ourInstance;
 
     private SSLServerSocket sslserversocket;
+    private BackUpConnection backupChannel;
 
-    private ClientConnection serveConnection;
     private Map<Integer, ClientConnection> knownClients;
     private BlockingQueue<Map.Entry<ClientConnection, Message>> messages;
 
-    private Server() {
+    private final boolean isBackUpServer;
+
+    private Server(boolean isBackUpServer) {
+        this.isBackUpServer = isBackUpServer;
         knownClients = new HashMap<>();
         messages = new LinkedBlockingQueue<>();
-        startServer();
-        startAcceptThread();
-        startWorkerThreads();
     }
 
-    private void startServer() {
+    private static void createServer(boolean isBackUpServer) throws Exception {
+        if( ourInstance != null )
+            throw new Exception("Singleton class Server initiated twice");
+        ourInstance = new Server(isBackUpServer);
+    }
+
+
+    private void initialize() {
+        setSystemSettings();
+        //startBackUpConnection();
+        //BackUpConnection.getInstance().waitProtocol();
+
+        startWorkerThreads();
+        startServer(isBackUpServer ? BACKUP_PORT : MAIN_PORT);
+        startAcceptThread();
+    }
+
+    private void startBackUpConnection() {
+        try {
+            if( isBackUpServer )
+                BackUpServerConnection.initBackUpConnection();
+            else
+                MainServerConnection.initBackUpConnection();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        backupChannel = BackUpConnection.getInstance();
+    }
+
+    private void startServer(int port) {
         System.out.println("Starting server sockets");
 
         UserRequests.deleteUserConnections();
@@ -47,7 +81,7 @@ public class Server {
         SSLServerSocketFactory factory = (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
 
         try {
-            sslserversocket = (SSLServerSocket) factory.createServerSocket(PORT);
+            sslserversocket = (SSLServerSocket) factory.createServerSocket(port);
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(-1);
@@ -103,6 +137,7 @@ public class Server {
         return messages;
     }
 
+
     @Nullable
     public ClientConnection getClientByID(Integer id) {
         return knownClients.get(id);
@@ -119,7 +154,16 @@ public class Server {
         c.setClientID(null);
     }
 
+
     public static void main(String[] args) {
+        if( args.length != 1 ) return;
+        boolean isBackUpServer = Objects.equals("true", args[0]);
+        try { createServer(isBackUpServer);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        Server.getOurInstance().initialize();
         System.out.println("Server initialized");
     }
 }

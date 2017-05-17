@@ -11,7 +11,7 @@ public class ClientConnection {
     private Integer clientID;
     private Thread read;
 
-    ClientConnection(SSLSocket sslSocket) {
+    public ClientConnection(SSLSocket sslSocket) {
         streamMessage = new StreamMessage(sslSocket);
 
         read = new Thread(() -> {
