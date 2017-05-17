@@ -22,7 +22,8 @@ public class Server {
     private static final String truststorePath = Server.class.getResource("../keys/truststore").getPath();
     private static final String truststorePass = "littlechat";
 
-    private static final int PORT = 15000;
+    private static final int MAIN_PORT = 15000;
+    private static final int BACKUP_PORT = 14999;
     private static final int numberOfWorkerThreads = 20;
 
     private static Server ourInstance;
@@ -33,17 +34,12 @@ public class Server {
     private Map<Integer, ClientConnection> knownClients;
     private BlockingQueue<Map.Entry<ClientConnection, Message>> messages;
 
+    private final boolean isBackUpServer;
+
     private Server(boolean isBackUpServer) {
+        this.isBackUpServer = isBackUpServer;
         knownClients = new HashMap<>();
         messages = new LinkedBlockingQueue<>();
-        startWorkerThreads();
-
-        setSystemSettings();
-        startBackUpConnection(isBackUpServer);
-        BackUpConnection.getInstance().waitProtocol();
-
-        startServer();
-        startAcceptThread();
     }
 
     private static void createServer(boolean isBackUpServer) throws Exception {
@@ -53,7 +49,17 @@ public class Server {
     }
 
 
-    private void startBackUpConnection(boolean isBackUpServer) {
+    private void initialize() {
+        setSystemSettings();
+        startBackUpConnection();
+        BackUpConnection.getInstance().waitProtocol();
+
+        startWorkerThreads();
+        startServer(isBackUpServer ? BACKUP_PORT : MAIN_PORT);
+        startAcceptThread();
+    }
+
+    private void startBackUpConnection() {
         try {
             if( isBackUpServer )
                 BackUpServerConnection.initBackUpConnection();
@@ -66,7 +72,7 @@ public class Server {
         backupChannel = BackUpConnection.getInstance().getBackupChannel();
     }
 
-    private void startServer() {
+    private void startServer(int port) {
         System.out.println("Starting server sockets");
 
         UserRequests.deleteUserConnections();
@@ -75,7 +81,7 @@ public class Server {
         SSLServerSocketFactory factory = (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
 
         try {
-            sslserversocket = (SSLServerSocket) factory.createServerSocket(PORT);
+            sslserversocket = (SSLServerSocket) factory.createServerSocket(port);
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(-1);
@@ -151,11 +157,13 @@ public class Server {
 
     public static void main(String[] args) {
         if( args.length != 1 ) return;
-        try { createServer(Objects.equals("true", args[0]));
+        boolean isBackUpServer = Objects.equals("true", args[0]);
+        try { createServer(isBackUpServer);
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(-1);
         }
+        Server.getOurInstance().initialize();
         System.out.println("Server initialized");
     }
 }
