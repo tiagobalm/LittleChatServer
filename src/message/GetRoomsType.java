@@ -36,6 +36,7 @@ public class GetRoomsType extends ReactMessage {
         String roomName = roomInfo[1];
         List<Integer> roomUsers  = UserRequests.getRoomUsers(roomID);
         StringBuilder builder = new StringBuilder();
+        System.out.println(roomID);
         builder.append(roomID);
         builder.append("\0");
         builder.append(roomName);
@@ -44,6 +45,7 @@ public class GetRoomsType extends ReactMessage {
                 builder.append("\0");
                 builder.append(id);
             }
+        System.out.println(new String(builder));
         return new String(builder);
     }
 }
