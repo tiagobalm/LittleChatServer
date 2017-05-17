@@ -1,5 +1,6 @@
 package backupconnection;
 
+import communication.ClientConnection;
 import communication.StreamMessage;
 
 import javax.net.ssl.SSLServerSocket;
@@ -37,7 +38,7 @@ public class MainServerConnection extends BackUpConnection {
         System.out.println("Starting accept thread");
         try {
             SSLSocket sslSocket = (SSLSocket) sslserversocket.accept();
-            backupChannel = new StreamMessage(sslSocket);
+            backupChannel = new ClientConnection(sslSocket);
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(-1);

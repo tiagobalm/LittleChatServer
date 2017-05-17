@@ -29,7 +29,7 @@ public class Server {
     private static Server ourInstance;
 
     private SSLServerSocket sslserversocket;
-    private StreamMessage backupChannel;
+    private BackUpConnection backupChannel;
 
     private Map<Integer, ClientConnection> knownClients;
     private BlockingQueue<Map.Entry<ClientConnection, Message>> messages;
@@ -51,8 +51,8 @@ public class Server {
 
     private void initialize() {
         setSystemSettings();
-        startBackUpConnection();
-        BackUpConnection.getInstance().waitProtocol();
+        //startBackUpConnection();
+        //BackUpConnection.getInstance().waitProtocol();
 
         startWorkerThreads();
         startServer(isBackUpServer ? BACKUP_PORT : MAIN_PORT);
@@ -69,7 +69,7 @@ public class Server {
             e.printStackTrace();
         }
 
-        backupChannel = BackUpConnection.getInstance().getBackupChannel();
+        backupChannel = BackUpConnection.getInstance();
     }
 
     private void startServer(int port) {

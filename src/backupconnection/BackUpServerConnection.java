@@ -1,5 +1,6 @@
 package backupconnection;
 
+import communication.ClientConnection;
 import communication.StreamMessage;
 
 import javax.net.ssl.SSLSocket;
@@ -21,7 +22,7 @@ public class BackUpServerConnection extends BackUpConnection {
             String[] ciphers = new String[1];
             ciphers[0] = "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256";
             sslSocket.setEnabledCipherSuites(ciphers);
-            backupChannel = new StreamMessage(sslSocket);
+            backupChannel = new ClientConnection(sslSocket);
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(-1);
