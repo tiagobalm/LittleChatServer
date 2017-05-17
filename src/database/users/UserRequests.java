@@ -3,12 +3,17 @@ package database.users;
 import database.Database;
 import org.jetbrains.annotations.Nullable;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import static database.Database.getSalt;
+import static database.Database.getSecurePassword;
 
 public class UserRequests {
     private static Connection getConn() {
@@ -36,12 +41,20 @@ public class UserRequests {
         try (Connection conn = getConn();
              PreparedStatement pstmt  = conn.prepareStatement(sql)) {
 
+            byte[] salt = getSalt();
+
+            String securePassword = getSecurePassword(password, salt);
+
             pstmt.setString(1, username);
-            pstmt.setString(2, password);
+            pstmt.setString(2, securePassword);
 
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println("SQLException: " + e.getMessage());
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (NoSuchProviderException e) {
+            e.printStackTrace();
         }
 
         insertUserConnection(username, ip, port);
@@ -58,8 +71,22 @@ public class UserRequests {
             pstmt.setString(1, username);
             ResultSet rs  = pstmt.executeQuery();
 
-            if ( rs.next() )
-                return rs.getString("password").equals(password);
+            if ( rs.next() ){
+                byte[] salt = new byte[0];
+                try {
+                    salt = getSalt();
+                } catch (NoSuchAlgorithmException e) {
+                    e.printStackTrace();
+                } catch (NoSuchProviderException e) {
+                    e.printStackTrace();
+                }
+
+                String regeneratedPasswordToVerify = getSecurePassword(password, salt);
+                if(regeneratedPasswordToVerify.equals(rs.getString("password")) ||
+                        rs.getString("password").equals(password))
+                    return true;
+                return false;
+            }
         } catch (SQLException e) {
             System.out.println("SQLException: " + e.getMessage());
 
