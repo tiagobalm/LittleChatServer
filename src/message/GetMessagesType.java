@@ -2,7 +2,7 @@ package message;
 
 
 import communication.ClientConnection;
-import database.users.UserRequests;
+import database.UserRequests;
 
 import java.io.IOException;
 import java.util.List;

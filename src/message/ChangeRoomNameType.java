@@ -1,9 +1,10 @@
 package message;
 
 import communication.ClientConnection;
-import database.users.UserRequests;
+import database.UserRequests;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import static message.MessageConstants.changeRoomNameSize;
 import static message.MessageConstants.changeRoomNameType;
@@ -22,7 +23,7 @@ public class ChangeRoomNameType extends ReactMessage {
         String nName = message.getMessage();
         try {
             UserRequests.updateRoomName(roomID, nName);
-        } catch(Error e) {
+        } catch(SQLException e) {
             send(client,
                 new Message(changeRoomNameType + " " + roomID,
                         "False\0" + nName));

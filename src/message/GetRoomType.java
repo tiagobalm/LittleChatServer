@@ -1,7 +1,7 @@
 package message;
 
 import communication.ClientConnection;
-import database.users.UserRequests;
+import database.UserRequests;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;

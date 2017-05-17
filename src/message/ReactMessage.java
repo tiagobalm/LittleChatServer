@@ -5,6 +5,7 @@ import communication.Server;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import static message.MessageConstants.*;

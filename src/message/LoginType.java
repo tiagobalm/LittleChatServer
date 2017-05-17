@@ -2,9 +2,10 @@ package message;
 
 import communication.ClientConnection;
 import communication.Server;
-import database.users.UserRequests;
+import database.UserRequests;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import static message.MessageConstants.loginSize;
 
@@ -20,15 +21,30 @@ public class LoginType extends ReactMessage {
             System.out.println(str);
         if( parameters.length != loginSize )
             return ;
-        if( client.getClientID() != null )
-            UserRequests.deleteUserConnection(client.getClientID());
+
+        disconnectClient(client);
+
         String username = parameters[1], password = parameters[2],
                 ip = parameters[3], port = parameters[4];
-        if (UserRequests.loginUser(username, password, ip, Integer.parseInt(port))) {
+        if (loginUser(username, password, ip, port)) {
             Server.getOurInstance().addClientID(UserRequests.getUserID(username), client);
             client.getStreamMessage().write(new Message("LOGIN", "True"));
         }
         else
             client.getStreamMessage().write(new Message("LOGIN", "False"));
+    }
+
+    private boolean loginUser(String username,
+                                String password, String ip, String port) {
+        try { UserRequests.loginUser(username, password, ip, Integer.parseInt(port));
+        } catch (SQLException e) {return false;}
+        return true;
+    }
+
+    private void disconnectClient(ClientConnection client) {
+        if( client.getClientID() != null )
+            try {
+                UserRequests.deleteUserConnection(client.getClientID());
+            } catch (SQLException ignore) {}
     }
 }

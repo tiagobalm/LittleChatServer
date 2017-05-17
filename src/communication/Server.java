@@ -6,13 +6,14 @@ import backupconnection.MainServerConnection;
 import message.Message;
 import org.jetbrains.annotations.Nullable;
 import worker.*;
-import database.users.UserRequests;
+import database.UserRequests;
 import org.jetbrains.annotations.Contract;
 
 import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
 import javax.net.ssl.SSLSocket;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.*;
 import java.util.concurrent.*;
 
@@ -134,7 +135,9 @@ public class Server {
     private void startServer(int port) {
         System.out.println("Starting server sockets");
 
-        UserRequests.deleteUserConnections();
+        try { UserRequests.deleteUserConnections();
+        } catch (SQLException ignore) {}
+
         setSystemSettings();
 
         SSLServerSocketFactory factory = (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();

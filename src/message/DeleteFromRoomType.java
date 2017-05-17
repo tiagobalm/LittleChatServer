@@ -2,12 +2,13 @@ package message;
 
 
 import communication.ClientConnection;
-import database.users.UserRequests;
+import database.UserRequests;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
-import static database.users.UserRequests.getRoomUsers;
+import static database.UserRequests.getRoomUsers;
 import static message.MessageConstants.deleteFromRoomSize;
 import static message.MessageConstants.deleteFromRoomType;
 
@@ -25,7 +26,7 @@ public class DeleteFromRoomType extends ReactMessage {
         int roomID = Integer.parseInt(parameters[1]);
         int userID = UserRequests.getUserID(message.getMessage());
         try { UserRequests.deleteUserFromRoom(userID, roomID);
-        } catch( Error e ) {
+        } catch( SQLException e ) {
             send(client, new Message(deleteFromRoomType, "False\0" + message.getMessage()));
             return;
         }

@@ -1,13 +1,13 @@
 package message;
 
 import communication.ClientConnection;
-import database.users.UserRequests;
+import database.UserRequests;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-import static database.users.UserRequests.getRoomUsers;
+import static database.UserRequests.getRoomUsers;
 import static message.MessageConstants.addToRoomSize;
 import static message.MessageConstants.addToRoomType;
 
