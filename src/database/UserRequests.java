@@ -126,16 +126,31 @@ public class UserRequests {
         }
     }
 
-    public static void insertRoom(String roomName) throws SQLException {
+    public static Integer insertRoom(String roomName) throws SQLException {
+        Integer roomID = -1;
         String sql = "INSERT INTO Room(name) VALUES (?)";
         List<Object> params = new ArrayList<>();
         params.add(roomName);
 
         synchronized (Queries.class) {
             basicUpdate(sql, params);
-        }
-    }
 
+            sql = "SELECT max(roomID) AS ID FROM Room WHERE name = ?";
+
+            Queries.query(sql, params);
+            try {
+                Queries.execute();
+                ResultSet rs;
+                if((rs = Queries.getNext()) != null) {
+                    System.out.println("Query Results: RoomID " + Integer.parseInt(rs.getString("ID")));
+                    roomID = Integer.parseInt(rs.getString("ID"));
+                }
+            } catch (SQLException ignore) {}
+            Queries.close();
+        }
+
+        return roomID;
+    }
 
     public static void updateRoomName(int roomID, String newRoomName) throws SQLException {
         String sql = "UPDATE Room SET name = ? WHERE roomID = ?";
