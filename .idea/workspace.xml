@@ -26,11 +26,11 @@
     <SUITE FILE_PATH="coverage/LittleChatServer$EchoServer.coverage" NAME="EchoServer Coverage Results" MODIFIED="1494172762024" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>communication.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/LittleChatServer$Server.coverage" NAME="Server Coverage Results" MODIFIED="1494539754376" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>communication.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/LittleChatServer$Main_Server.coverage" NAME="Main Server Coverage Results" MODIFIED="1494957842863" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>backupconnection.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LittleChatServer$Server.coverage" NAME="Server Coverage Results" MODIFIED="1494539754376" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>communication.*</FILTER>
     </SUITE>
   </component>
   <component name="DatabaseView">
@@ -105,7 +105,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserRequests.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UserRequests.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/database/users/UserRequests.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="300">
@@ -226,10 +226,6 @@
         <option value="$PROJECT_DIR$/src/communication/MainServerConnection.java" />
         <option value="$PROJECT_DIR$/src/communication/BackUpConnection.java" />
         <option value="$PROJECT_DIR$/src/worker/Worker.java" />
-        <option value="$PROJECT_DIR$/src/backupconnection/BackUpConnection.java" />
-        <option value="$PROJECT_DIR$/src/backupconnection/BackUpServerConnection.java" />
-        <option value="$PROJECT_DIR$/src/communication/ClientConnection.java" />
-        <option value="$PROJECT_DIR$/src/backupconnection/MainServerConnection.java" />
         <option value="$PROJECT_DIR$/src/message/GetFriendRequestsType.java" />
         <option value="$PROJECT_DIR$/src/communication/Server.java" />
         <option value="$PROJECT_DIR$/src/message/AddToRoomType.java" />
@@ -243,6 +239,12 @@
         <option value="$PROJECT_DIR$/src/message/GetRoomType.java" />
         <option value="$PROJECT_DIR$/src/database/Queries.java" />
         <option value="$PROJECT_DIR$/src/database/users/UserRequests.java" />
+        <option value="$PROJECT_DIR$/src/backupconnection/BackUpConnection.java" />
+        <option value="$PROJECT_DIR$/src/backupconnection/BackUpServerConnection.java" />
+        <option value="$PROJECT_DIR$/src/backupconnection/MainServerConnection.java" />
+        <option value="$PROJECT_DIR$/src/communication/ClientConnection.java" />
+        <option value="$PROJECT_DIR$/src/communication/Server.java" />
+        <option value="$PROJECT_DIR$/src/communication/StreamMessage.java" />
       </list>
     </option>
   </component>
@@ -253,10 +255,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="63" />
-    <option name="y" value="-6" />
-    <option name="width" value="1303" />
-    <option name="height" value="774" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -360,6 +362,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="users" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LittleChatServer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LittleChatServer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="communication" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -743,12 +763,53 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="ScalaTestRunConfiguration" factoryName="ScalaTest">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="package" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workingDirectory" value="" />
+      <setting name="searchForTest" value="Across module dependencies" />
+      <setting name="testName" value="" />
+      <setting name="testKind" value="Class" />
+      <setting name="showProgressMessages" value="true" />
+      <setting name="useSbt" value="false" />
+      <setting name="useUiWithSbt" value="false" />
+      <classRegexps />
+      <testRegexps />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Specs2RunConfiguration" factoryName="Specs2">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="package" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workingDirectory" value="" />
+      <setting name="searchForTest" value="Across module dependencies" />
+      <setting name="testName" value="" />
+      <setting name="testKind" value="Class" />
+      <setting name="showProgressMessages" value="true" />
+      <setting name="useSbt" value="false" />
+      <setting name="useUiWithSbt" value="false" />
+      <classRegexps />
+      <testRegexps />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
@@ -801,10 +862,42 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
     <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
       <method />
     </configuration>
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
+      <method />
+    </configuration>
+    <configuration default="true" type="uTestRunConfiguration" factoryName="utest">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="package" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workingDirectory" value="" />
+      <setting name="searchForTest" value="Across module dependencies" />
+      <setting name="testName" value="" />
+      <setting name="testKind" value="Class" />
+      <setting name="showProgressMessages" value="true" />
+      <setting name="useSbt" value="false" />
+      <setting name="useUiWithSbt" value="false" />
+      <classRegexps />
+      <testRegexps />
+      <envs />
       <method />
     </configuration>
     <configuration default="false" name="BackUp Server" type="Application" factoryName="Application">
@@ -1053,7 +1146,14 @@
       <option name="project" value="LOCAL" />
       <updated>1494958825291</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="hash password and backupconnection package commented">
+      <created>1495031857140</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1495031857140</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1069,7 +1169,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="63" y="-6" width="1303" height="774" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1158,7 +1258,8 @@
     <MESSAGE value="Communication between servers established" />
     <MESSAGE value="Changed initialization order" />
     <MESSAGE value="Added new database a organized new code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added new database a organized new code" />
+    <MESSAGE value="hash password and backupconnection package commented" />
+    <option name="LAST_COMMIT_MESSAGE" value="hash password and backupconnection package commented" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1200,33 +1301,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/message/WorkMessage.java" />
-    <entry file="dbDummy://dbtable:/97f381e5/321b15e9-ca66-4a6c-b41c-57f491f58e2f/main.Friend">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="dbDummy://dbtable:/97f381e5/321b15e9-ca66-4a6c-b41c-57f491f58e2f/main.Friend" />
     <entry file="file://$PROJECT_DIR$/hs_err_pid4647.log" />
     <entry file="file://$PROJECT_DIR$/hs_err_pid6631.log" />
     <entry file="file://$PROJECT_DIR$/src/message/NotifyRoom.java" />
-    <entry file="dbDummy://dbtable:/97f381e5/321b15e9-ca66-4a6c-b41c-57f491f58e2f/main.Message">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="dbDummy://dbtable:/97f381e5/321b15e9-ca66-4a6c-b41c-57f491f58e2f/main.Message" />
     <entry file="file://$PROJECT_DIR$/src/message/LoginType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
@@ -1306,6 +1385,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="17" column="26" lean-forward="false" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+
         </state>
       </provider>
     </entry>
@@ -1329,7 +1409,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/communication/Server.java">
+    <entry file="file://$PROJECT_DIR$/src/message/GetFriendsType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="550">
           <caret line="54" column="10" lean-forward="false" selection-start-line="54" selection-start-column="10" selection-end-line="54" selection-end-column="10" />
@@ -1350,6 +1430,7 @@
             <element signature="e#4657#4658#0" expanded="false" />
             <element signature="method#addClientID#0;class#Server#0" expanded="false" />
             <element signature="method#removeByID#0;class#Server#0" expanded="false" />
+
           </folding>
         </state>
       </provider>
@@ -1362,6 +1443,7 @@
             <element signature="imports" expanded="false" />
             <element signature="e#343#344#0" expanded="false" />
             <element signature="e#373#374#0" expanded="false" />
+
           </folding>
         </state>
       </provider>

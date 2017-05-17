@@ -59,6 +59,20 @@ CREATE TABLE UserRoom (
 	PRIMARY KEY(userID, roomID)
 );
 
+CREATE TABLE MessageClass (
+	messageClassID INTEGER PRIMARY KEY AUTOINCREMENT,
+	header varchar(500),
+	message varchar(5000)
+);
+
+CREATE TABLE StringList(
+	stringListID INTEGER PRIMARY KEY AUTOINCREMENT,
+	messageClassID INTEGER,
+	string varchar(500),
+	FOREIGN KEY(messageClassID) REFERENCES MessageClass(messageClassID)
+		ON UPDATE CASCADE
+);
+
 INSERT INTO User(username, password) VALUES ('vascoUP', 'vascoUP');
 INSERT INTO User(username, password) VALUES('saraUP', 'saraUP');
 INSERT INTO User(username, password) VALUES('tiagoUP', 'tiagoUP');

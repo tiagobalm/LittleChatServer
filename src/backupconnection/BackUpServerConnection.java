@@ -7,14 +7,27 @@ import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 import java.io.IOException;
 
+/**
+ * This class creates the backup server
+ * This extends the class BackupConnection
+ */
 public class BackUpServerConnection extends BackUpConnection {
+    /**
+     * Backup's internet protocol
+     */
     static final String BACKUP_IP = "127.0.0.1";
 
+    /**
+     * Backup server connection's constructor
+     */
     private BackUpServerConnection() {
         super();
         startServer();
     }
 
+    /**
+     * This function starts the server
+     */
     private void startServer() {
         SSLSocketFactory factory = (SSLSocketFactory) SSLSocketFactory.getDefault();
         try {
@@ -29,6 +42,10 @@ public class BackUpServerConnection extends BackUpConnection {
         }
     }
 
+    /**
+     * This function initiates the backup's connection
+     * @throws Exception This exception is thrown if the backup connection has already an instance
+     */
     public static void initBackUpConnection() throws Exception {
         if( instance != null )
             throw new Exception("Singleton class BackUpConnection initiated twice");

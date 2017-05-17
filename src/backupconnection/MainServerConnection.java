@@ -8,15 +8,28 @@ import javax.net.ssl.SSLServerSocketFactory;
 import javax.net.ssl.SSLSocket;
 import java.io.IOException;
 
+/**
+ * This class creates a connection to the main server
+ * This extends the BackUpConnection class
+ */
 public class MainServerConnection extends BackUpConnection {
+    /**
+     * This variable is a server socket that uses the the Secure Sockets Layer (SSL)
+     */
     private SSLServerSocket sslserversocket;
 
+    /**
+     * Main server connections' constructor
+     */
     private MainServerConnection() {
         super();
         startServer();
         startAcceptThread();
     }
 
+    /**
+     * This function starts the server
+     */
     private void startServer() {
         SSLServerSocketFactory factory = (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
 
@@ -34,6 +47,9 @@ public class MainServerConnection extends BackUpConnection {
         sslserversocket.setEnabledCipherSuites(ciphers);
     }
 
+    /**
+     * This function starts the acceptation of threads
+     */
     private void startAcceptThread() {
         System.out.println("Starting accept thread");
         try {
@@ -45,6 +61,10 @@ public class MainServerConnection extends BackUpConnection {
         }
     }
 
+    /**
+     * This function initiates the backup's connection
+     * @throws Exception This exception is thrown if the backup connection has already an instance
+     */
     public static void initBackUpConnection() throws Exception {
         if( instance != null )
             throw new Exception("Singleton class BackUpConnection initiated twice");
