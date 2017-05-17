@@ -39,20 +39,19 @@ public class Queries {
         }
     }
 
-    public synchronized static void execute() {
-        try {
-            rs = pstmt.executeQuery();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new Error("Could not set query parameters");
-        }
-    }
-
     public static void query(String sql, List<Object> params) {
         prepare(sql);
         setParams(params);
-        execute();
     }
+
+    public synchronized static void execute() throws SQLException {
+        rs = pstmt.executeQuery();
+    }
+
+    public synchronized static void executeUpdate() throws SQLException {
+        pstmt.executeUpdate();
+    }
+
 
     @Nullable
     public static ResultSet getNext() {

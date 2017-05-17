@@ -3,9 +3,10 @@ package message;
 import communication.ClientConnection;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
-import static database.users.UserRequests.getUserID;
-import static database.users.UserRequests.updateFriendshipStatus;
+import static database.UserRequests.getUserID;
+import static database.UserRequests.updateFriendshipStatus;
 import static message.MessageConstants.answerFriendSize;
 
 public class AnswerFriendType extends ReactMessage {
@@ -19,7 +20,12 @@ public class AnswerFriendType extends ReactMessage {
         if( parameters.length != answerFriendSize || client.getClientID() == null )
             return ;
         int userID = getUserID(parameters[1]);
-        updateFriendshipStatus(client.getClientID(), userID);
+        try {
+            updateFriendshipStatus(client.getClientID(), userID);
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            return;
+        }
         notifyUser(message, userID);
     }
 }
