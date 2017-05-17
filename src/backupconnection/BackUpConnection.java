@@ -1,13 +1,13 @@
 package backupconnection;
 
-import communication.StreamMessage;
+import communication.ClientConnection;
 import org.jetbrains.annotations.Contract;
 
 public abstract  class BackUpConnection {
     static final int BACKUP_PORT = 15001;
     static BackUpConnection instance;
 
-    StreamMessage backupChannel;
+    ClientConnection backupChannel;
     public Object blockObject = new Object();
     public boolean protocolFinished = false;
 
@@ -20,7 +20,7 @@ public abstract  class BackUpConnection {
         return instance;
     }
 
-    public StreamMessage getBackupChannel() {
+    public ClientConnection getBackupChannel() {
         return backupChannel;
     }
 
