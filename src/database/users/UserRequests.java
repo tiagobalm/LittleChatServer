@@ -39,55 +39,45 @@ public class UserRequests {
             return false;
 
         String sql = "INSERT INTO User(username, password) VALUES (?, ?);";
+        List<Object> params = new ArrayList<>();
+        params.add(username);
+        params.add(password);
 
-        try (Connection conn = getConn();
-             PreparedStatement pstmt  = conn.prepareStatement(sql)) {
-
-            pstmt.setString(1, username);
-            pstmt.setString(2, password);
-
-            pstmt.executeUpdate();
-            pstmt.close();
-        } catch (SQLException e) {
-            System.out.println("SQLException: " + e.getMessage());
+        synchronized (Queries.class) {
+            Queries.query(sql, params);
+            try {Queries.executeUpdate();}
+            catch (SQLException e) {return false;}
+            Queries.close();
         }
 
         insertUserConnection(username, ip, port);
-
         return true;
     }
 
     private static boolean checkPassword(String username, String password) {
+        String pass = null;
         String sql = "SELECT password FROM User WHERE username = ?";
+        List<Object> params = new ArrayList<>();
+        params.add(username);
 
-        try (Connection conn = getConn();
-             PreparedStatement pstmt  = conn.prepareStatement(sql)) {
-
-            pstmt.setString(1, username);
-            ResultSet rs  = pstmt.executeQuery();
-
-            if ( rs.next() ) {
-                String pass = rs.getString("password");
-                pstmt.close();
-                rs.close();
-
-                byte[] salt = getSalt();
-                String regeneratedPasswordToVerify = getSecurePassword(password, salt);
-
-                if(pass.equals(password) || pass.equals(regeneratedPasswordToVerify))
-                    return true;
-                return false;
-            }
-        } catch (SQLException e) {
-            System.out.println("SQLException: " + e.getMessage());
-
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (NoSuchProviderException e) {
-            e.printStackTrace();
+        synchronized (Queries.class) {
+            Queries.query(sql, params);
+            try {
+                Queries.execute();
+                ResultSet rs;
+                if((rs = Queries.getNext()) != null)
+                    pass = rs.getString("password");
+            } catch (SQLException e) {return false;}
+            Queries.close();
         }
+          
+        byte[] salt = getSalt();
+        String regeneratedPasswordToVerify = getSecurePassword(password, salt);
 
-        return false;
+        if(pass.equals(password) || pass.equals(regeneratedPasswordToVerify))
+            return true;
+
+        return pass.equals(password);
     }
 
     public static int getUserID(String username) {
@@ -157,30 +147,28 @@ public class UserRequests {
         friendQuery(sql, friend1, friend2);
     }
 
-    public static void insertUserRoom(int userID, int roomID){
+    public static void insertUserRoom(int userID, int roomID) throws SQLException {
         String sql = "INSERT INTO UserRoom(userID, roomID) VALUES (?, ?);";
+        List<Object> params = new ArrayList<>();
+        params.add(userID);
+        params.add(roomID);
 
-        try (Connection conn = getConn();
-             PreparedStatement pstmt  = conn.prepareStatement(sql)) {
-            pstmt.setInt(1, userID);
-            pstmt.setInt(2, roomID);
-            pstmt.executeUpdate();
-            pstmt.close();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+        synchronized (Queries.class) {
+            Queries.query(sql, params);
+            Queries.executeUpdate();
+            Queries.close();
         }
     }
 
-    private static void insertRoom(String roomName){
+    public static void insertRoom(String roomName) throws SQLException {
         String sql = "INSERT INTO Room(name) VALUES (?);";
+        List<Object> params = new ArrayList<>();
+        params.add(roomName);
 
-        try (Connection conn = getConn();
-             PreparedStatement pstmt  = conn.prepareStatement(sql)) {
-            pstmt.setString(1, roomName);
-            pstmt.executeUpdate();
-            pstmt.close();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+        synchronized (Queries.class) {
+            Queries.query(sql, params);
+            Queries.executeUpdate();
+            Queries.close();
         }
     }
 
@@ -328,8 +316,9 @@ public class UserRequests {
 
         synchronized (Queries.class) {
             Queries.query(sql, params);
-            ResultSet rs;
             try {
+                Queries.execute();
+                ResultSet rs;
                 while ((rs = Queries.getNext()) != null )
                     rooms.add(rs.getInt("ID") + "\0" + rs.getString("name"));
             } catch (SQLException e) {
@@ -345,12 +334,60 @@ public class UserRequests {
     }
 
     @Nullable
+    public static String getRoomName(int roomID) {
+        String name = null;
+        String sql =
+                "SELECT name " +
+                "FROM Room " +
+                "WHERE roomID = ?";
+        List<Object> params = new ArrayList<>();
+        params.add(roomID);
+
+        synchronized (Queries.class) {
+            Queries.query(sql, params);
+            try {
+                Queries.execute();
+                ResultSet rs;
+                if((rs = Queries.getNext()) != null )
+                    name = rs.getString("name");
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return null;
+            }
+
+            Queries.close();
+        }
+
+        return name;
+    }
+
+    @Nullable
     public static List<Integer> getRoomUsers(int roomID) {
+        List<Integer> rooms = new ArrayList<>();
+
         String sql =
                 "SELECT userID " +
                 "FROM UserRoom " +
                 "WHERE UserRoom.roomID = ? ";
+        List<Object> params = new ArrayList<>();
+        params.add(roomID);
 
+        synchronized (Queries.class) {
+            Queries.query(sql, params);
+            try {
+                Queries.execute();
+                ResultSet rs;
+                while((rs = Queries.getNext()) != null) {
+                    rooms.add(rs.getInt("userID"));
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+
+        return rooms;
+        /*
         try (Connection conn = getConn();
              PreparedStatement pstmt  = conn.prepareStatement(sql)) {
 
@@ -369,6 +406,7 @@ public class UserRequests {
         }
 
         return null;
+        */
     }
 
     @Nullable
@@ -451,8 +489,9 @@ public class UserRequests {
 
         synchronized (Queries.class) {
             Queries.query(sql, params);
-            ResultSet rs;
             try {
+                Queries.execute();
+                ResultSet rs;
                 while ((rs = Queries.getNext()) != null)
                     friends.add(rs.getString("username"));
             } catch (SQLException e) {

@@ -2,10 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="327ad98e-5c2b-4b3a-805e-2a02ff6aeb3f" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/message/AddRoomType.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/message/AddToRoomType.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/message/ChangeRoomNameType.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/message/DeleteFromRoomType.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/message/GetRoomType.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/communication/ClientConnection.java" afterPath="$PROJECT_DIR$/src/communication/ClientConnection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/communication/Server.java" afterPath="$PROJECT_DIR$/src/communication/Server.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/communication/StreamMessage.java" afterPath="$PROJECT_DIR$/src/communication/StreamMessage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/database/Queries.java" afterPath="$PROJECT_DIR$/src/database/Queries.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/database/users/UserRequests.java" afterPath="$PROJECT_DIR$/src/database/users/UserRequests.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/GetRoomsType.java" afterPath="$PROJECT_DIR$/src/message/GetRoomsType.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/MessageConstants.java" afterPath="$PROJECT_DIR$/src/message/MessageConstants.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/ReactMessage.java" afterPath="$PROJECT_DIR$/src/message/ReactMessage.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -80,102 +87,19 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Server.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/communication/Server.java">
+      <file leaf-file-name="Queries.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/database/Queries.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="244" column="4" lean-forward="false" selection-start-line="244" selection-start-column="4" selection-end-line="244" selection-end-column="4" />
+            <state relative-caret-position="257">
+              <caret line="41" column="62" lean-forward="false" selection-start-line="41" selection-start-column="62" selection-end-line="41" selection-end-column="62" />
               <folding>
-                <element signature="docComment;field#keystorePath#0;class#Server#0" expanded="false" />
-                <element signature="docComment;field#keystorePass#0;class#Server#0" expanded="false" />
-                <element signature="docComment;field#truststorePath#0;class#Server#0" expanded="false" />
-                <element signature="docComment;field#truststorePass#0;class#Server#0" expanded="false" />
-                <element signature="docComment;field#MAIN_PORT#0;class#Server#0" expanded="false" />
-                <element signature="docComment;field#BACKUP_PORT#0;class#Server#0" expanded="false" />
-                <element signature="docComment;field#numberOfWorkerThreads#0;class#Server#0" expanded="false" />
-                <element signature="docComment;field#ourInstance#0;class#Server#0" expanded="false" />
-                <element signature="docComment;field#sslserversocket#0;class#Server#0" expanded="false" />
-                <element signature="docComment;field#backupChannel#0;class#Server#0" expanded="false" />
-                <element signature="docComment;field#knownClients#0;class#Server#0" expanded="false" />
-                <element signature="docComment;field#messages#0;class#Server#0" expanded="false" />
-                <element signature="docComment;field#isBackUpServer#0;class#Server#0" expanded="false" />
-                <element signature="docComment;method#Server#0;class#Server#0" expanded="false" />
-                <element signature="method#Server#0;class#Server#0" expanded="false" />
-                <element signature="docComment;method#createServer#0;class#Server#0" expanded="false" />
-                <element signature="method#createServer#0;class#Server#0" expanded="false" />
-                <element signature="docComment;method#initialize#0;class#Server#0" expanded="false" />
-                <element signature="docComment;method#startBackUpConnection#0;class#Server#0" expanded="false" />
-                <element signature="method#startBackUpConnection#0;class#Server#0" expanded="false" />
-                <element signature="docComment;method#startServer#0;class#Server#0" expanded="false" />
-                <element signature="method#startServer#0;class#Server#0" expanded="false" />
-                <element signature="docComment;method#startAcceptThread#0;class#Server#0" expanded="false" />
-                <element signature="method#startAcceptThread#0;class#Server#0" expanded="false" />
-                <element signature="e#4596#4909#0" expanded="false" />
-                <element signature="docComment;method#startWorkerThreads#0;class#Server#0" expanded="false" />
-                <element signature="method#startWorkerThreads#0;class#Server#0" expanded="false" />
-                <element signature="docComment;method#setSystemSettings#0;class#Server#0" expanded="false" />
-                <element signature="method#setSystemSettings#0;class#Server#0" expanded="false" />
-                <element signature="docComment;method#getOurInstance#0;class#Server#0" expanded="false" />
-                <element signature="docComment;method#getMessages#0;class#Server#0" expanded="false" />
-                <element signature="docComment;method#getClientByID#0;class#Server#0" expanded="false" />
-                <element signature="docComment;method#addClientID#0;class#Server#0" expanded="false" />
-                <element signature="method#addClientID#0;class#Server#0" expanded="false" />
-                <element signature="docComment;method#removeByID#0;class#Server#0" expanded="false" />
-                <element signature="method#removeByID#0;class#Server#0" expanded="false" />
-                <element signature="docComment;method#main#0;class#Server#0" expanded="false" />
-                <element signature="method#main#0;class#Server#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClientConnection.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/communication/ClientConnection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="81" column="4" lean-forward="false" selection-start-line="81" selection-start-column="4" selection-end-line="81" selection-end-column="4" />
-              <folding>
-                <element signature="docComment;class#ClientConnection#0" expanded="false" />
-                <element signature="docComment;field#streamMessage#0;class#ClientConnection#0" expanded="false" />
-                <element signature="docComment;field#clientID#0;class#ClientConnection#0" expanded="false" />
-                <element signature="docComment;field#read#0;class#ClientConnection#0" expanded="false" />
-                <element signature="docComment;method#ClientConnection#0;class#ClientConnection#0" expanded="false" />
-                <element signature="method#ClientConnection#0;class#ClientConnection#0" expanded="false" />
-                <element signature="docComment;method#close#0;class#ClientConnection#0" expanded="false" />
-                <element signature="method#close#0;class#ClientConnection#0" expanded="false" />
-                <element signature="docComment;method#setClientID#0;class#ClientConnection#0" expanded="false" />
-                <element signature="docComment;method#getClientID#0;class#ClientConnection#0" expanded="false" />
-                <element signature="docComment;method#getStreamMessage#0;class#ClientConnection#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Database.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/database/Database.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StreamMessage.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/communication/StreamMessage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="466">
-              <caret line="69" column="7" lean-forward="true" selection-start-line="69" selection-start-column="7" selection-end-line="69" selection-end-column="7" />
-              <folding>
-                <element signature="docComment;class#StreamMessage#0" expanded="false" />
-                <element signature="docComment;field#sslSocket#0;class#StreamMessage#0" expanded="false" />
-                <element signature="docComment;field#is#0;class#StreamMessage#0" expanded="false" />
-                <element signature="docComment;field#os#0;class#StreamMessage#0" expanded="false" />
-                <element signature="docComment;method#StreamMessage#0;class#StreamMessage#0" expanded="false" />
-                <element signature="method#StreamMessage#0;class#StreamMessage#0" expanded="false" />
-                <element signature="docComment;method#close#0;class#StreamMessage#0" expanded="false" />
-                <element signature="method#close#0;class#StreamMessage#0" expanded="false" />
-                <element signature="method#read#0;class#StreamMessage#0" expanded="false" />
+                <element signature="method#prepare#0;class#Queries#0" expanded="false" />
+                <element signature="method#setParams#0;class#Queries#0" expanded="false" />
+                <element signature="method#query#0;class#Queries#0" expanded="false" />
+                <element signature="method#execute#0;class#Queries#0" expanded="false" />
+                <element signature="method#executeUpdate#0;class#Queries#0" expanded="false" />
+                <element signature="method#getNext#0;class#Queries#0" expanded="false" />
+                <element signature="method#close#0;class#Queries#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -184,12 +108,11 @@
       <file leaf-file-name="UserRequests.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/database/users/UserRequests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="446">
-              <caret line="78" column="17" lean-forward="false" selection-start-line="78" selection-start-column="17" selection-end-line="78" selection-end-column="17" />
+            <state relative-caret-position="300">
+              <caret line="68" column="9" lean-forward="true" selection-start-line="68" selection-start-column="9" selection-end-line="68" selection-end-column="9" />
               <folding>
                 <element signature="method#getConn#0;class#UserRequests#0" expanded="false" />
                 <element signature="method#loginUser#0;class#UserRequests#0" expanded="false" />
-                <element signature="method#registerUser#0;class#UserRequests#0" expanded="false" />
                 <element signature="method#getUserID#0;class#UserRequests#0" expanded="false" />
                 <element signature="method#insertUserConnection#0;class#UserRequests#0" expanded="false" />
                 <element signature="method#insertMessages#0;class#UserRequests#0" expanded="false" />
@@ -204,27 +127,30 @@
                 <element signature="method#deleteUserFromRoom#0;class#UserRequests#0" expanded="false" />
                 <element signature="method#userConnected#0;class#UserRequests#0" expanded="false" />
                 <element signature="method#getUsername#0;class#UserRequests#0" expanded="false" />
+                <element signature="method#getUserRooms#0;class#UserRequests#0" expanded="false" />
+                <element signature="method#getRoomName#0;class#UserRequests#0" expanded="false" />
                 <element signature="method#getRoomUsers#0;class#UserRequests#0" expanded="false" />
                 <element signature="method#getRoomUsersUsernames#0;class#UserRequests#0" expanded="false" />
                 <element signature="method#selectFriendRequests#0;class#UserRequests#0" expanded="false" />
+                <element signature="method#selectFriends#0;class#UserRequests#0" expanded="false" />
                 <element signature="method#getMessagesFromRoom#0;class#UserRequests#0" expanded="false" />
-                <marker date="1495030218914" expanded="true" signature="1247:1297" ph="INSERT INTO User... " />
-                <marker date="1495030218914" expanded="true" signature="1853:1897" ph="SELECT passw... User" />
-                <marker date="1495030218914" expanded="true" signature="2922:2964" ph="SELECT userI... User" />
-                <marker date="1495030218914" expanded="true" signature="3747:3808" ph="INSERT INTO UserConnection... " />
-                <marker date="1495030218914" expanded="true" signature="4329:4403" ph="INSERT INTO Message... " />
-                <marker date="1495030218914" expanded="true" signature="5142:5192" ph="INSERT INTO UserRoom... " />
-                <marker date="1495030218914" expanded="true" signature="5620:5653" ph="INSERT INTO Room... " />
-                <marker date="1495030218914" expanded="true" signature="6068:6109" ph="UPDATE Room " />
-                <marker date="1495030218914" expanded="true" signature="7313:7356" ph="DELETE FROM " />
-                <marker date="1495030218914" expanded="true" signature="7763:7789" ph="DELETE FROM " />
-                <marker date="1495030218914" expanded="true" signature="8177:8229" ph="DELETE FROM " />
-                <marker date="1495030218914" expanded="true" signature="8709:8754" ph="SELECT * FRO... UserConnection" />
-                <marker date="1495030218914" expanded="true" signature="9371:9413" ph="SELECT usern... User" />
-                <marker date="1495030218914" expanded="true" signature="11056:11151" ph="SELECT userI... UserRoom" />
-                <marker date="1495030218914" expanded="true" signature="11826:11984" ph="SELECT usern... User" />
-                <marker date="1495030218914" expanded="true" signature="12903:13329" ph="SELECT User1... User" />
-                <marker date="1495030218914" expanded="true" signature="15037:15221" ph="SELECT usern... User" />
+                <marker date="1495034825160" expanded="true" signature="1062:1112" ph="INSERT INTO User... " />
+                <marker date="1495034825160" expanded="true" signature="1644:1688" ph="SELECT passw... User" />
+                <marker date="1495034825160" expanded="false" signature="2251:2293" ph="SELECT userI... User" />
+                <marker date="1495034825160" expanded="false" signature="3076:3137" ph="INSERT INTO UserConnection... " />
+                <marker date="1495034825160" expanded="false" signature="3658:3732" ph="INSERT INTO Message... " />
+                <marker date="1495034825160" expanded="false" signature="4492:4542" ph="INSERT INTO UserRoom... " />
+                <marker date="1495034825160" expanded="false" signature="4909:4942" ph="INSERT INTO Room... " />
+                <marker date="1495034825160" expanded="false" signature="5282:5323" ph="UPDATE Room " />
+                <marker date="1495034825160" expanded="false" signature="6527:6570" ph="DELETE FROM " />
+                <marker date="1495034825160" expanded="false" signature="6977:7003" ph="DELETE FROM " />
+                <marker date="1495034825160" expanded="false" signature="7391:7443" ph="DELETE FROM " />
+                <marker date="1495034825160" expanded="false" signature="7923:7968" ph="SELECT * FRO... UserConnection" />
+                <marker date="1495034825160" expanded="false" signature="8585:8627" ph="SELECT usern... User" />
+                <marker date="1495034825160" expanded="false" signature="11104:11199" ph="SELECT userI... UserRoom" />
+                <marker date="1495034825160" expanded="false" signature="12415:12573" ph="SELECT usern... User" />
+                <marker date="1495034825160" expanded="false" signature="13492:13918" ph="SELECT User1... User" />
+                <marker date="1495034825160" expanded="false" signature="15665:15849" ph="SELECT usern... User" />
               </folding>
             </state>
           </provider>
@@ -291,10 +217,9 @@
         <option value="$PROJECT_DIR$/src/message/FriendRequestType.java" />
         <option value="$PROJECT_DIR$/src/message/AnswerFriendType.java" />
         <option value="dbtable:/97f381e5/321b15e9-ca66-4a6c-b41c-57f491f58e2f/main.Message" />
-        <option value="$PROJECT_DIR$/src/message/MessageConstants.java" />
+        <option value="$PROJECT_DIR$/src/communication/StreamMessage.java" />
         <option value="$PROJECT_DIR$/src/message/LoginType.java" />
         <option value="$PROJECT_DIR$/src/message/RegisterType.java" />
-        <option value="$PROJECT_DIR$/src/message/ReactMessage.java" />
         <option value="$PROJECT_DIR$/src/message/LogoutType.java" />
         <option value="$PROJECT_DIR$/src/message/MessageType.java" />
         <option value="$PROJECT_DIR$/src/communication/BackUpServerConnection.java" />
@@ -302,7 +227,16 @@
         <option value="$PROJECT_DIR$/src/communication/BackUpConnection.java" />
         <option value="$PROJECT_DIR$/src/worker/Worker.java" />
         <option value="$PROJECT_DIR$/src/message/GetFriendRequestsType.java" />
+        <option value="$PROJECT_DIR$/src/communication/Server.java" />
+        <option value="$PROJECT_DIR$/src/message/AddToRoomType.java" />
+        <option value="$PROJECT_DIR$/src/message/DeleteFromRoomType.java" />
+        <option value="$PROJECT_DIR$/src/message/AddRoomType.java" />
+        <option value="$PROJECT_DIR$/src/message/ChangeRoomName.java" />
+        <option value="$PROJECT_DIR$/src/message/MessageConstants.java" />
+        <option value="$PROJECT_DIR$/src/message/ChangeRoomNameType.java" />
+        <option value="$PROJECT_DIR$/src/message/ReactMessage.java" />
         <option value="$PROJECT_DIR$/src/message/GetRoomsType.java" />
+        <option value="$PROJECT_DIR$/src/message/GetRoomType.java" />
         <option value="$PROJECT_DIR$/src/database/Queries.java" />
         <option value="$PROJECT_DIR$/src/database/users/UserRequests.java" />
         <option value="$PROJECT_DIR$/src/backupconnection/BackUpConnection.java" />
@@ -363,8 +297,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -451,7 +385,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1042,7 +976,7 @@
       <workItem from="1495016931015" duration="3922000" />
       <workItem from="1495020880284" duration="2921000" />
       <workItem from="1495028263847" duration="1015000" />
-      <workItem from="1495029830219" duration="5017000" />
+      <workItem from="1495029658500" duration="4888000" />
     </task>
     <task id="LOCAL-00001" summary="EchoServer working">
       <created>1494086864893</created>
@@ -1223,7 +1157,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="95180000" />
+    <option name="totallyTimeSpent" value="95051000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1252,7 +1186,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27155825" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27207637" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22991249" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980111" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980111" sideWeight="0.4827586" order="1" side_tool="false" content_ui="tabs" />
@@ -1329,7 +1263,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="45" />
+      <option name="time" value="44" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1338,23 +1272,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/communication/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="736">
-          <caret line="46" column="37" lean-forward="false" selection-start-line="46" selection-start-column="37" selection-end-line="46" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/database/Database.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/20986f4e-ca4a-40ab-b1c8-3e9a8b6a8c10/console.sql" />
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/4761b2cb-3927-4120-8c28-603c19a27860/console.sql" />
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/90f10d7b-a30f-49bf-9fbe-49a394c4cd86/console.sql" />
     <entry file="dbDummy://dbtable:/b2ce4433/90f10d7b-a30f-49bf-9fbe-49a394c4cd86/main.User" />
     <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/sql/DriverManager.java" />
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/d310119c-1050-40c5-96fb-bef017e3eb8d/console.sql" />
@@ -1410,13 +1327,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/message/MessageConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="25" column="36" lean-forward="false" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/message/RegisterType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -1424,24 +1334,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/message/MessageType.java">
+    <entry file="file://$PROJECT_DIR$/src/communication/StreamMessage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="38" column="39" lean-forward="true" selection-start-line="38" selection-start-column="39" selection-end-line="38" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/message/Message.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="47" column="1" lean-forward="true" selection-start-line="47" selection-start-column="1" selection-end-line="47" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/message/ReactMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="73" column="1" lean-forward="true" selection-start-line="73" selection-start-column="1" selection-end-line="73" selection-end-column="1" />
+        <state relative-caret-position="260">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1453,26 +1350,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/message/AnswerFriendType.java">
+    <entry file="file://$PROJECT_DIR$/src/communication/ClientConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="21" column="22" lean-forward="false" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
-          <folding />
+        <state relative-caret-position="140">
+          <caret line="11" column="24" lean-forward="false" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="method#close#0;class#ClientConnection#0" expanded="false" />
+            <element signature="e#1343#1344#0" expanded="false" />
+            <element signature="e#1372#1373#0" expanded="false" />
+            <element signature="e#1408#1409#0" expanded="false" />
+            <element signature="e#1439#1440#0" expanded="false" />
+            <element signature="e#1486#1487#0" expanded="false" />
+            <element signature="e#1522#1523#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/message/FriendRequestType.java">
+    <entry file="file://$PROJECT_DIR$/src/backupconnection/MainServerConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="21" column="48" lean-forward="false" selection-start-line="21" selection-start-column="48" selection-end-line="21" selection-end-column="48" />
-          <folding />
+        <state relative-caret-position="290">
+          <caret line="40" column="12" lean-forward="false" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/database/littleChat.sql">
+    <entry file="file://$PROJECT_DIR$/src/backupconnection/BackUpServerConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="80" column="20" lean-forward="false" selection-start-line="80" selection-start-column="12" selection-end-line="80" selection-end-column="20" />
+        <state relative-caret-position="299">
+          <caret line="23" column="54" lean-forward="true" selection-start-line="23" selection-start-column="54" selection-end-line="24" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/backupconnection/BackUpConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="17" column="26" lean-forward="false" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+
         </state>
       </provider>
     </entry>
@@ -1484,111 +1397,199 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/message/GetRoomsType.java">
+    <entry file="file://$PROJECT_DIR$/src/database/Database.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="29" column="36" lean-forward="false" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
+        <state relative-caret-position="550">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding>
-            <element signature="method#getCompleteUserInfo#0;class#GetRoomsType#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#595#596#0" expanded="false" />
+            <element signature="e#629#630#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/message/GetFriendsType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
+        <state relative-caret-position="550">
+          <caret line="54" column="10" lean-forward="false" selection-start-line="54" selection-start-column="10" selection-end-line="54" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="method#Server#0;class#Server#0" expanded="false" />
+            <element signature="method#createServer#0;class#Server#0" expanded="false" />
+            <element signature="method#startServer#0;class#Server#0" expanded="false" />
+            <element signature="method#startAcceptThread#0;class#Server#0" expanded="false" />
+            <element signature="e#3254#3567#0" expanded="false" />
+            <element signature="method#startWorkerThreads#0;class#Server#0" expanded="false" />
+            <element signature="method#setSystemSettings#0;class#Server#0" expanded="false" />
+            <element signature="e#4397#4398#0" expanded="false" />
+            <element signature="e#4431#4432#0" expanded="false" />
+            <element signature="e#4511#4512#0" expanded="false" />
+            <element signature="e#4542#4543#0" expanded="false" />
+            <element signature="e#4614#4615#0" expanded="false" />
+            <element signature="e#4657#4658#0" expanded="false" />
+            <element signature="method#addClientID#0;class#Server#0" expanded="false" />
+            <element signature="method#removeByID#0;class#Server#0" expanded="false" />
+
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/message/GetFriendsType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
           <caret line="21" column="47" lean-forward="false" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="false" />
             <element signature="e#343#344#0" expanded="false" />
             <element signature="e#373#374#0" expanded="false" />
+
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/database/littleChat.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1245">
+          <caret line="80" column="20" lean-forward="false" selection-start-line="80" selection-start-column="12" selection-end-line="80" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/message/AnswerFriendType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="10" column="30" lean-forward="false" selection-start-line="10" selection-start-column="30" selection-end-line="19" selection-end-column="20" />
+          <folding>
+            <element signature="e#355#356#0" expanded="true" />
+            <element signature="e#385#386#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/message/Message.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="47" column="1" lean-forward="true" selection-start-line="47" selection-start-column="1" selection-end-line="47" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/message/MessageType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/message/FriendRequestType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="10" column="27" lean-forward="false" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/message/DeleteFromRoomType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="14" column="31" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/message/AddToRoomType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="12" column="26" lean-forward="false" selection-start-line="12" selection-start-column="26" selection-end-line="30" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/message/AddRoomType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="10" column="25" lean-forward="false" selection-start-line="10" selection-start-column="25" selection-end-line="16" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/message/ChangeRoomNameType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="30" column="21" lean-forward="true" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/message/GetRoomType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#374#375#0" expanded="true" />
+            <element signature="e#404#405#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/message/GetRoomsType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="42" column="43" lean-forward="true" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/message/ReactMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="499">
+          <caret line="59" column="55" lean-forward="false" selection-start-line="59" selection-start-column="55" selection-end-line="59" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/message/MessageConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="470">
+          <caret line="45" column="42" lean-forward="false" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="42" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/database/Queries.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="10" column="20" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="20" />
+        <state relative-caret-position="257">
+          <caret line="41" column="62" lean-forward="false" selection-start-line="41" selection-start-column="62" selection-end-line="41" selection-end-column="62" />
           <folding>
-            <element signature="imports" expanded="false" />
             <element signature="method#prepare#0;class#Queries#0" expanded="false" />
             <element signature="method#setParams#0;class#Queries#0" expanded="false" />
+            <element signature="method#query#0;class#Queries#0" expanded="false" />
             <element signature="method#execute#0;class#Queries#0" expanded="false" />
+            <element signature="method#executeUpdate#0;class#Queries#0" expanded="false" />
             <element signature="method#getNext#0;class#Queries#0" expanded="false" />
             <element signature="method#close#0;class#Queries#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/backupconnection/BackUpServerConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="47" column="5" lean-forward="false" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
-          <folding>
-            <element signature="docComment;class#BackUpServerConnection#0" expanded="false" />
-            <element signature="docComment;field#BACKUP_IP#0;class#BackUpServerConnection#0" expanded="false" />
-            <element signature="docComment;method#BackUpServerConnection#0;class#BackUpServerConnection#0" expanded="false" />
-            <element signature="method#BackUpServerConnection#0;class#BackUpServerConnection#0" expanded="false" />
-            <element signature="docComment;method#startServer#0;class#BackUpServerConnection#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/backupconnection/MainServerConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="63" column="4" lean-forward="false" selection-start-line="63" selection-start-column="4" selection-end-line="63" selection-end-column="4" />
-          <folding>
-            <element signature="docComment;class#MainServerConnection#0" expanded="false" />
-            <element signature="docComment;field#sslserversocket#0;class#MainServerConnection#0" expanded="false" />
-            <element signature="docComment;method#MainServerConnection#0;class#MainServerConnection#0" expanded="false" />
-            <element signature="method#MainServerConnection#0;class#MainServerConnection#0" expanded="false" />
-            <element signature="docComment;method#startServer#0;class#MainServerConnection#0" expanded="false" />
-            <element signature="method#startServer#0;class#MainServerConnection#0" expanded="false" />
-            <element signature="docComment;method#startAcceptThread#0;class#MainServerConnection#0" expanded="false" />
-            <element signature="method#startAcceptThread#0;class#MainServerConnection#0" expanded="false" />
-            <element signature="docComment;method#initBackUpConnection#0;class#MainServerConnection#0" expanded="false" />
-            <element signature="method#initBackUpConnection#0;class#MainServerConnection#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/backupconnection/BackUpConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="84" column="4" lean-forward="false" selection-start-line="84" selection-start-column="4" selection-end-line="84" selection-end-column="4" />
-          <folding>
-            <element signature="docComment;class#BackUpConnection#0" expanded="false" />
-            <element signature="docComment;field#BACKUP_PORT#0;class#BackUpConnection#0" expanded="false" />
-            <element signature="docComment;field#instance#0;class#BackUpConnection#0" expanded="false" />
-            <element signature="docComment;field#backupChannel#0;class#BackUpConnection#0" expanded="false" />
-            <element signature="docComment;field#blockObject#0;class#BackUpConnection#0" expanded="false" />
-            <element signature="docComment;field#protocolFinished#0;class#BackUpConnection#0" expanded="false" />
-            <element signature="docComment;method#BackUpConnection#0;class#BackUpConnection#0" expanded="false" />
-            <element signature="method#BackUpConnection#0;class#BackUpConnection#0" expanded="false" />
-            <element signature="docComment;method#getInstance#0;class#BackUpConnection#0" expanded="false" />
-            <element signature="docComment;method#getBackupChannel#0;class#BackUpConnection#0" expanded="false" />
-            <element signature="docComment;method#notifyAvailable#0;class#BackUpConnection#0" expanded="false" />
-            <element signature="method#notifyAvailable#0;class#BackUpConnection#0" expanded="false" />
-            <element signature="docComment;method#waitToBeAvailable#0;class#BackUpConnection#0" expanded="false" />
-            <element signature="method#waitToBeAvailable#0;class#BackUpConnection#0" expanded="false" />
-            <element signature="docComment;method#waitProtocol#0;class#BackUpConnection#0" expanded="false" />
-            <element signature="method#waitProtocol#0;class#BackUpConnection#0" expanded="false" />
-            <element signature="docComment;method#setFinishedProtocol#0;class#BackUpConnection#0" expanded="false" />
-            <element signature="method#setFinishedProtocol#0;class#BackUpConnection#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/database/users/UserRequests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="78" column="17" lean-forward="false" selection-start-line="78" selection-start-column="17" selection-end-line="78" selection-end-column="17" />
+        <state relative-caret-position="300">
+          <caret line="68" column="9" lean-forward="true" selection-start-line="68" selection-start-column="9" selection-end-line="68" selection-end-column="9" />
           <folding>
             <element signature="method#getConn#0;class#UserRequests#0" expanded="false" />
             <element signature="method#loginUser#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#registerUser#0;class#UserRequests#0" expanded="false" />
             <element signature="method#getUserID#0;class#UserRequests#0" expanded="false" />
             <element signature="method#insertUserConnection#0;class#UserRequests#0" expanded="false" />
             <element signature="method#insertMessages#0;class#UserRequests#0" expanded="false" />
@@ -1603,120 +1604,30 @@
             <element signature="method#deleteUserFromRoom#0;class#UserRequests#0" expanded="false" />
             <element signature="method#userConnected#0;class#UserRequests#0" expanded="false" />
             <element signature="method#getUsername#0;class#UserRequests#0" expanded="false" />
+            <element signature="method#getUserRooms#0;class#UserRequests#0" expanded="false" />
+            <element signature="method#getRoomName#0;class#UserRequests#0" expanded="false" />
             <element signature="method#getRoomUsers#0;class#UserRequests#0" expanded="false" />
             <element signature="method#getRoomUsersUsernames#0;class#UserRequests#0" expanded="false" />
             <element signature="method#selectFriendRequests#0;class#UserRequests#0" expanded="false" />
+            <element signature="method#selectFriends#0;class#UserRequests#0" expanded="false" />
             <element signature="method#getMessagesFromRoom#0;class#UserRequests#0" expanded="false" />
-            <marker date="1495030218914" expanded="true" signature="1247:1297" ph="INSERT INTO User... " />
-            <marker date="1495030218914" expanded="true" signature="1853:1897" ph="SELECT passw... User" />
-            <marker date="1495030218914" expanded="true" signature="2922:2964" ph="SELECT userI... User" />
-            <marker date="1495030218914" expanded="true" signature="3747:3808" ph="INSERT INTO UserConnection... " />
-            <marker date="1495030218914" expanded="true" signature="4329:4403" ph="INSERT INTO Message... " />
-            <marker date="1495030218914" expanded="true" signature="5142:5192" ph="INSERT INTO UserRoom... " />
-            <marker date="1495030218914" expanded="true" signature="5620:5653" ph="INSERT INTO Room... " />
-            <marker date="1495030218914" expanded="true" signature="6068:6109" ph="UPDATE Room " />
-            <marker date="1495030218914" expanded="true" signature="7313:7356" ph="DELETE FROM " />
-            <marker date="1495030218914" expanded="true" signature="7763:7789" ph="DELETE FROM " />
-            <marker date="1495030218914" expanded="true" signature="8177:8229" ph="DELETE FROM " />
-            <marker date="1495030218914" expanded="true" signature="8709:8754" ph="SELECT * FRO... UserConnection" />
-            <marker date="1495030218914" expanded="true" signature="9371:9413" ph="SELECT usern... User" />
-            <marker date="1495030218914" expanded="true" signature="11056:11151" ph="SELECT userI... UserRoom" />
-            <marker date="1495030218914" expanded="true" signature="11826:11984" ph="SELECT usern... User" />
-            <marker date="1495030218914" expanded="true" signature="12903:13329" ph="SELECT User1... User" />
-            <marker date="1495030218914" expanded="true" signature="15037:15221" ph="SELECT usern... User" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/database/Database.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/communication/ClientConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="81" column="4" lean-forward="false" selection-start-line="81" selection-start-column="4" selection-end-line="81" selection-end-column="4" />
-          <folding>
-            <element signature="docComment;class#ClientConnection#0" expanded="false" />
-            <element signature="docComment;field#streamMessage#0;class#ClientConnection#0" expanded="false" />
-            <element signature="docComment;field#clientID#0;class#ClientConnection#0" expanded="false" />
-            <element signature="docComment;field#read#0;class#ClientConnection#0" expanded="false" />
-            <element signature="docComment;method#ClientConnection#0;class#ClientConnection#0" expanded="false" />
-            <element signature="method#ClientConnection#0;class#ClientConnection#0" expanded="false" />
-            <element signature="docComment;method#close#0;class#ClientConnection#0" expanded="false" />
-            <element signature="method#close#0;class#ClientConnection#0" expanded="false" />
-            <element signature="docComment;method#setClientID#0;class#ClientConnection#0" expanded="false" />
-            <element signature="docComment;method#getClientID#0;class#ClientConnection#0" expanded="false" />
-            <element signature="docComment;method#getStreamMessage#0;class#ClientConnection#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/communication/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="244" column="4" lean-forward="false" selection-start-line="244" selection-start-column="4" selection-end-line="244" selection-end-column="4" />
-          <folding>
-            <element signature="docComment;field#keystorePath#0;class#Server#0" expanded="false" />
-            <element signature="docComment;field#keystorePass#0;class#Server#0" expanded="false" />
-            <element signature="docComment;field#truststorePath#0;class#Server#0" expanded="false" />
-            <element signature="docComment;field#truststorePass#0;class#Server#0" expanded="false" />
-            <element signature="docComment;field#MAIN_PORT#0;class#Server#0" expanded="false" />
-            <element signature="docComment;field#BACKUP_PORT#0;class#Server#0" expanded="false" />
-            <element signature="docComment;field#numberOfWorkerThreads#0;class#Server#0" expanded="false" />
-            <element signature="docComment;field#ourInstance#0;class#Server#0" expanded="false" />
-            <element signature="docComment;field#sslserversocket#0;class#Server#0" expanded="false" />
-            <element signature="docComment;field#backupChannel#0;class#Server#0" expanded="false" />
-            <element signature="docComment;field#knownClients#0;class#Server#0" expanded="false" />
-            <element signature="docComment;field#messages#0;class#Server#0" expanded="false" />
-            <element signature="docComment;field#isBackUpServer#0;class#Server#0" expanded="false" />
-            <element signature="docComment;method#Server#0;class#Server#0" expanded="false" />
-            <element signature="method#Server#0;class#Server#0" expanded="false" />
-            <element signature="docComment;method#createServer#0;class#Server#0" expanded="false" />
-            <element signature="method#createServer#0;class#Server#0" expanded="false" />
-            <element signature="docComment;method#initialize#0;class#Server#0" expanded="false" />
-            <element signature="docComment;method#startBackUpConnection#0;class#Server#0" expanded="false" />
-            <element signature="method#startBackUpConnection#0;class#Server#0" expanded="false" />
-            <element signature="docComment;method#startServer#0;class#Server#0" expanded="false" />
-            <element signature="method#startServer#0;class#Server#0" expanded="false" />
-            <element signature="docComment;method#startAcceptThread#0;class#Server#0" expanded="false" />
-            <element signature="method#startAcceptThread#0;class#Server#0" expanded="false" />
-            <element signature="e#4596#4909#0" expanded="false" />
-            <element signature="docComment;method#startWorkerThreads#0;class#Server#0" expanded="false" />
-            <element signature="method#startWorkerThreads#0;class#Server#0" expanded="false" />
-            <element signature="docComment;method#setSystemSettings#0;class#Server#0" expanded="false" />
-            <element signature="method#setSystemSettings#0;class#Server#0" expanded="false" />
-            <element signature="docComment;method#getOurInstance#0;class#Server#0" expanded="false" />
-            <element signature="docComment;method#getMessages#0;class#Server#0" expanded="false" />
-            <element signature="docComment;method#getClientByID#0;class#Server#0" expanded="false" />
-            <element signature="docComment;method#addClientID#0;class#Server#0" expanded="false" />
-            <element signature="method#addClientID#0;class#Server#0" expanded="false" />
-            <element signature="docComment;method#removeByID#0;class#Server#0" expanded="false" />
-            <element signature="method#removeByID#0;class#Server#0" expanded="false" />
-            <element signature="docComment;method#main#0;class#Server#0" expanded="false" />
-            <element signature="method#main#0;class#Server#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/communication/StreamMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="69" column="7" lean-forward="true" selection-start-line="69" selection-start-column="7" selection-end-line="69" selection-end-column="7" />
-          <folding>
-            <element signature="docComment;class#StreamMessage#0" expanded="false" />
-            <element signature="docComment;field#sslSocket#0;class#StreamMessage#0" expanded="false" />
-            <element signature="docComment;field#is#0;class#StreamMessage#0" expanded="false" />
-            <element signature="docComment;field#os#0;class#StreamMessage#0" expanded="false" />
-            <element signature="docComment;method#StreamMessage#0;class#StreamMessage#0" expanded="false" />
-            <element signature="method#StreamMessage#0;class#StreamMessage#0" expanded="false" />
-            <element signature="docComment;method#close#0;class#StreamMessage#0" expanded="false" />
-            <element signature="method#close#0;class#StreamMessage#0" expanded="false" />
-            <element signature="method#read#0;class#StreamMessage#0" expanded="false" />
+            <marker date="1495034825160" expanded="true" signature="1062:1112" ph="INSERT INTO User... " />
+            <marker date="1495034825160" expanded="true" signature="1644:1688" ph="SELECT passw... User" />
+            <marker date="1495034825160" expanded="false" signature="2251:2293" ph="SELECT userI... User" />
+            <marker date="1495034825160" expanded="false" signature="3076:3137" ph="INSERT INTO UserConnection... " />
+            <marker date="1495034825160" expanded="false" signature="3658:3732" ph="INSERT INTO Message... " />
+            <marker date="1495034825160" expanded="false" signature="4492:4542" ph="INSERT INTO UserRoom... " />
+            <marker date="1495034825160" expanded="false" signature="4909:4942" ph="INSERT INTO Room... " />
+            <marker date="1495034825160" expanded="false" signature="5282:5323" ph="UPDATE Room " />
+            <marker date="1495034825160" expanded="false" signature="6527:6570" ph="DELETE FROM " />
+            <marker date="1495034825160" expanded="false" signature="6977:7003" ph="DELETE FROM " />
+            <marker date="1495034825160" expanded="false" signature="7391:7443" ph="DELETE FROM " />
+            <marker date="1495034825160" expanded="false" signature="7923:7968" ph="SELECT * FRO... UserConnection" />
+            <marker date="1495034825160" expanded="false" signature="8585:8627" ph="SELECT usern... User" />
+            <marker date="1495034825160" expanded="false" signature="11104:11199" ph="SELECT userI... UserRoom" />
+            <marker date="1495034825160" expanded="false" signature="12415:12573" ph="SELECT usern... User" />
+            <marker date="1495034825160" expanded="false" signature="13492:13918" ph="SELECT User1... User" />
+            <marker date="1495034825160" expanded="false" signature="15665:15849" ph="SELECT usern... User" />
           </folding>
         </state>
       </provider>
