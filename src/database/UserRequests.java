@@ -157,8 +157,8 @@ public class UserRequests {
 
     private static void friendQuery(String query, int friend1, int friend2) throws SQLException {
         List<Object> params = new ArrayList<>();
-        params.add(friend2);
         params.add(friend1);
+        params.add(friend2);
 
         synchronized (Queries.class) {
             basicUpdate(query, params);
@@ -349,30 +349,46 @@ public class UserRequests {
     private static List<String> selectFriendRequests(int userID) {
         List<String> friends = new ArrayList<>();
 
-        String sql =
+        String sql1 =
                 "SELECT User1.username AS username1, " +
                         "User2.username AS username2 " +
                 "FROM User AS User1, " +
                         "User AS User2, " +
                         "Friend " +
                 "WHERE friendStatus = 0 " +
-                "AND (firstUserID  = ? OR secondUserID = ?) " +
+                "AND firstUserID  = ? " +
                 "AND firstUserID = User1.userID " +
                 "AND secondUserID = User2.userID";
+
+        String sql2 =
+                "SELECT User1.username AS username1, " +
+                        "User2.username AS username2 " +
+                        "FROM User AS User1, " +
+                        "User AS User2, " +
+                        "Friend " +
+                        "WHERE friendStatus = 0 " +
+                        "AND secondUserID  = ? " +
+                        "AND firstUserID = User1.userID " +
+                        "AND secondUserID = User2.userID";
         List<Object> params = new ArrayList<>();
-        params.add(userID);
         params.add(userID);
 
         synchronized (Queries.class) {
-            Queries.query(sql, params);
-            try {
-                Queries.execute();
-                ResultSet rs;
-                while((rs = Queries.getNext()) != null)
-                    friends.add(rs.getString("username1") + "\0" +
+            for(int i = 0; i < 2; i++) {
+                if(i == 0)
+                    Queries.query(sql1, params);
+                else
+                    Queries.query(sql2, params);
+
+                try {
+                    Queries.execute();
+                    ResultSet rs;
+                    while((rs = Queries.getNext()) != null)
+                        friends.add(rs.getString("username1") + "\0" +
                                 rs.getString("username2"));
-            } catch (SQLException ignore) { friends = null; }
-            Queries.close();
+                } catch (SQLException ignore) { friends = null; }
+                Queries.close();
+            }
         }
 
         return friends;

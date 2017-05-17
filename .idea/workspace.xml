@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="327ad98e-5c2b-4b3a-805e-2a02ff6aeb3f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/database/database.db" afterPath="$PROJECT_DIR$/src/database/database.db" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/AddRoomType.java" afterPath="$PROJECT_DIR$/src/message/AddRoomType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/FriendRequestType.java" afterPath="$PROJECT_DIR$/src/message/FriendRequestType.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/database/UserRequests.java" afterPath="$PROJECT_DIR$/src/database/UserRequests.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/ReactMessage.java" afterPath="$PROJECT_DIR$/src/message/ReactMessage.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -99,26 +97,58 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GetRoomType.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/message/GetRoomType.java">
+      <file leaf-file-name="UserRequests.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/database/UserRequests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="32" column="31" lean-forward="false" selection-start-line="32" selection-start-column="31" selection-end-line="33" selection-end-column="29" />
+            <state relative-caret-position="326">
+              <caret line="167" column="0" lean-forward="true" selection-start-line="167" selection-start-column="0" selection-end-line="167" selection-end-column="0" />
               <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#368#369#0" expanded="false" />
-                <element signature="e#398#399#0" expanded="false" />
+                <element signature="method#basicUpdate#0;class#UserRequests#0" expanded="false" />
+                <element signature="method#loginUser#0;class#UserRequests#0" expanded="false" />
+                <element signature="method#registerUser#0;class#UserRequests#0" expanded="false" />
+                <element signature="method#checkPassword#0;class#UserRequests#0" expanded="false" />
+                <element signature="method#insertUserConnection#0;class#UserRequests#0" expanded="false" />
+                <element signature="method#insertMessages#0;class#UserRequests#0" expanded="false" />
+                <element signature="method#insertUserRoom#0;class#UserRequests#0" expanded="false" />
+                <element signature="method#insertRoom#0;class#UserRequests#0" expanded="false" />
+                <element signature="method#updateRoomName#0;class#UserRequests#0" expanded="false" />
+                <element signature="method#updateFriendshipStatus#0;class#UserRequests#0" expanded="false" />
+                <element signature="method#deleteUserConnection#0;class#UserRequests#0" expanded="false" />
+                <element signature="method#deleteUserFromRoom#0;class#UserRequests#0" expanded="false" />
+                <element signature="method#userConnected#0;class#UserRequests#0" expanded="false" />
+                <element signature="method#getUserID#0;class#UserRequests#0" expanded="false" />
+                <element signature="method#getUserRooms#0;class#UserRequests#0" expanded="false" />
+                <element signature="method#getRoomName#0;class#UserRequests#0" expanded="false" />
+                <element signature="method#getRoomUsers#0;class#UserRequests#0" expanded="false" />
+                <element signature="method#selectFriendRequests#0;class#UserRequests#0" expanded="false" />
+                <element signature="method#selectFriends#0;class#UserRequests#0" expanded="false" />
+                <element signature="method#getMessagesFromRoom#0;class#UserRequests#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GetRoomsType.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/message/GetRoomsType.java">
+      <file leaf-file-name="littleChat.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/database/littleChat.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="27" column="56" lean-forward="false" selection-start-line="27" selection-start-column="56" selection-end-line="27" selection-end-column="56" />
+            <state relative-caret-position="347">
+              <caret line="101" column="58" lean-forward="false" selection-start-line="101" selection-start-column="58" selection-end-line="101" selection-end-column="58" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Queries.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/database/Queries.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="144">
+              <caret line="15" column="23" lean-forward="false" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+              <folding>
+                <element signature="method#setParams#0;class#Queries#0" expanded="false" />
+                <element signature="method#execute#0;class#Queries#0" expanded="false" />
+                <element signature="method#executeUpdate#0;class#Queries#0" expanded="false" />
+                <element signature="method#close#0;class#Queries#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -133,21 +163,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="littleChat.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/database/littleChat.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="443">
-              <caret line="101" column="22" lean-forward="false" selection-start-line="101" selection-start-column="22" selection-end-line="101" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReactMessage.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ReactMessage.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/message/ReactMessage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="70" column="129" lean-forward="false" selection-start-line="70" selection-start-column="129" selection-end-line="70" selection-end-column="129" />
+            <state relative-caret-position="328">
+              <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -156,8 +176,8 @@
       <file leaf-file-name="FriendRequestType.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/message/FriendRequestType.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="31" column="39" lean-forward="true" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
+            <state relative-caret-position="224">
+              <caret line="24" column="18" lean-forward="false" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -235,7 +255,6 @@
         <option value="$PROJECT_DIR$/src/communication/StreamMessage.java" />
         <option value="$PROJECT_DIR$/src/database/users/UserRequests.java" />
         <option value="$PROJECT_DIR$/src/message/AddToRoomType.java" />
-        <option value="$PROJECT_DIR$/src/database/UserRequests.java" />
         <option value="$PROJECT_DIR$/src/message/AnswerFriendType.java" />
         <option value="$PROJECT_DIR$/src/message/ChangeRoomNameType.java" />
         <option value="$PROJECT_DIR$/src/message/DeleteFromRoomType.java" />
@@ -249,6 +268,7 @@
         <option value="$PROJECT_DIR$/src/message/GetRoomsType.java" />
         <option value="$PROJECT_DIR$/src/message/AddRoomType.java" />
         <option value="$PROJECT_DIR$/src/message/FriendRequestType.java" />
+        <option value="$PROJECT_DIR$/src/database/UserRequests.java" />
         <option value="$PROJECT_DIR$/src/message/ReactMessage.java" />
       </list>
     </option>
@@ -888,7 +908,7 @@
       <workItem from="1495029658500" duration="4888000" />
       <workItem from="1495035342300" duration="3481000" />
       <workItem from="1495039920227" duration="94000" />
-      <workItem from="1495044788621" duration="6492000" />
+      <workItem from="1495044788621" duration="9008000" />
     </task>
     <task id="LOCAL-00001" summary="EchoServer working">
       <created>1494086864893</created>
@@ -1086,11 +1106,18 @@
       <option name="project" value="LOCAL" />
       <updated>1495038477166</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="FriendRequest changes">
+      <created>1495056698059</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1495056698059</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105118000" />
+    <option name="totallyTimeSpent" value="107634000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1194,7 +1221,8 @@
     <MESSAGE value="hash password and backupconnection package commented" />
     <MESSAGE value="Commit without errors" />
     <MESSAGE value="Changed all queries to the new method" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed all queries to the new method" />
+    <MESSAGE value="FriendRequest changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="FriendRequest changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1285,28 +1313,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/database/Queries.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="41" column="62" lean-forward="false" selection-start-line="41" selection-start-column="62" selection-end-line="41" selection-end-column="62" />
-          <folding>
-            <element signature="method#prepare#0;class#Queries#0" expanded="false" />
-            <element signature="method#setParams#0;class#Queries#0" expanded="false" />
-            <element signature="method#query#0;class#Queries#0" expanded="false" />
-            <element signature="method#execute#0;class#Queries#0" expanded="false" />
-            <element signature="method#executeUpdate#0;class#Queries#0" expanded="false" />
-            <element signature="method#getNext#0;class#Queries#0" expanded="false" />
-            <element signature="method#close#0;class#Queries#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/message/DeleteFromRoomType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="28" column="29" lean-forward="false" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1316,7 +1328,7 @@
         <state relative-caret-position="300">
           <caret line="25" column="28" lean-forward="false" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1466,37 +1478,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/database/UserRequests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
-          <caret line="261" column="0" lean-forward="true" selection-start-line="261" selection-start-column="0" selection-end-line="261" selection-end-column="0" />
-          <folding>
-            <element signature="method#basicUpdate#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#loginUser#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#registerUser#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#checkPassword#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#insertUserConnection#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#insertMessages#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#insertFriends#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#insertUserRoom#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#insertRoom#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#updateRoomName#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#updateFriendshipStatus#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#friendQuery#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#deleteUserConnection#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#deleteUserFromRoom#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#userConnected#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#getUserID#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#getUserRooms#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#getRoomName#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#getRoomUsers#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#selectFriendRequests#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#selectFriends#0;class#UserRequests#0" expanded="false" />
-            <element signature="method#getMessagesFromRoom#0;class#UserRequests#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/communication/ClientConnection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
@@ -1517,33 +1498,75 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/message/GetFriendRequestsType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="23" column="57" lean-forward="false" selection-start-line="23" selection-start-column="57" selection-end-line="23" selection-end-column="57" />
+        <state relative-caret-position="192">
+          <caret line="21" column="51" lean-forward="true" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/database/littleChat.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="101" column="22" lean-forward="false" selection-start-line="101" selection-start-column="22" selection-end-line="101" selection-end-column="22" />
+        <state relative-caret-position="347">
+          <caret line="101" column="58" lean-forward="false" selection-start-line="101" selection-start-column="58" selection-end-line="101" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/database/Queries.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="15" column="23" lean-forward="false" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+          <folding>
+            <element signature="method#setParams#0;class#Queries#0" expanded="false" />
+            <element signature="method#execute#0;class#Queries#0" expanded="false" />
+            <element signature="method#executeUpdate#0;class#Queries#0" expanded="false" />
+            <element signature="method#close#0;class#Queries#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/message/ReactMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/message/FriendRequestType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="31" column="39" lean-forward="true" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
+        <state relative-caret-position="224">
+          <caret line="24" column="18" lean-forward="false" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/message/ReactMessage.java">
+    <entry file="file://$PROJECT_DIR$/src/database/UserRequests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="70" column="129" lean-forward="false" selection-start-line="70" selection-start-column="129" selection-end-line="70" selection-end-column="129" />
-          <folding />
+        <state relative-caret-position="326">
+          <caret line="167" column="0" lean-forward="true" selection-start-line="167" selection-start-column="0" selection-end-line="167" selection-end-column="0" />
+          <folding>
+            <element signature="method#basicUpdate#0;class#UserRequests#0" expanded="false" />
+            <element signature="method#loginUser#0;class#UserRequests#0" expanded="false" />
+            <element signature="method#registerUser#0;class#UserRequests#0" expanded="false" />
+            <element signature="method#checkPassword#0;class#UserRequests#0" expanded="false" />
+            <element signature="method#insertUserConnection#0;class#UserRequests#0" expanded="false" />
+            <element signature="method#insertMessages#0;class#UserRequests#0" expanded="false" />
+            <element signature="method#insertUserRoom#0;class#UserRequests#0" expanded="false" />
+            <element signature="method#insertRoom#0;class#UserRequests#0" expanded="false" />
+            <element signature="method#updateRoomName#0;class#UserRequests#0" expanded="false" />
+            <element signature="method#updateFriendshipStatus#0;class#UserRequests#0" expanded="false" />
+            <element signature="method#deleteUserConnection#0;class#UserRequests#0" expanded="false" />
+            <element signature="method#deleteUserFromRoom#0;class#UserRequests#0" expanded="false" />
+            <element signature="method#userConnected#0;class#UserRequests#0" expanded="false" />
+            <element signature="method#getUserID#0;class#UserRequests#0" expanded="false" />
+            <element signature="method#getUserRooms#0;class#UserRequests#0" expanded="false" />
+            <element signature="method#getRoomName#0;class#UserRequests#0" expanded="false" />
+            <element signature="method#getRoomUsers#0;class#UserRequests#0" expanded="false" />
+            <element signature="method#selectFriendRequests#0;class#UserRequests#0" expanded="false" />
+            <element signature="method#selectFriends#0;class#UserRequests#0" expanded="false" />
+            <element signature="method#getMessagesFromRoom#0;class#UserRequests#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
