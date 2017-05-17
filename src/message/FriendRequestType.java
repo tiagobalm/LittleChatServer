@@ -1,6 +1,7 @@
 package message;
 
 import communication.ClientConnection;
+import database.UserRequests;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -27,6 +28,7 @@ public class FriendRequestType extends ReactMessage {
             return;
         }
 
-        notifyUser(message, userID);
+        Message newMessage = new Message(parameters[0] + " " + UserRequests.getUsername(client.getClientID()), "");
+        notifyUser(newMessage, userID);
     }
 }

@@ -23,6 +23,10 @@ public class AddRoomType extends ReactMessage {
         String[] values = message.getMessage().split("\0");
         String roomName = values[0];
         String username = values[1];
+
+        System.out.println("RoomName: " + roomName);
+        System.out.println("Username: " + username);
+
         int roomID = Integer.parseInt(parameters[1]);
         int userID = UserRequests.getUserID(username);
         try {

@@ -2,6 +2,7 @@ package message;
 
 import communication.ClientConnection;
 import communication.Server;
+import database.UserRequests;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
@@ -66,6 +67,9 @@ public abstract class ReactMessage {
 
     void notifyUser(Message message, int userID) {
         ClientConnection c = Server.getOurInstance().getClientByID(userID);
+
+        System.out.println("Notify user: " + userID + " " + UserRequests.getUsername(userID) + " message: " + message.getHeader());
+
         if( c != null )
             send(c, message);
     }
