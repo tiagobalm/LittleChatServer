@@ -4,6 +4,7 @@ import communication.ClientConnection;
 import database.users.UserRequests;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import static message.MessageConstants.addRoomSize;
 import static message.MessageConstants.addRoomType;
@@ -28,7 +29,7 @@ public class AddRoomType extends ReactMessage {
             UserRequests.insertRoom(roomName);
             UserRequests.insertUserRoom(userID, roomID);
             UserRequests.insertUserRoom(client.getClientID(), roomID);
-        } catch( Error e ) {
+        } catch( SQLException e ) {
             send(client, new Message(addRoomType, "False\0" + message.getMessage()));
             return;
         }
