@@ -24,7 +24,6 @@ public class UserRequests {
         Queries.close();
     }
 
-
     public static boolean loginUser(String username, String password, String ip, int port) throws SQLException {
         if( checkPassword(username, password) && !userConnected(username) ) {
             insertUserConnection(username, ip, port);
@@ -80,7 +79,6 @@ public class UserRequests {
         }
         return false;
     }
-
 
     private static void insertUserConnection(String username, String ip, int port) throws SQLException {
         int userID = getUserID(username);
@@ -180,6 +178,16 @@ public class UserRequests {
         }
     }
 
+    public static void deleteFriendshipStatus(int friend1, int friend2) throws SQLException {
+        String sql = "DELETE FROM Friend WHERE friendStatus = 0 AND firstUserID = ? AND secondUserID = ?;";
+        List<Object> params = new ArrayList<>();
+        params.add(friend1);
+        params.add(friend2);
+
+        synchronized (Queries.class) {
+            basicUpdate(sql, params);
+        }
+    }
 
     public static void deleteUserConnection(int userID) throws SQLException {
         String sql = "DELETE FROM UserConnection WHERE userID = ?;";
