@@ -4,6 +4,7 @@ import communication.ClientConnection;
 import database.users.UserRequests;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import static database.users.UserRequests.getRoomUsers;
@@ -23,7 +24,7 @@ public class AddToRoomType extends ReactMessage {
         int roomID = Integer.parseInt(parameters[1]);
         int userID = UserRequests.getUserID(message.getMessage());
         try { UserRequests.insertUserRoom(userID, roomID);
-        } catch( Error e ) {
+        } catch( SQLException e ) {
             send(client, new Message(addToRoomType, "False\0" + message.getMessage()));
             return;
         }

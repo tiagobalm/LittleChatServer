@@ -70,14 +70,19 @@ public class UserRequests {
             } catch (SQLException e) {return false;}
             Queries.close();
         }
-          
-        byte[] salt = getSalt();
-        String regeneratedPasswordToVerify = getSecurePassword(password, salt);
 
-        if(pass.equals(password) || pass.equals(regeneratedPasswordToVerify))
-            return true;
-
-        return pass.equals(password);
+        try {
+            byte[] salt;
+            salt = getSalt();
+            String regeneratedPasswordToVerify = getSecurePassword(password, salt);
+            if(pass != null &&
+                    (pass.equals(password) ||
+                    pass.equals(regeneratedPasswordToVerify)))
+                return true;
+        } catch (NoSuchAlgorithmException | NoSuchProviderException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public static int getUserID(String username) {
