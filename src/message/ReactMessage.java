@@ -36,6 +36,8 @@ public abstract class ReactMessage {
                 return new LogoutType(message);
             case getRoomsType:
                 return new GetRoomsType(message);
+            case getRoomType:
+                return new GetRoomType(message);
             case getFriendsType:
                 return new GetFriendsType(message);
             case getFriendRequestsType:
@@ -48,6 +50,14 @@ public abstract class ReactMessage {
                 return new FriendRequestType(message);
             case answerFriendType:
                 return new AnswerFriendType(message);
+            case addToRoomType:
+                return new AddToRoomType(message);
+            case deleteFromRoomType:
+                return new DeleteFromRoomType(message);
+            case addRoomType:
+                return new AddRoomType(message);
+            case changeRoomNameType:
+                return new ChangeRoomNameType(message);
         }
 
         return null;
@@ -59,7 +69,7 @@ public abstract class ReactMessage {
             send(c, message);
     }
 
-    private void send(ClientConnection c, Message message) {
+    void send(ClientConnection c, Message message) {
         Thread thread = new Thread(() -> {
             try {
                 c.getStreamMessage().write(message);
