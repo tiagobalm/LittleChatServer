@@ -43,7 +43,7 @@ public class GetRoomsType extends ReactMessage {
         if(roomUsers != null)
             for( Integer id : roomUsers ) {
                 builder.append("\0");
-                builder.append(id);
+                builder.append(UserRequests.getUsername(id));
             }
         System.out.println(new String(builder));
         return new String(builder);
