@@ -18,12 +18,7 @@ public class Worker implements Runnable {
     public void run() {
         while (true) {
             Map.Entry<ClientConnection, Message> entry;
-            try {
-                entry = Server.getOurInstance().getMessages().take();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-                continue;
-            }
+            entry = Server.getOurInstance().getMessages().take();
 
             System.out.println("Process message: " + entry.getValue());
             decode(entry.getKey(), entry.getValue());

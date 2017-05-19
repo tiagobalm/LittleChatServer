@@ -1,6 +1,7 @@
 package backupconnection;
 
 import communication.ClientConnection;
+import message.UnsentMessages;
 import org.jetbrains.annotations.Contract;
 
 /**
@@ -18,22 +19,29 @@ public abstract  class BackUpConnection {
     /**
      * Object that indicates if the thread can be unlocked
      */
-    public Object blockObject = new Object();
-    /**
-     * Variable that indicates if the protocol is finished or not
-     */
-    public boolean protocolFinished = false;
+    private final Object blockObject = new Object();
     public boolean isOn = false;
     /**
      * Channel where the backup will be made
      */
     ClientConnection backupChannel;
+    UnsentMessages messagesProtocol;
+    /**
+     * Variable that indicates if the protocol is finished or not
+     */
+    private boolean protocolFinished = false;
 
     /**
      * BackupConnection's constructor
      */
     BackUpConnection() {
-
+        try {
+            UnsentMessages.create(UnsentMessages.UnsentMessagesStatus.DONE);
+            messagesProtocol = UnsentMessages.getInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
     }
 
     /**
@@ -77,7 +85,7 @@ public abstract  class BackUpConnection {
     /**
      * This function waits for the protocol to be finished
      */
-    public void waitProtocol() {
+    void waitProtocol() {
         while (!protocolFinished)
             waitToBeAvailable();
     }
@@ -91,6 +99,5 @@ public abstract  class BackUpConnection {
     }
 
     public void initialProtocol() {
-
     }
 }

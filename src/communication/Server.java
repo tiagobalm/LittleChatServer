@@ -1,10 +1,9 @@
 package communication;
 
-import backupconnection.BackUpConnection;
 import backupconnection.BackUpServerConnection;
 import backupconnection.MainServerConnection;
 import database.UserRequests;
-import message.Message;
+import message.MessagesQueue;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.Nullable;
 import worker.Worker;
@@ -17,10 +16,8 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * Server's main class
@@ -74,7 +71,7 @@ public class Server {
     /**
      * Messages saved in this server
      */
-    private BlockingQueue<Map.Entry<ClientConnection, Message>> messages;
+    private MessagesQueue messages;
 
     /**
      * Server's constructor
@@ -83,7 +80,7 @@ public class Server {
     private Server(boolean isBackUpServer) {
         this.isBackUpServer = isBackUpServer;
         knownClients = new HashMap<>();
-        messages = new LinkedBlockingQueue<>();
+        messages = new MessagesQueue();
     }
 
     /**
@@ -134,11 +131,6 @@ public class Server {
         startWorkerThreads();
 
         startBackUpConnection();
-        BackUpConnection.getInstance().waitProtocol();
-
-        System.out.println("is backup: " + isBackUpServer);
-        System.out.println("port: " + (isBackUpServer ? BACKUP_PORT : MAIN_PORT));
-
         startServer(isBackUpServer ? BACKUP_PORT : MAIN_PORT);
         startAcceptThread();
     }
@@ -231,7 +223,7 @@ public class Server {
      * Gets the messages saved in the server
      * @return The messages saved in the server
      */
-    public BlockingQueue<Map.Entry<ClientConnection, Message>> getMessages() {
+    public MessagesQueue getMessages() {
         return messages;
     }
 

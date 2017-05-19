@@ -1,7 +1,7 @@
 package backupconnection;
 
 import communication.ClientConnection;
-import communication.StreamMessage;
+import message.UnsentMessages;
 
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
@@ -26,6 +26,18 @@ public class BackUpServerConnection extends BackUpConnection {
     }
 
     /**
+     * This function initiates the backup's connection
+     *
+     * @throws Exception This exception is thrown if the backup connection has already an instance
+     */
+    public static void initBackUpConnection() throws Exception {
+        if (instance != null)
+            throw new Exception("Singleton class BackUpConnection initiated twice");
+        instance = new BackUpServerConnection();
+        instance.initialProtocol();
+    }
+
+    /**
      * This function starts the server
      */
     private void startServer() {
@@ -43,13 +55,11 @@ public class BackUpServerConnection extends BackUpConnection {
         }
     }
 
-    /**
-     * This function initiates the backup's connection
-     * @throws Exception This exception is thrown if the backup connection has already an instance
-     */
-    public static void initBackUpConnection() throws Exception {
-        if( instance != null )
-            throw new Exception("Singleton class BackUpConnection initiated twice");
-        instance = new BackUpServerConnection();
+    public void initialProtocol() {
+        messagesProtocol.setStatus(UnsentMessages.UnsentMessagesStatus.READING);
+        waitProtocol();
+        messagesProtocol.setStatus(UnsentMessages.UnsentMessagesStatus.WRITTING);
+        UnsentMessages.send();
+        messagesProtocol.setStatus(UnsentMessages.UnsentMessagesStatus.DONE);
     }
 }

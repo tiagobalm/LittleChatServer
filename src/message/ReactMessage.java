@@ -8,7 +8,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.AbstractMap;
 
 import static message.MessageConstants.*;
 
@@ -57,6 +56,8 @@ public abstract class ReactMessage {
                 return new AddRoomType(message);
             case changeRoomNameType:
                 return new ChangeRoomNameType(message);
+            case noMoreMessagesType:
+                return new NoMoreMessagesType(message);
         }
 
         return null;
@@ -88,15 +89,9 @@ public abstract class ReactMessage {
                 e.printStackTrace();
             }
         else {
-            try {
-                ClientConnection cc = new ClientConnection(null);
-                cc.setClientID(ClientConnection.ownID);
-                Server.getOurInstance().getMessages().put(
-                        new AbstractMap.SimpleEntry<>(
-                                cc, message));
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            ClientConnection cc = new ClientConnection(null);
+            cc.setClientID(ClientConnection.ownID);
+            Server.getOurInstance().getMessages().put(cc, message);
         }
     }
 

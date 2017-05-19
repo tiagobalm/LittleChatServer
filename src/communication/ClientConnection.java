@@ -4,7 +4,6 @@ import message.Message;
 
 import javax.net.ssl.SSLSocket;
 import java.io.IOException;
-import java.util.AbstractMap;
 
 /**
  * This class creates the connection on the client side
@@ -44,12 +43,7 @@ public class ClientConnection {
                     this.close();
                     return;
                 }
-                try {
-                    Server.getOurInstance().getMessages().put(new AbstractMap.SimpleEntry<>(this, message));
-                } catch (InterruptedException e) {
-                    this.close();
-                    return ;
-                }
+                Server.getOurInstance().getMessages().put(this, message);
             }
         });
 
