@@ -1,5 +1,6 @@
 package database;
 
+import message.Message;
 import org.jetbrains.annotations.Nullable;
 
 import java.security.NoSuchAlgorithmException;
@@ -470,4 +471,6 @@ public class UserRequests {
 
         return messages;
     }
+
+    public static List<Message> getUnsentMessages() {return null;}
 }

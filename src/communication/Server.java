@@ -250,8 +250,8 @@ public class Server {
      * @param args Arguments used in the server's main function
      */
     public static void main(String[] args) {
-        if( args.length != 1 ) return;
-        boolean isBackUpServer = Objects.equals("true", args[0]);
+        //if( args.length != 1 ) return;
+        boolean isBackUpServer = false;
         try { createServer(isBackUpServer);
         } catch (Exception e) {
             e.printStackTrace();
