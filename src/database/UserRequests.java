@@ -350,9 +350,9 @@ public class UserRequests {
     }
 
     /**
-     *
-     * @param username
-     * @return
+     * This function gets the user's identifier
+     * @param username User's username
+     * @return The user's identifier
      */
     public static int getUserID(String username) {
         int result = -1;
@@ -375,6 +375,11 @@ public class UserRequests {
         return result;
     }
 
+    /**
+     * This function gets the user's username
+     * @param userID User's identifier
+     * @return The user's username
+     */
     @Nullable
     public static String getUsername(int userID) {
         String username = null;
@@ -397,6 +402,11 @@ public class UserRequests {
         return username;
     }
 
+    /**
+     * This function gets all the chat rooms that a user is in
+     * @param userID User's identifier
+     * @return A list with all the chat room of a user
+     */
     @Nullable
     public static List<String> getUserRooms(int userID) {
         List<String> rooms = new ArrayList<>();
@@ -423,6 +433,11 @@ public class UserRequests {
         return rooms;
     }
 
+    /**
+     * This function gets the chat room's name
+     * @param roomID Chat room's identifier
+     * @return The chat's room name
+     */
     @Nullable
     public static String getRoomName(int roomID) {
         String name = null;
@@ -447,6 +462,11 @@ public class UserRequests {
         return name;
     }
 
+    /**
+     * This function gets the users of a chat room
+     * @param roomID Room's identifier
+     * @return A list with the chat room's users
+     */
     @Nullable
     public static List<Integer> getRoomUsers(int roomID) {
         List<Integer> rooms = new ArrayList<>();
@@ -472,16 +492,31 @@ public class UserRequests {
         return rooms;
     }
 
+    /**
+     * This function gets all the friends of a user
+     * @param userID User's identifier
+     * @return A list with all the friends of a user
+     */
     @Nullable
     public static List<String> getFriends(int userID) {
         return selectFriends(userID);
     }
 
+    /**
+     * The function gets all the friendship requests
+     * @param userID User's identifier
+     * @return A list with all the friendship requests
+     */
     @Nullable
     public static List<String> getFriendRequests(int userID) {
         return selectFriendRequests(userID);
     }
 
+    /**
+     * This function gets all the friendship requests of a user
+     * @param userID User's identifier
+     * @return A list with all the friendship requests of a user
+     */
     @Nullable
     private static List<String> selectFriendRequests(int userID) {
         List<String> friends = new ArrayList<>();
@@ -531,6 +566,11 @@ public class UserRequests {
         return friends;
     }
 
+    /**
+     * This function selects all the friends of a user
+     * @param userID User's identifier
+     * @return A list with all the user's friendships
+     */
     @Nullable
     private static List<String> selectFriends(int userID) {
         List<String> friends = new ArrayList<>();
@@ -557,6 +597,12 @@ public class UserRequests {
         return friends;
     }
 
+    /**
+     * This function gets the messages from a chat room
+     * @param roomID Room's identifier
+     * @param limit Number maximum of messages
+     * @return A list with the messages from a chat room
+     */
     @Nullable
     public static List<String> getMessagesFromRoom(Integer roomID, Integer limit) {
         List<String> messages = new ArrayList<>();
@@ -586,5 +632,9 @@ public class UserRequests {
         return messages;
     }
 
+    /**
+     * This function gets all the unset messages
+     * @return A list with all the unset messages
+     */
     public static List<Message> getUnsentMessages() {return null;}
 }
