@@ -42,6 +42,10 @@ public class Message implements Serializable {
         return message;
     }
 
+    public void setOptionalMessage(List<String> optionalMessage) {
+        this.optionalMessage = optionalMessage;
+    }
+
     public BufferedImage getImage() {
         return image;
     }

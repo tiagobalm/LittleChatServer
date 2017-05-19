@@ -17,6 +17,9 @@ public class AnswerFriendType extends ReactMessage {
 
     @Override
     public void react(ClientConnection client) throws IOException {
+        if( checkToServer(client) )
+            return;
+
         String[] parameters = message.getHeader().split(" ");
         if( parameters.length != answerFriendSize || client.getClientID() == null || message.getMessage() == null )
             return ;

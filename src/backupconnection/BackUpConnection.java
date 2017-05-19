@@ -29,6 +29,8 @@ public abstract  class BackUpConnection {
      */
     public boolean protocolFinished = false;
 
+    public boolean isOn = false;
+
     /**
      * BackupConnection's constructor
      */
@@ -89,5 +91,4 @@ public abstract  class BackUpConnection {
         protocolFinished = true;
         notifyAvailable();
     }
-
 }

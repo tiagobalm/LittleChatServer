@@ -18,6 +18,9 @@ public class GetMessagesType extends ReactMessage{
 
     @Override
     public void react(ClientConnection client) throws IOException {
+        if( checkToServer(client) )
+            return;
+
         String[] params = message.getHeader().split(" ");
         if( params.length != getMessagesSize || client.getClientID() == null )
             return ;

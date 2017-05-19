@@ -7,8 +7,10 @@ import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static database.Database.getSalt;
 import static database.Database.getSecurePassword;
@@ -472,5 +474,101 @@ public class UserRequests {
         return messages;
     }
 
-    public static List<Message> getUnsentMessages() {return null;}
+    public static void insertUnsentMessage(Message message) throws SQLException {
+        String sql = "INSERT MessageClass(header, message) VALUES (?, ?)";
+        List<Object> params = new ArrayList<>();
+        params.add(message.getHeader());
+        params.add(message.getMessage());
+
+        synchronized (Queries.class) {
+            basicUpdate(sql, params);
+            params.clear();
+
+            int messageID = -1;
+            sql = "SELECT messageClassID FROM MessageClass ORDER BY messageClassID DESC LIMIT 1";
+            Queries.query(sql, params);
+            try {
+                Queries.execute();
+                ResultSet rs;
+                if ((rs = Queries.getNext()) != null)
+                    messageID = rs.getInt("messageClassID");
+            } catch (SQLException ignore) {
+            }
+
+            sql = "INSERT StringList(messageClassID, string) VALUES (?, ?)";
+            params.add(messageID);
+
+            for( String str : message.getOptionalMessage() ) {
+                params.add(str);
+                basicUpdate(sql, params);
+                params.remove(params.size());
+            }
+        }
+    }
+
+    public static void deleteUnsentMessages() {
+        String sql = "DELETE FROM MessageClass";
+
+        synchronized (Queries.class) {
+            try {
+                basicUpdate(sql, new ArrayList<>());
+            } catch (SQLException ignore) {
+            }
+        }
+    }
+
+    public static List<Message> getUnsentMessages() {
+        List<Map.Entry<Integer, Message>> unsentMessages = new ArrayList<>();
+        List<Message> messages = new ArrayList<>();
+
+        String sql = "SELECT * FROM MessageClass";
+        List<Object> params = new ArrayList<>();
+
+        synchronized (Queries.class) {
+            Queries.query(sql, new ArrayList<>());
+            try {
+                Queries.execute();
+                ResultSet rs;
+                while((rs = Queries.getNext())!=null) {
+                    int messageID = rs.getInt("messageClassID");
+                    String header = rs.getString("header");
+                    String data = rs.getString("message");
+                    Message message = new Message(header,data);
+                    unsentMessages.add(new AbstractMap.SimpleEntry<>(messageID, message));
+                }
+            } catch (SQLException ignore) {
+            }
+            Queries.close();
+        }
+
+        for( Map.Entry<Integer, Message> entry : unsentMessages ) {
+            Message m = getStringListMessage(entry.getKey(), entry.getValue());
+            messages.add(m);
+        }
+        return messages;
+    }
+
+    private static Message getStringListMessage(int messageID, Message message) {
+        List<String> allOptionalMessages = new ArrayList<>();
+        String  sql = "SELECT string FROM StringList WHERE messageClassID = ?";
+        List<Object> params = new ArrayList<>();
+        params.add(messageID);
+
+        synchronized (Queries.class) {
+            Queries.query(sql, params);
+            try {
+                Queries.execute();
+                ResultSet rs;
+                while((rs = Queries.getNext())!=null) {
+                    String data = rs.getString("string");
+                    allOptionalMessages.add(data);
+                }
+            } catch (SQLException ignore) {
+            }
+            Queries.close();
+        }
+
+        message.setOptionalMessage(allOptionalMessages);
+        return message;
+    }
 }

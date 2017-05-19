@@ -1,5 +1,6 @@
 package message;
 
+import backupconnection.BackUpConnection;
 import communication.ClientConnection;
 import communication.Server;
 import database.UserRequests;
@@ -7,7 +8,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
+import java.util.AbstractMap;
 
 import static message.MessageConstants.*;
 
@@ -18,7 +19,33 @@ public abstract class ReactMessage {
     }
 
     public void react(ClientConnection client) throws IOException {
-        throw new AbstractMethodError("Wrong class");
+        throw new AbstractMethodError("react in ReactMessage");
+    }
+
+    protected boolean checkToServer(ClientConnection client) throws IOException {
+        if(client.getClientID() == ClientConnection.serverID) {
+            send(BackUpConnection.getInstance().getBackupChannel(), message);
+            return true;
+        }
+        reactToServer();
+        return false;
+    }
+
+    private void reactToServer() {
+        if(!BackUpConnection.getInstance().isOn)
+            try { UserRequests.insertUnsentMessage(message);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        else
+            try {
+                Server.getOurInstance().getMessages().put(
+                        new AbstractMap.SimpleEntry<>(
+                                BackUpConnection.getInstance().getBackupChannel(),
+                                message));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
     }
 
     @Nullable

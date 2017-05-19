@@ -16,6 +16,9 @@ public class GetFriendsType extends ReactMessage{
 
     @Override
     public void react(ClientConnection client) throws IOException {
+        if( checkToServer(client) )
+            return;
+
         String[] params = message.getHeader().split(" ");
         if( params.length != getFriendsSize || client.getClientID() == null )
             return ;

@@ -10,6 +10,8 @@ import java.util.AbstractMap;
  * This class creates the connection on the client side
  */
 public class ClientConnection {
+    public static int serverID = -1;
+
     /**
      * This represents the message streamed
      */

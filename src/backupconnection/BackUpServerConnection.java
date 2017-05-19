@@ -36,6 +36,7 @@ public class BackUpServerConnection extends BackUpConnection {
             ciphers[0] = "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256";
             sslSocket.setEnabledCipherSuites(ciphers);
             backupChannel = new ClientConnection(sslSocket);
+            backupChannel.setClientID(ClientConnection.serverID);
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(-1);

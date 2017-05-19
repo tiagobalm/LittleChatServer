@@ -71,6 +71,7 @@ CREATE TABLE StringList(
 	string varchar(500),
 	FOREIGN KEY(messageClassID) REFERENCES MessageClass(messageClassID)
 		ON UPDATE CASCADE
+		ON DELETE CASCADE
 );
 
 INSERT INTO User(username, password) VALUES ('vascoUP', 'vascoUP');

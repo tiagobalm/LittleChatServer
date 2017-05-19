@@ -59,10 +59,6 @@ public class Server {
      * Socket that will be used in this server
      */
     private SSLServerSocket sslserversocket;
-    /**
-     * Backup protocol's channel
-     */
-    private BackUpConnection backupChannel;
 
     /**
      * Known clients that are saved in this server
@@ -104,10 +100,12 @@ public class Server {
      */
     private void initialize() {
         setSystemSettings();
-        //startBackUpConnection();
-        //BackUpConnection.getInstance().waitProtocol();
 
         startWorkerThreads();
+
+        startBackUpConnection();
+        BackUpConnection.getInstance().waitProtocol();
+
         startServer(isBackUpServer ? BACKUP_PORT : MAIN_PORT);
         startAcceptThread();
     }
@@ -124,8 +122,6 @@ public class Server {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        backupChannel = BackUpConnection.getInstance();
     }
 
     /**

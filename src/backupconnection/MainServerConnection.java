@@ -55,6 +55,7 @@ public class MainServerConnection extends BackUpConnection {
         try {
             SSLSocket sslSocket = (SSLSocket) sslserversocket.accept();
             backupChannel = new ClientConnection(sslSocket);
+            backupChannel.setClientID(ClientConnection.serverID);
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(-1);
