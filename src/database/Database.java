@@ -11,8 +11,17 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * This class creates the database's connections
+ */
 public class Database {
+    /**
+     * This varaiable represents the database's URL
+     */
     private static final URL databaseURL;
+    /**
+     * This variable is a instance of the Database class
+     */
     private static Database ourInstance;
     static {
         databaseURL = Database.class.getResource("database.db");
@@ -23,29 +32,56 @@ public class Database {
         }
     }
 
+    /**
+     * Database's connection
+     */
     private Connection conn;
 
+    /**
+     * This function gets the database's instance created
+     * @return The database's instance
+     */
     @Contract(pure = true)
     public static Database getInstance() {
         return ourInstance;
     }
 
+    /**
+     * This function gets the database's connection
+     * @return The database's connection
+     * @throws SQLException This is an exception that provides information on a database access error or other errors
+     */
     public Connection getConn() throws SQLException {
         if( conn.isClosed() )
             conn = connect();
         return conn;
     }
 
+    /**
+     * This is the database's constructor
+     * @throws SQLException This is an exception that provides information on a database access error or other errors
+     */
     private Database() throws SQLException {
         conn = connect();
     }
 
+    /**
+     * This function creates the connection between the server and the database
+     * @return The connecion creates
+     * @throws SQLException This is an exception that provides information on a database access error or other errors.
+     */
     private Connection connect() throws SQLException {
         // SQLite connection string
         String url = "jdbc:sqlite:" + databaseURL.toExternalForm();
         return DriverManager.getConnection(url);
     }
 
+    /**
+     * This function creates a secure password with MD5 and salt
+     * @param passwordToHash Password that will be hashed
+     * @param salt Salt to be used on the hashed password
+     * @return The hashed password
+     */
     public static String getSecurePassword(String passwordToHash, byte[] salt)
     {
         String generatedPassword = null;
@@ -72,7 +108,12 @@ public class Database {
         return generatedPassword;
     }
 
-    //Add salt
+    /**
+     * This function creates the salt that will be used on the hashed password
+     * @return The salt created to be used on the hashed password
+     * @throws NoSuchAlgorithmException This exception is thrown when a particular cryptographic algorithm is requested but is not available in the environment
+     * @throws NoSuchProviderException This exception is thrown when a particular security provider is requested but is not available in the environment
+     */
     public static byte[] getSalt() throws NoSuchAlgorithmException, NoSuchProviderException
     {
         //Always use a SecureRandom generator
