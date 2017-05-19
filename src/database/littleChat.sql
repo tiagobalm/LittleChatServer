@@ -26,7 +26,7 @@ CREATE TABLE Message (
 	userID INTEGER,
 	roomID INTEGER,
 	message VARCHAR(1000),
-	sentDate DATETIME DEFAULT current_timestamp,
+	sentDate DATETIME DEFAULT NOW,
 	FOREIGN KEY(userID) REFERENCES User(userID)
 		ON UPDATE CASCADE,
 	FOREIGN KEY(roomID) REFERENCES Room(roomID)
