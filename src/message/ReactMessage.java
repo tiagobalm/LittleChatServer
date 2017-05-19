@@ -2,9 +2,11 @@ package message;
 
 import communication.ClientConnection;
 import communication.Server;
+import database.UserRequests;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import static message.MessageConstants.*;
@@ -36,6 +38,8 @@ public abstract class ReactMessage {
                 return new LogoutType(message);
             case getRoomsType:
                 return new GetRoomsType(message);
+            case getRoomType:
+                return new GetRoomType(message);
             case getFriendsType:
                 return new GetFriendsType(message);
             case getFriendRequestsType:
@@ -48,6 +52,14 @@ public abstract class ReactMessage {
                 return new FriendRequestType(message);
             case answerFriendType:
                 return new AnswerFriendType(message);
+            case addToRoomType:
+                return new AddToRoomType(message);
+            case deleteFromRoomType:
+                return new DeleteFromRoomType(message);
+            case addRoomType:
+                return new AddRoomType(message);
+            case changeRoomNameType:
+                return new ChangeRoomNameType(message);
         }
 
         return null;
@@ -55,11 +67,12 @@ public abstract class ReactMessage {
 
     void notifyUser(Message message, int userID) {
         ClientConnection c = Server.getOurInstance().getClientByID(userID);
+
         if( c != null )
             send(c, message);
     }
 
-    private void send(ClientConnection c, Message message) {
+    void send(ClientConnection c, Message message) {
         Thread thread = new Thread(() -> {
             try {
                 c.getStreamMessage().write(message);

@@ -1,14 +1,14 @@
 package message;
 
 import communication.ClientConnection;
-import communication.Server;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import static database.users.UserRequests.*;
+import static database.UserRequests.*;
 import static message.MessageConstants.messageSize;
 import static message.MessageConstants.messageType;
 
@@ -26,9 +26,13 @@ public class MessageType extends ReactMessage {
         int roomID = Integer.parseInt(parameters[1]);
         String messageBody = message.getMessage();
         String username = getUsername(client.getClientID());
-        String date = new SimpleDateFormat("dd-MM-yy").format(new Date());
 
-        insertMessages(client.getClientID(), roomID, messageBody, date);
+        try {
+            insertMessages(client.getClientID(), roomID, messageBody);
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            return;
+        }
 
         Message sendMessage = new Message(messageType + " " + username + " " + roomID, messageBody);
         send(sendMessage, roomID, client.getClientID());

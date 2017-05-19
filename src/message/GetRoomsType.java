@@ -1,7 +1,7 @@
 package message;
 
 import communication.ClientConnection;
-import database.users.UserRequests;
+import database.UserRequests;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
@@ -20,15 +20,13 @@ public class GetRoomsType extends ReactMessage {
     public void react(ClientConnection client) throws IOException {
         String[] params = message.getHeader().split(" ");
         if( params.length != getRoomsSize || client.getClientID() == null )
-            return ;
+            return;
         List<String> rooms = UserRequests.getUserRooms(client.getClientID());
         List<String> completeRoomInfo = new ArrayList<>();
         if( rooms == null ) return;
         for(String str: rooms)
             completeRoomInfo.add(getCompleteUserInfo(str));
-        for(String str : completeRoomInfo)
-            System.out.println(str);
-        client.getStreamMessage().write(new Message(getRoomsType, completeRoomInfo));
+        send(client, new Message(getRoomsType, completeRoomInfo));
     }
 
     @NotNull
@@ -36,16 +34,18 @@ public class GetRoomsType extends ReactMessage {
         String[] roomInfo = str.split("\0");
         int roomID = Integer.parseInt(roomInfo[0]);
         String roomName = roomInfo[1];
-        List<String> roomUserUsernames = UserRequests.getRoomUsersUsernames(roomID);
-        StringBuilder builder = new StringBuilder(roomID);
-
+        List<Integer> roomUsers  = UserRequests.getRoomUsers(roomID);
+        StringBuilder builder = new StringBuilder();
+        System.out.println(roomID);
+        builder.append(roomID);
         builder.append("\0");
         builder.append(roomName);
-        if(roomUserUsernames != null)
-            for( String username : roomUserUsernames ) {
+        if(roomUsers != null)
+            for( Integer id : roomUsers ) {
                 builder.append("\0");
-                builder.append(username);
+                builder.append(UserRequests.getUsername(id));
             }
+        System.out.println(new String(builder));
         return new String(builder);
     }
 }

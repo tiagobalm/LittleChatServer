@@ -85,6 +85,8 @@ INSERT INTO Room(name) VALUES('Chat Room 4');
 INSERT INTO Room(name) VALUES('Chat Room 5');
 
 INSERT INTO UserRoom(userID, roomID) VALUES (1,1);
+INSERT INTO UserRoom(userID, roomID) VALUES (2,1);
+INSERT INTO UserRoom(userID, roomID) VALUES (3,1);
 INSERT INTO UserRoom(userID, roomID) VALUES (1,2);
 INSERT INTO UserRoom(userID, roomID) VALUES (2,2);
 INSERT INTO UserRoom(userID, roomID) VALUES (2,3);
