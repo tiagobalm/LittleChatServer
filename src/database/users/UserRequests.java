@@ -17,7 +17,14 @@ import static database.Database.getSalt;
 import static database.Database.getSecurePassword;
 import static database.Queries.getNext;
 
+/**
+ * This class creates the user's requests to the database
+ */
 public class UserRequests {
+    /**
+     * This function gets the connection to the database
+     * @return The connection to the database
+     */
     private static Connection getConn() {
         try {
             return Database.getInstance().getConn();
@@ -26,6 +33,14 @@ public class UserRequests {
         }
     }
 
+    /**
+     * This function logs in a user
+     * @param username User's username
+     * @param password User's password
+     * @param ip Connection's IP
+     * @param port Connection's port
+     * @return true if the password is correct or false otherwise
+     */
     public static boolean loginUser(String username, String password, String ip, int port) {
         if( checkPassword(username, password) && !userConnected(username) ) {
             insertUserConnection(username, ip, port);
@@ -34,6 +49,14 @@ public class UserRequests {
         return false;
     }
 
+    /**
+     * This function registers a user
+     * @param username User's username
+     * @param password User's password
+     * @param ip Connection's IP
+     * @param port Connection's port
+     * @return true if the user can be registered or false otherwise (when that username already exists)
+     */
     public static boolean registerUser(String username, String password, String ip, int port) {
         if( getUserID(username) >= 0 )
             return false;
@@ -57,6 +80,12 @@ public class UserRequests {
         return true;
     }
 
+    /**
+     * This password cheks if the user's password is the same as the one saved in the database
+     * @param username User's username
+     * @param password User's password
+     * @return true
+     */
     private static boolean checkPassword(String username, String password) {
         String sql = "SELECT password FROM User WHERE username = ?";
 
@@ -134,15 +163,14 @@ public class UserRequests {
         }
     }
 
-    public static void insertMessages(int userID, int roomID, String content, String date) {
-       String sql = "INSERT INTO Message(userID, roomID, message, sentDate) VALUES (?, ?, ?, ?);";
+    public static void insertMessages(int userID, int roomID, String content) {
+       String sql = "INSERT INTO Message(userID, roomID, message) VALUES (?, ?, ?);";
 
         try (Connection conn = getConn();
              PreparedStatement pstmt  = conn.prepareStatement(sql)) {
             pstmt.setInt(1, userID);
             pstmt.setInt(2, roomID);
             pstmt.setString(3, content);
-            pstmt.setString(4, date);
             pstmt.executeUpdate();
             pstmt.close();
         } catch (SQLException e) {

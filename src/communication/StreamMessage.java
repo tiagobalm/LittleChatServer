@@ -54,7 +54,7 @@ public class StreamMessage {
     }
 
     /**
-     * Redas the message
+     * Reads the message
      * @return The message read
      * @throws IOException Signals that an I/O exception of some sort has occurred. This class is the general class of exceptions produced by failed or interrupted I/O operations
      * @throws ClassNotFoundException Thrown when an application tries to load in a class through its string name, but no definition for the class with the specified name could be found
