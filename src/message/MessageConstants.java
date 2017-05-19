@@ -2,7 +2,7 @@ package message;
 
 class MessageConstants {
     /**
-     * Login type
+     * Login message's type
      */
     static final String loginType = "LOGIN";
     /**
@@ -11,7 +11,7 @@ class MessageConstants {
     static final int loginSize= 5;
 
     /**
-     * Logout type
+     * Logout message's type
      */
     static final String logoutType = "LOGOUT";
     /**
@@ -20,7 +20,7 @@ class MessageConstants {
     static final int logoutSize= 1;
 
     /**
-     * Register type
+     * Register message's type
      */
     static final String registerType = "REGISTER";
     /**
@@ -29,7 +29,7 @@ class MessageConstants {
     static final int registerSize= 5;
 
     /**
-     * GetRooms type
+     * GetRooms message's type
      */
     static final String getRoomsType = "GETROOMS";
     /**
@@ -38,7 +38,7 @@ class MessageConstants {
     static final int getRoomsSize = 1;
 
     /**
-     * GetRoom type
+     * GetRoom message's type
      */
     static final String getRoomType = "GETROOM";
     /**
@@ -47,7 +47,7 @@ class MessageConstants {
     static final int getRoomSize = 2;
 
     /**
-     * GetFriends type
+     * GetFriends message's type
      */
     static final String getFriendsType = "GETFRIENDS";
     /**
@@ -56,7 +56,7 @@ class MessageConstants {
     static final int getFriendsSize = 1;
 
     /**
-     * GetFriendsRequests type
+     * GetFriendsRequests message's type
      */
     static final String getFriendRequestsType = "GETFRIENDREQUESTS";
     /**
@@ -65,7 +65,7 @@ class MessageConstants {
     static final int getFriendRequestsSize = 1;
 
     /**
-     * GetMessages type
+     * GetMessages message's type
      */
     static final String getMessagesType = "GETMESSAGES";
     /**
@@ -83,15 +83,16 @@ class MessageConstants {
     static final int messageSize = 2;
 
     /**
-     * FriendRequest type
+     * FriendRequest message's type
      */
     static final String friendRequestType = "FRIENDREQUEST";
     /**
      * FriendRequest size
      */
     static final int friendRequestSize = 2;
+
     /**
-     * AnswerFriend type
+     * AnswerFriend message's type
      */
     static final String answerFriendType = "ANSWERFRIEND";
     /**
@@ -100,7 +101,7 @@ class MessageConstants {
     static final int answerFriendSize = 2;
 
     /**
-     * AddRoom type
+     * AddRoom message's type
       */
     static final String addToRoomType = "ADDTOROOM";
     /**
@@ -109,7 +110,7 @@ class MessageConstants {
     static final int addToRoomSize = 2;
 
     /**
-     * DeleteFromRoom type
+     * DeleteFromRoom message's type
      */
     static final String deleteFromRoomType = "DELETEFROMROOM";
     /**
@@ -118,7 +119,7 @@ class MessageConstants {
     static final int deleteFromRoomSize = 2;
 
     /**
-     * AddRoom type
+     * AddRoom message's type
      */
     static final String addRoomType = "ADDROOM";
     /**
@@ -127,7 +128,7 @@ class MessageConstants {
     static final int addRoomSize = 1;
 
     /**
-     * ChangeRoomName type
+     * ChangeRoomName message's type
      */
     static final String changeRoomNameType = "CHANGEROOMNAME";
     /**

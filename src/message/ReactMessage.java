@@ -19,14 +19,29 @@ public abstract class ReactMessage {
      * Message that will be used
      */
     protected Message message;
+
+    /**
+     * This is the ReactMessage's constructor
+     * @param message Message that will be used
+     */
     ReactMessage(Message message) {
         this.message = message;
     }
 
+    /**
+     * This function builds the messaged needed
+     * @param client Client's connection
+     * @throws IOException Signals that an I/O exception of some sort has occurred
+     */
     public void react(ClientConnection client) throws IOException {
         throw new AbstractMethodError("Wrong class");
     }
 
+    /**
+     * This function gets the react message
+     * @param message Message that will be used
+     * @return The react message
+     */
     @Nullable
     public static ReactMessage getReactMessage(Message message) {
         String[] parameters = message.getHeader().split(" ");
@@ -71,6 +86,11 @@ public abstract class ReactMessage {
         return null;
     }
 
+    /**
+     * This function sends the message to the respective user
+     * @param message Message to be sent
+     * @param userID User's iderntifier
+     */
     void notifyUser(Message message, int userID) {
         ClientConnection c = Server.getOurInstance().getClientByID(userID);
 
@@ -78,6 +98,11 @@ public abstract class ReactMessage {
             send(c, message);
     }
 
+    /**
+     * This function sends the respective message through the client's connection
+     * @param c Client's connection
+     * @param message Message that will be sent
+     */
     void send(ClientConnection c, Message message) {
         Thread thread = new Thread(() -> {
             try {
