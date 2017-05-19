@@ -5,7 +5,9 @@ import database.UserRequests;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
+import static database.UserRequests.getRoomUsers;
 import static message.MessageConstants.changeRoomNameSize;
 import static message.MessageConstants.changeRoomNameType;
 
@@ -29,8 +31,14 @@ public class ChangeRoomNameType extends ReactMessage {
                         "False\0" + nName));
             return;
         }
-        send(client,
-                new Message(changeRoomNameType + " " + roomID,
-                        "True\0" + nName));
+        send(new Message(changeRoomNameType + " " + roomID,"True\0" + nName), roomID);
     }
+
+    private void send(Message message, int roomID) throws IOException {
+        List<Integer> roomUsers = getRoomUsers(roomID);
+        if( roomUsers == null ) return;
+        for( Integer id : roomUsers )
+            notifyUser(message, id);
+    }
+
 }
