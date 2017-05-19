@@ -26,10 +26,9 @@ public class MessageType extends ReactMessage {
         int roomID = Integer.parseInt(parameters[1]);
         String messageBody = message.getMessage();
         String username = getUsername(client.getClientID());
-        String date = new SimpleDateFormat("dd-MM-yy").format(new Date());
 
         try {
-            insertMessages(client.getClientID(), roomID, messageBody, date);
+            insertMessages(client.getClientID(), roomID, messageBody);
         } catch (SQLException e) {
             System.out.println("SQLException: " + e.getMessage());
             return;
