@@ -12,12 +12,24 @@ import static database.UserRequests.getRoomUsers;
 import static message.MessageConstants.deleteFromRoomSize;
 import static message.MessageConstants.deleteFromRoomType;
 
-
+/**
+ * This class creates the delete from room's message
+ * This class extends the class ReactMessage
+ */
 public class DeleteFromRoomType extends ReactMessage {
+    /**
+     * This is the DeleteFromRoomType's constructor
+     * @param message Message to be analyzed
+     */
     DeleteFromRoomType(Message message) {
         super(message);
     }
 
+    /**
+     * This function builds the message needed
+     * @param client Client's connection
+     * @throws IOException Signals that an I/O exception of some sort has occurred
+     */
     @Override
     public void react(ClientConnection client) throws IOException {
         String[] parameters = message.getHeader().split(" ");
@@ -33,6 +45,12 @@ public class DeleteFromRoomType extends ReactMessage {
         send(new Message(deleteFromRoomType, "True\0" + message.getMessage()), roomID);
     }
 
+    /**
+     * This function sends the message created
+     * @param message Message created
+     * @param roomID Room's identifier
+     * @throws IOException Signals that an I/O exception of some sort has occurred
+     */
     private void send(Message message, int roomID) throws IOException {
         List<Integer> roomUsers = getRoomUsers(roomID);
         if( roomUsers == null ) return;

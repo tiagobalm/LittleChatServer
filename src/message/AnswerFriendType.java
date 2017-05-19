@@ -10,11 +10,24 @@ import static database.UserRequests.getUserID;
 import static database.UserRequests.updateFriendshipStatus;
 import static message.MessageConstants.answerFriendSize;
 
+/**
+ * This class creates the message that represents an answer from a friend
+ * This extends the class ReactMessage
+ */
 public class AnswerFriendType extends ReactMessage {
+    /**
+     * This is the AnswerFriendType's constructor
+     * @param message Message to be analyzed
+     */
     AnswerFriendType(Message message) {
         super(message);
     }
 
+    /**
+     * This function creates the message needed
+     * @param client Client's connection
+     * @throws IOException Signals that an I/O exception of some sort has occurred
+     */
     @Override
     public void react(ClientConnection client) throws IOException {
         String[] parameters = message.getHeader().split(" ");

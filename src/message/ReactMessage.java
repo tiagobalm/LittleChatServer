@@ -11,7 +11,13 @@ import java.util.List;
 
 import static message.MessageConstants.*;
 
+/**
+ * This class creates a react message
+ */
 public abstract class ReactMessage {
+    /**
+     * Message that will be used
+     */
     protected Message message;
     ReactMessage(Message message) {
         this.message = message;

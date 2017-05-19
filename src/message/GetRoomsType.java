@@ -11,11 +11,24 @@ import java.util.List;
 import static message.MessageConstants.getRoomsSize;
 import static message.MessageConstants.getRoomsType;
 
+/**
+ * This class creates the message that gets the chat rooms
+ * This class extends the ReactMessage class
+ */
 public class GetRoomsType extends ReactMessage {
+    /**
+     * This is the GetRoomsType's constructor
+     * @param message Message that will be used
+     */
     GetRoomsType(Message message) {
         super(message);
     }
 
+    /**
+     * This function creates the message needed
+     * @param client Client's connection
+     * @throws IOException Signals that an I/O exception of some sort has occurred
+     */
     @Override
     public void react(ClientConnection client) throws IOException {
         String[] params = message.getHeader().split(" ");
@@ -29,6 +42,11 @@ public class GetRoomsType extends ReactMessage {
         send(client, new Message(getRoomsType, completeRoomInfo));
     }
 
+    /**
+     * This function gets all the user's information
+     * @param str String that has the chat room's information
+     * @return A string with the user's information
+     */
     @NotNull
     private String getCompleteUserInfo(String str) {
         String[] roomInfo = str.split("\0");
