@@ -94,14 +94,13 @@ public class UserRequests {
         }
     }
 
-    public static void insertMessages(int userID, int roomID, String content, String date) throws SQLException {
-       String sql = "INSERT INTO Message(userID, roomID, message, sentDate) VALUES (?, ?, ?, ?);";
+    public static void insertMessages(int userID, int roomID, String content) throws SQLException {
+       String sql = "INSERT INTO Message(userID, roomID, message) VALUES (?, ?, ?);";
 
         List<Object> params = new ArrayList<>();
         params.add(userID);
         params.add(roomID);
         params.add(content);
-        params.add(date);
 
         synchronized (Queries.class) {
             basicUpdate(sql, params);
@@ -452,7 +451,7 @@ public class UserRequests {
                 "FROM User, Message " +
                 "WHERE roomID = ?" +
                 "AND Message.userID = User.userID " +
-                "LIMIT ?";
+                "ORDER BY sentDate LIMIT ?";
         List<Object> params = new ArrayList<>();
         params.add(roomID);
         params.add(limit);
