@@ -7,11 +7,13 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-import static database.UserRequests.getRoomUsers;
 import static message.MessageConstants.changeRoomNameSize;
 import static message.MessageConstants.changeRoomNameType;
 
 public class ChangeRoomNameType extends ReactMessage {
+    private int roomID;
+    private String nName;
+
     ChangeRoomNameType(Message message) {
         super(message);
     }
@@ -24,11 +26,7 @@ public class ChangeRoomNameType extends ReactMessage {
         String[] params = message.getHeader().split(" ");
         if( params.length != changeRoomNameSize || client.getClientID() == null )
             return;
-        int roomID = Integer.parseInt(params[1]);
-        String nName = message.getMessage();
-        try {
-            UserRequests.updateRoomName(roomID, nName);
-        } catch(SQLException e) {
+        if (!storeMessage(client)) {
             send(client,
                 new Message(changeRoomNameType + " " + roomID,
                         "False\0" + nName));
@@ -38,10 +36,25 @@ public class ChangeRoomNameType extends ReactMessage {
     }
 
     private void send(Message message, int roomID) throws IOException {
-        List<Integer> roomUsers = getRoomUsers(roomID);
+        List<Integer> roomUsers = UserRequests.getRoomUsers(roomID);
         if( roomUsers == null ) return;
         for( Integer id : roomUsers )
             notifyUser(message, id);
+    }
+
+    protected void getMessageVariables(ClientConnection client) {
+        String[] parameters = message.getHeader().split(" ");
+        roomID = Integer.parseInt(parameters[1]);
+        nName = message.getMessage();
+    }
+
+    protected boolean query(ClientConnection client) {
+        try {
+            UserRequests.updateRoomName(roomID, nName);
+        } catch (SQLException e) {
+            return false;
+        }
+        return true;
     }
 
 }

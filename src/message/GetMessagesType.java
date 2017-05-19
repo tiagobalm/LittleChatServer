@@ -7,7 +7,8 @@ import database.UserRequests;
 import java.io.IOException;
 import java.util.List;
 
-import static message.MessageConstants.*;
+import static message.MessageConstants.getMessagesSize;
+import static message.MessageConstants.getMessagesType;
 
 public class GetMessagesType extends ReactMessage{
     private static final int nMessage = 50;
@@ -26,7 +27,15 @@ public class GetMessagesType extends ReactMessage{
             return ;
         int roomID = Integer.parseInt(params[1]);
         List<String> messages = UserRequests.getMessagesFromRoom(roomID, nMessage);
+        if (messages == null) return;
         client.getStreamMessage().write(
                 new Message(getMessagesType + " " + roomID, messages));
+    }
+
+    protected void getMessageVariables(ClientConnection client) {
+    }
+
+    protected boolean query(ClientConnection client) {
+        return true;
     }
 }

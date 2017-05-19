@@ -18,36 +18,6 @@ public abstract class ReactMessage {
         this.message = message;
     }
 
-    public void react(ClientConnection client) throws IOException {
-        throw new AbstractMethodError("react in ReactMessage");
-    }
-
-    protected boolean checkToServer(ClientConnection client) throws IOException {
-        if(client.getClientID() == ClientConnection.serverID) {
-            send(BackUpConnection.getInstance().getBackupChannel(), message);
-            return true;
-        }
-        reactToServer();
-        return false;
-    }
-
-    private void reactToServer() {
-        if(!BackUpConnection.getInstance().isOn)
-            try { UserRequests.insertUnsentMessage(message);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        else
-            try {
-                Server.getOurInstance().getMessages().put(
-                        new AbstractMap.SimpleEntry<>(
-                                BackUpConnection.getInstance().getBackupChannel(),
-                                message));
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-    }
-
     @Nullable
     public static ReactMessage getReactMessage(Message message) {
         String[] parameters = message.getHeader().split(" ");
@@ -90,6 +60,57 @@ public abstract class ReactMessage {
         }
 
         return null;
+    }
+
+    public void react(ClientConnection client) throws IOException {
+        throw new AbstractMethodError("react in ReactMessage");
+    }
+
+    protected boolean checkToServer(ClientConnection client) throws IOException {
+        if (client.getClientID() != null) {
+            if (client.getClientID() == ClientConnection.ownID) {
+                send(BackUpConnection.getInstance().getBackupChannel(), message);
+                return true;
+            } else if (client.getClientID() == ClientConnection.serverID) {
+                storeMessage(client);
+                return true;
+            }
+        }
+        reactToServer();
+        return false;
+    }
+
+    private void reactToServer() {
+        if (!BackUpConnection.getInstance().isOn)
+            try {
+                UserRequests.insertUnsentMessage(message);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        else {
+            try {
+                ClientConnection cc = new ClientConnection(null);
+                cc.setClientID(ClientConnection.ownID);
+                Server.getOurInstance().getMessages().put(
+                        new AbstractMap.SimpleEntry<>(
+                                cc, message));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    protected boolean storeMessage(ClientConnection client) {
+        getMessageVariables(client);
+        return query(client);
+    }
+
+    protected void getMessageVariables(ClientConnection client) {
+        throw new AbstractMethodError("react in ReactMessage");
+    }
+
+    protected boolean query(ClientConnection client) {
+        throw new AbstractMethodError("react in ReactMessage");
     }
 
     void notifyUser(Message message, int userID) {

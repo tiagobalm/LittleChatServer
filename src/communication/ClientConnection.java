@@ -11,6 +11,7 @@ import java.util.AbstractMap;
  */
 public class ClientConnection {
     public static int serverID = -1;
+    public static int ownID = -2;
 
     /**
      * This represents the message streamed
@@ -60,17 +61,8 @@ public class ClientConnection {
      * Closes the stream message and the thread
      */
     public void close() {
-        //Server.getOurInstance().getClientSet().remove(this);
         streamMessage.close();
         read.interrupt();
-    }
-
-    /**
-     * Sets the client identifier
-     * @param id New client's identifier
-     */
-    public void setClientID(Integer id) {
-        clientID = id;
     }
 
     /**
@@ -79,6 +71,15 @@ public class ClientConnection {
      */
     public Integer getClientID() {
         return clientID;
+    }
+
+    /**
+     * Sets the client identifier
+     *
+     * @param id New client's identifier
+     */
+    public void setClientID(Integer id) {
+        clientID = id;
     }
 
     /**

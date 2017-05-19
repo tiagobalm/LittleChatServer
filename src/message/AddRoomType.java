@@ -11,6 +11,10 @@ import static message.MessageConstants.addRoomSize;
 import static message.MessageConstants.addRoomType;
 
 public class AddRoomType extends ReactMessage {
+    private int userID;
+    private int roomID;
+    private String roomName;
+
     AddRoomType(Message message) {
         super(message);
     }
@@ -19,29 +23,35 @@ public class AddRoomType extends ReactMessage {
     public void react(ClientConnection client) throws IOException {
         if( checkToServer(client) )
             return;
-
         String[] parameters = message.getHeader().split(" ");
         if (parameters.length != addRoomSize || client.getClientID() == null)
             return;
 
-        String[] values = message.getMessage().split("\0");
-        String roomName = values[0];
-        String username = values[1];
-        Integer roomID = 0;
-
-        int userID = UserRequests.getUserID(username);
-        try {
-            roomID = UserRequests.insertRoom(roomName);
-            UserRequests.insertUserRoom(userID, roomID);
-            UserRequests.insertUserRoom(client.getClientID(), roomID);
-        } catch( SQLException e ) {
+        if (!storeMessage(client)) {
             send(client, new Message(addRoomType + " " + roomID, "False\0" + message.getMessage()));
             return;
         }
         send(client, new Message(addRoomType + " " + roomID, "True\0" + message.getMessage()));
 
-        ClientConnection c = Server.getOurInstance().getClientByID(userID);
-        if(c != null)
+        ClientConnection c;
+        if ((c = Server.getOurInstance().getClientByID(userID)) != null)
             send(c, new Message(addRoomType + " " + roomID, "True\0" + roomName + "\0" + UserRequests.getUsername(client.getClientID())));
+    }
+
+    protected void getMessageVariables(ClientConnection client) {
+        String[] values = message.getMessage().split("\0");
+        roomName = values[0];
+        userID = UserRequests.getUserID(values[1]);
+    }
+
+    protected boolean query(ClientConnection client) {
+        try {
+            roomID = UserRequests.insertRoom(roomName);
+            UserRequests.insertUserRoom(userID, roomID);
+            UserRequests.insertUserRoom(client.getClientID(), roomID);
+        } catch( SQLException e ) {
+            return false;
+        }
+        return true;
     }
 }

@@ -6,8 +6,8 @@ import database.UserRequests;
 import java.io.IOException;
 import java.util.List;
 
-import static message.MessageConstants.getFriendRequestsType;
 import static message.MessageConstants.getFriendRequestsSize;
+import static message.MessageConstants.getFriendRequestsType;
 
 public class GetFriendRequestsType  extends ReactMessage{
     GetFriendRequestsType(Message message) {
@@ -24,7 +24,13 @@ public class GetFriendRequestsType  extends ReactMessage{
             return ;
         List<String> friends = UserRequests.getFriendRequests(client.getClientID());
         if( friends == null ) return;
-        for(String str: friends) System.out.println(str);
         client.getStreamMessage().write(new Message(getFriendRequestsType, friends));
+    }
+
+    protected void getMessageVariables(ClientConnection client) {
+    }
+
+    protected boolean query(ClientConnection client) {
+        return true;
     }
 }

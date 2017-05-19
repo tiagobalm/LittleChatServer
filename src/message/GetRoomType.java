@@ -44,4 +44,11 @@ public class GetRoomType extends ReactMessage {
 
         return new String(builder);
     }
+
+    protected void getMessageVariables(ClientConnection client) {
+    }
+
+    protected boolean query(ClientConnection client) {
+        return true;
+    }
 }

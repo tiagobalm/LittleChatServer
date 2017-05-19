@@ -3,19 +3,24 @@ package communication;
 import backupconnection.BackUpConnection;
 import backupconnection.BackUpServerConnection;
 import backupconnection.MainServerConnection;
-import message.Message;
-import org.jetbrains.annotations.Nullable;
-import worker.*;
 import database.UserRequests;
+import message.Message;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.Nullable;
+import worker.Worker;
 
 import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
 import javax.net.ssl.SSLSocket;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.*;
-import java.util.concurrent.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * Server's main class
@@ -54,12 +59,14 @@ public class Server {
      * Instance of server
      */
     private static Server ourInstance;
-
+    /**
+     * Variable that indicates if the server is backed up or not
+     */
+    private final boolean isBackUpServer;
     /**
      * Socket that will be used in this server
      */
     private SSLServerSocket sslserversocket;
-
     /**
      * Known clients that are saved in this server
      */
@@ -68,11 +75,6 @@ public class Server {
      * Messages saved in this server
      */
     private BlockingQueue<Map.Entry<ClientConnection, Message>> messages;
-
-    /**
-     * Variable that indicates if the server is backed up or not
-     */
-    private final boolean isBackUpServer;
 
     /**
      * Server's constructor
@@ -96,6 +98,34 @@ public class Server {
     }
 
     /**
+     * Gets the server's instance
+     *
+     * @return The server's instance
+     */
+    @Contract(pure = true)
+    public static Server getOurInstance() {
+        return ourInstance;
+    }
+
+    /**
+     * Server's main function
+     *
+     * @param args Arguments used in the server's main function
+     */
+    public static void main(String[] args) {
+        if (args.length != 1) return;
+        boolean isBackUpServer = Objects.equals("true", args[0]);
+        try {
+            createServer(isBackUpServer);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        Server.getOurInstance().initialize();
+        System.out.println("Server initialized");
+    }
+
+    /**
      * Initializes the server
      */
     private void initialize() {
@@ -105,6 +135,9 @@ public class Server {
 
         startBackUpConnection();
         BackUpConnection.getInstance().waitProtocol();
+
+        System.out.println("is backup: " + isBackUpServer);
+        System.out.println("port: " + (isBackUpServer ? BACKUP_PORT : MAIN_PORT));
 
         startServer(isBackUpServer ? BACKUP_PORT : MAIN_PORT);
         startAcceptThread();
@@ -195,15 +228,6 @@ public class Server {
     }
 
     /**
-     * Gets the server's instance
-     * @return The server's instance
-     */
-    @Contract(pure = true)
-    public static Server getOurInstance() {
-        return ourInstance;
-    }
-
-    /**
      * Gets the messages saved in the server
      * @return The messages saved in the server
      */
@@ -239,22 +263,6 @@ public class Server {
         ClientConnection c = knownClients.get(id);
         knownClients.remove(id);
         c.setClientID(null);
-    }
-
-    /**
-     * Server's main function
-     * @param args Arguments used in the server's main function
-     */
-    public static void main(String[] args) {
-        if( args.length != 1 ) return;
-        boolean isBackUpServer = Objects.equals("true", args[0]);
-        try { createServer(isBackUpServer);
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.exit(-1);
-        }
-        Server.getOurInstance().initialize();
-        System.out.println("Server initialized");
     }
 }
 

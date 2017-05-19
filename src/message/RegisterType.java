@@ -10,6 +10,11 @@ import java.sql.SQLException;
 import static message.MessageConstants.registerSize;
 
 public class RegisterType extends ReactMessage {
+    private String username;
+    private String password;
+    private String ip;
+    private String port;
+
     RegisterType(Message message) {
         super(message);
     }
@@ -22,15 +27,27 @@ public class RegisterType extends ReactMessage {
         String[] parameters = message.getHeader().split(" ");
         if( parameters.length != registerSize )
             return ;
-        disconnectClient(client);
-        String username = parameters[1], password = parameters[2],
-                ip = parameters[3], port = parameters[4];
-        if (registerUser(username, password, ip, port)) {
-            Server.getOurInstance().addClientID(UserRequests.getUserID(username), client);
+        if (storeMessage(client))
             client.getStreamMessage().write(new Message("LOGIN", "True"));
-        }
         else
             client.getStreamMessage().write(new Message("False\0", ""));
+    }
+
+    protected void getMessageVariables(ClientConnection client) {
+        String[] parameters = message.getHeader().split(" ");
+        username = parameters[1];
+        password = parameters[2];
+        ip = parameters[3];
+        port = parameters[4];
+    }
+
+    protected boolean query(ClientConnection client) {
+        disconnectClient(client);
+        if (registerUser(username, password, ip, port)) {
+            Server.getOurInstance().addClientID(UserRequests.getUserID(username), client);
+            return true;
+        }
+        return false;
     }
 
     private boolean registerUser(String username,
@@ -41,10 +58,9 @@ public class RegisterType extends ReactMessage {
     }
 
     private void disconnectClient(ClientConnection client) {
-        if( client.getClientID() != null )
+        if (client.getClientID() != null)
             try {
                 UserRequests.deleteUserConnection(client.getClientID());
             } catch (SQLException ignore) {}
     }
-
 }

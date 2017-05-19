@@ -12,16 +12,31 @@ public class Message implements Serializable {
     private List<String> optionalMessage;
     private BufferedImage image;
 
+    /**
+     * Message.
+     *
+     * @param header  Message header.
+     * @param message Message text.
+     */
     public Message(String header, String message) {
         this.header = header;
         this.message = message;
     }
 
+    /**
+     * Message.
+     * @param header Message header.
+     * @param optionalMessage Optional Message.
+     */
     public Message(String header, List<String> optionalMessage) {
         this.header = header;
         this.optionalMessage = optionalMessage;
     }
 
+    /**
+     * Message
+     * @param path Path to message.
+     */
     public Message(String path) {
         try {
             this.image = ImageIO.read(new File(path));
@@ -30,22 +45,43 @@ public class Message implements Serializable {
         }
     }
 
+    /**
+     * Get optional message.
+     * @return optional message.
+     */
     public List<String> getOptionalMessage() {
         return optionalMessage;
     }
 
-    public String getHeader() {
-        return header;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
+    /**
+     * Set optional messages.
+     *
+     * @param optionalMessage optional message.
+     */
     public void setOptionalMessage(List<String> optionalMessage) {
         this.optionalMessage = optionalMessage;
     }
 
+    /**
+     * Gey header message.
+     * @return header.
+     */
+    public String getHeader() {
+        return header;
+    }
+
+    /**
+     * Get message.
+     * @return message.
+     */
+    public String getMessage() {
+        return message;
+    }
+
+    /**
+     * Get Image.
+     * @return BufferedImage image.
+     */
     public BufferedImage getImage() {
         return image;
     }

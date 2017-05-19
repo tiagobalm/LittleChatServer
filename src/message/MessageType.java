@@ -4,8 +4,6 @@ import communication.ClientConnection;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import static database.UserRequests.*;
@@ -13,6 +11,10 @@ import static message.MessageConstants.messageSize;
 import static message.MessageConstants.messageType;
 
 public class MessageType extends ReactMessage {
+    private int roomID;
+    private String messageBody;
+    private String username;
+
     MessageType(Message message) {
         super(message);
     }
@@ -21,24 +23,11 @@ public class MessageType extends ReactMessage {
     public void react(ClientConnection client) throws IOException {
         if( checkToServer(client) )
             return;
-
         String[] parameters = message.getHeader().split(" ");
-        if( parameters.length != messageSize || client.getClientID() == null )
+        if (parameters.length != messageSize || client.getClientID() == null || !storeMessage(client))
             return ;
-
-        int roomID = Integer.parseInt(parameters[1]);
-        String messageBody = message.getMessage();
-        String username = getUsername(client.getClientID());
-
-        try {
-            insertMessages(client.getClientID(), roomID, messageBody);
-        } catch (SQLException e) {
-            System.out.println("SQLException: " + e.getMessage());
-            return;
-        }
-
-        Message sendMessage = new Message(messageType + " " + username + " " + roomID, messageBody);
-        send(sendMessage, roomID, client.getClientID());
+        send(new Message(messageType + " " + username + " " + roomID, messageBody),
+                roomID, client.getClientID());
     }
 
     private void send(Message message, int roomID, int userID) throws IOException {
@@ -47,5 +36,22 @@ public class MessageType extends ReactMessage {
         for( Integer id : roomUsers )
             if( id != userID )
                 notifyUser(message, id);
+    }
+
+    protected void getMessageVariables(ClientConnection client) {
+        String[] parameters = message.getHeader().split(" ");
+        roomID = Integer.parseInt(parameters[1]);
+        messageBody = message.getMessage();
+        username = getUsername(client.getClientID());
+    }
+
+    protected boolean query(ClientConnection client) {
+        try {
+            insertMessages(client.getClientID(), roomID, messageBody);
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            return false;
+        }
+        return true;
     }
 }

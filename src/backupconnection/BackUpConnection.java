@@ -15,11 +15,6 @@ public abstract  class BackUpConnection {
      * Backup connection's instance
      */
     static BackUpConnection instance;
-
-    /**
-     * Channel where the backup will be made
-     */
-    ClientConnection backupChannel;
     /**
      * Object that indicates if the thread can be unlocked
      */
@@ -28,8 +23,11 @@ public abstract  class BackUpConnection {
      * Variable that indicates if the protocol is finished or not
      */
     public boolean protocolFinished = false;
-
     public boolean isOn = false;
+    /**
+     * Channel where the backup will be made
+     */
+    ClientConnection backupChannel;
 
     /**
      * BackupConnection's constructor
@@ -80,8 +78,8 @@ public abstract  class BackUpConnection {
      * This function waits for the protocol to be finished
      */
     public void waitProtocol() {
-        /*while( !protocolFinished )
-            waitToBeAvailable();*/
+        while (!protocolFinished)
+            waitToBeAvailable();
     }
 
     /**
@@ -90,5 +88,9 @@ public abstract  class BackUpConnection {
     public void setFinishedProtocol() {
         protocolFinished = true;
         notifyAvailable();
+    }
+
+    public void initialProtocol() {
+
     }
 }

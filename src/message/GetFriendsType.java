@@ -25,4 +25,11 @@ public class GetFriendsType extends ReactMessage{
         List<String> friends = UserRequests.getFriends(client.getClientID());
         client.getStreamMessage().write(new Message(getFriendsType, friends));
     }
+
+    protected void getMessageVariables(ClientConnection client) {
+    }
+
+    protected boolean query(ClientConnection client) {
+        return true;
+    }
 }

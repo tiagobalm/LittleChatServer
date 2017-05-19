@@ -19,13 +19,21 @@ public class LogoutType extends ReactMessage {
     public void react(ClientConnection client) throws IOException {
         if( checkToServer(client) )
             return;
-
         String[] parameters = message.getHeader().split(" ");
         if( parameters.length != logoutSize || client.getClientID() == null )
             return ;
+
+        storeMessage(client);
+        client.getStreamMessage().write(new Message(logoutType, ""));
+    }
+
+    protected void getMessageVariables(ClientConnection client) {
+    }
+
+    protected boolean query(ClientConnection client) {
         try { UserRequests.deleteUserConnection(client.getClientID());
         } catch (SQLException ignore) {}
-        client.getStreamMessage().write(new Message(logoutType, ""));
         Server.getOurInstance().removeByID(client.getClientID());
+        return true;
     }
 }
