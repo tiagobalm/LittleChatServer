@@ -36,8 +36,6 @@ public class LoginType extends ReactMessage {
      */
     @Override
     public void react(ClientConnection client) throws IOException {
-        if( checkToServer(client) )
-            return;
         String[] parameters = message.getHeader().split(" ");
         if( parameters.length != loginSize )
             return ;

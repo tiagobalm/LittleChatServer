@@ -38,11 +38,12 @@ public class RegisterType extends ReactMessage {
     public void react(ClientConnection client) throws IOException {
         if( checkToServer(client) )
             return;
-
         String[] parameters = message.getHeader().split(" ");
         if( parameters.length != registerSize )
             return ;
         if (storeMessage(client)) {
+            try { UserRequests.insertUserConnection(username, ip, Integer.parseInt(port));
+            } catch (SQLException ignore) {}
             Server.getOurInstance().addClientID(UserRequests.getUserID(username), client);
             client.getStreamMessage().write(new Message("LOGIN", "True"));
         } else
@@ -78,7 +79,6 @@ public class RegisterType extends ReactMessage {
         } catch (SQLException e) {
             return false;
         }
-
     }
 
     /**

@@ -78,7 +78,6 @@ public class UserRequests {
             basicUpdate(sql, params);
         }
 
-        insertUserConnection(username, ip, port);
         return true;
     }
 
@@ -127,7 +126,7 @@ public class UserRequests {
      * @param port Connection port
      * @throws SQLException This is an exception that provides information on a database access error or other errors
      */
-    private static void insertUserConnection(String username, String ip, int port) throws SQLException {
+    public static void insertUserConnection(String username, String ip, int port) throws SQLException {
         int userID = getUserID(username);
         String sql = "INSERT INTO UserConnection(userID, ip, port) VALUES (?, ?, ?);";
 
