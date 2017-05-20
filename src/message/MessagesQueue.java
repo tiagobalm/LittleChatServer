@@ -44,9 +44,11 @@ public class MessagesQueue {
         Map.Entry<ClientConnection, Message> entry = null;
         do {
             try {
-                entry = messages.take();
-                if (messages.isEmpty())
-                    messages.notify();
+                synchronized (messages) {
+                    entry = messages.take();
+                    if (messages.isEmpty())
+                        messages.notify();
+                }
             } catch (InterruptedException e) {
                 if (nTries >= MAXTRIES) {
                     e.printStackTrace();
