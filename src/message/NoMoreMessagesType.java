@@ -19,7 +19,7 @@ public class NoMoreMessagesType extends ReactMessage {
             return;
         System.out.println(client.getClientID());
         if (client.getClientID() == ClientConnection.ownID)
-            send(client, message);
+            send(BackUpConnection.getInstance().getBackupChannel(), message);
         BackUpConnection.getInstance().setFinishedProtocol();
     }
 }
