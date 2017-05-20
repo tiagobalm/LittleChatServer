@@ -3,27 +3,19 @@ package message;
 import backupconnection.BackUpConnection;
 import communication.Server;
 import database.UserRequests;
-import org.jetbrains.annotations.Contract;
 
 import java.util.List;
 
 public class UnsentMessages {
     private static UnsentMessages instance;
-    private UnsentMessagesStatus status;
 
-    private UnsentMessages(UnsentMessagesStatus status) {
-        this.status = status;
+    private UnsentMessages() {
     }
 
-    public static void create(UnsentMessagesStatus status) throws Exception {
+    public static void create() throws Exception {
         if (instance != null)
             throw new Exception("Singleton class Server initiated twice");
-        instance = new UnsentMessages(status);
-    }
-
-    @Contract(pure = true)
-    public static UnsentMessages getInstance() {
-        return instance;
+        instance = new UnsentMessages();
     }
 
     public static void send() {
@@ -39,10 +31,4 @@ public class UnsentMessages {
     private static List<Message> getUnsentMessages() {
         return UserRequests.getUnsentMessages();
     }
-
-    public void setStatus(UnsentMessagesStatus status) {
-        this.status = status;
-    }
-
-    public enum UnsentMessagesStatus {READING, WRITTING, DONE}
 }

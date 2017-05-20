@@ -13,7 +13,7 @@ public class MessagesQueue {
     /**
      * Messages saved in this server
      */
-    private BlockingQueue<Map.Entry<ClientConnection, Message>> messages;
+    private final BlockingQueue<Map.Entry<ClientConnection, Message>> messages;
 
     public MessagesQueue() {
         messages = new LinkedBlockingQueue<>();

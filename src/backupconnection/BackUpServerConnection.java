@@ -19,7 +19,7 @@ public class BackUpServerConnection extends BackUpConnection {
     /**
      * Backup's internet protocol
      */
-    static final String BACKUP_IP = "127.0.0.1";
+    private static final String BACKUP_IP = "127.0.0.1";
 
     private ScheduledExecutorService executeReconnect;
 
@@ -75,11 +75,8 @@ public class BackUpServerConnection extends BackUpConnection {
 
     public void initialProtocol() {
         Thread thread = new Thread(() -> {
-            messagesProtocol.setStatus(UnsentMessages.UnsentMessagesStatus.READING);
             waitProtocol();
-            messagesProtocol.setStatus(UnsentMessages.UnsentMessagesStatus.WRITTING);
             UnsentMessages.send();
-            messagesProtocol.setStatus(UnsentMessages.UnsentMessagesStatus.DONE);
             status.finishedStatus();
         });
         thread.setDaemon(true);

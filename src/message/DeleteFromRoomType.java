@@ -34,7 +34,7 @@ public class DeleteFromRoomType extends ReactMessage {
         send(new Message(deleteFromRoomType, "True\0" + message.getMessage()), roomID);
     }
 
-    private void send(Message message, int roomID) throws IOException {
+    private void send(Message message, int roomID) {
         List<Integer> roomUsers = UserRequests.getRoomUsers(roomID);
         if( roomUsers == null ) return;
         for( Integer id : roomUsers )

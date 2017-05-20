@@ -32,7 +32,7 @@ public class AddToRoomType extends ReactMessage {
         send(new Message(addToRoomType, "True\0" + message.getMessage()), roomID);
     }
 
-    private void send(Message message, int roomID) throws IOException {
+    private void send(Message message, int roomID) {
         List<Integer> roomUsers = getRoomUsers(roomID);
         if( roomUsers == null ) return;
         for( Integer id : roomUsers )

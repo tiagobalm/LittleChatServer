@@ -7,7 +7,7 @@ import org.jetbrains.annotations.Contract;
 /**
  * Abstract class that creates the backup connection
  */
-public abstract  class BackUpConnection {
+public abstract class BackUpConnection {
     /**
      * Port that will be used to do the backup
      */
@@ -28,8 +28,6 @@ public abstract  class BackUpConnection {
      */
     ClientConnection backupChannel;
 
-    UnsentMessages messagesProtocol;
-
     BackUpConnectionStatus status;
 
     /**
@@ -42,8 +40,7 @@ public abstract  class BackUpConnection {
      */
     BackUpConnection() {
         try {
-            UnsentMessages.create(UnsentMessages.UnsentMessagesStatus.DONE);
-            messagesProtocol = UnsentMessages.getInstance();
+            UnsentMessages.create();
             status = new BackUpConnectionStatus();
         } catch (Exception e) {
             e.printStackTrace();
@@ -116,16 +113,6 @@ public abstract  class BackUpConnection {
     }
 
     public void initialProtocol() {
-    }
-
-    protected void reconnectThread() {
-        Thread thread = new Thread(() -> {
-            while (true) {
-                reconnectServer();
-            }
-        });
-        thread.setDaemon(true);
-        thread.start();
     }
 
     protected void reconnected() {

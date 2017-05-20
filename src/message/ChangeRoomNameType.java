@@ -35,7 +35,7 @@ public class ChangeRoomNameType extends ReactMessage {
         send(new Message(changeRoomNameType + " " + roomID,"True\0" + nName), roomID);
     }
 
-    private void send(Message message, int roomID) throws IOException {
+    private void send(Message message, int roomID) {
         List<Integer> roomUsers = UserRequests.getRoomUsers(roomID);
         if( roomUsers == null ) return;
         for( Integer id : roomUsers )

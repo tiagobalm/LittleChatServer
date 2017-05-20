@@ -67,21 +67,18 @@ public class Server {
      * Variable that indicates if the server is backed up or not
      */
     private final boolean isBackUpServer;
-
+    /**
+     * Known clients that are saved in this server
+     */
+    private final Map<Integer, ClientConnection> knownClients;
+    /**
+     * Messages saved in this server
+     */
+    private final MessagesQueue messages;
     /**
      * Socket that will be used in this server
      */
     private SSLServerSocket sslserversocket;
-
-    /**
-     * Known clients that are saved in this server
-     */
-    private Map<Integer, ClientConnection> knownClients;
-
-    /**
-     * Messages saved in this server
-     */
-    private MessagesQueue messages;
 
     /**
      * Server's constructor

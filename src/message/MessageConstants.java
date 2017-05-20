@@ -1,7 +1,7 @@
 package message;
 
-public class MessageConstants {
-    public static final String noMoreMessagesType = "NOMOREMESSAGES";
+class MessageConstants {
+    static final String noMoreMessagesType = "NOMOREMESSAGES";
     static final String loginType = "LOGIN";
     static final int loginSize= 5;
     static final String logoutType = "LOGOUT";

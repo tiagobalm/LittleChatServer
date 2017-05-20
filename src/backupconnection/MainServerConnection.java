@@ -79,11 +79,8 @@ public class MainServerConnection extends BackUpConnection {
 
     public void initialProtocol() {
         Thread thread = new Thread(() -> {
-            messagesProtocol.setStatus(UnsentMessages.UnsentMessagesStatus.WRITTING);
             UnsentMessages.send();
-            messagesProtocol.setStatus(UnsentMessages.UnsentMessagesStatus.READING);
             waitProtocol();
-            messagesProtocol.setStatus(UnsentMessages.UnsentMessagesStatus.DONE);
             status.finishedStatus();
         });
         thread.setDaemon(true);

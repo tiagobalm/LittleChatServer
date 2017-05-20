@@ -11,8 +11,8 @@ import java.io.IOException;
  * This class creates the connection on the client side
  */
 public class ClientConnection {
-    public static int serverID = -1;
-    public static int ownID = -2;
+    public static final int serverID = -1;
+    public static final int ownID = -2;
 
     /**
      * This represents the message streamed

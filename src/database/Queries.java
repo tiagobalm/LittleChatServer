@@ -8,14 +8,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class Queries {
-    public static Connection conn = null;
-    public static PreparedStatement pstmt = null;
-    public static ResultSet rs;
+class Queries {
+    private static PreparedStatement pstmt = null;
+    private static ResultSet rs;
 
-    public static void prepare(String sql) {
+    private static void prepare(String sql) {
         try {
-            conn = Database.getInstance().getConn();
+            Connection conn = Database.getInstance().getConn();
             pstmt  = conn.prepareStatement(sql);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -23,7 +22,7 @@ public class Queries {
         }
     }
 
-    public static void setParams(List<Object> params) {
+    private static void setParams(List<Object> params) {
         int i = 1;
         try {
             for( Object o : params ) {
@@ -44,17 +43,17 @@ public class Queries {
         setParams(params);
     }
 
-    public synchronized static void execute() throws SQLException {
+    synchronized static void execute() throws SQLException {
         rs = pstmt.executeQuery();
     }
 
-    public synchronized static void executeUpdate() throws SQLException {
+    synchronized static void executeUpdate() throws SQLException {
         pstmt.executeUpdate();
     }
 
 
     @Nullable
-    public static ResultSet getNext() {
+    static ResultSet getNext() {
         try {
             return rs.next() ? rs : null;
         } catch (SQLException e) {
@@ -63,7 +62,7 @@ public class Queries {
         }
     }
 
-    public static void close() {
+    static void close() {
         try {
             if( pstmt != null )
                     pstmt.close();

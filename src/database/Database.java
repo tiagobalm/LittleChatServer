@@ -11,7 +11,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class Database {
+class Database {
     private static final URL databaseURL;
     private static Database ourInstance;
     static {
@@ -47,10 +47,8 @@ public class Database {
             //This bytes[] has bytes in decimal format;
             //Convert it to hexadecimal format
             StringBuilder sb = new StringBuilder();
-            for(int i=0; i< bytes.length ;i++)
-            {
-                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
-            }
+            for (byte aByte : bytes)
+                sb.append(Integer.toString((aByte & 0xff) + 0x100, 16).substring(1));
             //Get complete hashed password in hex format
             generatedPassword = sb.toString();
         }

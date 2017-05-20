@@ -30,7 +30,7 @@ public class MessageType extends ReactMessage {
                 roomID, client.getClientID());
     }
 
-    private void send(Message message, int roomID, int userID) throws IOException {
+    private void send(Message message, int roomID, int userID) {
         List<Integer> roomUsers = getRoomUsers(roomID);
         if( roomUsers == null ) return;
         for( Integer id : roomUsers )

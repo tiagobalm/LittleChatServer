@@ -523,7 +523,6 @@ public class UserRequests {
         List<Message> messages = new ArrayList<>();
 
         String sql = "SELECT * FROM MessageClass";
-        List<Object> params = new ArrayList<>();
 
         synchronized (Queries.class) {
             Queries.query(sql, new ArrayList<>());

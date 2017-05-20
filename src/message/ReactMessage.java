@@ -9,7 +9,7 @@ import java.io.IOException;
 import static message.MessageConstants.*;
 
 public abstract class ReactMessage {
-    protected Message message;
+    final Message message;
     ReactMessage(Message message) {
         this.message = message;
     }
@@ -64,23 +64,23 @@ public abstract class ReactMessage {
         throw new AbstractMethodError("react in ReactMessage");
     }
 
-    protected boolean checkToServer(ClientConnection client) throws IOException {
+    boolean checkToServer(ClientConnection client) {
         if (ToServerMessage.analyze(this, client))
             return true;
         ToServerMessage.communicate(this);
         return false;
     }
 
-    protected boolean storeMessage(ClientConnection client) {
+    boolean storeMessage(ClientConnection client) {
         getMessageVariables(client);
         return query(client);
     }
 
-    protected void getMessageVariables(ClientConnection client) {
+    void getMessageVariables(ClientConnection client) {
         throw new AbstractMethodError("react in ReactMessage");
     }
 
-    protected boolean query(ClientConnection client) {
+    boolean query(ClientConnection client) {
         throw new AbstractMethodError("react in ReactMessage");
     }
 
