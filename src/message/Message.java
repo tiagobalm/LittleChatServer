@@ -7,16 +7,28 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * This class builds the message to be sent
+ * This class implements the Serializable interface
+ */
 public class Message implements Serializable {
+    /**
+     * Message's header and content
+     */
     private String header, message;
+    /**
+     * Optional message
+     */
     private List<String> optionalMessage;
+    /**
+     * Buffered image
+     */
     private BufferedImage image;
 
     /**
-     * Message.
-     *
-     * @param header  Message header.
-     * @param message Message text.
+     * Message's constructor
+     * @param header Message's header
+     * @param message Message's content
      */
     public Message(String header, String message) {
         this.header = header;
@@ -24,9 +36,9 @@ public class Message implements Serializable {
     }
 
     /**
-     * Message.
-     * @param header Message header.
-     * @param optionalMessage Optional Message.
+     * Message's cconstructor
+     * @param header Message's header
+     * @param optionalMessage Optional message
      */
     public Message(String header, List<String> optionalMessage) {
         this.header = header;
@@ -34,8 +46,8 @@ public class Message implements Serializable {
     }
 
     /**
-     * Message
-     * @param path Path to message.
+     * Message's constructor
+     * @param path Image's path
      */
     public Message(String path) {
         try {
@@ -46,14 +58,15 @@ public class Message implements Serializable {
     }
 
     /**
-     * Get optional message.
-     * @return optional message.
+     * This function gets the optional message
+     * @return The optional message
      */
     public List<String> getOptionalMessage() {
         return optionalMessage;
     }
 
     /**
+     <<<<<<< HEAD
      * Set optional messages.
      *
      * @param optionalMessage optional message.
@@ -63,24 +76,24 @@ public class Message implements Serializable {
     }
 
     /**
-     * Gey header message.
-     * @return header.
+     * This function gets the message's header
+     * @return The message's header
      */
     public String getHeader() {
         return header;
     }
 
     /**
-     * Get message.
-     * @return message.
+     * This function gets the message's content
+     * @return The message's content
      */
     public String getMessage() {
         return message;
     }
 
     /**
-     * Get Image.
-     * @return BufferedImage image.
+     * This function gets the buffered image
+     * @return The buffered image
      */
     public BufferedImage getImage() {
         return image;

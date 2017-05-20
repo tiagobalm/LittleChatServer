@@ -16,7 +16,6 @@ import java.net.InetSocketAddress;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -114,12 +113,11 @@ public class Server {
 
     /**
      * Server's main function
-     *
      * @param args Arguments used in the server's main function
      */
     public static void main(String[] args) {
         if (args.length != 1) return;
-        boolean isBackUpServer = Objects.equals("true", args[0]);
+        boolean isBackUpServer = args[0].equals("true");
         try {
             createServer(isBackUpServer);
         } catch (Exception e) {

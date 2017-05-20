@@ -10,11 +10,24 @@ import java.util.List;
 import static message.MessageConstants.getRoomSize;
 import static message.MessageConstants.getRoomType;
 
+/**
+ * This class creates a message to get room's information
+ * This class extends the ReactMessage class
+ */
 public class GetRoomType extends ReactMessage {
+    /**
+     * This is the GetRoomType's constructor
+     * @param message Message that will be used
+     */
     GetRoomType(Message message) {
         super(message);
     }
 
+    /**
+     * This functions builds the message needed
+     * @param client Client's connection
+     * @throws IOException Signals that an I/O exception of some sort has occurred
+     */
     @Override
     public void react(ClientConnection client) throws IOException {
         if( checkToServer(client) )
@@ -28,6 +41,11 @@ public class GetRoomType extends ReactMessage {
         send(client, new Message(getRoomType, message));
     }
 
+    /**
+     * This function gets the sent messages
+     * @param roomID Room's identifier
+     * @return A string with the sent messages
+     */
     @NotNull
     private String getSendMessage(int roomID) {
         String roomName = UserRequests.getRoomName(roomID);

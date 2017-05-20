@@ -10,14 +10,29 @@ import java.util.List;
 import static message.MessageConstants.changeRoomNameSize;
 import static message.MessageConstants.changeRoomNameType;
 
+/**
+ * This class represents the change room's name message
+ * This class extends the ReactMessage class
+ */
 public class ChangeRoomNameType extends ReactMessage {
     private int roomID;
     private String nName;
 
+    /**
+     * This is the ChangeRoomNameType's constructor
+     *
+     * @param message Message to be analyzed
+     */
     ChangeRoomNameType(Message message) {
         super(message);
     }
 
+    /**
+     * This function builds the message needed
+     *
+     * @param client Client's connection
+     * @throws IOException Signals that an I/O exception of some sort has occurred
+     */
     @Override
     public void react(ClientConnection client) throws IOException {
         if( checkToServer(client) )
@@ -28,13 +43,19 @@ public class ChangeRoomNameType extends ReactMessage {
             return;
         if (!storeMessage(client)) {
             send(client,
-                new Message(changeRoomNameType + " " + roomID,
-                        "False\0" + nName));
+                    new Message(changeRoomNameType + " " + roomID,
+                            "False\0" + nName));
             return;
         }
         send(new Message(changeRoomNameType + " " + roomID,"True\0" + nName), roomID);
     }
 
+    /**
+     * This function sends the message created
+     *
+     * @param message Message created
+     * @param roomID  Room's identifier
+     */
     private void send(Message message, int roomID) {
         List<Integer> roomUsers = UserRequests.getRoomUsers(roomID);
         if( roomUsers == null ) return;

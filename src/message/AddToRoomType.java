@@ -12,45 +12,29 @@ import static message.MessageConstants.addToRoomSize;
 import static message.MessageConstants.addToRoomType;
 
 public class AddToRoomType extends ReactMessage {
-    private int roomID;
-    private int userID;
     AddToRoomType(Message message) {
         super(message);
     }
 
     @Override
     public void react(ClientConnection client) throws IOException {
-        if( checkToServer(client) )
-            return;
         String[] parameters = message.getHeader().split(" ");
         if (parameters.length != addToRoomSize || client.getClientID() == null)
             return;
-        if (!storeMessage(client)) {
+        int roomID = Integer.parseInt(parameters[1]);
+        int userID = UserRequests.getUserID(message.getMessage());
+        try { UserRequests.insertUserRoom(userID, roomID);
+        } catch( SQLException e ) {
             send(client, new Message(addToRoomType, "False\0" + message.getMessage()));
             return;
         }
         send(new Message(addToRoomType, "True\0" + message.getMessage()), roomID);
     }
 
-    private void send(Message message, int roomID) {
+    private void send(Message message, int roomID) throws IOException {
         List<Integer> roomUsers = getRoomUsers(roomID);
         if( roomUsers == null ) return;
         for( Integer id : roomUsers )
             notifyUser(message, id);
-    }
-
-    protected void getMessageVariables(ClientConnection client) {
-        String[] parameters = message.getHeader().split(" ");
-        roomID = Integer.parseInt(parameters[1]);
-        userID = UserRequests.getUserID(message.getMessage());
-    }
-
-    protected boolean query(ClientConnection client) {
-        try {
-            UserRequests.insertUserRoom(userID, roomID);
-        } catch (SQLException e) {
-            return false;
-        }
-        return true;
     }
 }

@@ -11,47 +11,34 @@ import static message.MessageConstants.addRoomSize;
 import static message.MessageConstants.addRoomType;
 
 public class AddRoomType extends ReactMessage {
-    private int userID;
-    private int roomID;
-    private String roomName;
-
     AddRoomType(Message message) {
         super(message);
     }
 
     @Override
     public void react(ClientConnection client) throws IOException {
-        if( checkToServer(client) )
-            return;
         String[] parameters = message.getHeader().split(" ");
         if (parameters.length != addRoomSize || client.getClientID() == null)
             return;
 
-        if (!storeMessage(client)) {
-            send(client, new Message(addRoomType + " " + roomID, "False\0" + message.getMessage()));
-            return;
-        }
-        send(client, new Message(addRoomType + " " + roomID, "True\0" + message.getMessage()));
-
-        ClientConnection c;
-        if ((c = Server.getOurInstance().getClientByID(userID)) != null)
-            send(c, new Message(addRoomType + " " + roomID, "True\0" + roomName + "\0" + UserRequests.getUsername(client.getClientID())));
-    }
-
-    protected void getMessageVariables(ClientConnection client) {
         String[] values = message.getMessage().split("\0");
-        roomName = values[0];
-        userID = UserRequests.getUserID(values[1]);
-    }
+        String roomName = values[0];
+        String username = values[1];
+        Integer roomID = 0;
 
-    protected boolean query(ClientConnection client) {
+        int userID = UserRequests.getUserID(username);
         try {
             roomID = UserRequests.insertRoom(roomName);
             UserRequests.insertUserRoom(userID, roomID);
             UserRequests.insertUserRoom(client.getClientID(), roomID);
         } catch( SQLException e ) {
-            return false;
+            send(client, new Message(addRoomType + " " + roomID, "False\0" + message.getMessage()));
+            return;
         }
-        return true;
+        send(client, new Message(addRoomType + " " + roomID, "True\0" + message.getMessage()));
+
+        ClientConnection c = Server.getOurInstance().getClientByID(userID);
+        if(c != null)
+            send(c, new Message(addRoomType + " " + roomID, "True\0" + roomName + "\0" + UserRequests.getUsername(client.getClientID())));
     }
 }

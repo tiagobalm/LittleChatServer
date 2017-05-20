@@ -10,13 +10,28 @@ import static database.UserRequests.getUserID;
 import static database.UserRequests.insertFriends;
 import static message.MessageConstants.friendRequestSize;
 
+/**
+ * This class creates the friendship request's message
+ * This class extends the ReactMessage class
+ */
 public class FriendRequestType extends ReactMessage {
     private int userID;
 
+    /**
+     * This is the FriendRequestType's constructor
+     *
+     * @param message Message that will be analyzed
+     */
     FriendRequestType(Message message) {
         super(message);
     }
 
+    /**
+     * This function creates the message needed
+     *
+     * @param client Client's connection
+     * @throws IOException Signals that an I/O exception of some sort has occurred
+     */
     @Override
     public void react(ClientConnection client) throws IOException {
         if( checkToServer(client) )
