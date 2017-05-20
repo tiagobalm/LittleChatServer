@@ -36,6 +36,7 @@ public class MainServerConnection extends BackUpConnection {
         if (instance != null)
             throw new Exception("Singleton class BackUpConnection initiated twice");
         instance = new MainServerConnection();
+        instance.status.changeStatusThread();
         instance.initialProtocol();
     }
 
@@ -80,5 +81,20 @@ public class MainServerConnection extends BackUpConnection {
         messagesProtocol.setStatus(UnsentMessages.UnsentMessagesStatus.READING);
         waitProtocol();
         messagesProtocol.setStatus(UnsentMessages.UnsentMessagesStatus.DONE);
+        status.statusChange(BackUpConnectionStatus.ServerCommunicationStatus.OK);
+    }
+
+    protected void reconnectServer() {
+        Thread thread = new Thread(() -> {
+            startAcceptThread();
+            reconnected();
+        });
+        thread.setDaemon(true);
+        thread.start();
+    }
+
+    protected void reconnected() {
+        initialProtocol();
+        status.statusChange(BackUpConnectionStatus.ServerCommunicationStatus.OK);
     }
 }

@@ -1,5 +1,7 @@
 package communication;
 
+import backupconnection.BackUpConnection;
+import backupconnection.BackUpConnectionStatus;
 import message.Message;
 
 import javax.net.ssl.SSLSocket;
@@ -39,7 +41,11 @@ public class ClientConnection {
                     System.out.println("Wait message");
                     message = streamMessage.read();
                     System.out.println("Received message");
-                } catch (IOException | ClassNotFoundException e){
+                } catch (IOException e) {
+                    this.close();
+                    handleDisconnection();
+                    return;
+                } catch (ClassNotFoundException e) {
                     this.close();
                     return;
                 }
@@ -49,6 +55,10 @@ public class ClientConnection {
 
         read.setDaemon(true);
         read.start();
+    }
+
+    private void handleDisconnection() {
+        BackUpConnection.getInstance().getStatus().statusChange(BackUpConnectionStatus.ServerCommunicationStatus.RECONNECTING);
     }
 
     /**

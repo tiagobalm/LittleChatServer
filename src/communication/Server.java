@@ -27,14 +27,17 @@ public class Server {
      * Keystore path's string
      */
     private static final String keystorePath = Server.class.getResource("../keys/server.private").getPath();
+
     /**
      * Keystore pass
      */
     private static final String keystorePass = "littlechat";
+
     /**
      * Truststore path's name
      */
     private static final String truststorePath = Server.class.getResource("../keys/truststore").getPath();
+
     /**
      * Truststore pass
      */
@@ -44,30 +47,37 @@ public class Server {
      * Server's main port
      */
     private static final int MAIN_PORT = 15000;
+
     /**
      * Backup protocol's port
      */
     private static final int BACKUP_PORT = 14999;
+
     /**
      * Worker threads' number
      */
     private static final int numberOfWorkerThreads = 20;
+
     /**
      * Instance of server
      */
     private static Server ourInstance;
+
     /**
      * Variable that indicates if the server is backed up or not
      */
     private final boolean isBackUpServer;
+
     /**
      * Socket that will be used in this server
      */
     private SSLServerSocket sslserversocket;
+
     /**
      * Known clients that are saved in this server
      */
     private Map<Integer, ClientConnection> knownClients;
+
     /**
      * Messages saved in this server
      */

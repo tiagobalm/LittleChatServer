@@ -1,13 +1,10 @@
 package message;
 
-import backupconnection.BackUpConnection;
 import communication.ClientConnection;
 import communication.Server;
-import database.UserRequests;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import static message.MessageConstants.*;
 
@@ -68,31 +65,10 @@ public abstract class ReactMessage {
     }
 
     protected boolean checkToServer(ClientConnection client) throws IOException {
-        if (client.getClientID() != null) {
-            if (client.getClientID() == ClientConnection.ownID) {
-                send(BackUpConnection.getInstance().getBackupChannel(), message);
-                return true;
-            } else if (client.getClientID() == ClientConnection.serverID) {
-                storeMessage(client);
-                return true;
-            }
-        }
-        reactToServer();
+        if (ToServerMessage.analyze(this, client))
+            return true;
+        ToServerMessage.communicate(this);
         return false;
-    }
-
-    private void reactToServer() {
-        if (!BackUpConnection.getInstance().isOn)
-            try {
-                UserRequests.insertUnsentMessage(message);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        else {
-            ClientConnection cc = new ClientConnection(null);
-            cc.setClientID(ClientConnection.ownID);
-            Server.getOurInstance().getMessages().put(cc, message);
-        }
     }
 
     protected boolean storeMessage(ClientConnection client) {

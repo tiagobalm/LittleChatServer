@@ -12,20 +12,26 @@ public abstract  class BackUpConnection {
      * Port that will be used to do the backup
      */
     static final int BACKUP_PORT = 15001;
+
     /**
      * Backup connection's instance
      */
     static BackUpConnection instance;
+
     /**
      * Object that indicates if the thread can be unlocked
      */
     private final Object blockObject = new Object();
-    public boolean isOn = false;
+
     /**
      * Channel where the backup will be made
      */
     ClientConnection backupChannel;
+
     UnsentMessages messagesProtocol;
+
+    BackUpConnectionStatus status;
+
     /**
      * Variable that indicates if the protocol is finished or not
      */
@@ -38,6 +44,7 @@ public abstract  class BackUpConnection {
         try {
             UnsentMessages.create(UnsentMessages.UnsentMessagesStatus.DONE);
             messagesProtocol = UnsentMessages.getInstance();
+            status = new BackUpConnectionStatus();
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(-1);
@@ -59,6 +66,10 @@ public abstract  class BackUpConnection {
      */
     public ClientConnection getBackupChannel() {
         return backupChannel;
+    }
+
+    public BackUpConnectionStatus getStatus() {
+        return status;
     }
 
     /**
@@ -100,4 +111,21 @@ public abstract  class BackUpConnection {
 
     public void initialProtocol() {
     }
+
+    protected void reconnectThread() {
+        Thread thread = new Thread(() -> {
+            while (true) {
+                reconnectServer();
+            }
+        });
+        thread.setDaemon(true);
+        thread.start();
+    }
+
+    protected void reconnected() {
+    }
+
+    protected void reconnectServer() {
+    }
+
 }
