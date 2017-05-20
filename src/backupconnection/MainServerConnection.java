@@ -69,6 +69,7 @@ public class MainServerConnection extends BackUpConnection {
             SSLSocket sslSocket = (SSLSocket) sslserversocket.accept();
             backupChannel = new ClientConnection(sslSocket);
             backupChannel.setClientID(ClientConnection.serverID);
+            status.finishedStatus();
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(-1);
@@ -76,19 +77,20 @@ public class MainServerConnection extends BackUpConnection {
     }
 
     public void initialProtocol() {
-        messagesProtocol.setStatus(UnsentMessages.UnsentMessagesStatus.WRITTING);
-        UnsentMessages.send();
-        messagesProtocol.setStatus(UnsentMessages.UnsentMessagesStatus.READING);
-        waitProtocol();
-        messagesProtocol.setStatus(UnsentMessages.UnsentMessagesStatus.DONE);
-        status.statusChange(BackUpConnectionStatus.ServerCommunicationStatus.OK);
+        Thread thread = new Thread(() -> {
+            messagesProtocol.setStatus(UnsentMessages.UnsentMessagesStatus.WRITTING);
+            UnsentMessages.send();
+            messagesProtocol.setStatus(UnsentMessages.UnsentMessagesStatus.READING);
+            waitProtocol();
+            messagesProtocol.setStatus(UnsentMessages.UnsentMessagesStatus.DONE);
+            status.finishedStatus();
+        });
+        thread.setDaemon(true);
+        thread.start();
     }
 
     protected void reconnectServer() {
-        Thread thread = new Thread(() -> {
-            startAcceptThread();
-            reconnected();
-        });
+        Thread thread = new Thread(this::startAcceptThread);
         thread.setDaemon(true);
         thread.start();
     }

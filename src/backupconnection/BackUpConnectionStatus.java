@@ -3,7 +3,6 @@ package backupconnection;
 public class BackUpConnectionStatus {
     private final Object statusObject = new Object();
     private ServerCommunicationStatus status = ServerCommunicationStatus.INITIALIZING;
-
     BackUpConnectionStatus() {
     }
 
@@ -18,18 +17,29 @@ public class BackUpConnectionStatus {
                 waitStatusChange();
                 System.out.println(currStatus);
                 System.out.println(status);
-                if (currStatus != status) handleStatusChange(currStatus);
+                if (currStatus != status) handleStatusChange();
             }
         });
         thread.setDaemon(true);
         thread.start();
     }
 
-    private void handleStatusChange(ServerCommunicationStatus oldStatus) {
+    private void handleStatusChange() {
         if (status == ServerCommunicationStatus.RECONNECTING)
             BackUpConnection.getInstance().reconnectServer();
-        else if (oldStatus == ServerCommunicationStatus.RECONNECTING)
+        else if (status == ServerCommunicationStatus.SENDING_UNSENT)
+            BackUpConnection.getInstance().initialProtocol();
+    }
+
+    public void finishedStatus() {
+        if (status == ServerCommunicationStatus.INITIALIZING)
+            statusChange(ServerCommunicationStatus.SENDING_UNSENT);
+        else if (status == ServerCommunicationStatus.RECONNECTING) {
             BackUpConnection.getInstance().reconnected();
+            statusChange(ServerCommunicationStatus.SENDING_UNSENT);
+        } else if (status == ServerCommunicationStatus.SENDING_UNSENT) {
+            statusChange(ServerCommunicationStatus.OK);
+        }
     }
 
     public void statusChange(ServerCommunicationStatus newStatus) {
@@ -48,5 +58,5 @@ public class BackUpConnectionStatus {
         }
     }
 
-    public enum ServerCommunicationStatus {INITIALIZING, OK, RECONNECTING}
+    public enum ServerCommunicationStatus {INITIALIZING, OK, RECONNECTING, SENDING_UNSENT}
 }
