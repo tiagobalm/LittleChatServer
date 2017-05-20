@@ -40,10 +40,9 @@ public class ClientConnection {
         read = new Thread(() -> {
             Message message;
             while (true) {
+                System.out.println("Read thread: init: " + getClientID());
                 try {
-                    System.out.println("Wait message");
                     message = streamMessage.read();
-                    System.out.println("Received message");
                 } catch (IOException e) {
                     this.close();
                     handleDisconnection();
@@ -52,6 +51,7 @@ public class ClientConnection {
                     this.close();
                     return;
                 }
+                System.out.println("Read thread: final: " + getClientID());
                 Server.getOurInstance().getMessages().put(this, message);
             }
         });

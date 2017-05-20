@@ -21,7 +21,6 @@ public abstract class ReactMessage {
             return null;
 
         String mType = parameters[0];
-        System.out.println("Message react to : " + mType);
         switch (mType) {
             case loginType:
                 return new LoginType(message);
@@ -67,6 +66,7 @@ public abstract class ReactMessage {
     boolean checkToServer(ClientConnection client) {
         if (ToServerMessage.analyze(this, client))
             return true;
+        System.out.println(message.getHeader());
         ToServerMessage.communicate(this);
         return false;
     }
@@ -86,7 +86,6 @@ public abstract class ReactMessage {
 
     void notifyUser(Message message, int userID) {
         ClientConnection c = Server.getOurInstance().getClientByID(userID);
-
         if( c != null )
             send(c, message);
     }

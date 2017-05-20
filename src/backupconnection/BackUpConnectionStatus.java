@@ -6,6 +6,7 @@ import database.UserRequests;
 public class BackUpConnectionStatus {
     private final Object statusObject = new Object();
     private ServerCommunicationStatus status = ServerCommunicationStatus.INITIALIZING;
+
     BackUpConnectionStatus() {
     }
 

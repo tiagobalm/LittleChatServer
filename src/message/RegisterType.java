@@ -27,8 +27,10 @@ public class RegisterType extends ReactMessage {
         String[] parameters = message.getHeader().split(" ");
         if( parameters.length != registerSize )
             return ;
-        if (storeMessage(client))
+        if (storeMessage(client)) {
+            Server.getOurInstance().addClientID(UserRequests.getUserID(username), client);
             client.getStreamMessage().write(new Message("LOGIN", "True"));
+        }
         else
             client.getStreamMessage().write(new Message("False\0", ""));
     }
@@ -43,11 +45,7 @@ public class RegisterType extends ReactMessage {
 
     protected boolean query(ClientConnection client) {
         disconnectClient(client);
-        if (registerUser(username, password, ip, port)) {
-            Server.getOurInstance().addClientID(UserRequests.getUserID(username), client);
-            return true;
-        }
-        return false;
+        return registerUser(username, password, ip, port);
     }
 
     private boolean registerUser(String username,

@@ -26,8 +26,10 @@ public class LoginType extends ReactMessage {
         String[] parameters = message.getHeader().split(" ");
         if( parameters.length != loginSize )
             return ;
-        if (storeMessage(client))
+        if (storeMessage(client)) {
+            Server.getOurInstance().addClientID(UserRequests.getUserID(username), client);
             client.getStreamMessage().write(new Message("LOGIN", "True"));
+        }
         else
             client.getStreamMessage().write(new Message("LOGIN", "False"));
     }
@@ -42,11 +44,7 @@ public class LoginType extends ReactMessage {
 
     protected boolean query(ClientConnection client) {
         disconnectClient(client);
-        if (loginUser(username, password, ip, port)) {
-            Server.getOurInstance().addClientID(UserRequests.getUserID(username), client);
-            return true;
-        }
-        return false;
+        return loginUser(username, password, ip, port);
     }
 
     private boolean loginUser(String username,
