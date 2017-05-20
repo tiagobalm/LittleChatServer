@@ -100,10 +100,8 @@ public abstract class BackUpConnection {
      * This function waits for the protocol to be finished
      */
     private void waitProtocol() {
-        while (nNoMoreMessages != 2) {
-            System.out.println("Waiting");
+        while (nNoMoreMessages != 2)
             waitToBeAvailable();
-        }
         nNoMoreMessages = 0;
     }
 

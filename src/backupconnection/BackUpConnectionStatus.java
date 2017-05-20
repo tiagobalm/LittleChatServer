@@ -26,14 +26,14 @@ public class BackUpConnectionStatus {
     }
 
     private void handleStatusChange() {
-        System.out.println(status);
         if (status == ServerCommunicationStatus.RECONNECTING) {
             BackUpConnection.getInstance().reconnectServer();
             if (BackUpConnection.getInstance() instanceof BackUpServerConnection)
                 Server.getOurInstance().startClients();
-        }
-        else if (status == ServerCommunicationStatus.SENDING_UNSENT)
+        } else if (status == ServerCommunicationStatus.SENDING_UNSENT) {
+            System.out.println("Start initial protocol");
             BackUpConnection.getInstance().initialProtocol();
+        }
     }
 
     void finishedStatus() {

@@ -139,8 +139,8 @@ public class Server {
         startWorkerThreads();
 
         startBackUpConnection();
-        if (!isBackUpServer)
-            startClients();
+        /*if (!isBackUpServer)
+            startClients();*/
     }
 
     public void startClients() {
@@ -150,6 +150,7 @@ public class Server {
 
     public void disconnectClients() {
         try {
+            System.out.println("Closing socket");
             sslserversocket.close();
         } catch (IOException e) {
             e.printStackTrace();

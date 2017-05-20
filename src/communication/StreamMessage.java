@@ -15,6 +15,7 @@ public class StreamMessage {
      * SSL socket to be read/write the streamed message
      */
     private final SSLSocket sslSocket;
+    private final Object inputObject = new Object();
     /**
      *  Input stream
      */
@@ -69,7 +70,8 @@ public class StreamMessage {
      * @throws IOException Signals that an I/O exception of some sort has occurred. This class is the general class of exceptions produced by failed or interrupted I/O operations
      */
     public void write(Message message) throws IOException {
-        synchronized (sslSocket) {
+        synchronized (inputObject) {
+            System.out.println("Sending message to ma boy");
             os.writeObject(message);
             os.flush();
         }
