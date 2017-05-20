@@ -61,7 +61,7 @@ public class BackUpServerConnection extends BackUpConnection {
     }
 
     protected void reconnectServer() {
-        if (executeReconnect.isShutdown()) {
+        if (executeReconnect == null || executeReconnect.isShutdown()) {
             Runnable startServer = this::startServer;
             executeReconnect = Executors.newScheduledThreadPool(1);
             executeReconnect.scheduleAtFixedRate(startServer, 0, 5, TimeUnit.SECONDS);

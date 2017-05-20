@@ -1,6 +1,6 @@
 package message;
 
-import backupconnection.BackUpConnection;
+import communication.ClientConnection;
 import communication.Server;
 import database.UserRequests;
 
@@ -21,9 +21,12 @@ public class UnsentMessages {
     public static void send() {
         List<Message> unsentMessages = getUnsentMessages();
         synchronized (Server.getOurInstance().getMessages()) {
+            ClientConnection me = new ClientConnection(null);
+            me.setClientID(ClientConnection.ownID);
+
             for (Message m : unsentMessages)
-                Server.getOurInstance().getMessages().put(BackUpConnection.getInstance().getBackupChannel(), m);
-            Server.getOurInstance().getMessages().put(BackUpConnection.getInstance().getBackupChannel(),
+                Server.getOurInstance().getMessages().put(me, m);
+            Server.getOurInstance().getMessages().put(me,
                     new Message(MessageConstants.noMoreMessagesType, ""));
         }
     }
