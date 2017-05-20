@@ -32,7 +32,7 @@ public class UnsentMessages {
             for (Message m : unsentMessages)
                 Server.getOurInstance().getMessages().put(BackUpConnection.getInstance().getBackupChannel(), m);
             Server.getOurInstance().getMessages().put(BackUpConnection.getInstance().getBackupChannel(),
-                    new Message(MessageConstants.noMoreMessagesType));
+                    new Message(MessageConstants.noMoreMessagesType, ""));
         }
     }
 
