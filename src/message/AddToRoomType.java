@@ -23,13 +23,13 @@ public class AddToRoomType extends ReactMessage {
             return;
         int roomID = Integer.parseInt(parameters[1]);
         int userID = UserRequests.getUserID(message.getMessage());
-        try {
-            UserRequests.insertUserRoom(userID, roomID);
-        } catch (SQLException e) {
-            send(client, new Message(addToRoomType, "False\0" + message.getMessage()));
+
+        try { UserRequests.insertUserRoom(userID, roomID);
+        } catch( SQLException e ) {
+            send(client, new Message(addToRoomType + " " + roomID, "False\0" + message.getMessage()));
             return;
         }
-        send(new Message(addToRoomType, "True\0" + message.getMessage()), roomID);
+        send(new Message(addToRoomType + " " + roomID, "True\0" + message.getMessage()), roomID);
     }
 
     private void send(Message message, int roomID) throws IOException {
