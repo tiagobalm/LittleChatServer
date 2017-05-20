@@ -24,7 +24,6 @@ public class MainServerConnection extends BackUpConnection {
     private MainServerConnection() {
         super();
         status.changeStatusThread();
-        System.out.println("end");
     }
 
     /**
@@ -36,7 +35,6 @@ public class MainServerConnection extends BackUpConnection {
         if (instance != null)
             throw new Exception("Singleton class BackUpConnection initiated twice");
         instance = new MainServerConnection();
-        System.out.println("instance");
         instance.startServer();
         instance.startAcceptThread();
     }
@@ -65,7 +63,6 @@ public class MainServerConnection extends BackUpConnection {
      * This function starts the acceptation of threads
      */
     protected void startAcceptThread() {
-        System.out.println("Starting accept thread");
         try {
             SSLSocket sslSocket = (SSLSocket) sslserversocket.accept();
             backupChannel = new ClientConnection(sslSocket);

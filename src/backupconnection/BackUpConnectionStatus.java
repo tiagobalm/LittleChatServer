@@ -18,8 +18,6 @@ public class BackUpConnectionStatus {
             while (true) {
                 ServerCommunicationStatus currStatus = status;
                 waitStatusChange();
-                System.out.println(currStatus);
-                System.out.println(status);
                 handleStatusChange();
             }
         });
@@ -28,6 +26,7 @@ public class BackUpConnectionStatus {
     }
 
     private void handleStatusChange() {
+        System.out.println(status);
         if (status == ServerCommunicationStatus.RECONNECTING) {
             BackUpConnection.getInstance().reconnectServer();
             if (BackUpConnection.getInstance() instanceof BackUpServerConnection)

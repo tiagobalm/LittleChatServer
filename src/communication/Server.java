@@ -185,6 +185,7 @@ public class Server {
 
         try {
             sslserversocket = (SSLServerSocket) factory.createServerSocket(port);
+            sslserversocket.setReuseAddress(true);
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(-1);
