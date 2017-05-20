@@ -34,8 +34,9 @@ public class Worker implements Runnable {
 
     /**
      * This function decodes the worker thread
+     *
      * @param clientConnection Client's connection
-     * @param message Message that will be used
+     * @param message          Message that will be used
      */
     private void decode(ClientConnection clientConnection, Message message) {
         ReactMessage reactMessage = ReactMessage.getReactMessage(message);

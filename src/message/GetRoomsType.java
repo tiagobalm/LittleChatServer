@@ -18,6 +18,7 @@ import static message.MessageConstants.getRoomsType;
 public class GetRoomsType extends ReactMessage {
     /**
      * This is the GetRoomsType's constructor
+     *
      * @param message Message that will be used
      */
     GetRoomsType(Message message) {
@@ -26,6 +27,7 @@ public class GetRoomsType extends ReactMessage {
 
     /**
      * This function creates the message needed
+     *
      * @param client Client's connection
      * @throws IOException Signals that an I/O exception of some sort has occurred
      */
@@ -47,6 +49,7 @@ public class GetRoomsType extends ReactMessage {
 
     /**
      * This function gets all the user's information
+     *
      * @param str String that has the chat room's information
      * @return A string with the user's information
      */

@@ -22,6 +22,7 @@ public class GetMessagesType extends ReactMessage{
 
     /**
      * This is the GetMessagesType's constructor
+     *
      * @param message Message that will be used
      */
     GetMessagesType(Message message) {
@@ -30,6 +31,7 @@ public class GetMessagesType extends ReactMessage{
 
     /**
      * This function builds the message needed
+     *
      * @param client Client's connection
      * @throws IOException Signals that an I/O exception of some sort has occurred
      */

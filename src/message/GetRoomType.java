@@ -17,6 +17,7 @@ import static message.MessageConstants.getRoomType;
 public class GetRoomType extends ReactMessage {
     /**
      * This is the GetRoomType's constructor
+     *
      * @param message Message that will be used
      */
     GetRoomType(Message message) {
@@ -25,6 +26,7 @@ public class GetRoomType extends ReactMessage {
 
     /**
      * This functions builds the message needed
+     *
      * @param client Client's connection
      * @throws IOException Signals that an I/O exception of some sort has occurred
      */
@@ -43,6 +45,7 @@ public class GetRoomType extends ReactMessage {
 
     /**
      * This function gets the sent messages
+     *
      * @param roomID Room's identifier
      * @return A string with the sent messages
      */

@@ -17,6 +17,7 @@ import static message.MessageConstants.logoutType;
 public class LogoutType extends ReactMessage {
     /**
      * This is the LogoutType's constructor
+     *
      * @param message Message that will be used
      */
     LogoutType(Message message) {
@@ -25,6 +26,7 @@ public class LogoutType extends ReactMessage {
 
     /**
      * This function creates the message needed
+     *
      * @param client Client's connection
      * @throws IOException Signals that an I/O exception of some sort has occurred
      */

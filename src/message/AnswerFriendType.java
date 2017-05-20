@@ -23,7 +23,7 @@ public class AnswerFriendType extends ReactMessage {
 
         int userID = getUserID(parameters[1]);
 
-        if(message.getMessage().equals("True")) {
+        if (message.getMessage().equals("True")) {
             try {
                 updateFriendshipStatus(client.getClientID(), userID);
             } catch (SQLException e) {

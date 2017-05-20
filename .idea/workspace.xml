@@ -3,16 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="327ad98e-5c2b-4b3a-805e-2a02ff6aeb3f" name="Default" comment="Merge branch 'master' into backup&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/communication/Server.java&#10;#&#9;src/database/Database.java&#10;#&#9;src/database/Queries.java&#10;#&#9;src/database/UserRequests.java&#10;#&#9;src/message/AddRoomType.java&#10;#&#9;src/message/AddToRoomType.java&#10;#&#9;src/message/AnswerFriendType.java&#10;#&#9;src/message/ChangeRoomNameType.java&#10;#&#9;src/message/DeleteFromRoomType.java&#10;#&#9;src/message/FriendRequestType.java&#10;#&#9;src/message/LoginType.java&#10;#&#9;src/message/Message.java&#10;#&#9;src/message/MessageConstants.java&#10;#&#9;src/message/MessageType.java&#10;#&#9;src/message/ReactMessage.java&#10;#&#9;src/message/RegisterType.java">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/communication/Server.java" afterPath="$PROJECT_DIR$/src/communication/Server.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/database/Database.java" afterPath="$PROJECT_DIR$/src/database/Database.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/database/Queries.java" afterPath="$PROJECT_DIR$/src/database/Queries.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/database/UserRequests.java" afterPath="$PROJECT_DIR$/src/database/UserRequests.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/AddRoomType.java" afterPath="$PROJECT_DIR$/src/message/AddRoomType.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/AddToRoomType.java" afterPath="$PROJECT_DIR$/src/message/AddToRoomType.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/AnswerFriendType.java" afterPath="$PROJECT_DIR$/src/message/AnswerFriendType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/ChangeRoomNameType.java" afterPath="$PROJECT_DIR$/src/message/ChangeRoomNameType.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/DeleteFromRoomType.java" afterPath="$PROJECT_DIR$/src/message/DeleteFromRoomType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/FriendRequestType.java" afterPath="$PROJECT_DIR$/src/message/FriendRequestType.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/GetFriendRequestsType.java" afterPath="$PROJECT_DIR$/src/message/GetFriendRequestsType.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/GetFriendsType.java" afterPath="$PROJECT_DIR$/src/message/GetFriendsType.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/GetMessagesType.java" afterPath="$PROJECT_DIR$/src/message/GetMessagesType.java" />
@@ -20,9 +16,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/GetRoomsType.java" afterPath="$PROJECT_DIR$/src/message/GetRoomsType.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/LoginType.java" afterPath="$PROJECT_DIR$/src/message/LoginType.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/LogoutType.java" afterPath="$PROJECT_DIR$/src/message/LogoutType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/Message.java" afterPath="$PROJECT_DIR$/src/message/Message.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/MessageConstants.java" afterPath="$PROJECT_DIR$/src/message/MessageConstants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/MessageType.java" afterPath="$PROJECT_DIR$/src/message/MessageType.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/ReactMessage.java" afterPath="$PROJECT_DIR$/src/message/ReactMessage.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/RegisterType.java" afterPath="$PROJECT_DIR$/src/message/RegisterType.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/worker/Worker.java" afterPath="$PROJECT_DIR$/src/worker/Worker.java" />
@@ -112,11 +105,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserRequests.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UserRequests.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/database/UserRequests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="562" column="32" lean-forward="false" selection-start-line="562" selection-start-column="32" selection-end-line="562" selection-end-column="32" />
+            <state relative-caret-position="80">
+              <caret line="552" column="0" lean-forward="true" selection-start-line="552" selection-start-column="0" selection-end-line="552" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DeleteFromRoomType.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/message/DeleteFromRoomType.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="169">
+              <caret line="43" column="24" lean-forward="true" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -126,17 +129,7 @@
         <entry file="file://$PROJECT_DIR$/src/message/ChangeRoomNameType.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="103">
-              <caret line="55" column="38" lean-forward="false" selection-start-line="55" selection-start-column="38" selection-end-line="55" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginType.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/message/LoginType.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="71" column="23" lean-forward="false" selection-start-line="71" selection-start-column="23" selection-end-line="71" selection-end-column="23" />
+              <caret line="56" column="39" lean-forward="false" selection-start-line="56" selection-start-column="39" selection-end-line="56" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -176,7 +169,7 @@
         <entry file="file://$PROJECT_DIR$/src/message/ReactMessage.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="365">
-              <caret line="108" column="0" lean-forward="false" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
+              <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
               <folding>
                 <element signature="method#send#0;class#ReactMessage#0" expanded="false" />
               </folding>
@@ -188,7 +181,7 @@
         <entry file="file://$PROJECT_DIR$/src/message/RegisterType.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="365">
-              <caret line="86" column="17" lean-forward="true" selection-start-line="86" selection-start-column="17" selection-end-line="86" selection-end-column="17" />
+              <caret line="90" column="17" lean-forward="true" selection-start-line="90" selection-start-column="17" selection-end-line="90" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -222,6 +215,8 @@
       <find>syst</find>
       <find>SENDING_UNSENT</find>
       <find>backupChannel</find>
+      <find>head</find>
+      <find>master</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -279,8 +274,6 @@
         <option value="$PROJECT_DIR$/src/communication/ClientConnection.java" />
         <option value="$PROJECT_DIR$/src/database/Database.java" />
         <option value="$PROJECT_DIR$/src/database/Queries.java" />
-        <option value="$PROJECT_DIR$/src/database/UserRequests.java" />
-        <option value="$PROJECT_DIR$/src/message/DeleteFromRoomType.java" />
         <option value="$PROJECT_DIR$/src/message/FriendRequestType.java" />
         <option value="$PROJECT_DIR$/src/message/LoginType.java" />
         <option value="$PROJECT_DIR$/src/message/MessageConstants.java" />
@@ -291,6 +284,8 @@
         <option value="$PROJECT_DIR$/src/message/ChangeRoomNameType.java" />
         <option value="$PROJECT_DIR$/src/communication/Server.java" />
         <option value="$PROJECT_DIR$/src/communication/Server.java" />
+        <option value="$PROJECT_DIR$/src/database/UserRequests.java" />
+        <option value="$PROJECT_DIR$/src/message/DeleteFromRoomType.java" />
       </list>
     </option>
   </component>
@@ -492,6 +487,11 @@
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="Sqlite (Xerial)" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="SearchEverywhereHistoryKey" value="Sending&#9;PSI&#9;JAVA://backupconnection.BackUpConnectionStatus.ServerCommunicationStatus#SENDING_UNSENT" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/database" />
+    </key>
   </component>
   <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
     <UpdatedFiles>
@@ -1113,13 +1113,6 @@
       <workItem from="1495280709740" duration="9439000" />
       <workItem from="1495290199471" duration="4221000" />
     </task>
-    <task id="LOCAL-00001" summary="EchoServer working">
-      <created>1494086864893</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1494086864893</updated>
-    </task>
     <task id="LOCAL-00002" summary="Working on the database">
       <created>1494174254495</created>
       <option name="number" value="00002" />
@@ -1456,15 +1449,21 @@
       <option name="project" value="LOCAL" />
       <updated>1495293319885</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Merge branch 'master' into backup&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/communication/Server.java&#10;#&#9;src/database/Database.java&#10;#&#9;src/database/Queries.java&#10;#&#9;src/database/UserRequests.java&#10;#&#9;src/message/AddRoomType.java&#10;#&#9;src/message/AddToRoomType.java&#10;#&#9;src/message/AnswerFriendType.java&#10;#&#9;src/message/ChangeRoomNameType.java&#10;#&#9;src/message/DeleteFromRoomType.java&#10;#&#9;src/message/FriendRequestType.java&#10;#&#9;src/message/LoginType.java&#10;#&#9;src/message/Message.java&#10;#&#9;src/message/MessageConstants.java&#10;#&#9;src/message/MessageType.java&#10;#&#9;src/message/ReactMessage.java&#10;#&#9;src/message/RegisterType.java">
+      <created>1495295897496</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1495295897496</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="160941000" />
+    <option name="totallyTimeSpent" value="161342000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="30" width="1366" height="738" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1481,7 +1480,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26666668" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26666668" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47566718" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12878788" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1701,6 +1700,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
           <caret line="45" column="17" lean-forward="false" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1839,14 +1839,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/message/DeleteFromRoomType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/message/FriendRequestType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="16">
@@ -1858,7 +1850,7 @@
     <entry file="file://$PROJECT_DIR$/src/message/LoginType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="127">
-          <caret line="71" column="23" lean-forward="false" selection-start-line="71" selection-start-column="23" selection-end-line="71" selection-end-column="23" />
+          <caret line="72" column="23" lean-forward="false" selection-start-line="72" selection-start-column="23" selection-end-line="72" selection-end-column="23" />
           <folding />
         </state>
       </provider>
@@ -1882,7 +1874,7 @@
     <entry file="file://$PROJECT_DIR$/src/message/ReactMessage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="365">
-          <caret line="108" column="0" lean-forward="false" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
+          <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
           <folding>
             <element signature="method#send#0;class#ReactMessage#0" expanded="false" />
           </folding>
@@ -1892,7 +1884,7 @@
     <entry file="file://$PROJECT_DIR$/src/message/RegisterType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="365">
-          <caret line="86" column="17" lean-forward="true" selection-start-line="86" selection-start-column="17" selection-end-line="86" selection-end-column="17" />
+          <caret line="90" column="17" lean-forward="true" selection-start-line="90" selection-start-column="17" selection-end-line="90" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -1916,7 +1908,7 @@
     <entry file="file://$PROJECT_DIR$/src/message/ChangeRoomNameType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="103">
-          <caret line="55" column="38" lean-forward="false" selection-start-line="55" selection-start-column="38" selection-end-line="55" selection-end-column="38" />
+          <caret line="56" column="39" lean-forward="false" selection-start-line="56" selection-start-column="39" selection-end-line="56" selection-end-column="39" />
           <folding />
         </state>
       </provider>
@@ -1950,8 +1942,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/database/UserRequests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="562" column="32" lean-forward="false" selection-start-line="562" selection-start-column="32" selection-end-line="562" selection-end-column="32" />
+        <state relative-caret-position="80">
+          <caret line="552" column="0" lean-forward="true" selection-start-line="552" selection-start-column="0" selection-end-line="552" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/message/DeleteFromRoomType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="43" column="24" lean-forward="true" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
           <folding />
         </state>
       </provider>

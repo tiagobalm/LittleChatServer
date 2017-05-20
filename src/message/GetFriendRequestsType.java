@@ -16,6 +16,7 @@ import static message.MessageConstants.getFriendRequestsType;
 public class GetFriendRequestsType  extends ReactMessage{
     /**
      * This is the GetFriendRequestType's constructor
+     *
      * @param message Message to be analyzed
      */
     GetFriendRequestsType(Message message) {
@@ -24,6 +25,7 @@ public class GetFriendRequestsType  extends ReactMessage{
 
     /**
      * This function builds the message needed
+     *
      * @param client Client's connection
      * @throws IOException Signals that an I/O exception of some sort has occurred
      */

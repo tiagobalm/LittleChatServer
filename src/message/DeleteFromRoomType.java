@@ -50,7 +50,6 @@ public class DeleteFromRoomType extends ReactMessage {
 
     /**
      * This function sends the message created
-     *
      * @param message Message created
      * @param roomID  Room's identifier
      * @throws IOException Signals that an I/O exception of some sort has occurred

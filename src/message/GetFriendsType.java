@@ -16,6 +16,7 @@ import static message.MessageConstants.getFriendsType;
 public class GetFriendsType extends ReactMessage{
     /**
      * This is the GetFriendsType's constructor
+     *
      * @param message Message to be analyzed
      */
     GetFriendsType(Message message) {
@@ -24,6 +25,7 @@ public class GetFriendsType extends ReactMessage{
 
     /**
      * This function creates the message needed
+     *
      * @param client Client's connection
      * @throws IOException Signals that an I/O exception of some sort has occurred
      */

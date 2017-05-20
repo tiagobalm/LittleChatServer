@@ -75,13 +75,15 @@ public class RegisterType extends ReactMessage {
                                  String password, String ip, String port) {
         try {
             return UserRequests.registerUser(username, password, ip, Integer.parseInt(port));
-        } catch (SQLException e) {return false;
+        } catch (SQLException e) {
+            return false;
         }
 
     }
 
     /**
      * This function disconnects the client
+     *
      * @param client Client's connection
      */
     private void disconnectClient(ClientConnection client) {

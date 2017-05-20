@@ -110,8 +110,9 @@ public abstract class ReactMessage {
 
     /**
      * This function sends the message to the respective user
+     *
      * @param message Message to be sent
-     * @param userID User's iderntifier
+     * @param userID  User's iderntifier
      */
     void notifyUser(Message message, int userID) {
         ClientConnection c = Server.getOurInstance().getClientByID(userID);

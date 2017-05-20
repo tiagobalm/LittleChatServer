@@ -23,8 +23,9 @@ public class AddToRoomType extends ReactMessage {
             return;
         int roomID = Integer.parseInt(parameters[1]);
         int userID = UserRequests.getUserID(message.getMessage());
-        try { UserRequests.insertUserRoom(userID, roomID);
-        } catch( SQLException e ) {
+        try {
+            UserRequests.insertUserRoom(userID, roomID);
+        } catch (SQLException e) {
             send(client, new Message(addToRoomType, "False\0" + message.getMessage()));
             return;
         }

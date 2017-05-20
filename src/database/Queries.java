@@ -70,6 +70,7 @@ class Queries {
 
     /**
      * This function executes the queries
+     *
      * @throws SQLException This is an exception that provides information on a database access error or other errors
      */
     synchronized static void execute() throws SQLException {

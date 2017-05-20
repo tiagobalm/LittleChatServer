@@ -84,6 +84,7 @@ public class UserRequests {
 
     /**
      * This function verifies if the password written when a user logs in is the same as the password saved in the database
+     *
      * @param username User's username
      * @param password User's password
      * @return true if the password is correct, false otherwise
