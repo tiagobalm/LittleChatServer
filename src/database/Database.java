@@ -25,25 +25,13 @@ public class Database {
 
     private Connection conn;
 
-    @Contract(pure = true)
-    public static Database getInstance() {
-        return ourInstance;
-    }
-
-    public Connection getConn() throws SQLException {
-        if( conn.isClosed() )
-            conn = connect();
-        return conn;
-    }
-
     private Database() throws SQLException {
         conn = connect();
     }
 
-    private Connection connect() throws SQLException {
-        // SQLite connection string
-        String url = "jdbc:sqlite:" + databaseURL.toExternalForm();
-        return DriverManager.getConnection(url);
+    @Contract(pure = true)
+    public static Database getInstance() {
+        return ourInstance;
     }
 
     public static String getSecurePassword(String passwordToHash, byte[] salt)
@@ -83,5 +71,17 @@ public class Database {
         sr.nextBytes(salt);
         //return salt
         return salt;
+    }
+
+    public Connection getConn() throws SQLException {
+        if (conn.isClosed())
+            conn = connect();
+        return conn;
+    }
+
+    private Connection connect() throws SQLException {
+        // SQLite connection string
+        String url = "jdbc:sqlite:" + databaseURL.getPath();
+        return DriverManager.getConnection(url);
     }
 }

@@ -141,8 +141,21 @@ public class Server {
         startWorkerThreads();
 
         startBackUpConnection();
+        if (!isBackUpServer)
+            startClients();
+    }
+
+    public void startClients() {
         startServer(isBackUpServer ? BACKUP_PORT : MAIN_PORT);
         startAcceptThread();
+    }
+
+    public void disconnectClients() {
+        try {
+            sslserversocket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

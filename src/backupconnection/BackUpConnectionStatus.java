@@ -1,5 +1,8 @@
 package backupconnection;
 
+import communication.Server;
+import database.UserRequests;
+
 public class BackUpConnectionStatus {
     private final Object statusObject = new Object();
     private ServerCommunicationStatus status = ServerCommunicationStatus.INITIALIZING;
@@ -17,7 +20,7 @@ public class BackUpConnectionStatus {
                 waitStatusChange();
                 System.out.println(currStatus);
                 System.out.println(status);
-                if (currStatus != status) handleStatusChange();
+                handleStatusChange();
             }
         });
         thread.setDaemon(true);
@@ -25,13 +28,16 @@ public class BackUpConnectionStatus {
     }
 
     private void handleStatusChange() {
-        if (status == ServerCommunicationStatus.RECONNECTING)
+        if (status == ServerCommunicationStatus.RECONNECTING) {
             BackUpConnection.getInstance().reconnectServer();
+            if (BackUpConnection.getInstance() instanceof BackUpServerConnection)
+                Server.getOurInstance().startClients();
+        }
         else if (status == ServerCommunicationStatus.SENDING_UNSENT)
             BackUpConnection.getInstance().initialProtocol();
     }
 
-    public void finishedStatus() {
+    void finishedStatus() {
         if (status == ServerCommunicationStatus.INITIALIZING)
             statusChange(ServerCommunicationStatus.SENDING_UNSENT);
         else if (status == ServerCommunicationStatus.RECONNECTING) {
@@ -39,6 +45,23 @@ public class BackUpConnectionStatus {
             statusChange(ServerCommunicationStatus.SENDING_UNSENT);
         } else if (status == ServerCommunicationStatus.SENDING_UNSENT) {
             statusChange(ServerCommunicationStatus.OK);
+            UserRequests.deleteUnsentMessages();
+            if (BackUpConnection.getInstance() instanceof BackUpServerConnection) {
+                Thread thread = new Thread(() -> {
+                    boolean again;
+                    do {
+                        try {
+                            again = false;
+                            Server.getOurInstance().getMessages().waitEmpty();
+                        } catch (InterruptedException e) {
+                            again = true;
+                        }
+                    } while (again);
+                    Server.getOurInstance().disconnectClients();
+                });
+                thread.setDaemon(true);
+                thread.start();
+            }
         }
     }
 

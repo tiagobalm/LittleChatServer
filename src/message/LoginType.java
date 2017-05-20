@@ -51,9 +51,9 @@ public class LoginType extends ReactMessage {
 
     private boolean loginUser(String username,
                                 String password, String ip, String port) {
-        try { UserRequests.loginUser(username, password, ip, Integer.parseInt(port));
+        try {
+            return UserRequests.loginUser(username, password, ip, Integer.parseInt(port));
         } catch (SQLException e) {return false;}
-        return true;
     }
 
     private void disconnectClient(ClientConnection client) {

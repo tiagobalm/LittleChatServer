@@ -45,6 +45,8 @@ public class MessagesQueue {
         do {
             try {
                 entry = messages.take();
+                if (messages.isEmpty())
+                    messages.notify();
             } catch (InterruptedException e) {
                 if (nTries >= MAXTRIES) {
                     e.printStackTrace();
@@ -57,5 +59,12 @@ public class MessagesQueue {
         } while (next);
 
         return entry;
+    }
+
+    public void waitEmpty() throws InterruptedException {
+        synchronized (messages) {
+            while (!messages.isEmpty())
+                messages.wait();
+        }
     }
 }

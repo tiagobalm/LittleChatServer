@@ -62,10 +62,11 @@ public class BackUpServerConnection extends BackUpConnection {
     }
 
     protected void reconnectServer() {
-        Runnable helloRunnable = this::startServer;
-
-        ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
-        executor.scheduleAtFixedRate(helloRunnable, 0, 5, TimeUnit.SECONDS);
+        if (executeReconnect.isShutdown()) {
+            Runnable startServer = this::startServer;
+            executeReconnect = Executors.newScheduledThreadPool(1);
+            executeReconnect.scheduleAtFixedRate(startServer, 0, 5, TimeUnit.SECONDS);
+        }
     }
 
     protected void reconnected() {

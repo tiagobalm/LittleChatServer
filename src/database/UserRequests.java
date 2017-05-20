@@ -475,7 +475,7 @@ public class UserRequests {
     }
 
     public static void insertUnsentMessage(Message message) throws SQLException {
-        String sql = "INSERT MessageClass(header, message) VALUES (?, ?)";
+        String sql = "INSERT INTO MessageClass(header, message) VALUES (?, ?)";
         List<Object> params = new ArrayList<>();
         params.add(message.getHeader());
         params.add(message.getMessage());
@@ -495,14 +495,15 @@ public class UserRequests {
             } catch (SQLException ignore) {
             }
 
-            sql = "INSERT StringList(messageClassID, string) VALUES (?, ?)";
+            sql = "INSERT INTO StringList(messageClassID, string) VALUES (?, ?)";
             params.add(messageID);
 
-            for( String str : message.getOptionalMessage() ) {
-                params.add(str);
-                basicUpdate(sql, params);
-                params.remove(params.size());
-            }
+            if (message.getOptionalMessage() != null)
+                for (String str : message.getOptionalMessage()) {
+                    params.add(str);
+                    basicUpdate(sql, params);
+                    params.remove(params.size());
+                }
         }
     }
 
