@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="327ad98e-5c2b-4b3a-805e-2a02ff6aeb3f" name="Default" comment="Fixed status">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+    <list default="true" id="327ad98e-5c2b-4b3a-805e-2a02ff6aeb3f" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/backupconnection/BackUpServerConnection.java" afterPath="$PROJECT_DIR$/src/backupconnection/BackUpServerConnection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/backupconnection/MainServerConnection.java" afterPath="$PROJECT_DIR$/src/backupconnection/MainServerConnection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/communication/Server.java" afterPath="$PROJECT_DIR$/src/communication/Server.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
-    <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,73 +29,12 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="BackUpConnectionStatus.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/backupconnection/BackUpConnectionStatus.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="12" column="30" lean-forward="false" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
-              <folding>
-                <element signature="method#BackUpConnectionStatus#0;class#BackUpConnectionStatus#0" expanded="false" />
-                <element signature="e#293#294#0" expanded="false" />
-                <element signature="e#322#323#0" expanded="false" />
-                <element signature="method#changeStatusThread#0;class#BackUpConnectionStatus#0" expanded="false" />
-                <element signature="e#392#705#0" expanded="false" />
-                <element signature="method#handleStatusChange#0;class#BackUpConnectionStatus#0" expanded="false" />
-                <element signature="method#finishedStatus#0;class#BackUpConnectionStatus#0" expanded="false" />
-                <element signature="method#statusChange#0;class#BackUpConnectionStatus#0" expanded="false" />
-                <element signature="method#waitStatusChange#0;class#BackUpConnectionStatus#0" expanded="false" />
-                <element signature="class#ServerCommunicationStatus#0;class#BackUpConnectionStatus#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BackUpServerConnection.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/backupconnection/BackUpServerConnection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="864">
-              <caret line="75" column="4" lean-forward="false" selection-start-line="75" selection-start-column="4" selection-end-line="86" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="docComment;class#BackUpServerConnection#0" expanded="false" />
-                <element signature="docComment;field#BACKUP_IP#0;class#BackUpServerConnection#0" expanded="false" />
-                <element signature="docComment;method#BackUpServerConnection#0;class#BackUpServerConnection#0" expanded="false" />
-                <element signature="docComment;method#initBackUpConnection#0;class#BackUpServerConnection#0" expanded="false" />
-                <element signature="docComment;method#startServer#0;class#BackUpServerConnection#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainServerConnection.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/backupconnection/MainServerConnection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="816">
-              <caret line="93" column="31" lean-forward="false" selection-start-line="93" selection-start-column="31" selection-end-line="93" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="docComment;class#MainServerConnection#0" expanded="false" />
-                <element signature="docComment;field#sslserversocket#0;class#MainServerConnection#0" expanded="false" />
-                <element signature="docComment;method#MainServerConnection#0;class#MainServerConnection#0" expanded="false" />
-                <element signature="method#MainServerConnection#0;class#MainServerConnection#0" expanded="false" />
-                <element signature="docComment;method#initBackUpConnection#0;class#MainServerConnection#0" expanded="false" />
-                <element signature="method#initBackUpConnection#0;class#MainServerConnection#0" expanded="false" />
-                <element signature="docComment;method#startServer#0;class#MainServerConnection#0" expanded="false" />
-                <element signature="docComment;method#startAcceptThread#0;class#MainServerConnection#0" expanded="false" />
-                <element signature="method#initialProtocol#0;class#MainServerConnection#0" expanded="false" />
-                <element signature="method#reconnected#0;class#MainServerConnection#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Server.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/communication/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1296">
-              <caret line="143" column="39" lean-forward="false" selection-start-line="143" selection-start-column="39" selection-end-line="143" selection-end-column="39" />
+            <state relative-caret-position="188">
+              <caret line="153" column="25" lean-forward="false" selection-start-line="153" selection-start-column="25" selection-end-line="153" selection-end-column="25" />
               <folding>
-                <element signature="imports" expanded="false" />
                 <element signature="docComment;class#Server#0" expanded="false" />
                 <element signature="docComment;field#keystorePath#0;class#Server#0" expanded="false" />
                 <element signature="docComment;field#keystorePass#0;class#Server#0" expanded="false" />
@@ -110,26 +51,19 @@
                 <element signature="docComment;method#Server#0;class#Server#0" expanded="false" />
                 <element signature="docComment;method#createServer#0;class#Server#0" expanded="false" />
                 <element signature="docComment;method#getOurInstance#0;class#Server#0" expanded="false" />
-                <element signature="e#2957#2958#0" expanded="false" />
-                <element signature="e#2991#2992#0" expanded="false" />
                 <element signature="docComment;method#main#0;class#Server#0" expanded="false" />
                 <element signature="docComment;method#initialize#0;class#Server#0" expanded="false" />
                 <element signature="docComment;method#startBackUpConnection#0;class#Server#0" expanded="false" />
-                <element signature="method#startBackUpConnection#0;class#Server#0" expanded="false" />
                 <element signature="docComment;method#startServer#0;class#Server#0" expanded="false" />
                 <element signature="docComment;method#startAcceptThread#0;class#Server#0" expanded="false" />
                 <element signature="method#startAcceptThread#0;class#Server#0" expanded="false" />
-                <element signature="e#5226#5539#0" expanded="false" />
+                <element signature="e#5388#5701#0" expanded="false" />
                 <element signature="docComment;method#startWorkerThreads#0;class#Server#0" expanded="false" />
                 <element signature="method#startWorkerThreads#0;class#Server#0" expanded="false" />
                 <element signature="docComment;method#setSystemSettings#0;class#Server#0" expanded="false" />
                 <element signature="method#setSystemSettings#0;class#Server#0" expanded="false" />
                 <element signature="docComment;method#getMessages#0;class#Server#0" expanded="false" />
-                <element signature="e#6551#6552#0" expanded="false" />
-                <element signature="e#6582#6583#0" expanded="false" />
                 <element signature="docComment;method#getClientByID#0;class#Server#0" expanded="false" />
-                <element signature="e#6805#6806#0" expanded="false" />
-                <element signature="e#6848#6849#0" expanded="false" />
                 <element signature="docComment;method#addClientID#0;class#Server#0" expanded="false" />
                 <element signature="method#addClientID#0;class#Server#0" expanded="false" />
                 <element signature="docComment;method#removeByID#0;class#Server#0" expanded="false" />
@@ -139,49 +73,36 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BackUpConnection.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/backupconnection/BackUpConnection.java">
+      <file leaf-file-name="MainServerConnection.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/backupconnection/MainServerConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="111" column="16" lean-forward="false" selection-start-line="111" selection-start-column="16" selection-end-line="111" selection-end-column="16" />
+            <state relative-caret-position="92">
+              <caret line="24" column="16" lean-forward="true" selection-start-line="24" selection-start-column="16" selection-end-line="25" selection-end-column="36" />
               <folding>
-                <element signature="docComment;class#BackUpConnection#0" expanded="false" />
-                <element signature="docComment;field#BACKUP_PORT#0;class#BackUpConnection#0" expanded="false" />
-                <element signature="docComment;field#instance#0;class#BackUpConnection#0" expanded="false" />
-                <element signature="docComment;field#blockObject#0;class#BackUpConnection#0" expanded="false" />
-                <element signature="docComment;field#backupChannel#0;class#BackUpConnection#0" expanded="false" />
-                <element signature="docComment;field#protocolFinished#0;class#BackUpConnection#0" expanded="false" />
-                <element signature="docComment;method#BackUpConnection#0;class#BackUpConnection#0" expanded="false" />
-                <element signature="method#BackUpConnection#0;class#BackUpConnection#0" expanded="false" />
-                <element signature="docComment;method#getInstance#0;class#BackUpConnection#0" expanded="false" />
-                <element signature="docComment;method#getBackupChannel#0;class#BackUpConnection#0" expanded="false" />
-                <element signature="docComment;method#notifyAvailable#0;class#BackUpConnection#0" expanded="false" />
-                <element signature="method#notifyAvailable#0;class#BackUpConnection#0" expanded="false" />
-                <element signature="docComment;method#waitToBeAvailable#0;class#BackUpConnection#0" expanded="false" />
-                <element signature="method#waitToBeAvailable#0;class#BackUpConnection#0" expanded="false" />
-                <element signature="docComment;method#waitProtocol#0;class#BackUpConnection#0" expanded="false" />
-                <element signature="method#waitProtocol#0;class#BackUpConnection#0" expanded="false" />
-                <element signature="docComment;method#setFinishedProtocol#0;class#BackUpConnection#0" expanded="false" />
-                <element signature="method#setFinishedProtocol#0;class#BackUpConnection#0" expanded="false" />
-                <element signature="method#reconnectThread#0;class#BackUpConnection#0" expanded="false" />
+                <element signature="docComment;class#MainServerConnection#0" expanded="false" />
+                <element signature="docComment;field#sslserversocket#0;class#MainServerConnection#0" expanded="false" />
+                <element signature="docComment;method#MainServerConnection#0;class#MainServerConnection#0" expanded="false" />
+                <element signature="docComment;method#initBackUpConnection#0;class#MainServerConnection#0" expanded="false" />
+                <element signature="docComment;method#startServer#0;class#MainServerConnection#0" expanded="false" />
+                <element signature="docComment;method#startAcceptThread#0;class#MainServerConnection#0" expanded="false" />
+                <element signature="method#reconnected#0;class#MainServerConnection#0" expanded="false" />
+                <marker date="1495277388321" expanded="false" signature="3169:3233" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClientConnection.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/communication/ClientConnection.java">
+      <file leaf-file-name="BackUpServerConnection.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/backupconnection/BackUpServerConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="864">
-              <caret line="59" column="17" lean-forward="false" selection-start-line="59" selection-start-column="17" selection-end-line="59" selection-end-column="17" />
+            <state relative-caret-position="182">
+              <caret line="30" column="36" lean-forward="false" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
               <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#2015#2016#0" expanded="false" />
-                <element signature="e#2046#2047#0" expanded="false" />
-                <element signature="e#2187#2188#0" expanded="false" />
-                <element signature="e#2216#2217#0" expanded="false" />
-                <element signature="e#2348#2349#0" expanded="false" />
-                <element signature="e#2384#2385#0" expanded="false" />
+                <element signature="docComment;class#BackUpServerConnection#0" expanded="false" />
+                <element signature="docComment;field#BACKUP_IP#0;class#BackUpServerConnection#0" expanded="false" />
+                <element signature="docComment;method#BackUpServerConnection#0;class#BackUpServerConnection#0" expanded="false" />
+                <element signature="docComment;method#initBackUpConnection#0;class#BackUpServerConnection#0" expanded="false" />
+                <element signature="docComment;method#startServer#0;class#BackUpServerConnection#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -196,6 +117,13 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>backupChannel</find>
+      <find>BackUpS</find>
+      <find>initBackUpConnection</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -256,14 +184,14 @@
         <option value="$PROJECT_DIR$/src/message/NoMoreMessagesType.java" />
         <option value="$PROJECT_DIR$/src/message/UnsentMessages.java" />
         <option value="$PROJECT_DIR$/src/message/ReactMessage.java" />
-        <option value="$PROJECT_DIR$/src/communication/Server.java" />
-        <option value="$PROJECT_DIR$/src/communication/Server.java" />
         <option value="$PROJECT_DIR$/src/backupconnection/BackUpConnection.java" />
         <option value="$PROJECT_DIR$/src/communication/ClientConnection.java" />
         <option value="$PROJECT_DIR$/src/message/ToServerMessage.java" />
-        <option value="$PROJECT_DIR$/src/backupconnection/BackUpServerConnection.java" />
         <option value="$PROJECT_DIR$/src/backupconnection/BackUpConnectionStatus.java" />
+        <option value="$PROJECT_DIR$/src/communication/Server.java" />
+        <option value="$PROJECT_DIR$/src/communication/Server.java" />
         <option value="$PROJECT_DIR$/src/backupconnection/MainServerConnection.java" />
+        <option value="$PROJECT_DIR$/src/backupconnection/BackUpServerConnection.java" />
       </list>
     </option>
   </component>
@@ -274,7 +202,6 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="683" />
     <option name="y" value="30" />
     <option name="width" value="673" />
     <option name="height" value="738" />
@@ -294,28 +221,25 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="BackUpLittleServer" />
+              <option name="myItemId" value="LittleChatServer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="BackUpLittleServer" />
+              <option name="myItemId" value="LittleChatServer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="BackUpLittleServer" />
+              <option name="myItemId" value="LittleChatServer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="BackUpLittleServer" />
+              <option name="myItemId" value="LittleChatServer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -325,11 +249,29 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="BackUpLittleServer" />
+              <option name="myItemId" value="LittleChatServer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="BackUpLittleServer" />
+              <option name="myItemId" value="LittleChatServer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="communication" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LittleChatServer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LittleChatServer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -343,14 +285,15 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Ignored.Files" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.idea/workspace.xml" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -374,7 +317,7 @@
       </extension>
       <option name="MAIN_CLASS_NAME" value="communication.Server" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="true" />
+      <option name="PROGRAM_PARAMETERS" value="false" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -800,6 +743,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value=",SHOW_FIELDS" />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="327ad98e-5c2b-4b3a-805e-2a02ff6aeb3f" name="Default" comment="" />
@@ -850,7 +796,7 @@
       <workItem from="1495199090158" duration="5530000" />
       <workItem from="1495212865136" duration="9808000" />
       <workItem from="1495267047698" duration="7221000" />
-      <workItem from="1495277027822" duration="486000" />
+      <workItem from="1495277007860" duration="377000" />
     </task>
     <task id="LOCAL-00001" summary="EchoServer working">
       <created>1494086864893</created>
@@ -1104,50 +1050,43 @@
       <option name="project" value="LOCAL" />
       <updated>1495223989963</updated>
     </task>
-    <task id="LOCAL-00037" summary="Fixed status">
-      <created>1495276670529</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1495276670529</updated>
-    </task>
-    <option name="localTasksCounter" value="38" />
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="145771000" />
+    <option name="totallyTimeSpent" value="145627000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="683" y="30" width="673" height="738" extended-state="4" />
+    <frame x="0" y="30" width="673" height="738" extended-state="4" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32786885" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3065574" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.342812" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3065574" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2185008" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2185008" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22991249" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20833333" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980111" sideWeight="0.4827586" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39836067" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39836067" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980111" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32786885" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.249375" sideWeight="0.5258427" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1187,6 +1126,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
+    <MESSAGE value="Friend table and inserts changed" />
     <MESSAGE value="Fixed database queries" />
     <MESSAGE value="Message consts has package private" />
     <MESSAGE value="Fixed communication problems" />
@@ -1211,8 +1151,7 @@
     <MESSAGE value="SQL queries unsent messages; verification connected servers" />
     <MESSAGE value="Added new server communication features" />
     <MESSAGE value="Stopping for a break" />
-    <MESSAGE value="Fixed status" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed status" />
+    <option name="LAST_COMMIT_MESSAGE" value="Stopping for a break" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1222,6 +1161,10 @@
       <option name="time" value="63" />
     </breakpoint-manager>
     <watches-manager />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/worker/Worker.java">
@@ -1290,6 +1233,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="41" column="62" lean-forward="false" selection-start-line="41" selection-start-column="62" selection-end-line="41" selection-end-column="62" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1318,6 +1262,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
           <caret line="448" column="31" lean-forward="false" selection-start-line="448" selection-start-column="31" selection-end-line="448" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1370,13 +1317,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/message/Message.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="85" column="1" lean-forward="true" selection-start-line="85" selection-start-column="1" selection-end-line="85" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/message/RegisterType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="244">
@@ -1419,14 +1359,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/message/UnsentMessages.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="30" column="33" lean-forward="false" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/message/ReactMessage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
@@ -1445,7 +1377,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
           <caret line="19" column="47" lean-forward="false" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1453,9 +1384,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
           <caret line="35" column="51" lean-forward="true" selection-start-line="35" selection-start-column="51" selection-end-line="35" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1468,127 +1396,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/communication/ClientConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="864">
+        <state relative-caret-position="186">
           <caret line="59" column="17" lean-forward="false" selection-start-line="59" selection-start-column="17" selection-end-line="59" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2015#2016#0" expanded="false" />
-            <element signature="e#2046#2047#0" expanded="false" />
-            <element signature="e#2187#2188#0" expanded="false" />
-            <element signature="e#2216#2217#0" expanded="false" />
-            <element signature="e#2348#2349#0" expanded="false" />
-            <element signature="e#2384#2385#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/backupconnection/BackUpServerConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="864">
-          <caret line="75" column="4" lean-forward="false" selection-start-line="75" selection-start-column="4" selection-end-line="86" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="docComment;class#BackUpServerConnection#0" expanded="false" />
-            <element signature="docComment;field#BACKUP_IP#0;class#BackUpServerConnection#0" expanded="false" />
-            <element signature="docComment;method#BackUpServerConnection#0;class#BackUpServerConnection#0" expanded="false" />
-            <element signature="docComment;method#initBackUpConnection#0;class#BackUpServerConnection#0" expanded="false" />
-            <element signature="docComment;method#startServer#0;class#BackUpServerConnection#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/backupconnection/BackUpConnectionStatus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="12" column="30" lean-forward="false" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
-          <folding>
-            <element signature="method#BackUpConnectionStatus#0;class#BackUpConnectionStatus#0" expanded="false" />
-            <element signature="e#293#294#0" expanded="false" />
-            <element signature="e#322#323#0" expanded="false" />
-            <element signature="method#changeStatusThread#0;class#BackUpConnectionStatus#0" expanded="false" />
-            <element signature="e#392#705#0" expanded="false" />
-            <element signature="method#handleStatusChange#0;class#BackUpConnectionStatus#0" expanded="false" />
-            <element signature="method#finishedStatus#0;class#BackUpConnectionStatus#0" expanded="false" />
-            <element signature="method#statusChange#0;class#BackUpConnectionStatus#0" expanded="false" />
-            <element signature="method#waitStatusChange#0;class#BackUpConnectionStatus#0" expanded="false" />
-            <element signature="class#ServerCommunicationStatus#0;class#BackUpConnectionStatus#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/backupconnection/MainServerConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="93" column="31" lean-forward="false" selection-start-line="93" selection-start-column="31" selection-end-line="93" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="docComment;class#MainServerConnection#0" expanded="false" />
-            <element signature="docComment;field#sslserversocket#0;class#MainServerConnection#0" expanded="false" />
-            <element signature="docComment;method#MainServerConnection#0;class#MainServerConnection#0" expanded="false" />
-            <element signature="method#MainServerConnection#0;class#MainServerConnection#0" expanded="false" />
-            <element signature="docComment;method#initBackUpConnection#0;class#MainServerConnection#0" expanded="false" />
-            <element signature="method#initBackUpConnection#0;class#MainServerConnection#0" expanded="false" />
-            <element signature="docComment;method#startServer#0;class#MainServerConnection#0" expanded="false" />
-            <element signature="docComment;method#startAcceptThread#0;class#MainServerConnection#0" expanded="false" />
-            <element signature="method#initialProtocol#0;class#MainServerConnection#0" expanded="false" />
-            <element signature="method#reconnected#0;class#MainServerConnection#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/communication/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1296">
-          <caret line="143" column="39" lean-forward="false" selection-start-line="143" selection-start-column="39" selection-end-line="143" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="docComment;class#Server#0" expanded="false" />
-            <element signature="docComment;field#keystorePath#0;class#Server#0" expanded="false" />
-            <element signature="docComment;field#keystorePass#0;class#Server#0" expanded="false" />
-            <element signature="docComment;field#truststorePath#0;class#Server#0" expanded="false" />
-            <element signature="docComment;field#truststorePass#0;class#Server#0" expanded="false" />
-            <element signature="docComment;field#MAIN_PORT#0;class#Server#0" expanded="false" />
-            <element signature="docComment;field#BACKUP_PORT#0;class#Server#0" expanded="false" />
-            <element signature="docComment;field#numberOfWorkerThreads#0;class#Server#0" expanded="false" />
-            <element signature="docComment;field#ourInstance#0;class#Server#0" expanded="false" />
-            <element signature="docComment;field#isBackUpServer#0;class#Server#0" expanded="false" />
-            <element signature="docComment;field#sslserversocket#0;class#Server#0" expanded="false" />
-            <element signature="docComment;field#knownClients#0;class#Server#0" expanded="false" />
-            <element signature="docComment;field#messages#0;class#Server#0" expanded="false" />
-            <element signature="docComment;method#Server#0;class#Server#0" expanded="false" />
-            <element signature="docComment;method#createServer#0;class#Server#0" expanded="false" />
-            <element signature="docComment;method#getOurInstance#0;class#Server#0" expanded="false" />
-            <element signature="e#2957#2958#0" expanded="false" />
-            <element signature="e#2991#2992#0" expanded="false" />
-            <element signature="docComment;method#main#0;class#Server#0" expanded="false" />
-            <element signature="docComment;method#initialize#0;class#Server#0" expanded="false" />
-            <element signature="docComment;method#startBackUpConnection#0;class#Server#0" expanded="false" />
-            <element signature="method#startBackUpConnection#0;class#Server#0" expanded="false" />
-            <element signature="docComment;method#startServer#0;class#Server#0" expanded="false" />
-            <element signature="docComment;method#startAcceptThread#0;class#Server#0" expanded="false" />
-            <element signature="method#startAcceptThread#0;class#Server#0" expanded="false" />
-            <element signature="e#5226#5539#0" expanded="false" />
-            <element signature="docComment;method#startWorkerThreads#0;class#Server#0" expanded="false" />
-            <element signature="method#startWorkerThreads#0;class#Server#0" expanded="false" />
-            <element signature="docComment;method#setSystemSettings#0;class#Server#0" expanded="false" />
-            <element signature="method#setSystemSettings#0;class#Server#0" expanded="false" />
-            <element signature="docComment;method#getMessages#0;class#Server#0" expanded="false" />
-            <element signature="e#6551#6552#0" expanded="false" />
-            <element signature="e#6582#6583#0" expanded="false" />
-            <element signature="docComment;method#getClientByID#0;class#Server#0" expanded="false" />
-            <element signature="e#6805#6806#0" expanded="false" />
-            <element signature="e#6848#6849#0" expanded="false" />
-            <element signature="docComment;method#addClientID#0;class#Server#0" expanded="false" />
-            <element signature="method#addClientID#0;class#Server#0" expanded="false" />
-            <element signature="docComment;method#removeByID#0;class#Server#0" expanded="false" />
-            <element signature="method#removeByID#0;class#Server#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/backupconnection/BackUpConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
+        <state relative-caret-position="296">
           <caret line="111" column="16" lean-forward="false" selection-start-line="111" selection-start-column="16" selection-end-line="111" selection-end-column="16" />
           <folding>
             <element signature="docComment;class#BackUpConnection#0" expanded="false" />
@@ -1610,6 +1425,124 @@
             <element signature="docComment;method#setFinishedProtocol#0;class#BackUpConnection#0" expanded="false" />
             <element signature="method#setFinishedProtocol#0;class#BackUpConnection#0" expanded="false" />
             <element signature="method#reconnectThread#0;class#BackUpConnection#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/message/Message.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="39" column="28" lean-forward="false" selection-start-line="39" selection-start-column="28" selection-end-line="39" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1225#1226#0" expanded="false" />
+            <element signature="e#1263#1264#0" expanded="false" />
+            <element signature="e#1432#1433#0" expanded="false" />
+            <element signature="e#1486#1487#0" expanded="false" />
+            <element signature="e#1585#1586#0" expanded="false" />
+            <element signature="e#1614#1615#0" expanded="false" />
+            <element signature="e#1708#1709#0" expanded="false" />
+            <element signature="e#1738#1739#0" expanded="false" />
+            <element signature="e#1847#1848#0" expanded="false" />
+            <element signature="e#1875#1876#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/message/UnsentMessages.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding>
+            <element signature="e#359#360#0" expanded="true" />
+            <element signature="e#395#396#0" expanded="true" />
+            <element signature="e#709#710#0" expanded="true" />
+            <element signature="e#740#741#0" expanded="true" />
+            <element signature="e#1306#1307#0" expanded="true" />
+            <element signature="e#1361#1362#0" expanded="true" />
+            <element signature="e#1419#1420#0" expanded="true" />
+            <element signature="e#1455#1456#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/backupconnection/BackUpConnectionStatus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="15" column="30" lean-forward="false" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/communication/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="153" column="25" lean-forward="false" selection-start-line="153" selection-start-column="25" selection-end-line="153" selection-end-column="25" />
+          <folding>
+            <element signature="docComment;class#Server#0" expanded="false" />
+            <element signature="docComment;field#keystorePath#0;class#Server#0" expanded="false" />
+            <element signature="docComment;field#keystorePass#0;class#Server#0" expanded="false" />
+            <element signature="docComment;field#truststorePath#0;class#Server#0" expanded="false" />
+            <element signature="docComment;field#truststorePass#0;class#Server#0" expanded="false" />
+            <element signature="docComment;field#MAIN_PORT#0;class#Server#0" expanded="false" />
+            <element signature="docComment;field#BACKUP_PORT#0;class#Server#0" expanded="false" />
+            <element signature="docComment;field#numberOfWorkerThreads#0;class#Server#0" expanded="false" />
+            <element signature="docComment;field#ourInstance#0;class#Server#0" expanded="false" />
+            <element signature="docComment;field#isBackUpServer#0;class#Server#0" expanded="false" />
+            <element signature="docComment;field#sslserversocket#0;class#Server#0" expanded="false" />
+            <element signature="docComment;field#knownClients#0;class#Server#0" expanded="false" />
+            <element signature="docComment;field#messages#0;class#Server#0" expanded="false" />
+            <element signature="docComment;method#Server#0;class#Server#0" expanded="false" />
+            <element signature="docComment;method#createServer#0;class#Server#0" expanded="false" />
+            <element signature="docComment;method#getOurInstance#0;class#Server#0" expanded="false" />
+            <element signature="docComment;method#main#0;class#Server#0" expanded="false" />
+            <element signature="docComment;method#initialize#0;class#Server#0" expanded="false" />
+            <element signature="docComment;method#startBackUpConnection#0;class#Server#0" expanded="false" />
+            <element signature="docComment;method#startServer#0;class#Server#0" expanded="false" />
+            <element signature="docComment;method#startAcceptThread#0;class#Server#0" expanded="false" />
+            <element signature="method#startAcceptThread#0;class#Server#0" expanded="false" />
+            <element signature="e#5388#5701#0" expanded="false" />
+            <element signature="docComment;method#startWorkerThreads#0;class#Server#0" expanded="false" />
+            <element signature="method#startWorkerThreads#0;class#Server#0" expanded="false" />
+            <element signature="docComment;method#setSystemSettings#0;class#Server#0" expanded="false" />
+            <element signature="method#setSystemSettings#0;class#Server#0" expanded="false" />
+            <element signature="docComment;method#getMessages#0;class#Server#0" expanded="false" />
+            <element signature="docComment;method#getClientByID#0;class#Server#0" expanded="false" />
+            <element signature="docComment;method#addClientID#0;class#Server#0" expanded="false" />
+            <element signature="method#addClientID#0;class#Server#0" expanded="false" />
+            <element signature="docComment;method#removeByID#0;class#Server#0" expanded="false" />
+            <element signature="method#removeByID#0;class#Server#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/backupconnection/MainServerConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="24" column="16" lean-forward="true" selection-start-line="24" selection-start-column="16" selection-end-line="25" selection-end-column="36" />
+          <folding>
+            <element signature="docComment;class#MainServerConnection#0" expanded="false" />
+            <element signature="docComment;field#sslserversocket#0;class#MainServerConnection#0" expanded="false" />
+            <element signature="docComment;method#MainServerConnection#0;class#MainServerConnection#0" expanded="false" />
+            <element signature="docComment;method#initBackUpConnection#0;class#MainServerConnection#0" expanded="false" />
+            <element signature="docComment;method#startServer#0;class#MainServerConnection#0" expanded="false" />
+            <element signature="docComment;method#startAcceptThread#0;class#MainServerConnection#0" expanded="false" />
+            <element signature="method#reconnected#0;class#MainServerConnection#0" expanded="false" />
+            <marker date="1495277388321" expanded="false" signature="3169:3233" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/backupconnection/BackUpServerConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="30" column="36" lean-forward="false" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
+          <folding>
+            <element signature="docComment;class#BackUpServerConnection#0" expanded="false" />
+            <element signature="docComment;field#BACKUP_IP#0;class#BackUpServerConnection#0" expanded="false" />
+            <element signature="docComment;method#BackUpServerConnection#0;class#BackUpServerConnection#0" expanded="false" />
+            <element signature="docComment;method#initBackUpConnection#0;class#BackUpServerConnection#0" expanded="false" />
+            <element signature="docComment;method#startServer#0;class#BackUpServerConnection#0" expanded="false" />
           </folding>
         </state>
       </provider>
