@@ -17,7 +17,6 @@ public class BackUpConnectionStatus {
     void changeStatusThread() {
         Thread thread = new Thread(() -> {
             while (true) {
-                ServerCommunicationStatus currStatus = status;
                 waitStatusChange();
                 handleStatusChange();
             }
