@@ -1,7 +1,6 @@
 package backupconnection;
 
 import communication.ClientConnection;
-import message.UnsentMessages;
 
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
@@ -71,15 +70,5 @@ public class BackUpServerConnection extends BackUpConnection {
 
     protected void reconnected() {
         executeReconnect.shutdown();
-    }
-
-    public void initialProtocol() {
-        Thread thread = new Thread(() -> {
-            waitProtocol();
-            UnsentMessages.send();
-            status.finishedStatus();
-        });
-        thread.setDaemon(true);
-        thread.start();
     }
 }

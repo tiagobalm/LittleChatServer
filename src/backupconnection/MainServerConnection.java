@@ -1,7 +1,6 @@
 package backupconnection;
 
 import communication.ClientConnection;
-import message.UnsentMessages;
 
 import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
@@ -72,16 +71,6 @@ public class MainServerConnection extends BackUpConnection {
             e.printStackTrace();
             System.exit(-1);
         }
-    }
-
-    public void initialProtocol() {
-        Thread thread = new Thread(() -> {
-            UnsentMessages.send();
-            waitProtocol();
-            status.finishedStatus();
-        });
-        thread.setDaemon(true);
-        thread.start();
     }
 
     protected void reconnectServer() {

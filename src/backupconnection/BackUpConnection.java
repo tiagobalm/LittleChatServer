@@ -33,7 +33,7 @@ public abstract class BackUpConnection {
     /**
      * Variable that indicates if the protocol is finished or not
      */
-    private boolean protocolFinished = false;
+    private int nNoMoreMessages = 0;
 
     /**
      * BackupConnection's constructor
@@ -99,20 +99,34 @@ public abstract class BackUpConnection {
     /**
      * This function waits for the protocol to be finished
      */
-    void waitProtocol() {
-        while (!protocolFinished)
+    private void waitProtocol() {
+        while (nNoMoreMessages != 2) {
+            System.out.println("Waiting");
             waitToBeAvailable();
+        }
+        nNoMoreMessages = 0;
     }
 
     /**
      * This function finishes the protocol
      */
     public void setFinishedProtocol() {
-        protocolFinished = true;
-        notifyAvailable();
+        nNoMoreMessages++;// = true;
+        if (nNoMoreMessages == 2) {
+            System.out.println("Notify");
+            notifyAvailable();
+        }
     }
 
-    public void initialProtocol() {
+    void initialProtocol() {
+        Thread thread = new Thread(() -> {
+            UnsentMessages.send();
+            waitProtocol();
+            System.out.println("Over");
+            status.finishedStatus();
+        });
+        thread.setDaemon(true);
+        thread.start();
     }
 
     protected void reconnected() {

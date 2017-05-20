@@ -12,6 +12,7 @@ import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
 import javax.net.ssl.SSLSocket;
 import java.io.IOException;
+import java.net.InetSocketAddress;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
@@ -184,8 +185,13 @@ public class Server {
         SSLServerSocketFactory factory = (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
 
         try {
-            sslserversocket = (SSLServerSocket) factory.createServerSocket(port);
-            sslserversocket.setReuseAddress(true);
+            if (sslserversocket != null) {
+                sslserversocket.setReuseAddress(true);
+                sslserversocket.bind(new InetSocketAddress(port));
+            } else {
+                sslserversocket = (SSLServerSocket) factory.createServerSocket(port);
+                sslserversocket.setReuseAddress(true);
+            }
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(-1);
