@@ -27,22 +27,16 @@ public class Worker implements Runnable {
     public void run() {
         while (true) {
             Map.Entry<ClientConnection, Message> entry;
-            try {
-                entry = Server.getOurInstance().getMessages().take();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-                continue;
-            }
-
-            System.out.println("Process message: " + entry.getValue());
+            entry = Server.getOurInstance().getMessages().take();
             decode(entry.getKey(), entry.getValue());
         }
     }
 
     /**
      * This function decodes the worker thread
+     *
      * @param clientConnection Client's connection
-     * @param message Message that will be used
+     * @param message          Message that will be used
      */
     private void decode(ClientConnection clientConnection, Message message) {
         ReactMessage reactMessage = ReactMessage.getReactMessage(message);

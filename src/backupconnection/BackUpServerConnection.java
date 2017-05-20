@@ -1,34 +1,51 @@
 package backupconnection;
 
 import communication.ClientConnection;
-import communication.StreamMessage;
 
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 import java.io.IOException;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * This class creates the backup server
  * This extends the class BackupConnection
  */
 public class BackUpServerConnection extends BackUpConnection {
+
     /**
      * Backup's internet protocol
      */
-    static final String BACKUP_IP = "127.0.0.1";
+    private static final String BACKUP_IP = "127.0.0.1";
+
+    private ScheduledExecutorService executeReconnect;
 
     /**
      * Backup server connection's constructor
      */
     private BackUpServerConnection() {
         super();
-        startServer();
+        status.changeStatusThread();
+    }
+
+    /**
+     * This function initiates the backup's connection
+     *
+     * @throws Exception This exception is thrown if the backup connection has already an instance
+     */
+    public static void initBackUpConnection() throws Exception {
+        if (instance != null)
+            throw new Exception("Singleton class BackUpConnection initiated twice");
+        instance = new BackUpServerConnection();
+        instance.startServer();
     }
 
     /**
      * This function starts the server
      */
-    private void startServer() {
+    protected void startServer() {
         SSLSocketFactory factory = (SSLSocketFactory) SSLSocketFactory.getDefault();
         try {
             SSLSocket sslSocket = (SSLSocket) factory.createSocket(BACKUP_IP, BACKUP_PORT);
@@ -36,19 +53,22 @@ public class BackUpServerConnection extends BackUpConnection {
             ciphers[0] = "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256";
             sslSocket.setEnabledCipherSuites(ciphers);
             backupChannel = new ClientConnection(sslSocket);
+            backupChannel.setClientID(ClientConnection.serverID);
+            status.finishedStatus();
         } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(-1);
+            System.out.println("Connection failed " + e.getMessage());
         }
     }
 
-    /**
-     * This function initiates the backup's connection
-     * @throws Exception This exception is thrown if the backup connection has already an instance
-     */
-    public static void initBackUpConnection() throws Exception {
-        if( instance != null )
-            throw new Exception("Singleton class BackUpConnection initiated twice");
-        instance = new BackUpServerConnection();
+    protected void reconnectServer() {
+        if (executeReconnect == null || executeReconnect.isShutdown()) {
+            Runnable startServer = this::startServer;
+            executeReconnect = Executors.newScheduledThreadPool(1);
+            executeReconnect.scheduleAtFixedRate(startServer, 0, 5, TimeUnit.SECONDS);
+        }
+    }
+
+    protected void reconnected() {
+        executeReconnect.shutdown();
     }
 }

@@ -17,6 +17,7 @@ import static message.MessageConstants.getRoomType;
 public class GetRoomType extends ReactMessage {
     /**
      * This is the GetRoomType's constructor
+     *
      * @param message Message that will be used
      */
     GetRoomType(Message message) {
@@ -25,11 +26,15 @@ public class GetRoomType extends ReactMessage {
 
     /**
      * This functions builds the message needed
+     *
      * @param client Client's connection
      * @throws IOException Signals that an I/O exception of some sort has occurred
      */
     @Override
     public void react(ClientConnection client) throws IOException {
+        if( checkToServer(client) )
+            return;
+
         String[] params = message.getHeader().split(" ");
         if( params.length != getRoomSize || client == null )
             return;
@@ -40,6 +45,7 @@ public class GetRoomType extends ReactMessage {
 
     /**
      * This function gets the sent messages
+     *
      * @param roomID Room's identifier
      * @return A string with the sent messages
      */
@@ -58,5 +64,12 @@ public class GetRoomType extends ReactMessage {
             }
 
         return new String(builder);
+    }
+
+    protected void getMessageVariables(ClientConnection client) {
+    }
+
+    protected boolean query(ClientConnection client) {
+        return true;
     }
 }

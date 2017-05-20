@@ -18,6 +18,7 @@ import static message.MessageConstants.getRoomsType;
 public class GetRoomsType extends ReactMessage {
     /**
      * This is the GetRoomsType's constructor
+     *
      * @param message Message that will be used
      */
     GetRoomsType(Message message) {
@@ -26,11 +27,15 @@ public class GetRoomsType extends ReactMessage {
 
     /**
      * This function creates the message needed
+     *
      * @param client Client's connection
      * @throws IOException Signals that an I/O exception of some sort has occurred
      */
     @Override
     public void react(ClientConnection client) throws IOException {
+        if( checkToServer(client) )
+            return;
+
         String[] params = message.getHeader().split(" ");
         if( params.length != getRoomsSize || client.getClientID() == null )
             return;
@@ -44,6 +49,7 @@ public class GetRoomsType extends ReactMessage {
 
     /**
      * This function gets all the user's information
+     *
      * @param str String that has the chat room's information
      * @return A string with the user's information
      */
@@ -65,5 +71,12 @@ public class GetRoomsType extends ReactMessage {
             }
         System.out.println(new String(builder));
         return new String(builder);
+    }
+
+    protected void getMessageVariables(ClientConnection client) {
+    }
+
+    protected boolean query(ClientConnection client) {
+        return true;
     }
 }

@@ -1,15 +1,19 @@
 package communication;
 
+import backupconnection.BackUpConnection;
+import backupconnection.BackUpConnectionStatus;
 import message.Message;
 
 import javax.net.ssl.SSLSocket;
 import java.io.IOException;
-import java.util.AbstractMap;
 
 /**
  * This class creates the connection on the client side
  */
 public class ClientConnection {
+    public static final int serverID = -1;
+    public static final int ownID = -2;
+
     /**
      * This represents the message streamed
      */
@@ -28,25 +32,28 @@ public class ClientConnection {
      * @param sslSocket Socket to be used in the connection
      */
     public ClientConnection(SSLSocket sslSocket) {
+        if (sslSocket == null)
+            return;
+
         streamMessage = new StreamMessage(sslSocket);
 
         read = new Thread(() -> {
             Message message;
             while (true) {
+                System.out.println("Read thread: init: " + getClientID());
                 try {
-                    System.out.println("Wait message");
                     message = streamMessage.read();
-                    System.out.println("Received message");
-                } catch (IOException | ClassNotFoundException e){
+                } catch (IOException e) {
+                    System.out.println("Read thread: exception: " + e);
+                    this.close();
+                    handleDisconnection();
+                    return;
+                } catch (ClassNotFoundException e) {
                     this.close();
                     return;
                 }
-                try {
-                    Server.getOurInstance().getMessages().put(new AbstractMap.SimpleEntry<>(this, message));
-                } catch (InterruptedException e) {
-                    this.close();
-                    return ;
-                }
+                System.out.println("Read thread: final: " + getClientID());
+                Server.getOurInstance().getMessages().put(this, message);
             }
         });
 
@@ -54,21 +61,17 @@ public class ClientConnection {
         read.start();
     }
 
+    private void handleDisconnection() {
+        if (clientID != null && clientID == serverID)
+            BackUpConnection.getInstance().getStatus().statusChange(BackUpConnectionStatus.ServerCommunicationStatus.RECONNECTING);
+    }
+
     /**
      * Closes the stream message and the thread
      */
     public void close() {
-        //Server.getOurInstance().getClientSet().remove(this);
         streamMessage.close();
         read.interrupt();
-    }
-
-    /**
-     * Sets the client identifier
-     * @param id New client's identifier
-     */
-    public void setClientID(Integer id) {
-        clientID = id;
     }
 
     /**
@@ -77,6 +80,15 @@ public class ClientConnection {
      */
     public Integer getClientID() {
         return clientID;
+    }
+
+    /**
+     * Sets the client identifier
+     *
+     * @param id New client's identifier
+     */
+    public void setClientID(Integer id) {
+        clientID = id;
     }
 
     /**

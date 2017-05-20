@@ -1,39 +1,51 @@
 package backupconnection;
 
 import communication.ClientConnection;
+import message.UnsentMessages;
 import org.jetbrains.annotations.Contract;
 
 /**
  * Abstract class that creates the backup connection
  */
-public abstract  class BackUpConnection {
+public abstract class BackUpConnection {
     /**
      * Port that will be used to do the backup
      */
     static final int BACKUP_PORT = 15001;
+
     /**
      * Backup connection's instance
      */
     static BackUpConnection instance;
 
     /**
+     * Object that indicates if the thread can be unlocked
+     */
+    private final Object blockObject = new Object();
+
+    /**
      * Channel where the backup will be made
      */
     ClientConnection backupChannel;
-    /**
-     * Object that indicates if the thread can be unlocked
-     */
-    public Object blockObject = new Object();
+
+    BackUpConnectionStatus status;
+
     /**
      * Variable that indicates if the protocol is finished or not
      */
-    public boolean protocolFinished = false;
+    private int nNoMoreMessages = 0;
 
     /**
      * BackupConnection's constructor
      */
     BackUpConnection() {
-
+        try {
+            UnsentMessages.create();
+            status = new BackUpConnectionStatus();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
     }
 
     /**
@@ -45,12 +57,22 @@ public abstract  class BackUpConnection {
         return instance;
     }
 
+    protected void startServer() {
+    }
+
+    protected void startAcceptThread() {
+    }
+
     /**
      * This function gets the backup's channel
      * @return The backup's channel
      */
     public ClientConnection getBackupChannel() {
         return backupChannel;
+    }
+
+    public BackUpConnectionStatus getStatus() {
+        return status;
     }
 
     /**
@@ -77,17 +99,37 @@ public abstract  class BackUpConnection {
     /**
      * This function waits for the protocol to be finished
      */
-    public void waitProtocol() {
-        /*while( !protocolFinished )
-            waitToBeAvailable();*/
+    private void waitProtocol() {
+        while (nNoMoreMessages != 2)
+            waitToBeAvailable();
+        nNoMoreMessages = 0;
     }
 
     /**
      * This function finishes the protocol
      */
     public void setFinishedProtocol() {
-        protocolFinished = true;
-        notifyAvailable();
+        nNoMoreMessages++;// = true;
+        if (nNoMoreMessages == 2) {
+            System.out.println("Notify");
+            notifyAvailable();
+        }
     }
 
+    void initialProtocol() {
+        Thread thread = new Thread(() -> {
+            UnsentMessages.send();
+            waitProtocol();
+            System.out.println("Over");
+            status.finishedStatus();
+        });
+        thread.setDaemon(true);
+        thread.start();
+    }
+
+    protected void reconnected() {
+    }
+
+    protected void reconnectServer() {
+    }
 }

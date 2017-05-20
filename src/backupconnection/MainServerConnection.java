@@ -1,7 +1,6 @@
 package backupconnection;
 
 import communication.ClientConnection;
-import communication.StreamMessage;
 
 import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
@@ -23,14 +22,26 @@ public class MainServerConnection extends BackUpConnection {
      */
     private MainServerConnection() {
         super();
-        startServer();
-        startAcceptThread();
+        status.changeStatusThread();
+    }
+
+    /**
+     * This function initiates the backup's connection
+     *
+     * @throws Exception This exception is thrown if the backup connection has already an instance
+     */
+    public static void initBackUpConnection() throws Exception {
+        if (instance != null)
+            throw new Exception("Singleton class BackUpConnection initiated twice");
+        instance = new MainServerConnection();
+        instance.startServer();
+        instance.startAcceptThread();
     }
 
     /**
      * This function starts the server
      */
-    private void startServer() {
+    protected void startServer() {
         SSLServerSocketFactory factory = (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
 
         try {
@@ -50,24 +61,21 @@ public class MainServerConnection extends BackUpConnection {
     /**
      * This function starts the acceptation of threads
      */
-    private void startAcceptThread() {
-        System.out.println("Starting accept thread");
+    protected void startAcceptThread() {
         try {
             SSLSocket sslSocket = (SSLSocket) sslserversocket.accept();
             backupChannel = new ClientConnection(sslSocket);
+            backupChannel.setClientID(ClientConnection.serverID);
+            status.finishedStatus();
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(-1);
         }
     }
 
-    /**
-     * This function initiates the backup's connection
-     * @throws Exception This exception is thrown if the backup connection has already an instance
-     */
-    public static void initBackUpConnection() throws Exception {
-        if( instance != null )
-            throw new Exception("Singleton class BackUpConnection initiated twice");
-        instance = new MainServerConnection();
+    protected void reconnectServer() {
+        Thread thread = new Thread(this::startAcceptThread);
+        thread.setDaemon(true);
+        thread.start();
     }
 }

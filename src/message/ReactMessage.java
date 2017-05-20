@@ -2,12 +2,9 @@ package message;
 
 import communication.ClientConnection;
 import communication.Server;
-import database.UserRequests;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
 
 import static message.MessageConstants.*;
 
@@ -18,10 +15,11 @@ public abstract class ReactMessage {
     /**
      * Message that will be used
      */
-    protected Message message;
+    final Message message;
 
     /**
      * This is the ReactMessage's constructor
+     *
      * @param message Message that will be used
      */
     ReactMessage(Message message) {
@@ -29,16 +27,8 @@ public abstract class ReactMessage {
     }
 
     /**
-     * This function builds the messaged needed
-     * @param client Client's connection
-     * @throws IOException Signals that an I/O exception of some sort has occurred
-     */
-    public void react(ClientConnection client) throws IOException {
-        throw new AbstractMethodError("Wrong class");
-    }
-
-    /**
      * This function gets the react message
+     *
      * @param message Message that will be used
      * @return The react message
      */
@@ -49,7 +39,6 @@ public abstract class ReactMessage {
             return null;
 
         String mType = parameters[0];
-        System.out.println("Message react to : " + mType);
         switch (mType) {
             case loginType:
                 return new LoginType(message);
@@ -81,19 +70,52 @@ public abstract class ReactMessage {
                 return new AddRoomType(message);
             case changeRoomNameType:
                 return new ChangeRoomNameType(message);
+            case noMoreMessagesType:
+                return new NoMoreMessagesType(message);
         }
 
         return null;
     }
 
     /**
+     * This function builds the messaged needed
+     *
+     * @param client Client's connection
+     * @throws IOException Signals that an I/O exception of some sort has occurred
+     */
+    public void react(ClientConnection client) throws IOException {
+        throw new AbstractMethodError("react in ReactMessage");
+    }
+
+    boolean checkToServer(ClientConnection client) {
+        if (ToServerMessage.analyze(this, client))
+            return true;
+        System.out.println(message.getHeader());
+        ToServerMessage.communicate(this);
+        return false;
+    }
+
+    boolean storeMessage(ClientConnection client) {
+        getMessageVariables(client);
+        return query(client);
+    }
+
+    void getMessageVariables(ClientConnection client) {
+        throw new AbstractMethodError("react in ReactMessage");
+    }
+
+    boolean query(ClientConnection client) {
+        throw new AbstractMethodError("react in ReactMessage");
+    }
+
+    /**
      * This function sends the message to the respective user
+     *
      * @param message Message to be sent
-     * @param userID User's iderntifier
+     * @param userID  User's iderntifier
      */
     void notifyUser(Message message, int userID) {
         ClientConnection c = Server.getOurInstance().getClientByID(userID);
-
         if( c != null )
             send(c, message);
     }

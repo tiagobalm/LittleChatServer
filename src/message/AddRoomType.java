@@ -10,24 +10,11 @@ import java.sql.SQLException;
 import static message.MessageConstants.addRoomSize;
 import static message.MessageConstants.addRoomType;
 
-/**
- * This class creates the message to add a room
- * This extends the ReactMessage class
- */
 public class AddRoomType extends ReactMessage {
-    /**
-     * This is the AddRoomType's constructor
-     * @param message Message to be analyzed
-     */
     AddRoomType(Message message) {
         super(message);
     }
 
-    /**
-     * This function builds a message to add a room type
-     * @param client Client's connection
-     * @throws IOException Signals that an I/O exception of some sort has occurred
-     */
     @Override
     public void react(ClientConnection client) throws IOException {
         String[] parameters = message.getHeader().split(" ");
@@ -51,7 +38,7 @@ public class AddRoomType extends ReactMessage {
         send(client, new Message(addRoomType + " " + roomID, "True\0" + message.getMessage()));
 
         ClientConnection c = Server.getOurInstance().getClientByID(userID);
-        if(c != null)
+        if (c != null)
             send(c, new Message(addRoomType + " " + roomID, "True\0" + roomName + "\0" + UserRequests.getUsername(client.getClientID())));
     }
 }

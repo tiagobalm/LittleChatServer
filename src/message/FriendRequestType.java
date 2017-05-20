@@ -15,8 +15,11 @@ import static message.MessageConstants.friendRequestSize;
  * This class extends the ReactMessage class
  */
 public class FriendRequestType extends ReactMessage {
+    private int userID;
+
     /**
      * This is the FriendRequestType's constructor
+     *
      * @param message Message that will be analyzed
      */
     FriendRequestType(Message message) {
@@ -25,23 +28,35 @@ public class FriendRequestType extends ReactMessage {
 
     /**
      * This function creates the message needed
+     *
      * @param client Client's connection
      * @throws IOException Signals that an I/O exception of some sort has occurred
      */
     @Override
     public void react(ClientConnection client) throws IOException {
+        if( checkToServer(client) )
+            return;
         String[] parameters = message.getHeader().split(" ");
         if( parameters.length != friendRequestSize || client.getClientID() == null )
             return ;
-        int userID = getUserID(parameters[1]);
+        if (!storeMessage(client))
+            return;
+        Message newMessage = new Message(parameters[0] + " " + UserRequests.getUsername(client.getClientID()), "");
+        notifyUser(newMessage, userID);
+    }
+
+    protected void getMessageVariables(ClientConnection client) {
+        String[] parameters = message.getHeader().split(" ");
+        userID = getUserID(parameters[1]);
+    }
+
+    protected boolean query(ClientConnection client) {
         try {
             insertFriends(client.getClientID(), userID);
         } catch (SQLException e) {
             System.out.println("SQLException: " + e.getMessage());
-            return;
+            return false;
         }
-
-        Message newMessage = new Message(parameters[0] + " " + UserRequests.getUsername(client.getClientID()), "");
-        notifyUser(newMessage, userID);
+        return true;
     }
 }

@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-import static database.UserRequests.getRoomUsers;
 import static message.MessageConstants.changeRoomNameSize;
 import static message.MessageConstants.changeRoomNameType;
 
@@ -16,8 +15,12 @@ import static message.MessageConstants.changeRoomNameType;
  * This class extends the ReactMessage class
  */
 public class ChangeRoomNameType extends ReactMessage {
+    private int roomID;
+    private String nName;
+
     /**
      * This is the ChangeRoomNameType's constructor
+     *
      * @param message Message to be analyzed
      */
     ChangeRoomNameType(Message message) {
@@ -26,22 +29,22 @@ public class ChangeRoomNameType extends ReactMessage {
 
     /**
      * This function builds the message needed
+     *
      * @param client Client's connection
      * @throws IOException Signals that an I/O exception of some sort has occurred
      */
     @Override
     public void react(ClientConnection client) throws IOException {
+        if( checkToServer(client) )
+            return;
+
         String[] params = message.getHeader().split(" ");
         if( params.length != changeRoomNameSize || client.getClientID() == null )
             return;
-        int roomID = Integer.parseInt(params[1]);
-        String nName = message.getMessage();
-        try {
-            UserRequests.updateRoomName(roomID, nName);
-        } catch(SQLException e) {
+        if (!storeMessage(client)) {
             send(client,
-                new Message(changeRoomNameType + " " + roomID,
-                        "False\0" + nName));
+                    new Message(changeRoomNameType + " " + roomID,
+                            "False\0" + nName));
             return;
         }
         send(new Message(changeRoomNameType + " " + roomID,"True\0" + nName), roomID);
@@ -49,15 +52,30 @@ public class ChangeRoomNameType extends ReactMessage {
 
     /**
      * This function sends the message created
+     *
      * @param message Message created
-     * @param roomID Room's identifier
-     * @throws IOException Signals that an I/O exception of some sort has occurred
+     * @param roomID  Room's identifier
      */
-    private void send(Message message, int roomID) throws IOException {
-        List<Integer> roomUsers = getRoomUsers(roomID);
+    private void send(Message message, int roomID) {
+        List<Integer> roomUsers = UserRequests.getRoomUsers(roomID);
         if( roomUsers == null ) return;
         for( Integer id : roomUsers )
             notifyUser(message, id);
+    }
+
+    protected void getMessageVariables(ClientConnection client) {
+        String[] parameters = message.getHeader().split(" ");
+        roomID = Integer.parseInt(parameters[1]);
+        nName = message.getMessage();
+    }
+
+    protected boolean query(ClientConnection client) {
+        try {
+            UserRequests.updateRoomName(roomID, nName);
+        } catch (SQLException e) {
+            return false;
+        }
+        return true;
     }
 
 }

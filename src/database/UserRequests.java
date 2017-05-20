@@ -7,8 +7,10 @@ import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static database.Database.getSalt;
 import static database.Database.getSecurePassword;
@@ -19,7 +21,8 @@ import static database.Database.getSecurePassword;
 public class UserRequests {
     /**
      * This function creates a basic update
-     * @param sql SQL statement that may contain one or more '?' IN parameter placeholders
+     *
+     * @param sql    SQL statement that may contain one or more '?' IN parameter placeholders
      * @param params The request parameters
      * @throws SQLException This is an exception that provides information on a database access error or other errors
      */
@@ -36,10 +39,11 @@ public class UserRequests {
 
     /**
      * This function logs in a user
+     *
      * @param username User's username
      * @param password User's password
-     * @param ip Connection's IP
-     * @param port Connection's port
+     * @param ip       Connection's IP
+     * @param port     Connection's port
      * @return true if the user is logged in (if the password is the same as the password saved in the database) or false otherwise
      * @throws SQLException This is an exception that provides information on a database access error or other errors
      */
@@ -53,10 +57,11 @@ public class UserRequests {
 
     /**
      * This function registers a user
+     *
      * @param username User's username
      * @param password User's password
-     * @param ip Connection IP
-     * @param port Connection port
+     * @param ip       Connection IP
+     * @param port     Connection port
      * @return true if the user could register himself or false otherwise (if the username selected already exists)
      * @throws SQLException This is an exception that provides information on a database access error or other errors
      */
@@ -79,6 +84,7 @@ public class UserRequests {
 
     /**
      * This function verifies if the password written when a user logs in is the same as the password saved in the database
+     *
      * @param username User's username
      * @param password User's password
      * @return true if the password is correct, false otherwise
@@ -106,7 +112,7 @@ public class UserRequests {
             String regeneratedPasswordToVerify = getSecurePassword(password, salt);
             if(pass != null &&
                     (pass.equals(password) ||
-                    pass.equals(regeneratedPasswordToVerify)))
+                            pass.equals(regeneratedPasswordToVerify)))
                 return true;
         } catch (NoSuchAlgorithmException | NoSuchProviderException e) {
             e.printStackTrace();
@@ -143,7 +149,7 @@ public class UserRequests {
      * @throws SQLException This is an exception that provides information on a database access error or other errors
      */
     public static void insertMessages(int userID, int roomID, String content) throws SQLException {
-       String sql = "INSERT INTO Message(userID, roomID, message) VALUES (?, ?, ?);";
+        String sql = "INSERT INTO Message(userID, roomID, message) VALUES (?, ?, ?);";
 
         List<Object> params = new ArrayList<>();
         params.add(userID);
@@ -413,9 +419,9 @@ public class UserRequests {
         String sql =
                 "SELECT Room.name AS name, " +
                         "Room.roomID AS ID " +
-                "FROM Room, UserRoom " +
-                "WHERE UserRoom.userID = ? " +
-                "AND Room.roomID = UserRoom.roomID";
+                        "FROM Room, UserRoom " +
+                        "WHERE UserRoom.userID = ? " +
+                        "AND Room.roomID = UserRoom.roomID";
         List<Object> params = new ArrayList<>();
         params.add(userID);
 
@@ -443,8 +449,8 @@ public class UserRequests {
         String name = null;
         String sql =
                 "SELECT name " +
-                "FROM Room " +
-                "WHERE roomID = ?";
+                        "FROM Room " +
+                        "WHERE roomID = ?";
         List<Object> params = new ArrayList<>();
         params.add(roomID);
 
@@ -473,8 +479,8 @@ public class UserRequests {
 
         String sql =
                 "SELECT userID " +
-                "FROM UserRoom " +
-                "WHERE UserRoom.roomID = ? ";
+                        "FROM UserRoom " +
+                        "WHERE UserRoom.roomID = ? ";
         List<Object> params = new ArrayList<>();
         params.add(roomID);
 
@@ -524,13 +530,13 @@ public class UserRequests {
         String sql1 =
                 "SELECT User1.username AS username1, " +
                         "User2.username AS username2 " +
-                "FROM User AS User1, " +
+                        "FROM User AS User1, " +
                         "User AS User2, " +
                         "Friend " +
-                "WHERE friendStatus = 0 " +
-                "AND firstUserID  = ? " +
-                "AND firstUserID = User1.userID " +
-                "AND secondUserID = User2.userID";
+                        "WHERE friendStatus = 0 " +
+                        "AND firstUserID  = ? " +
+                        "AND firstUserID = User1.userID " +
+                        "AND secondUserID = User2.userID";
 
         String sql2 =
                 "SELECT User1.username AS username1, " +
@@ -575,11 +581,11 @@ public class UserRequests {
     private static List<String> selectFriends(int userID) {
         List<String> friends = new ArrayList<>();
         String sql =
-            "SELECT User.username " +
-            "FROM User, Friend " +
-            "WHERE friendStatus = 1 " +
-            "AND firstUserID = ? " +
-            "AND secondUserID = User.userID";
+                "SELECT User.username " +
+                        "FROM User, Friend " +
+                        "WHERE friendStatus = 1 " +
+                        "AND firstUserID = ? " +
+                        "AND secondUserID = User.userID";
         List<Object> params = new ArrayList<>();
         params.add(userID);
 
@@ -609,10 +615,10 @@ public class UserRequests {
 
         String sql =
                 "SELECT username, message " +
-                "FROM User, Message " +
-                "WHERE roomID = ?" +
-                "AND Message.userID = User.userID " +
-                "ORDER BY sentDate LIMIT ?";
+                        "FROM User, Message " +
+                        "WHERE roomID = ?" +
+                        "AND Message.userID = User.userID " +
+                        "ORDER BY sentDate LIMIT ?";
         List<Object> params = new ArrayList<>();
         params.add(roomID);
         params.add(limit);
@@ -624,7 +630,7 @@ public class UserRequests {
                 ResultSet rs;
                 while((rs = Queries.getNext()) != null)
                     messages.add(rs.getString("username") + "\0" +
-                                    rs.getString("message"));
+                            rs.getString("message"));
             } catch (SQLException ignore) { messages = null; }
             Queries.close();
         }
@@ -632,9 +638,101 @@ public class UserRequests {
         return messages;
     }
 
-    /**
-     * This function gets all the unset messages
-     * @return A list with all the unset messages
-     */
-    public static List<Message> getUnsentMessages() {return null;}
+    public static void insertUnsentMessage(Message message) throws SQLException {
+        String sql = "INSERT INTO MessageClass(header, message) VALUES (?, ?)";
+        List<Object> params = new ArrayList<>();
+        params.add(message.getHeader());
+        params.add(message.getMessage());
+
+        synchronized (Queries.class) {
+            basicUpdate(sql, params);
+            params.clear();
+
+            int messageID = -1;
+            sql = "SELECT messageClassID FROM MessageClass ORDER BY messageClassID DESC LIMIT 1";
+            Queries.query(sql, params);
+            try {
+                Queries.execute();
+                ResultSet rs;
+                if ((rs = Queries.getNext()) != null)
+                    messageID = rs.getInt("messageClassID");
+            } catch (SQLException ignore) {
+            }
+
+            sql = "INSERT INTO StringList(messageClassID, string) VALUES (?, ?)";
+            params.add(messageID);
+
+            if (message.getOptionalMessage() != null)
+                for (String str : message.getOptionalMessage()) {
+                    params.add(str);
+                    basicUpdate(sql, params);
+                    params.remove(params.size());
+                }
+        }
+    }
+
+    public static void deleteUnsentMessages() {
+        String sql = "DELETE FROM MessageClass";
+
+        synchronized (Queries.class) {
+            try {
+                basicUpdate(sql, new ArrayList<>());
+            } catch (SQLException ignore) {
+            }
+        }
+    }
+
+    public static List<Message> getUnsentMessages() {
+        List<Map.Entry<Integer, Message>> unsentMessages = new ArrayList<>();
+        List<Message> messages = new ArrayList<>();
+
+        String sql = "SELECT * FROM MessageClass";
+
+        synchronized (Queries.class) {
+            Queries.query(sql, new ArrayList<>());
+            try {
+                Queries.execute();
+                ResultSet rs;
+                while((rs = Queries.getNext())!=null) {
+                    int messageID = rs.getInt("messageClassID");
+                    String header = rs.getString("header");
+                    String data = rs.getString("message");
+                    Message message = new Message(header,data);
+                    unsentMessages.add(new AbstractMap.SimpleEntry<>(messageID, message));
+                }
+            } catch (SQLException ignore) {
+            }
+            Queries.close();
+        }
+
+        for( Map.Entry<Integer, Message> entry : unsentMessages ) {
+            Message m = getStringListMessage(entry.getKey(), entry.getValue());
+            messages.add(m);
+        }
+        return messages;
+    }
+
+    private static Message getStringListMessage(int messageID, Message message) {
+        List<String> allOptionalMessages = new ArrayList<>();
+        String  sql = "SELECT string FROM StringList WHERE messageClassID = ?";
+        List<Object> params = new ArrayList<>();
+        params.add(messageID);
+
+        synchronized (Queries.class) {
+            Queries.query(sql, params);
+            try {
+                Queries.execute();
+                ResultSet rs;
+                while((rs = Queries.getNext())!=null) {
+                    String data = rs.getString("string");
+                    allOptionalMessages.add(data);
+                }
+            } catch (SQLException ignore) {
+            }
+            Queries.close();
+        }
+
+        message.setOptionalMessage(allOptionalMessages);
+        return message;
+    }
 }

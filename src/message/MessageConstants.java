@@ -1,6 +1,8 @@
 package message;
 
 class MessageConstants {
+    static final String noMoreMessagesType = "NOMOREMESSAGES";
+    static final int noMoreMessagesSize = 1;
     /**
      * Login message's type
      */
@@ -102,7 +104,7 @@ class MessageConstants {
 
     /**
      * AddRoom message's type
-      */
+     */
     static final String addToRoomType = "ADDTOROOM";
     /**
      * AddRoom size

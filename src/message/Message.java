@@ -66,6 +66,16 @@ public class Message implements Serializable {
     }
 
     /**
+     <<<<<<< HEAD
+     * Set optional messages.
+     *
+     * @param optionalMessage optional message.
+     */
+    public void setOptionalMessage(List<String> optionalMessage) {
+        this.optionalMessage = optionalMessage;
+    }
+
+    /**
      * This function gets the message's header
      * @return The message's header
      */

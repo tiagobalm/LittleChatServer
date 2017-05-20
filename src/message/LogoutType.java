@@ -17,6 +17,7 @@ import static message.MessageConstants.logoutType;
 public class LogoutType extends ReactMessage {
     /**
      * This is the LogoutType's constructor
+     *
      * @param message Message that will be used
      */
     LogoutType(Message message) {
@@ -25,17 +26,29 @@ public class LogoutType extends ReactMessage {
 
     /**
      * This function creates the message needed
+     *
      * @param client Client's connection
      * @throws IOException Signals that an I/O exception of some sort has occurred
      */
     @Override
     public void react(ClientConnection client) throws IOException {
+        if( checkToServer(client) )
+            return;
         String[] parameters = message.getHeader().split(" ");
         if( parameters.length != logoutSize || client.getClientID() == null )
             return ;
+
+        storeMessage(client);
+        client.getStreamMessage().write(new Message(logoutType, ""));
+    }
+
+    protected void getMessageVariables(ClientConnection client) {
+    }
+
+    protected boolean query(ClientConnection client) {
         try { UserRequests.deleteUserConnection(client.getClientID());
         } catch (SQLException ignore) {}
-        client.getStreamMessage().write(new Message(logoutType, ""));
         Server.getOurInstance().removeByID(client.getClientID());
+        return true;
     }
 }

@@ -11,27 +11,24 @@ import java.util.List;
 /**
  * This class creates the queries to used in the database requests
  */
-public class Queries {
-    /**
-     * Database's connection
-     */
-    public static Connection conn = null;
+class Queries {
     /**
      * Database's prepared statements
      */
-    public static PreparedStatement pstmt = null;
+    private static PreparedStatement pstmt = null;
     /**
      * Set with the request's result
      */
-    public static ResultSet rs;
+    private static ResultSet rs;
 
     /**
      * This function prepares the database's connection
+     *
      * @param sql SQL statement that may contain one or more '?' IN parameter placeholders
      */
-    public static void prepare(String sql) {
+    private static void prepare(String sql) {
         try {
-            conn = Database.getInstance().getConn();
+            Connection conn = Database.getInstance().getConn();
             pstmt  = conn.prepareStatement(sql);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -41,9 +38,10 @@ public class Queries {
 
     /**
      * This function sets the request parameters
+     *
      * @param params The request parameters
      */
-    public static void setParams(List<Object> params) {
+    private static void setParams(List<Object> params) {
         int i = 1;
         try {
             for( Object o : params ) {
@@ -61,7 +59,8 @@ public class Queries {
 
     /**
      * This function prepares the statements and sets the parameters
-     * @param sql SQL statement
+     *
+     * @param sql    SQL statement
      * @param params Request's parameters
      */
     public static void query(String sql, List<Object> params) {
@@ -71,9 +70,10 @@ public class Queries {
 
     /**
      * This function executes the queries
+     *
      * @throws SQLException This is an exception that provides information on a database access error or other errors
      */
-    public synchronized static void execute() throws SQLException {
+    synchronized static void execute() throws SQLException {
         rs = pstmt.executeQuery();
     }
 
@@ -81,7 +81,7 @@ public class Queries {
      * This function executes the updates
      * @throws SQLException This is an exception that provides information on a database access error or other errors
      */
-    public synchronized static void executeUpdate() throws SQLException {
+    synchronized static void executeUpdate() throws SQLException {
         pstmt.executeUpdate();
     }
 
@@ -90,7 +90,7 @@ public class Queries {
      * @return The set with the results
      */
     @Nullable
-    public static ResultSet getNext() {
+    static ResultSet getNext() {
         try {
             return rs.next() ? rs : null;
         } catch (SQLException e) {
@@ -102,10 +102,10 @@ public class Queries {
     /**
      * This function closes the ResultSet and the PreparedStatement
      */
-    public static void close() {
+    static void close() {
         try {
-            if( pstmt != null )
-                    pstmt.close();
+            if (pstmt != null)
+                pstmt.close();
             if( rs != null )
                 rs.close();
         } catch (SQLException e) {

@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-import static database.UserRequests.getRoomUsers;
 import static message.MessageConstants.deleteFromRoomSize;
 import static message.MessageConstants.deleteFromRoomType;
 
@@ -17,8 +16,12 @@ import static message.MessageConstants.deleteFromRoomType;
  * This class extends the class ReactMessage
  */
 public class DeleteFromRoomType extends ReactMessage {
+    private int roomID;
+    private int userID;
+
     /**
      * This is the DeleteFromRoomType's constructor
+     *
      * @param message Message to be analyzed
      */
     DeleteFromRoomType(Message message) {
@@ -27,18 +30,18 @@ public class DeleteFromRoomType extends ReactMessage {
 
     /**
      * This function builds the message needed
+     *
      * @param client Client's connection
      * @throws IOException Signals that an I/O exception of some sort has occurred
      */
     @Override
     public void react(ClientConnection client) throws IOException {
+        if( checkToServer(client) )
+            return;
         String[] parameters = message.getHeader().split(" ");
         if (parameters.length != deleteFromRoomSize || client.getClientID() == null)
             return;
-        int roomID = Integer.parseInt(parameters[1]);
-        int userID = UserRequests.getUserID(message.getMessage());
-        try { UserRequests.deleteUserFromRoom(userID, roomID);
-        } catch( SQLException e ) {
+        if (!storeMessage(client)) {
             send(client, new Message(deleteFromRoomType, "False\0" + message.getMessage()));
             return;
         }
@@ -48,13 +51,28 @@ public class DeleteFromRoomType extends ReactMessage {
     /**
      * This function sends the message created
      * @param message Message created
-     * @param roomID Room's identifier
+     * @param roomID  Room's identifier
      * @throws IOException Signals that an I/O exception of some sort has occurred
      */
     private void send(Message message, int roomID) throws IOException {
-        List<Integer> roomUsers = getRoomUsers(roomID);
+        List<Integer> roomUsers = UserRequests.getRoomUsers(roomID);
         if( roomUsers == null ) return;
         for( Integer id : roomUsers )
             notifyUser(message, id);
+    }
+
+    protected void getMessageVariables(ClientConnection client) {
+        String[] parameters = message.getHeader().split(" ");
+        roomID = Integer.parseInt(parameters[1]);
+        userID = UserRequests.getUserID(message.getMessage());
+    }
+
+    protected boolean query(ClientConnection client) {
+        try {
+            UserRequests.deleteUserFromRoom(userID, roomID);
+        } catch (SQLException e) {
+            return false;
+        }
+        return true;
     }
 }
