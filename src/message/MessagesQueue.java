@@ -13,7 +13,9 @@ public class MessagesQueue {
     /**
      * Messages saved in this server
      */
-    private final BlockingQueue<Map.Entry<ClientConnection, Message>> messages;
+    private BlockingQueue<Map.Entry<ClientConnection, Message>> messages;
+
+    private final Object blockObject = new Object();
 
     public MessagesQueue() {
         messages = new LinkedBlockingQueue<>();
@@ -44,10 +46,10 @@ public class MessagesQueue {
         Map.Entry<ClientConnection, Message> entry = null;
         do {
             try {
-                synchronized (messages) {
-                    entry = messages.take();
+                entry = messages.take();
+                synchronized (blockObject) {
                     if (messages.isEmpty())
-                        messages.notify();
+                        blockObject.notify();
                 }
             } catch (InterruptedException e) {
                 if (nTries >= MAXTRIES) {
@@ -63,10 +65,13 @@ public class MessagesQueue {
         return entry;
     }
 
-    public void waitEmpty() throws InterruptedException {
-        synchronized (messages) {
+    public synchronized void waitEmpty() throws InterruptedException {
+        System.out.println("wait empty");
+        synchronized (blockObject) {
+            System.out.println(messages.isEmpty());
             while (!messages.isEmpty())
-                messages.wait();
+                blockObject.wait();
         }
+        System.out.println("is empty");
     }
 }

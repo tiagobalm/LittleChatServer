@@ -6,6 +6,7 @@ import database.UserRequests;
 public class BackUpConnectionStatus {
     private final Object statusObject = new Object();
     private ServerCommunicationStatus status = ServerCommunicationStatus.INITIALIZING;
+    private boolean disconnectClients = false;
 
     BackUpConnectionStatus() {
     }
@@ -41,15 +42,20 @@ public class BackUpConnectionStatus {
             statusChange(ServerCommunicationStatus.SENDING_UNSENT);
         else if (status == ServerCommunicationStatus.RECONNECTING) {
             BackUpConnection.getInstance().reconnected();
+            if (BackUpConnection.getInstance() instanceof BackUpServerConnection)
+                disconnectClients = true;
             statusChange(ServerCommunicationStatus.SENDING_UNSENT);
         } else if (status == ServerCommunicationStatus.SENDING_UNSENT) {
             statusChange(ServerCommunicationStatus.OK);
             UserRequests.deleteUnsentMessages();
-            if (BackUpConnection.getInstance() instanceof BackUpServerConnection) {
+            if (BackUpConnection.getInstance() instanceof BackUpServerConnection &&
+                disconnectClients) {
+                disconnectClients = false;
                 Thread thread = new Thread(this::reactOnEmpty);
                 thread.setDaemon(true);
                 thread.start();
-            } else if (Server.getOurInstance().isShutdown())
+            } else if (BackUpConnection.getInstance() instanceof MainServerConnection &&
+                Server.getOurInstance().isShutdown())
                 Server.getOurInstance().startClients();
         }
     }
@@ -59,7 +65,9 @@ public class BackUpConnectionStatus {
         do {
             try {
                 again = false;
+                System.out.println("wait empty");
                 Server.getOurInstance().getMessages().waitEmpty();
+                System.out.println("after wait empty");
             } catch (InterruptedException e) {
                 again = true;
             }

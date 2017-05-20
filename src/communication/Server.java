@@ -137,8 +137,6 @@ public class Server {
         startWorkerThreads();
 
         startBackUpConnection();
-        /*if (!isBackUpServer)
-            startClients();*/
     }
 
     public void startClients() {
@@ -188,13 +186,9 @@ public class Server {
         SSLServerSocketFactory factory = (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
 
         try {
-            if (sslserversocket != null) {
-                sslserversocket.setReuseAddress(true);
-                sslserversocket.bind(new InetSocketAddress(port));
-            } else {
-                sslserversocket = (SSLServerSocket) factory.createServerSocket(port);
-                sslserversocket.setReuseAddress(true);
-            }
+            sslserversocket = (SSLServerSocket) factory.createServerSocket();
+            sslserversocket.setReuseAddress(true);
+            sslserversocket.bind(new InetSocketAddress(port));
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(-1);
@@ -218,7 +212,7 @@ public class Server {
                     SSLSocket sslsocket = (SSLSocket) sslserversocket.accept();
                     new ClientConnection(sslsocket);
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    return;
                 }
             }
         });
