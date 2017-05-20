@@ -44,6 +44,7 @@ public class ClientConnection {
                 try {
                     message = streamMessage.read();
                 } catch (IOException e) {
+                    System.out.println("Read thread: exception: " + e);
                     this.close();
                     handleDisconnection();
                     return;
