@@ -17,6 +17,8 @@ public class NoMoreMessagesType extends ReactMessage {
         String[] parameters = message.getHeader().split(" ");
         if (parameters.length != noMoreMessagesSize)
             return;
+        if (client.getClientID() == ClientConnection.ownID)
+            send(client, message);
         BackUpConnection.getInstance().setFinishedProtocol();
     }
 }

@@ -70,7 +70,7 @@ public class StreamMessage {
      * @throws IOException Signals that an I/O exception of some sort has occurred. This class is the general class of exceptions produced by failed or interrupted I/O operations
      */
     public void write(Message message) throws IOException {
-        synchronized (os) {
+        synchronized (inputObject) {
             System.out.println("Sending message to ma boy");
             os.writeObject(message);
             os.flush();
