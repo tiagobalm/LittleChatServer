@@ -7,11 +7,13 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-import static database.UserRequests.getRoomUsers;
 import static message.MessageConstants.addToRoomSize;
 import static message.MessageConstants.addToRoomType;
 
 public class AddToRoomType extends ReactMessage {
+    private int roomID;
+    private int userID;
+
     AddToRoomType(Message message) {
         super(message);
     }
@@ -21,21 +23,30 @@ public class AddToRoomType extends ReactMessage {
         String[] parameters = message.getHeader().split(" ");
         if (parameters.length != addToRoomSize || client.getClientID() == null)
             return;
-        int roomID = Integer.parseInt(parameters[1]);
-        int userID = UserRequests.getUserID(message.getMessage());
 
-        try { UserRequests.insertUserRoom(userID, roomID);
-        } catch( SQLException e ) {
+        if (!storeMessage(client))
             send(client, new Message(addToRoomType + " " + roomID, "False\0" + message.getMessage()));
-            return;
-        }
-        send(new Message(addToRoomType + " " + roomID, "True\0" + message.getMessage()), roomID);
+        else
+            send(new Message(addToRoomType + " " + roomID, "True\0" + message.getMessage()), roomID);
     }
 
     private void send(Message message, int roomID) throws IOException {
-        List<Integer> roomUsers = getRoomUsers(roomID);
+        List<Integer> roomUsers = UserRequests.getRoomUsers(roomID);
         if( roomUsers == null ) return;
         for( Integer id : roomUsers )
             notifyUser(message, id);
+    }
+
+    protected void getMessageVariables(ClientConnection client) {
+        String[] parameters = message.getHeader().split(" ");
+        roomID = Integer.parseInt(parameters[1]);
+        userID = UserRequests.getUserID(message.getMessage());
+    }
+
+    protected boolean query(ClientConnection client) {
+        try { UserRequests.insertUserRoom(userID, roomID);
+        } catch( SQLException e ) { return false;
+        }
+        return true;
     }
 }
