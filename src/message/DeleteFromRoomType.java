@@ -39,10 +39,10 @@ public class DeleteFromRoomType extends ReactMessage {
         int userID = UserRequests.getUserID(message.getMessage());
         try { UserRequests.deleteUserFromRoom(userID, roomID);
         } catch( SQLException e ) {
-            send(client, new Message(deleteFromRoomType, "False\0" + message.getMessage()));
+            send(client, new Message(deleteFromRoomType + " " + roomID, "False\0" + message.getMessage()));
             return;
         }
-        send(new Message(deleteFromRoomType, "True\0" + message.getMessage()), roomID);
+        send(new Message(deleteFromRoomType + " " + roomID, "True\0" + message.getMessage()), roomID, userID);
     }
 
     /**
@@ -51,10 +51,11 @@ public class DeleteFromRoomType extends ReactMessage {
      * @param roomID Room's identifier
      * @throws IOException Signals that an I/O exception of some sort has occurred
      */
-    private void send(Message message, int roomID) throws IOException {
+    private void send(Message message, int roomID, int deletedUser) throws IOException {
         List<Integer> roomUsers = getRoomUsers(roomID);
         if( roomUsers == null ) return;
         for( Integer id : roomUsers )
             notifyUser(message, id);
+        notifyUser(message, deletedUser);
     }
 }

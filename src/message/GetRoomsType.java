@@ -54,7 +54,6 @@ public class GetRoomsType extends ReactMessage {
         String roomName = roomInfo[1];
         List<Integer> roomUsers  = UserRequests.getRoomUsers(roomID);
         StringBuilder builder = new StringBuilder();
-        System.out.println(roomID);
         builder.append(roomID);
         builder.append("\0");
         builder.append(roomName);

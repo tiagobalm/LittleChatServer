@@ -38,10 +38,10 @@ public class AddToRoomType extends ReactMessage {
         int userID = UserRequests.getUserID(message.getMessage());
         try { UserRequests.insertUserRoom(userID, roomID);
         } catch( SQLException e ) {
-            send(client, new Message(addToRoomType, "False\0" + message.getMessage()));
+            send(client, new Message(addToRoomType + " " + roomID, "False\0" + message.getMessage()));
             return;
         }
-        send(new Message(addToRoomType, "True\0" + message.getMessage()), roomID);
+        send(new Message(addToRoomType + " " + roomID, "True\0" + message.getMessage()), roomID);
     }
 
     /**
