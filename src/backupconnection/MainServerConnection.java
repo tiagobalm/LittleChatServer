@@ -99,9 +99,4 @@ public class MainServerConnection extends BackUpConnection {
         thread.setDaemon(true);
         thread.start();
     }
-
-    protected void reconnected() {
-        initialProtocol();
-        status.statusChange(BackUpConnectionStatus.ServerCommunicationStatus.OK);
-    }
 }

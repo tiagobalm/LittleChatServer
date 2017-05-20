@@ -32,6 +32,9 @@ public class ClientConnection {
      * @param sslSocket Socket to be used in the connection
      */
     public ClientConnection(SSLSocket sslSocket) {
+        if (sslSocket == null)
+            return;
+
         streamMessage = new StreamMessage(sslSocket);
 
         read = new Thread(() -> {
@@ -58,7 +61,8 @@ public class ClientConnection {
     }
 
     private void handleDisconnection() {
-        BackUpConnection.getInstance().getStatus().statusChange(BackUpConnectionStatus.ServerCommunicationStatus.RECONNECTING);
+        if (clientID != null && clientID == serverID)
+            BackUpConnection.getInstance().getStatus().statusChange(BackUpConnectionStatus.ServerCommunicationStatus.RECONNECTING);
     }
 
     /**
