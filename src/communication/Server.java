@@ -157,6 +157,10 @@ public class Server {
         }
     }
 
+    public boolean isShutdown() {
+        return sslserversocket == null || sslserversocket.isClosed();
+    }
+
     /**
      * Starts the backup protocol's connection
      */

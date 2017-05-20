@@ -21,5 +21,6 @@ public class NoMoreMessagesType extends ReactMessage {
         if (client.getClientID() == ClientConnection.ownID)
             send(BackUpConnection.getInstance().getBackupChannel(), message);
         BackUpConnection.getInstance().setFinishedProtocol();
+
     }
 }

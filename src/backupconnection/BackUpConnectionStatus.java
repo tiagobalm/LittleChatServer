@@ -47,22 +47,26 @@ public class BackUpConnectionStatus {
             statusChange(ServerCommunicationStatus.OK);
             UserRequests.deleteUnsentMessages();
             if (BackUpConnection.getInstance() instanceof BackUpServerConnection) {
-                Thread thread = new Thread(() -> {
-                    boolean again;
-                    do {
-                        try {
-                            again = false;
-                            Server.getOurInstance().getMessages().waitEmpty();
-                        } catch (InterruptedException e) {
-                            again = true;
-                        }
-                    } while (again);
-                    Server.getOurInstance().disconnectClients();
-                });
+                Thread thread = new Thread(this::reactOnEmpty);
                 thread.setDaemon(true);
                 thread.start();
-            }
+            } else if (Server.getOurInstance().isShutdown())
+                Server.getOurInstance().startClients();
         }
+    }
+
+    private void reactOnEmpty() {
+        boolean again;
+        do {
+            try {
+                again = false;
+                Server.getOurInstance().getMessages().waitEmpty();
+            } catch (InterruptedException e) {
+                again = true;
+            }
+        } while (again);
+        Server.getOurInstance().disconnectClients();
+
     }
 
     public void statusChange(ServerCommunicationStatus newStatus) {
