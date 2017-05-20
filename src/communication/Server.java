@@ -150,10 +150,14 @@ public class Server {
      */
     private void startBackUpConnection() {
         try {
+            System.out.println("burck durp");
             if( isBackUpServer )
                 BackUpServerConnection.initBackUpConnection();
-            else
+            else {
+                System.out.println("burck durp");
                 MainServerConnection.initBackUpConnection();
+                System.out.println("burck durp");
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

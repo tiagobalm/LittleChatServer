@@ -28,6 +28,7 @@ public class BackUpServerConnection extends BackUpConnection {
      */
     private BackUpServerConnection() {
         super();
+        status.changeStatusThread();
         startServer();
     }
 

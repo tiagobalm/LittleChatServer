@@ -23,6 +23,7 @@ public class MainServerConnection extends BackUpConnection {
      */
     private MainServerConnection() {
         super();
+        status.changeStatusThread();
         startServer();
         startAcceptThread();
     }
@@ -33,11 +34,15 @@ public class MainServerConnection extends BackUpConnection {
      * @throws Exception This exception is thrown if the backup connection has already an instance
      */
     public static void initBackUpConnection() throws Exception {
+        System.out.println("burck urp");
         if (instance != null)
             throw new Exception("Singleton class BackUpConnection initiated twice");
+        System.out.println("burck urp");
         instance = new MainServerConnection();
-        instance.status.changeStatusThread();
-        instance.initialProtocol();
+        System.out.println("burck urp");
+        System.out.println("burck urp");
+        //instance.initialProtocol();
+        System.out.println("burck urp");
     }
 
     /**
