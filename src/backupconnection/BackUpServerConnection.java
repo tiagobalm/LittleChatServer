@@ -29,7 +29,6 @@ public class BackUpServerConnection extends BackUpConnection {
     private BackUpServerConnection() {
         super();
         status.changeStatusThread();
-        startServer();
     }
 
     /**
@@ -41,12 +40,13 @@ public class BackUpServerConnection extends BackUpConnection {
         if (instance != null)
             throw new Exception("Singleton class BackUpConnection initiated twice");
         instance = new BackUpServerConnection();
+        instance.startServer();
     }
 
     /**
      * This function starts the server
      */
-    private void startServer() {
+    protected void startServer() {
         SSLSocketFactory factory = (SSLSocketFactory) SSLSocketFactory.getDefault();
         try {
             SSLSocket sslSocket = (SSLSocket) factory.createSocket(BACKUP_IP, BACKUP_PORT);

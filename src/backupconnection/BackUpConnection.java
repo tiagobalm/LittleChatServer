@@ -60,6 +60,12 @@ public abstract  class BackUpConnection {
         return instance;
     }
 
+    protected void startServer() {
+    }
+
+    protected void startAcceptThread() {
+    }
+
     /**
      * This function gets the backup's channel
      * @return The backup's channel
@@ -127,5 +133,4 @@ public abstract  class BackUpConnection {
 
     protected void reconnectServer() {
     }
-
 }
