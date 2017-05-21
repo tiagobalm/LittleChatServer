@@ -15,7 +15,8 @@ import static message.MessageConstants.friendRequestSize;
  * This class extends the ReactMessage class
  */
 public class FriendRequestType extends ReactMessage {
-    private int userID;
+    private int toUserID;
+    private int fromUserID;
 
     /**
      * This is the FriendRequestType's constructor
@@ -41,18 +42,19 @@ public class FriendRequestType extends ReactMessage {
             return ;
         if (!storeMessage(client))
             return;
-        Message newMessage = new Message(parameters[0] + " " + UserRequests.getUsername(client.getClientID()), "");
-        notifyUser(newMessage, userID);
+        Message newMessage = new Message(parameters[0] + " " + parameters[2], "");
+        notifyUser(newMessage, toUserID);
     }
 
     protected void getMessageVariables(ClientConnection client) {
         String[] parameters = message.getHeader().split(" ");
-        userID = getUserID(parameters[1]);
+        toUserID = getUserID(parameters[1]);
+        fromUserID = getUserID(parameters[2]);
     }
 
     protected boolean query(ClientConnection client) {
         try {
-            insertFriends(client.getClientID(), userID);
+            insertFriends(fromUserID, toUserID);
         } catch (SQLException e) {
             System.out.println("SQLException: " + e.getMessage());
             return false;

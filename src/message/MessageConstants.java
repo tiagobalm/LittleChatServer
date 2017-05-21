@@ -91,7 +91,7 @@ class MessageConstants {
     /**
      * FriendRequest size
      */
-    static final int friendRequestSize = 2;
+    static final int friendRequestSize = 3;
 
     /**
      * AnswerFriend message's type
