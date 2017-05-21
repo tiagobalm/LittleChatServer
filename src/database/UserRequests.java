@@ -210,10 +210,8 @@ public class UserRequests {
             try {
                 Queries.execute();
                 ResultSet rs;
-                if((rs = Queries.getNext()) != null) {
-                    System.out.println("Query Results: RoomID " + Integer.parseInt(rs.getString("ID")));
+                if((rs = Queries.getNext()) != null)
                     roomID = Integer.parseInt(rs.getString("ID"));
-                }
             } catch (SQLException ignore) {}
             Queries.close();
         }

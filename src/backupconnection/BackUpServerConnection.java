@@ -55,8 +55,7 @@ public class BackUpServerConnection extends BackUpConnection {
             backupChannel = new ClientConnection(sslSocket);
             backupChannel.setClientID(ClientConnection.serverID);
             status.finishedStatus();
-        } catch (IOException e) {
-            System.out.println("Connection failed " + e.getMessage());
+        } catch (IOException ignore) {
         }
     }
 

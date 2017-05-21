@@ -32,7 +32,6 @@ public class BackUpConnectionStatus {
             if (BackUpConnection.getInstance() instanceof BackUpServerConnection)
                 Server.getOurInstance().startClients();
         } else if (status == ServerCommunicationStatus.SENDING_UNSENT) {
-            System.out.println("Start initial protocol");
             BackUpConnection.getInstance().initialProtocol();
         }
     }
@@ -65,9 +64,7 @@ public class BackUpConnectionStatus {
         do {
             try {
                 again = false;
-                System.out.println("wait empty");
                 Server.getOurInstance().getMessages().waitEmpty();
-                System.out.println("after wait empty");
             } catch (InterruptedException e) {
                 again = true;
             }

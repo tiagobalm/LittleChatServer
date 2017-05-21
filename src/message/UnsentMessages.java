@@ -25,7 +25,7 @@ public class UnsentMessages {
             me.setClientID(ClientConnection.ownID);
 
             for (Message m : unsentMessages) {
-                System.out.println(m.getHeader());
+                System.out.println("Sending unsent: " + m.getHeader());
                 Server.getOurInstance().getMessages().put(me, m);
             }
             Server.getOurInstance().getMessages().put(me,

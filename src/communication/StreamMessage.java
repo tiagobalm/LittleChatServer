@@ -71,7 +71,6 @@ public class StreamMessage {
      */
     public void write(Message message) throws IOException {
         synchronized (inputObject) {
-            System.out.println("Sending message to ma boy");
             os.writeObject(message);
             os.flush();
         }

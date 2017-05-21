@@ -125,7 +125,6 @@ public class Server {
             System.exit(-1);
         }
         Server.getOurInstance().initialize();
-        System.out.println("Server initialized");
     }
 
     /**
@@ -146,7 +145,6 @@ public class Server {
 
     public void disconnectClients() {
         try {
-            System.out.println("Closing socket");
             sslserversocket.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -176,8 +174,6 @@ public class Server {
      * @param port Port that will used to create the socket
      */
     private void startServer(int port) {
-        System.out.println("Starting server sockets");
-
         try { UserRequests.deleteUserConnections();
         } catch (SQLException ignore) {}
 
@@ -205,7 +201,6 @@ public class Server {
      * Starts the acceptation of threads
      */
     private void startAcceptThread() {
-        System.out.println("Starting accept thread");
         Thread accept = new Thread(() -> {
             while(true) {
                 try {
@@ -225,7 +220,6 @@ public class Server {
      * Starts the worker threads
      */
     private void startWorkerThreads() {
-        System.out.println("Starting worker threads");
         ExecutorService executor = Executors.newFixedThreadPool(numberOfWorkerThreads);
         for( int i = 0; i < numberOfWorkerThreads; i++ ) {
             Thread thread = new Thread(new Worker());

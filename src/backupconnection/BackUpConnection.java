@@ -111,7 +111,6 @@ public abstract class BackUpConnection {
     public void setFinishedProtocol() {
         nNoMoreMessages++;// = true;
         if (nNoMoreMessages == 2) {
-            System.out.println("Notify");
             notifyAvailable();
         }
     }
@@ -120,7 +119,7 @@ public abstract class BackUpConnection {
         Thread thread = new Thread(() -> {
             UnsentMessages.send();
             waitProtocol();
-            System.out.println("Over");
+            System.out.println("Init protocol over");
             status.finishedStatus();
         });
         thread.setDaemon(true);

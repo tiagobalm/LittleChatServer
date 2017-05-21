@@ -66,12 +66,9 @@ public class MessagesQueue {
     }
 
     public synchronized void waitEmpty() throws InterruptedException {
-        System.out.println("wait empty");
         synchronized (blockObject) {
-            System.out.println(messages.isEmpty());
             while (!messages.isEmpty())
                 blockObject.wait();
         }
-        System.out.println("is empty");
     }
 }
