@@ -11,7 +11,8 @@ import static database.UserRequests.updateFriendshipStatus;
 import static message.MessageConstants.answerFriendSize;
 
 public class AnswerFriendType extends ReactMessage {
-    private int userID;
+    private int toUserID;
+    private int fromUserID;
 
     AnswerFriendType(Message message) {
         super(message);
@@ -26,27 +27,28 @@ public class AnswerFriendType extends ReactMessage {
         if(storeMessage(client)) {
             if (message.getMessage().equals("True")) {
                 Message newMessage = new Message(parameters[0] + " " + UserRequests.getUsername(client.getClientID()), "True");
-                notifyUser(newMessage, userID);
+                notifyUser(newMessage, toUserID);
             }
             else {
                 Message newMessage = new Message(parameters[0] + " " + UserRequests.getUsername(client.getClientID()), "False");
-                notifyUser(newMessage, userID);
+                notifyUser(newMessage, toUserID);
             }
         }
     }
 
     protected void getMessageVariables(ClientConnection client) {
         String[] parameters = message.getHeader().split(" ");
-        userID = getUserID(parameters[1]);
+        toUserID = getUserID(parameters[1]);
+        fromUserID = getUserID(parameters[2]);
     }
 
     protected boolean query(ClientConnection client) {
         if (message.getMessage().equals("True")) {
-            try {UserRequests.updateFriendshipStatus(client.getClientID(), userID);
+            try {UserRequests.updateFriendshipStatus(fromUserID, toUserID);
             } catch (SQLException e) {return false;
             }
         } else {
-            try {UserRequests.deleteFriendshipStatus(userID, client.getClientID());
+            try {UserRequests.deleteFriendshipStatus(toUserID, fromUserID);
             } catch (SQLException e) {return false;
             }
         }

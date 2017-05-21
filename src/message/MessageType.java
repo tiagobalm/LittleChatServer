@@ -1,6 +1,7 @@
 package message;
 
 import communication.ClientConnection;
+import database.UserRequests;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -9,12 +10,14 @@ import java.util.List;
 import static database.UserRequests.*;
 import static message.MessageConstants.messageSize;
 import static message.MessageConstants.messageType;
+import static message.MessageConstants.registerSize;
 
 /**
  * This class creates the message to be sent
  * This extens the ReactMessage class
  */
 public class MessageType extends ReactMessage {
+    private int userID;
     private int roomID;
     private String messageBody;
     private String username;
@@ -42,7 +45,7 @@ public class MessageType extends ReactMessage {
         if (parameters.length != messageSize || client.getClientID() == null || !storeMessage(client))
             return ;
         send(new Message(messageType + " " + username + " " + roomID, messageBody),
-                roomID, client.getClientID());
+                roomID, userID);
     }
 
     /**
@@ -65,12 +68,15 @@ public class MessageType extends ReactMessage {
         String[] parameters = message.getHeader().split(" ");
         roomID = Integer.parseInt(parameters[1]);
         messageBody = message.getMessage();
-        username = getUsername(client.getClientID());
+        username = parameters[2];
+        userID = UserRequests.getUserID(username);
     }
 
     protected boolean query(ClientConnection client) {
+        System.out.println("Storing message");
+        System.out.println(roomID + "-" + messageBody + "-" + username);
         try {
-            insertMessages(client.getClientID(), roomID, messageBody);
+            insertMessages(userID, roomID, messageBody);
         } catch (SQLException e) {
             System.out.println("SQLException: " + e.getMessage());
             return false;

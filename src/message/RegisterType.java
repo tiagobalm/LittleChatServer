@@ -89,7 +89,7 @@ public class RegisterType extends ReactMessage {
     private void disconnectClient(ClientConnection client) {
         if (client.getClientID() != null)
             try {
-                UserRequests.deleteUserConnection(client.getClientID());
+                UserRequests.deleteUserConnection(UserRequests.getUserID(username));
             } catch (SQLException ignore) {}
     }
 }

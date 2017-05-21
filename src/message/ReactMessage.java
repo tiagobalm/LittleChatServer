@@ -96,7 +96,9 @@ public abstract class ReactMessage {
     }
 
     boolean storeMessage(ClientConnection client) {
+        System.out.println("storeMessage: " + message.getHeader());
         getMessageVariables(client);
+        System.out.println("storeMessage: After get variables");
         return query(client);
     }
 
