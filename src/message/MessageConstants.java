@@ -100,7 +100,7 @@ class MessageConstants {
     /**
      * AnswerFriend size
      */
-    static final int answerFriendSize = 2;
+    static final int answerFriendSize = 3;
 
     /**
      * AddRoom message's type
