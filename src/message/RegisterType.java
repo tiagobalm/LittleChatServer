@@ -59,7 +59,7 @@ public class RegisterType extends ReactMessage {
     }
 
     protected boolean query(ClientConnection client) {
-        disconnectClient(client);
+        disconnectClient();
         return registerUser(username, password, ip, port);
     }
 
@@ -83,13 +83,10 @@ public class RegisterType extends ReactMessage {
 
     /**
      * This function disconnects the client
-     *
-     * @param client Client's connection
      */
-    private void disconnectClient(ClientConnection client) {
-        if (client.getClientID() != null)
-            try {
-                UserRequests.deleteUserConnection(UserRequests.getUserID(username));
-            } catch (SQLException ignore) {}
+    private void disconnectClient() {
+        try {
+            UserRequests.deleteUserConnection(UserRequests.getUserID(username));
+        } catch (SQLException ignore) {}
     }
 }

@@ -26,11 +26,11 @@ public class AnswerFriendType extends ReactMessage {
 
         if(storeMessage(client)) {
             if (message.getMessage().equals("True")) {
-                Message newMessage = new Message(parameters[0] + " " + UserRequests.getUsername(client.getClientID()), "True");
+                Message newMessage = new Message(parameters[0] + " " + UserRequests.getUsername(fromUserID), "True");
                 notifyUser(newMessage, toUserID);
             }
             else {
-                Message newMessage = new Message(parameters[0] + " " + UserRequests.getUsername(client.getClientID()), "False");
+                Message newMessage = new Message(parameters[0] + " " + UserRequests.getUsername(fromUserID), "False");
                 notifyUser(newMessage, toUserID);
             }
         }
