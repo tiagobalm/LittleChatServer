@@ -3,6 +3,7 @@ package database;
 import message.Message;
 import org.jetbrains.annotations.Nullable;
 
+import java.awt.*;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.sql.ResultSet;
@@ -642,6 +643,10 @@ public class UserRequests {
         List<Object> params = new ArrayList<>();
         params.add(message.getHeader());
         params.add(message.getMessage());
+
+        System.out.println("Storing unsent");
+        System.out.println(message.getHeader());
+        System.out.println(message.getMessage());
 
         synchronized (Queries.class) {
             basicUpdate(sql, params);

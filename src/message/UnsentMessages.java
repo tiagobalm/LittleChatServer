@@ -24,8 +24,10 @@ public class UnsentMessages {
             ClientConnection me = new ClientConnection(null);
             me.setClientID(ClientConnection.ownID);
 
-            for (Message m : unsentMessages)
+            for (Message m : unsentMessages) {
+                System.out.println(m.getHeader());
                 Server.getOurInstance().getMessages().put(me, m);
+            }
             Server.getOurInstance().getMessages().put(me,
                     new Message(MessageConstants.noMoreMessagesType, ""));
         }
