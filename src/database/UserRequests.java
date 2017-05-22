@@ -148,13 +148,14 @@ public class UserRequests {
      * @param content Message's content
      * @throws SQLException This is an exception that provides information on a database access error or other errors
      */
-    public static void insertMessages(int userID, int roomID, String content) throws SQLException {
-        String sql = "INSERT INTO Message(userID, roomID, message) VALUES (?, ?, ?);";
+    public static void insertMessages(int userID, int roomID, long date, String content) throws SQLException {
+        String sql = "INSERT INTO Message(userID, roomID, message, sentDate) VALUES (?, ?, ?, ?);";
 
         List<Object> params = new ArrayList<>();
         params.add(userID);
         params.add(roomID);
         params.add(content);
+        params.add(date);
 
         synchronized (Queries.class) {
             basicUpdate(sql, params);

@@ -90,15 +90,12 @@ public abstract class ReactMessage {
     boolean checkToServer(ClientConnection client) {
         if (ToServerMessage.analyze(this, client))
             return true;
-        System.out.println(message.getHeader());
         ToServerMessage.communicate(this);
         return false;
     }
 
     boolean storeMessage(ClientConnection client) {
-        System.out.println("storeMessage: " + message.getHeader());
         getMessageVariables(client);
-        System.out.println("storeMessage: After get variables");
         return query(client);
     }
 

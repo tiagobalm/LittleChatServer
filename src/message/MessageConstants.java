@@ -82,7 +82,7 @@ class MessageConstants {
     /**
      * Message size
      */
-    static final int messageSize = 2;
+    static final int messageSize = 4;
 
     /**
      * FriendRequest message's type

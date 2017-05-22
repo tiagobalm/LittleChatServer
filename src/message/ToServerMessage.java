@@ -12,14 +12,15 @@ class ToServerMessage {
     static boolean analyze(ReactMessage react, ClientConnection clientConnection) {
         boolean asServer = false;
         if (clientConnection.getClientID() != null) {
-            System.out.println(clientConnection.getClientID());
             if (clientConnection.getClientID() == ClientConnection.ownID &&
                     BackUpConnection.getInstance().getStatus().getStatus() != BackUpConnectionStatus.ServerCommunicationStatus.RECONNECTING) {
                 react.send(BackUpConnection.getInstance().getBackupChannel(), react.message);
                 asServer = true;
             } else if (clientConnection.getClientID() == ClientConnection.serverID) {
-                System.out.println("Store message");
-                react.storeMessage(clientConnection);
+                if( ! react.storeMessage(clientConnection) ) {
+                    System.out.println("Message " + react.message.getHeader() + " failed to store");
+                    Server.getOurInstance().getMessages().put(clientConnection, react.message);
+                }
                 asServer = true;
             }
         }

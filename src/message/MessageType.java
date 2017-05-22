@@ -7,10 +7,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-import static database.UserRequests.*;
 import static message.MessageConstants.messageSize;
 import static message.MessageConstants.messageType;
-import static message.MessageConstants.registerSize;
 
 /**
  * This class creates the message to be sent
@@ -21,6 +19,7 @@ public class MessageType extends ReactMessage {
     private int roomID;
     private String messageBody;
     private String username;
+    private long date;
 
     /**
      * This is the MessageType's constructor
@@ -57,11 +56,11 @@ public class MessageType extends ReactMessage {
      * @throws IOException Signals that an I/O exception of some sort has occurred
      */
     private void send(Message message, int roomID, int userID) throws IOException {
-        List<Integer> roomUsers = getRoomUsers(roomID);
+        List<Integer> roomUsers = UserRequests.getRoomUsers(roomID);
         if( roomUsers == null ) return;
-        for( Integer id : roomUsers )
-            if( id != userID )
-                notifyUser(message, id);
+            for( Integer id : roomUsers )
+                if( id != userID )
+                    notifyUser(message, id);
     }
 
     protected void getMessageVariables(ClientConnection client) {
@@ -69,14 +68,13 @@ public class MessageType extends ReactMessage {
         roomID = Integer.parseInt(parameters[1]);
         messageBody = message.getMessage();
         username = parameters[2];
+        date = Long.parseLong(parameters[3]);
         userID = UserRequests.getUserID(username);
     }
 
     protected boolean query(ClientConnection client) {
-        System.out.println("Storing message");
-        System.out.println(roomID + "-" + messageBody + "-" + username);
         try {
-            insertMessages(userID, roomID, messageBody);
+            UserRequests.insertMessages(userID, roomID, date, messageBody);
         } catch (SQLException e) {
             System.out.println("SQLException: " + e.getMessage());
             return false;
