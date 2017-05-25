@@ -45,6 +45,8 @@ public class GetMessagesType extends ReactMessage{
             return ;
         int roomID = Integer.parseInt(params[1]);
         List<String> messages = UserRequests.getMessagesFromRoom(roomID, nMessage);
+        for(String message : messages)
+            System.out.println(message);
         if (messages == null) return;
         client.getStreamMessage().write(
                 new Message(getMessagesType + " " + roomID, messages));
