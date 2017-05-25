@@ -66,7 +66,6 @@ public class Message implements Serializable {
     }
 
     /**
-     <<<<<<< HEAD
      * Set optional messages.
      *
      * @param optionalMessage optional message.

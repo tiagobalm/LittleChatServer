@@ -108,13 +108,3 @@ INSERT INTO Friend(firstUserID, secondUserID, friendStatus) VALUES(3,4,1);
 INSERT INTO Friend(firstUserID, secondUserID, friendStatus) VALUES(4,1,1);
 INSERT INTO Friend(firstUserID, secondUserID, friendStatus) VALUES(4,2,1);
 INSERT INTO Friend(firstUserID, secondUserID, friendStatus) VALUES(4,3,1);
-
-INSERT INTO Message(userID, roomID, message, sentDate) VALUES (1,1,'Hi friends!', "2017-05-08 15:22:00");
-INSERT INTO Message(userID, roomID, message, sentDate) VALUES (4,1,'Oi amiguinho', "2017-05-08 15:23:00");
-INSERT INTO Message(userID, roomID, message, sentDate) VALUES (1,2,'Oi amiguinho', "2017-05-09 15:00:00");
-INSERT INTO Message(userID, roomID, message, sentDate) VALUES (2,2,'Estou ocupado, não posso falar', "2017-05-09 15:00:40");
-INSERT INTO Message(userID, roomID, message, sentDate) VALUES (2,3,'Temos que falar', "2017-05-06 00:00:00");
-INSERT INTO Message(userID, roomID, message, sentDate) VALUES (2,5,'Hoje não fiz nada', "2017-05-11 05:00:00");
-INSERT INTO Message(userID, roomID, message, sentDate) VALUES (3,5,'Nem eu! Que seca', "2017-05-11 05:02:00");
-INSERT INTO Message(userID, roomID, message, sentDate) VALUES (3,4,'Que chato que ele é', "2017-05-11 06:40:00");
-INSERT INTO Message(userID, roomID, message, sentDate) VALUES (4,4,'...', "2017-05-11 06:40:56");

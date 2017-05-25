@@ -43,7 +43,7 @@ public class MessageType extends ReactMessage {
         String[] parameters = message.getHeader().split(" ");
         if (parameters.length != messageSize || client.getClientID() == null || !storeMessage(client))
             return ;
-        send(new Message(messageType + " " + username + " " + roomID, messageBody),
+        send(new Message(messageType + " " + username + " " + roomID + " " + date, messageBody),
                 roomID, userID);
     }
 
