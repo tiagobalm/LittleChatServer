@@ -629,7 +629,7 @@ public class UserRequests {
                 ResultSet rs;
                 while((rs = Queries.getNext()) != null)
                     messages.add(rs.getString("username") + "\0" +
-                            rs.getInt("sentDate") + "\0" +
+                            rs.getLong("sentDate") + "\0" +
                             rs.getString("message"));
             } catch (SQLException ignore) { messages = null; }
             Queries.close();
