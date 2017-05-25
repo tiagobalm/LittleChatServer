@@ -613,7 +613,7 @@ public class UserRequests {
         List<String> messages = new ArrayList<>();
 
         String sql =
-                "SELECT username, message " +
+                "SELECT username, sentDate, message " +
                         "FROM User, Message " +
                         "WHERE roomID = ?" +
                         "AND Message.userID = User.userID " +
@@ -629,6 +629,7 @@ public class UserRequests {
                 ResultSet rs;
                 while((rs = Queries.getNext()) != null)
                     messages.add(rs.getString("username") + "\0" +
+                            rs.getInt("sentDate") + "\0" +
                             rs.getString("message"));
             } catch (SQLException ignore) { messages = null; }
             Queries.close();
