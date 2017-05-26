@@ -31,6 +31,8 @@ public class UnsentMessages {
             Server.getOurInstance().getMessages().put(me,
                     new Message(MessageConstants.noMoreMessagesType, ""));
         }
+
+        UserRequests.deleteUnsentMessages();
     }
 
     private static List<Message> getUnsentMessages() {
