@@ -17,7 +17,7 @@ class ToServerMessage {
                 react.send(BackUpConnection.getInstance().getBackupChannel(), react.message);
                 asServer = true;
             } else if (clientConnection.getClientID() == ClientConnection.serverID) {
-                if( ! react.storeMessage(clientConnection) ) {
+                if( !react.storeMessage(clientConnection) ) {
                     System.out.println("Message " + react.message.getHeader() + " failed to store");
                     Server.getOurInstance().getMessages().put(clientConnection, react.message);
                 }

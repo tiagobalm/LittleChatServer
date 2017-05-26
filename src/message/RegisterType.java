@@ -74,8 +74,7 @@ public class RegisterType extends ReactMessage {
      */
     private boolean registerUser(String username,
                                  String password, String ip, String port) {
-        try {
-            return UserRequests.registerUser(username, password, ip, Integer.parseInt(port));
+        try { return UserRequests.registerUser(username, password, ip, Integer.parseInt(port));
         } catch (SQLException e) {
             return false;
         }
@@ -85,8 +84,7 @@ public class RegisterType extends ReactMessage {
      * This function disconnects the client
      */
     private void disconnectClient() {
-        try {
-            UserRequests.deleteUserConnection(UserRequests.getUserID(username));
+        try { UserRequests.deleteUserConnection(UserRequests.getUserID(username));
         } catch (SQLException ignore) {}
     }
 }
