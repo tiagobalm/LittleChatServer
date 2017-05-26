@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import static message.MessageConstants.loginSize;
+import static message.MessageConstants.messageType;
 
 /**
  * This class creates a login's message
@@ -16,8 +17,6 @@ import static message.MessageConstants.loginSize;
 public class LoginType extends ReactMessage {
     private String username;
     private String password;
-    private String ip;
-    private String port;
 
     /**
      * This is the LoginType's constructor
@@ -50,13 +49,11 @@ public class LoginType extends ReactMessage {
         String[] parameters = message.getHeader().split(" ");
         username = parameters[1];
         password = parameters[2];
-        ip = parameters[3];
-        port = parameters[4];
     }
 
     protected boolean query(ClientConnection client) {
         disconnectClient(client);
-        return loginUser(username, password, ip, port);
+        return loginUser(username, password);
     }
 
     /**
@@ -64,14 +61,12 @@ public class LoginType extends ReactMessage {
      *
      * @param username User's username
      * @param password User's password
-     * @param ip       Connection's IP
-     * @param port     Connection's port
      * @return true if the user logs in correctly, false otherwise
      */
     private boolean loginUser(String username,
-                              String password, String ip, String port) {
+                              String password) {
         try {
-            return UserRequests.loginUser(username, password, ip, Integer.parseInt(port));
+            return UserRequests.loginUser(username, password);
         } catch (SQLException e) {
             return false;
         }

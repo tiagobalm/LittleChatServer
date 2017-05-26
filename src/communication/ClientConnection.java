@@ -35,6 +35,8 @@ public class ClientConnection {
         if (sslSocket == null)
             return;
 
+        System.out.println("New client connection");
+
         streamMessage = new StreamMessage(sslSocket);
 
         read = new Thread(() -> {

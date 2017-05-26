@@ -16,8 +16,6 @@ import static message.MessageConstants.registerSize;
 public class RegisterType extends ReactMessage {
     private String username;
     private String password;
-    private String ip;
-    private String port;
 
     /**
      * This is the RegisterType's constructor
@@ -42,7 +40,7 @@ public class RegisterType extends ReactMessage {
         if( parameters.length != registerSize )
             return ;
         if (storeMessage(client)) {
-            try { UserRequests.insertUserConnection(username, ip, Integer.parseInt(port));
+            try { UserRequests.insertUserConnection(username);
             } catch (SQLException ignore) {}
             Server.getOurInstance().addClientID(UserRequests.getUserID(username), client);
             client.getStreamMessage().write(new Message("LOGIN", "True"));
@@ -55,13 +53,11 @@ public class RegisterType extends ReactMessage {
         String[] parameters = message.getHeader().split(" ");
         username = parameters[1];
         password = parameters[2];
-        ip = parameters[3];
-        port = parameters[4];
     }
 
     protected boolean query(ClientConnection client) {
         disconnectClient();
-        return registerUser(username, password, ip, port);
+        return registerUser(username, password);
     }
 
     /**
@@ -74,8 +70,8 @@ public class RegisterType extends ReactMessage {
      * @return true if it's possible to register the user, false otherwise
      */
     private boolean registerUser(String username,
-                                 String password, String ip, String port) {
-        try { return UserRequests.registerUser(username, password, ip, Integer.parseInt(port));
+                                 String password) {
+        try { return UserRequests.registerUser(username, password);
         } catch (SQLException e) {
             return false;
         }

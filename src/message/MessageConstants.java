@@ -10,7 +10,7 @@ class MessageConstants {
     /**
      * Login size
      */
-    static final int loginSize= 5;
+    static final int loginSize= 3;
 
     /**
      * Logout message's type
@@ -28,7 +28,7 @@ class MessageConstants {
     /**
      * Register size
      */
-    static final int registerSize= 5;
+    static final int registerSize= 3;
 
     /**
      * GetRooms message's type

@@ -15,8 +15,6 @@ CREATE TABLE User (
 
 CREATE TABLE UserConnection (
 	userID INTEGER,
-	ip VARCHAR(15),
-	port INTEGER,
 	FOREIGN KEY(userID) REFERENCES User(userID)
 		ON UPDATE CASCADE
 );

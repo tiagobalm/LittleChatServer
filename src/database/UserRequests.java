@@ -45,14 +45,12 @@ public class UserRequests {
      *
      * @param username User's username
      * @param password User's password
-     * @param ip       Connection's IP
-     * @param port     Connection's port
      * @return true if the user is logged in (if the password is the same as the password saved in the database) or false otherwise
      * @throws SQLException This is an exception that provides information on a database access error or other errors
      */
-    public static boolean loginUser(String username, String password, String ip, int port) throws SQLException {
+    public static boolean loginUser(String username, String password) throws SQLException {
         if( checkPassword(username, password) && !userConnected(username) ) {
-            insertUserConnection(username, ip, port);
+            insertUserConnection(username);
             return true;
         }
         return false;
@@ -63,12 +61,10 @@ public class UserRequests {
      *
      * @param username User's username
      * @param password User's password
-     * @param ip       Connection IP
-     * @param port     Connection port
      * @return true if the user could register himself or false otherwise (if the username selected already exists)
      * @throws SQLException This is an exception that provides information on a database access error or other errors
      */
-    public static boolean registerUser(String username, String password, String ip, int port) throws SQLException {
+    public static boolean registerUser(String username, String password) throws SQLException {
         if( getUserID(username) >= 0 )
             return false;
 
@@ -125,18 +121,14 @@ public class UserRequests {
     /**
      * This function inserts a user's connection
      * @param username User's username
-     * @param ip Connection IP
-     * @param port Connection port
      * @throws SQLException This is an exception that provides information on a database access error or other errors
      */
-    public static void insertUserConnection(String username, String ip, int port) throws SQLException {
+    public static void insertUserConnection(String username) throws SQLException {
         int userID = getUserID(username);
-        String sql = "INSERT INTO UserConnection(userID, ip, port) VALUES (?, ?, ?);";
+        String sql = "INSERT INTO UserConnection(userID) VALUES (?);";
 
         List<Object> params = new ArrayList<>();
         params.add(userID);
-        params.add(ip);
-        params.add(port);
 
         synchronized (Queries.class) {
             basicUpdate(sql, params);
