@@ -37,9 +37,10 @@ public class BackUpConnectionStatus {
     }
 
     void finishedStatus() {
-        if (status == ServerCommunicationStatus.INITIALIZING)
+        if (status == ServerCommunicationStatus.INITIALIZING) {
             statusChange(ServerCommunicationStatus.SENDING_UNSENT);
-        else if (status == ServerCommunicationStatus.RECONNECTING) {
+            BackUpConnection.getInstance().reconnected();
+        } else if (status == ServerCommunicationStatus.RECONNECTING) {
             BackUpConnection.getInstance().reconnected();
             if (BackUpConnection.getInstance() instanceof BackUpServerConnection)
                 disconnectClients = true;
