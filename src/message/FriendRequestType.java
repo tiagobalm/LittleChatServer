@@ -8,6 +8,7 @@ import java.sql.SQLException;
 
 import static database.UserRequests.getUserID;
 import static database.UserRequests.insertFriends;
+import static message.MessageConstants.answerFriendType;
 import static message.MessageConstants.friendRequestSize;
 
 /**
@@ -40,9 +41,11 @@ public class FriendRequestType extends ReactMessage {
         String[] parameters = message.getHeader().split(" ");
         if( parameters.length != friendRequestSize || client.getClientID() == null )
             return ;
+        Message newMessage;
         if (!storeMessage(client))
-            return;
-        Message newMessage = new Message(parameters[0] + " " + parameters[2], "");
+            newMessage = new Message(answerFriendType + " " + UserRequests.getUsername(toUserID), "False");
+        else
+            newMessage = new Message(parameters[0] + " " + parameters[2], "");
         notifyUser(newMessage, toUserID);
     }
 
