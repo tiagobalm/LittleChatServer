@@ -33,8 +33,6 @@ public class AddToRoomType extends ReactMessage {
             send(new Message(addToRoomType + " " + roomID, "True\0" + message.getMessage()), roomID);
             ToServerMessage.communicate(this);
         }
-
-        ToServerMessage.communicate(this);
     }
 
     private void send(Message message, int roomID) throws IOException {
