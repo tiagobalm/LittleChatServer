@@ -43,7 +43,7 @@ public class FriendRequestType extends ReactMessage {
             return ;
         Message newMessage;
         if (!storeMessage(client)) {
-            newMessage = new Message(answerFriendType + " " + UserRequests.getUsername(toUserID), "False");
+            newMessage = new Message(answerFriendType + " " + parameters[1], "False");
             notifyUser(newMessage, fromUserID);
         }
         else {
@@ -59,6 +59,7 @@ public class FriendRequestType extends ReactMessage {
     }
 
     protected boolean query(ClientConnection client) {
+        if(toUserID == -1 || fromUserID == -1) return false;
         try {
             insertFriends(fromUserID, toUserID);
         } catch (SQLException e) {
