@@ -70,6 +70,7 @@ public class DeleteFromRoomType extends ReactMessage {
     }
 
     protected boolean query(ClientConnection client) {
+        if (userID == -1) return false;
         try {
             UserRequests.deleteUserFromRoom(userID, roomID);
         } catch (SQLException e) {

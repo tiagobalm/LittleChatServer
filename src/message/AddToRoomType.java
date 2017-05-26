@@ -33,8 +33,6 @@ public class AddToRoomType extends ReactMessage {
             send(new Message(addToRoomType + " " + roomID, "True\0" + message.getMessage()), roomID);
             ToServerMessage.communicate(this);
         }
-
-        ToServerMessage.communicate(this);
     }
 
     private void send(Message message, int roomID) throws IOException {
@@ -51,8 +49,11 @@ public class AddToRoomType extends ReactMessage {
     }
 
     protected boolean query(ClientConnection client) {
+        if (userID == -1) return false;
         try { UserRequests.insertUserRoom(userID, roomID);
-        } catch( SQLException e ) { return false;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
         }
         return true;
     }
