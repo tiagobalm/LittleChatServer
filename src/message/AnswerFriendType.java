@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import static database.UserRequests.getUserID;
-import static database.UserRequests.updateFriendshipStatus;
 import static message.MessageConstants.answerFriendSize;
 
 public class AnswerFriendType extends ReactMessage {
@@ -20,6 +19,9 @@ public class AnswerFriendType extends ReactMessage {
 
     @Override
     public void react(ClientConnection client) throws IOException {
+        if (checkToServer(client))
+            return;
+
         String[] parameters = message.getHeader().split(" ");
         if( parameters.length != answerFriendSize || client.getClientID() == null || message.getMessage() == null )
             return ;
