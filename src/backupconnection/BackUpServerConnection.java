@@ -68,6 +68,7 @@ public class BackUpServerConnection extends BackUpConnection {
     }
 
     protected void reconnected() {
-        executeReconnect.shutdown();
+        if(executeReconnect != null)
+            executeReconnect.shutdown();
     }
 }
