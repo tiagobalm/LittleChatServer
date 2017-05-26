@@ -39,7 +39,7 @@ public class BackUpServerConnection extends BackUpConnection {
         if (instance != null)
             throw new Exception("Singleton class BackUpConnection initiated twice");
         instance = new BackUpServerConnection();
-        instance.reconnectServer();
+        instance.startServer();
     }
 
     /**
