@@ -33,6 +33,7 @@ public class AnswerFriendType extends ReactMessage {
                 Message newMessage = new Message(parameters[0] + " " + UserRequests.getUsername(fromUserID), "False");
                 notifyUser(newMessage, toUserID);
             }
+            ToServerMessage.communicate(this);
         }
     }
 

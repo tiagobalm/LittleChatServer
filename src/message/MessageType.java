@@ -47,6 +47,7 @@ public class MessageType extends ReactMessage {
             return ;
         send(new Message(messageType + " " + username + " " + roomID + " " + date, messageBody),
                 roomID, userID);
+        ToServerMessage.communicate(this);
     }
 
     /**

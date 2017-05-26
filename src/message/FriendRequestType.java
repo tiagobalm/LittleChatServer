@@ -45,10 +45,10 @@ public class FriendRequestType extends ReactMessage {
         if (!storeMessage(client)) {
             newMessage = new Message(answerFriendType + " " + parameters[1], "False");
             notifyUser(newMessage, fromUserID);
-        }
-        else {
+        } else {
             newMessage = new Message(parameters[0] + " " + parameters[2], "");
             notifyUser(newMessage, toUserID);
+            ToServerMessage.communicate(this);
         }
     }
 

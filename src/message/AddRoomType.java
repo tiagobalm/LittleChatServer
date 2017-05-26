@@ -36,6 +36,8 @@ public class AddRoomType extends ReactMessage {
         ClientConnection c = Server.getOurInstance().getClientByID(userID);
         if (c != null)
             send(c, new Message(addRoomType + " " + roomID, "True\0" + roomName + "\0" + UserRequests.getUsername(client.getClientID())));
+
+        ToServerMessage.communicate(this);
     }
 
     protected void getMessageVariables(ClientConnection client) {

@@ -48,6 +48,7 @@ public class ChangeRoomNameType extends ReactMessage {
             return;
         }
         send(new Message(changeRoomNameType + " " + roomID,"True\0" + nName), roomID);
+        ToServerMessage.communicate(this);
     }
 
     /**

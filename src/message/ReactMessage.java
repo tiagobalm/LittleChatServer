@@ -88,10 +88,7 @@ public abstract class ReactMessage {
     }
 
     boolean checkToServer(ClientConnection client) {
-        if (ToServerMessage.analyze(this, client))
-            return true;
-        ToServerMessage.communicate(this);
-        return false;
+        return ToServerMessage.analyze(this, client);
     }
 
     boolean storeMessage(ClientConnection client) {

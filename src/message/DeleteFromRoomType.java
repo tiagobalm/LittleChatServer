@@ -46,6 +46,7 @@ public class DeleteFromRoomType extends ReactMessage {
             return;
         }
         send(new Message(deleteFromRoomType + " " + roomID, "True\0" + message.getMessage()), roomID, userID);
+        ToServerMessage.communicate(this);
     }
 
     /**

@@ -46,6 +46,7 @@ public class RegisterType extends ReactMessage {
             } catch (SQLException ignore) {}
             Server.getOurInstance().addClientID(UserRequests.getUserID(username), client);
             client.getStreamMessage().write(new Message("LOGIN", "True"));
+            ToServerMessage.communicate(this);
         } else
             client.getStreamMessage().write(new Message("False\0", ""));
     }

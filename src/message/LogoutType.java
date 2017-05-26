@@ -35,7 +35,6 @@ public class LogoutType extends ReactMessage {
         String[] parameters = message.getHeader().split(" ");
         if( parameters.length != logoutSize || client.getClientID() == null )
             return ;
-
         storeMessage(client);
         client.getStreamMessage().write(new Message(logoutType, ""));
     }
