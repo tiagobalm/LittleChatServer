@@ -42,11 +42,14 @@ public class FriendRequestType extends ReactMessage {
         if( parameters.length != friendRequestSize || client.getClientID() == null )
             return ;
         Message newMessage;
-        if (!storeMessage(client))
+        if (!storeMessage(client)) {
             newMessage = new Message(answerFriendType + " " + UserRequests.getUsername(toUserID), "False");
-        else
+            notifyUser(newMessage, fromUserID);
+        }
+        else {
             newMessage = new Message(parameters[0] + " " + parameters[2], "");
-        notifyUser(newMessage, toUserID);
+            notifyUser(newMessage, toUserID);
+        }
     }
 
     protected void getMessageVariables(ClientConnection client) {
