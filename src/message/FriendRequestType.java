@@ -1,7 +1,6 @@
 package message;
 
 import communication.ClientConnection;
-import database.UserRequests;
 
 import java.io.IOException;
 import java.sql.SQLException;
