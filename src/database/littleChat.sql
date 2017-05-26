@@ -73,38 +73,3 @@ CREATE TABLE StringList(
 		ON UPDATE CASCADE
 		ON DELETE CASCADE
 );
-
-INSERT INTO User(username, password) VALUES ('vascoUP', 'vascoUP');
-INSERT INTO User(username, password) VALUES('saraUP', 'saraUP');
-INSERT INTO User(username, password) VALUES('tiagoUP', 'tiagoUP');
-INSERT INTO User(username, password) VALUES('arianaUP', 'arianaUP');
-
-INSERT INTO Room(name) VALUES('Chat Room 1');
-INSERT INTO Room(name) VALUES('Chat Room 2');
-INSERT INTO Room(name) VALUES('Chat Room 3');
-INSERT INTO Room(name) VALUES('Chat Room 4');
-INSERT INTO Room(name) VALUES('Chat Room 5');
-
-INSERT INTO UserRoom(userID, roomID) VALUES (1,1);
-INSERT INTO UserRoom(userID, roomID) VALUES (2,1);
-INSERT INTO UserRoom(userID, roomID) VALUES (3,1);
-INSERT INTO UserRoom(userID, roomID) VALUES (1,2);
-INSERT INTO UserRoom(userID, roomID) VALUES (2,2);
-INSERT INTO UserRoom(userID, roomID) VALUES (2,3);
-INSERT INTO UserRoom(userID, roomID) VALUES (2,5);
-INSERT INTO UserRoom(userID, roomID) VALUES (3,4);
-INSERT INTO UserRoom(userID, roomID) VALUES (3,5);
-INSERT INTO UserRoom(userID, roomID) VALUES (4,1);
-INSERT INTO UserRoom(userID, roomID) VALUES (4,3);
-INSERT INTO UserRoom(userID, roomID) VALUES (4,4);
-
-INSERT INTO Friend(firstUserID, secondUserID, friendStatus) VALUES(1,2,1);
-INSERT INTO Friend(firstUserID, secondUserID, friendStatus) VALUES(1,4,1);
-INSERT INTO Friend(firstUserID, secondUserID, friendStatus) VALUES(2,1,1);
-INSERT INTO Friend(firstUserID, secondUserID, friendStatus) VALUES(2,3,1);
-INSERT INTO Friend(firstUserID, secondUserID, friendStatus) VALUES(2,4,1);
-INSERT INTO Friend(firstUserID, secondUserID, friendStatus) VALUES(3,2,1);
-INSERT INTO Friend(firstUserID, secondUserID, friendStatus) VALUES(3,4,1);
-INSERT INTO Friend(firstUserID, secondUserID, friendStatus) VALUES(4,1,1);
-INSERT INTO Friend(firstUserID, secondUserID, friendStatus) VALUES(4,2,1);
-INSERT INTO Friend(firstUserID, secondUserID, friendStatus) VALUES(4,3,1);

@@ -42,6 +42,7 @@ public class ClientConnection {
             while (true) {
                 try {
                     message = streamMessage.read();
+                    System.out.println(message.getHeader());
                 } catch (IOException e) {
                     this.close();
                     handleDisconnection();
