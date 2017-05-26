@@ -1,6 +1,8 @@
 package message;
 
 import communication.ClientConnection;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.AbstractMap;
 import java.util.Map;
@@ -13,7 +15,8 @@ public class MessagesQueue {
     /**
      * Messages saved in this server
      */
-    private BlockingQueue<Map.Entry<ClientConnection, Message>> messages;
+    @NotNull
+    private final BlockingQueue<Map.Entry<ClientConnection, Message>> messages;
 
     private final Object blockObject = new Object();
 
@@ -40,6 +43,7 @@ public class MessagesQueue {
         } while (next);
     }
 
+    @Nullable
     public Map.Entry<ClientConnection, Message> take() {
         int nTries = 0;
         boolean next = true;

@@ -3,6 +3,7 @@ package message;
 import communication.ClientConnection;
 import communication.Server;
 import database.UserRequests;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -12,7 +13,6 @@ import static message.MessageConstants.addRoomType;
 
 public class AddRoomType extends ReactMessage {
     private String roomName;
-    private String username;
     private int roomID;
     private int userID;
 
@@ -21,7 +21,7 @@ public class AddRoomType extends ReactMessage {
     }
 
     @Override
-    public void react(ClientConnection client) throws IOException {
+    public void react(@NotNull ClientConnection client) throws IOException {
         if (checkToServer(client))
             return;
 
@@ -43,15 +43,15 @@ public class AddRoomType extends ReactMessage {
         ToServerMessage.communicate(this);
     }
 
-    protected void getMessageVariables(ClientConnection client) {
+    protected void getMessageVariables() {
         String[] values = message.getMessage().split("\0");
         roomName = values[0];
-        username = values[1];
+        String username = values[1];
         roomID = 0;
         userID = UserRequests.getUserID(username);
     }
 
-    protected boolean query(ClientConnection client) {
+    protected boolean query(@NotNull ClientConnection client) {
         try {
             roomID = UserRequests.insertRoom(roomName);
             UserRequests.insertUserRoom(userID, roomID);

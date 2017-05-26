@@ -4,6 +4,7 @@ import communication.ClientConnection;
 import communication.Server;
 import message.Message;
 import message.ReactMessage;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.Map;
@@ -28,6 +29,7 @@ public class Worker implements Runnable {
         while (true) {
             Map.Entry<ClientConnection, Message> entry;
             entry = Server.getOurInstance().getMessages().take();
+            assert entry != null;
             decode(entry.getKey(), entry.getValue());
         }
     }
@@ -38,7 +40,7 @@ public class Worker implements Runnable {
      * @param clientConnection Client's connection
      * @param message          Message that will be used
      */
-    private void decode(ClientConnection clientConnection, Message message) {
+    private void decode(@NotNull ClientConnection clientConnection, Message message) {
         ReactMessage reactMessage = ReactMessage.getReactMessage(message);
         if( reactMessage == null ) return ;
         try { reactMessage.react(clientConnection);

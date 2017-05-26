@@ -3,6 +3,7 @@ package message;
 import communication.ClientConnection;
 import communication.Server;
 import database.UserRequests;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -31,18 +32,19 @@ public class LogoutType extends ReactMessage {
      * @throws IOException Signals that an I/O exception of some sort has occurred
      */
     @Override
-    public void react(ClientConnection client) throws IOException {
+    public void react(@NotNull ClientConnection client) throws IOException {
         String[] parameters = message.getHeader().split(" ");
         if( parameters.length != logoutSize || client.getClientID() == null )
             return ;
         storeMessage(client);
+        assert client.getStreamMessage() != null;
         client.getStreamMessage().write(new Message(logoutType, ""));
     }
 
-    protected void getMessageVariables(ClientConnection client) {
+    protected void getMessageVariables() {
     }
 
-    protected boolean query(ClientConnection client) {
+    protected boolean query(@NotNull ClientConnection client) {
         try { UserRequests.deleteUserConnection(client.getClientID());
         } catch (SQLException ignore) {}
         Server.getOurInstance().removeByID(client.getClientID());

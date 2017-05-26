@@ -3,6 +3,7 @@ package message;
 
 import communication.ClientConnection;
 import database.UserRequests;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -35,7 +36,7 @@ public class DeleteFromRoomType extends ReactMessage {
      * @throws IOException Signals that an I/O exception of some sort has occurred
      */
     @Override
-    public void react(ClientConnection client) throws IOException {
+    public void react(@NotNull ClientConnection client) throws IOException {
         if( checkToServer(client) )
             return;
         String[] parameters = message.getHeader().split(" ");
@@ -53,9 +54,8 @@ public class DeleteFromRoomType extends ReactMessage {
      * This function sends the message created
      * @param message Message created
      * @param roomID  Room's identifier
-     * @throws IOException Signals that an I/O exception of some sort has occurred
      */
-    private void send(Message message, int roomID, int deletedUser) throws IOException {
+    private void send(Message message, int roomID, int deletedUser) {
         List<Integer> roomUsers = UserRequests.getRoomUsers(roomID);
         if( roomUsers == null ) return;
         for( Integer id : roomUsers )
@@ -63,7 +63,7 @@ public class DeleteFromRoomType extends ReactMessage {
         notifyUser(message, deletedUser);
     }
 
-    protected void getMessageVariables(ClientConnection client) {
+    protected void getMessageVariables() {
         String[] parameters = message.getHeader().split(" ");
         roomID = Integer.parseInt(parameters[1]);
         userID = UserRequests.getUserID(message.getMessage());

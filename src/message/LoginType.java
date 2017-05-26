@@ -3,12 +3,12 @@ package message;
 import communication.ClientConnection;
 import communication.Server;
 import database.UserRequests;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
 import static message.MessageConstants.loginSize;
-import static message.MessageConstants.messageType;
 
 /**
  * This class creates a login's message
@@ -34,24 +34,27 @@ public class LoginType extends ReactMessage {
      * @throws IOException Signals that an I/O exception of some sort has occurred
      */
     @Override
-    public void react(ClientConnection client) throws IOException {
+    public void react(@NotNull ClientConnection client) throws IOException {
         String[] parameters = message.getHeader().split(" ");
         if( parameters.length != loginSize )
             return ;
         if (storeMessage(client)) {
             Server.getOurInstance().addClientID(UserRequests.getUserID(username), client);
+            assert client.getStreamMessage() != null;
             client.getStreamMessage().write(new Message("LOGIN", "True"));
-        } else
+        } else {
+            assert client.getStreamMessage() != null;
             client.getStreamMessage().write(new Message("LOGIN", "False"));
+        }
     }
 
-    protected void getMessageVariables(ClientConnection client) {
+    protected void getMessageVariables() {
         String[] parameters = message.getHeader().split(" ");
         username = parameters[1];
         password = parameters[2];
     }
 
-    protected boolean query(ClientConnection client) {
+    protected boolean query(@NotNull ClientConnection client) {
         disconnectClient(client);
         return loginUser(username, password);
     }
@@ -77,7 +80,7 @@ public class LoginType extends ReactMessage {
      *
      * @param client Client's connection
      */
-    private void disconnectClient(ClientConnection client) {
+    private void disconnectClient(@NotNull ClientConnection client) {
         if (client.getClientID() != null)
             try {
                 UserRequests.deleteUserConnection(client.getClientID());

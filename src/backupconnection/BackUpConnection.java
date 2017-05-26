@@ -57,10 +57,10 @@ public abstract class BackUpConnection {
         return instance;
     }
 
-    protected void startServer() {
+    void startServer() {
     }
 
-    protected void startAcceptThread() {
+    void startAcceptThread() {
     }
 
     /**
@@ -126,9 +126,9 @@ public abstract class BackUpConnection {
         thread.start();
     }
 
-    protected void reconnected() {
+    void reconnected() {
     }
 
-    protected void reconnectServer() {
+    void reconnectServer() {
     }
 }

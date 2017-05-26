@@ -3,6 +3,7 @@ package communication;
 import backupconnection.BackUpConnection;
 import backupconnection.BackUpConnectionStatus;
 import message.Message;
+import org.jetbrains.annotations.Nullable;
 
 import javax.net.ssl.SSLSocket;
 import java.io.IOException;
@@ -17,6 +18,7 @@ public class ClientConnection {
     /**
      * This represents the message streamed
      */
+    @Nullable
     private StreamMessage streamMessage;
     /**
      * Client's identifier
@@ -31,7 +33,7 @@ public class ClientConnection {
      * ClientConnection's constructor
      * @param sslSocket Socket to be used in the connection
      */
-    public ClientConnection(SSLSocket sslSocket) {
+    public ClientConnection(@Nullable SSLSocket sslSocket) {
         if (sslSocket == null)
             return;
 
@@ -70,6 +72,7 @@ public class ClientConnection {
      * Closes the stream message and the thread
      */
     public void close() {
+        assert streamMessage != null;
         streamMessage.close();
         read.interrupt();
     }
@@ -95,6 +98,7 @@ public class ClientConnection {
      * Gets the streamed message
      * @return The streamed message
      */
+    @Nullable
     public StreamMessage getStreamMessage() {
         return streamMessage;
     }

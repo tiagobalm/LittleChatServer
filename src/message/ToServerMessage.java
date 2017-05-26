@@ -5,11 +5,12 @@ import backupconnection.BackUpConnectionStatus;
 import communication.ClientConnection;
 import communication.Server;
 import database.UserRequests;
+import org.jetbrains.annotations.NotNull;
 
 import java.sql.SQLException;
 
 class ToServerMessage {
-    static boolean analyze(ReactMessage react, ClientConnection clientConnection) {
+    static boolean analyze(@NotNull ReactMessage react, @NotNull ClientConnection clientConnection) {
         boolean asServer = false;
         if (clientConnection.getClientID() != null) {
             if (clientConnection.getClientID() == ClientConnection.ownID &&
@@ -27,7 +28,7 @@ class ToServerMessage {
         return asServer;
     }
 
-    static void communicate(ReactMessage react) {
+    static void communicate(@NotNull ReactMessage react) {
         if (BackUpConnection.getInstance().getStatus().getStatus() == BackUpConnectionStatus.ServerCommunicationStatus.RECONNECTING)
             try {
                 UserRequests.insertUnsentMessage(react.message);

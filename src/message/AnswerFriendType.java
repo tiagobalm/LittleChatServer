@@ -2,6 +2,7 @@ package message;
 
 import communication.ClientConnection;
 import database.UserRequests;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -18,7 +19,7 @@ public class AnswerFriendType extends ReactMessage {
     }
 
     @Override
-    public void react(ClientConnection client) throws IOException {
+    public void react(@NotNull ClientConnection client) throws IOException {
         if (checkToServer(client))
             return;
 
@@ -39,7 +40,7 @@ public class AnswerFriendType extends ReactMessage {
         }
     }
 
-    protected void getMessageVariables(ClientConnection client) {
+    protected void getMessageVariables() {
         String[] parameters = message.getHeader().split(" ");
         toUserID = getUserID(parameters[1]);
         fromUserID = getUserID(parameters[2]);

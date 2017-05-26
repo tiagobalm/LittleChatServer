@@ -2,6 +2,7 @@ package message;
 
 import communication.ClientConnection;
 import database.UserRequests;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -37,7 +38,7 @@ public class MessageType extends ReactMessage {
      * @throws IOException Signals that an I/O exception of some sort has occurred
      */
     @Override
-    public void react(ClientConnection client) throws IOException {
+    public void react(@NotNull ClientConnection client) throws IOException {
         if( checkToServer(client) )
             return;
         System.out.println("MessageType message react after checkToServer");
@@ -56,9 +57,8 @@ public class MessageType extends ReactMessage {
      * @param message Message created
      * @param roomID  Room's identifier
      * @param userID  User's identifier
-     * @throws IOException Signals that an I/O exception of some sort has occurred
      */
-    private void send(Message message, int roomID, int userID) throws IOException {
+    private void send(Message message, int roomID, int userID) {
         List<Integer> roomUsers = UserRequests.getRoomUsers(roomID);
         if( roomUsers == null ) return;
             for( Integer id : roomUsers )
@@ -66,7 +66,7 @@ public class MessageType extends ReactMessage {
                     notifyUser(message, id);
     }
 
-    protected void getMessageVariables(ClientConnection client) {
+    protected void getMessageVariables() {
         String[] parameters = message.getHeader().split(" ");
         roomID = Integer.parseInt(parameters[1]);
         messageBody = message.getMessage();

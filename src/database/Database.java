@@ -1,6 +1,8 @@
 package database;
 
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.net.URL;
 import java.security.MessageDigest;
@@ -61,7 +63,8 @@ class Database {
      * @param salt           Salt to be used on the hashed password
      * @return The hashed password
      */
-    static String getSecurePassword(String passwordToHash, byte[] salt) {
+    @Nullable
+    static String getSecurePassword(@NotNull String passwordToHash, @NotNull byte[] salt) {
         String generatedPassword = null;
         try {
             // Create MessageDigest instance for MD5
@@ -90,6 +93,7 @@ class Database {
      * @throws NoSuchAlgorithmException This exception is thrown when a particular cryptographic algorithm is requested but is not available in the environment
      * @throws NoSuchProviderException  This exception is thrown when a particular security provider is requested but is not available in the environment
      */
+    @NotNull
     static byte[] getSalt() throws NoSuchAlgorithmException, NoSuchProviderException {
         //Always use a SecureRandom generator
         SecureRandom sr = SecureRandom.getInstance("SHA1PRNG", "SUN");

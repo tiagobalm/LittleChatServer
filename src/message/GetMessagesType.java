@@ -3,6 +3,7 @@ package message;
 
 import communication.ClientConnection;
 import database.UserRequests;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.List;
@@ -36,20 +37,19 @@ public class GetMessagesType extends ReactMessage{
      * @throws IOException Signals that an I/O exception of some sort has occurred
      */
     @Override
-    public void react(ClientConnection client) throws IOException {
+    public void react(@NotNull ClientConnection client) throws IOException {
         String[] params = message.getHeader().split(" ");
         if( params.length != getMessagesSize || client.getClientID() == null )
             return ;
         int roomID = Integer.parseInt(params[1]);
         List<String> messages = UserRequests.getMessagesFromRoom(roomID, nMessage);
-        for(String message : messages)
-            System.out.println(message);
         if (messages == null) return;
+        assert client.getStreamMessage() != null;
         client.getStreamMessage().write(
                 new Message(getMessagesType + " " + roomID, messages));
     }
 
-    protected void getMessageVariables(ClientConnection client) {
+    protected void getMessageVariables() {
     }
 
     protected boolean query(ClientConnection client) {

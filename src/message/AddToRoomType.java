@@ -2,6 +2,7 @@ package message;
 
 import communication.ClientConnection;
 import database.UserRequests;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -19,7 +20,7 @@ public class AddToRoomType extends ReactMessage {
     }
 
     @Override
-    public void react(ClientConnection client) throws IOException {
+    public void react(@NotNull ClientConnection client) throws IOException {
         if (checkToServer(client))
             return;
 
@@ -35,14 +36,14 @@ public class AddToRoomType extends ReactMessage {
         }
     }
 
-    private void send(Message message, int roomID) throws IOException {
+    private void send(Message message, int roomID) {
         List<Integer> roomUsers = UserRequests.getRoomUsers(roomID);
         if( roomUsers == null ) return;
         for( Integer id : roomUsers )
             notifyUser(message, id);
     }
 
-    protected void getMessageVariables(ClientConnection client) {
+    protected void getMessageVariables() {
         String[] parameters = message.getHeader().split(" ");
         roomID = Integer.parseInt(parameters[1]);
         userID = UserRequests.getUserID(message.getMessage());

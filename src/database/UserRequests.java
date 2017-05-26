@@ -1,9 +1,9 @@
 package database;
 
 import message.Message;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.awt.*;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.sql.ResultSet;
@@ -27,7 +27,7 @@ public class UserRequests {
      * @param params The request parameters
      * @throws SQLException This is an exception that provides information on a database access error or other errors
      */
-    private static void basicUpdate(String sql, List<Object> params) throws SQLException {
+    private static void basicUpdate(String sql, @NotNull List<Object> params) throws SQLException {
         System.out.println("SQL " + sql);
         Queries.query(sql, params);
         try {
@@ -48,7 +48,7 @@ public class UserRequests {
      * @return true if the user is logged in (if the password is the same as the password saved in the database) or false otherwise
      * @throws SQLException This is an exception that provides information on a database access error or other errors
      */
-    public static boolean loginUser(String username, String password) throws SQLException {
+    public static boolean loginUser(String username, @NotNull String password) throws SQLException {
         if( checkPassword(username, password) && !userConnected(username) ) {
             insertUserConnection(username);
             return true;
@@ -87,7 +87,7 @@ public class UserRequests {
      * @param password User's password
      * @return true if the password is correct, false otherwise
      */
-    private static boolean checkPassword(String username, String password) {
+    private static boolean checkPassword(String username, @NotNull String password) {
         String pass = null;
         String sql = "SELECT password FROM User WHERE username = ?";
         List<Object> params = new ArrayList<>();
@@ -112,7 +112,7 @@ public class UserRequests {
                     (pass.equals(password) ||
                             pass.equals(regeneratedPasswordToVerify)))
                 return true;
-        } catch (NoSuchAlgorithmException | NoSuchProviderException e) {
+        } catch (@NotNull NoSuchAlgorithmException | NoSuchProviderException e) {
             e.printStackTrace();
         }
         return false;
@@ -557,7 +557,11 @@ public class UserRequests {
                     while((rs = Queries.getNext()) != null)
                         friends.add(rs.getString("username1") + "\0" +
                                 rs.getString("username2"));
-                } catch (SQLException ignore) { friends = null; }
+                } catch (SQLException ignore) {
+                    friends = null;
+                    Queries.close();
+                    break;
+                }
                 Queries.close();
             }
         }
@@ -632,7 +636,7 @@ public class UserRequests {
         return messages;
     }
 
-    public static void insertUnsentMessage(Message message) throws SQLException {
+    public static void insertUnsentMessage(@NotNull Message message) throws SQLException {
         String sql = "INSERT INTO MessageClass(header, message) VALUES (?, ?)";
         List<Object> params = new ArrayList<>();
         params.add(message.getHeader());
@@ -676,6 +680,7 @@ public class UserRequests {
         }
     }
 
+    @NotNull
     public static List<Message> getUnsentMessages() {
         List<Map.Entry<Integer, Message>> unsentMessages = new ArrayList<>();
         List<Message> messages = new ArrayList<>();
@@ -706,7 +711,8 @@ public class UserRequests {
         return messages;
     }
 
-    private static Message getStringListMessage(int messageID, Message message) {
+    @NotNull
+    private static Message getStringListMessage(int messageID, @NotNull Message message) {
         List<String> allOptionalMessages = new ArrayList<>();
         String  sql = "SELECT string FROM StringList WHERE messageClassID = ?";
         List<Object> params = new ArrayList<>();

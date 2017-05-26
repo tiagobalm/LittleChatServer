@@ -2,6 +2,7 @@ package message;
 
 import backupconnection.BackUpConnection;
 import communication.ClientConnection;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 
@@ -13,7 +14,7 @@ public class NoMoreMessagesType extends ReactMessage {
     }
 
     @Override
-    public void react(ClientConnection client) throws IOException {
+    public void react(@NotNull ClientConnection client) throws IOException {
         String[] parameters = message.getHeader().split(" ");
         if (parameters.length != noMoreMessagesSize)
             return;

@@ -5,6 +5,7 @@ import backupconnection.MainServerConnection;
 import database.UserRequests;
 import message.MessagesQueue;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import worker.Worker;
 
@@ -70,10 +71,12 @@ public class Server {
     /**
      * Known clients that are saved in this server
      */
+    @NotNull
     private final Map<Integer, ClientConnection> knownClients;
     /**
      * Messages saved in this server
      */
+    @NotNull
     private final MessagesQueue messages;
     /**
      * Socket that will be used in this server
@@ -115,7 +118,7 @@ public class Server {
      * Server's main function
      * @param args Arguments used in the server's main function
      */
-    public static void main(String[] args) {
+    public static void main(@NotNull String[] args) {
         if (args.length != 1) return;
         boolean isBackUpServer = args[0].equals("true");
         try {
@@ -241,6 +244,7 @@ public class Server {
      * Gets the messages saved in the server
      * @return The messages saved in the server
      */
+    @NotNull
     public MessagesQueue getMessages() {
         return messages;
     }
@@ -260,7 +264,7 @@ public class Server {
      * @param id The client's identifier
      * @param client The client's connection
      */
-    public void addClientID(Integer id, ClientConnection client) {
+    public void addClientID(Integer id, @NotNull ClientConnection client) {
         client.setClientID(id);
         knownClients.put(id, client);
     }

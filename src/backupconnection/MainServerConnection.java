@@ -61,7 +61,7 @@ public class MainServerConnection extends BackUpConnection {
     /**
      * This function starts the acceptation of threads
      */
-    protected void startAcceptThread() {
+    void startAcceptThread() {
         try {
             SSLSocket sslSocket = (SSLSocket) sslserversocket.accept();
             backupChannel = new ClientConnection(sslSocket);

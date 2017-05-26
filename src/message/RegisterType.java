@@ -3,6 +3,7 @@ package message;
 import communication.ClientConnection;
 import communication.Server;
 import database.UserRequests;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -33,7 +34,7 @@ public class RegisterType extends ReactMessage {
      * @throws IOException Signals that an I/O exception of some sort has occurred
      */
     @Override
-    public void react(ClientConnection client) throws IOException {
+    public void react(@NotNull ClientConnection client) throws IOException {
         if( checkToServer(client) )
             return;
         String[] parameters = message.getHeader().split(" ");
@@ -43,13 +44,16 @@ public class RegisterType extends ReactMessage {
             try { UserRequests.insertUserConnection(username);
             } catch (SQLException ignore) {}
             Server.getOurInstance().addClientID(UserRequests.getUserID(username), client);
+            assert client.getStreamMessage() != null;
             client.getStreamMessage().write(new Message("LOGIN", "True"));
             ToServerMessage.communicate(this);
-        } else
+        } else {
+            assert client.getStreamMessage() != null;
             client.getStreamMessage().write(new Message("False\0", ""));
+        }
     }
 
-    protected void getMessageVariables(ClientConnection client) {
+    protected void getMessageVariables() {
         String[] parameters = message.getHeader().split(" ");
         username = parameters[1];
         password = parameters[2];
@@ -65,8 +69,6 @@ public class RegisterType extends ReactMessage {
      *
      * @param username User's username
      * @param password User's password
-     * @param ip       Connection IP
-     * @param port     Connection port
      * @return true if it's possible to register the user, false otherwise
      */
     private boolean registerUser(String username,

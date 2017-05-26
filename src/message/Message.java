@@ -11,7 +11,8 @@ public class Message implements Serializable {
     /**
      * Message's header and content
      */
-    private String header, message;
+    private final String header;
+    private String message;
     /**
      * Optional message
      */

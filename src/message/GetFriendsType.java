@@ -2,6 +2,7 @@ package message;
 
 import communication.ClientConnection;
 import database.UserRequests;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.List;
@@ -30,15 +31,16 @@ public class GetFriendsType extends ReactMessage{
      * @throws IOException Signals that an I/O exception of some sort has occurred
      */
     @Override
-    public void react(ClientConnection client) throws IOException {
+    public void react(@NotNull ClientConnection client) throws IOException {
         String[] params = message.getHeader().split(" ");
         if( params.length != getFriendsSize || client.getClientID() == null )
             return ;
         List<String> friends = UserRequests.getFriends(client.getClientID());
+        assert client.getStreamMessage() != null;
         client.getStreamMessage().write(new Message(getFriendsType, friends));
     }
 
-    protected void getMessageVariables(ClientConnection client) {
+    protected void getMessageVariables() {
     }
 
     protected boolean query(ClientConnection client) {

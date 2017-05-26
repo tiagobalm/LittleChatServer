@@ -3,6 +3,7 @@ package message;
 import communication.ClientConnection;
 import database.UserRequests;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 import java.util.List;
@@ -31,7 +32,7 @@ public class GetRoomType extends ReactMessage {
      * @throws IOException Signals that an I/O exception of some sort has occurred
      */
     @Override
-    public void react(ClientConnection client) throws IOException {
+    public void react(@Nullable ClientConnection client) throws IOException {
         String[] params = message.getHeader().split(" ");
         if( params.length != getRoomSize || client == null )
             return;
@@ -63,7 +64,7 @@ public class GetRoomType extends ReactMessage {
         return new String(builder);
     }
 
-    protected void getMessageVariables(ClientConnection client) {
+    protected void getMessageVariables() {
     }
 
     protected boolean query(ClientConnection client) {

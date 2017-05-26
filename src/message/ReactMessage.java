@@ -2,6 +2,7 @@ package message;
 
 import communication.ClientConnection;
 import communication.Server;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
@@ -33,7 +34,7 @@ public abstract class ReactMessage {
      * @return The react message
      */
     @Nullable
-    public static ReactMessage getReactMessage(Message message) {
+    public static ReactMessage getReactMessage(@NotNull Message message) {
         String[] parameters = message.getHeader().split(" ");
         if( parameters.length < 1 )
             return null;
@@ -92,11 +93,11 @@ public abstract class ReactMessage {
     }
 
     boolean storeMessage(ClientConnection client) {
-        getMessageVariables(client);
+        getMessageVariables();
         return query(client);
     }
 
-    void getMessageVariables(ClientConnection client) {
+    void getMessageVariables() {
         throw new AbstractMethodError("react in ReactMessage");
     }
 
@@ -121,9 +122,10 @@ public abstract class ReactMessage {
      * @param c Client's connection
      * @param message Message that will be sent
      */
-    void send(ClientConnection c, Message message) {
+    void send(@NotNull ClientConnection c, Message message) {
         Thread thread = new Thread(() -> {
             try {
+                assert c.getStreamMessage() != null;
                 c.getStreamMessage().write(message);
             } catch (IOException e) {
                 e.printStackTrace();

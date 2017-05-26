@@ -1,5 +1,6 @@
 package database;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.sql.Connection;
@@ -15,6 +16,7 @@ class Queries {
     /**
      * Database's prepared statements
      */
+    @Nullable
     private static PreparedStatement pstmt = null;
     /**
      * Set with the request's result
@@ -41,16 +43,20 @@ class Queries {
      *
      * @param params The request parameters
      */
-    private static void setParams(List<Object> params) {
+    private static void setParams(@NotNull List<Object> params) {
         int i = 1;
         try {
             for( Object o : params ) {
-                if( o instanceof Integer )
+                if (o instanceof Integer) {
+                    assert pstmt != null;
                     pstmt.setInt(i, (Integer) o);
-                else if( o instanceof String )
+                } else if (o instanceof String) {
+                    assert pstmt != null;
                     pstmt.setString(i, (String) o);
-                else if( o instanceof Long )
+                } else if (o instanceof Long) {
+                    assert pstmt != null;
                     pstmt.setLong(i, (Long) o);
+                }
                 i++;
             }
         } catch (SQLException e) {
@@ -65,7 +71,7 @@ class Queries {
      * @param sql    SQL statement
      * @param params Request's parameters
      */
-    public static void query(String sql, List<Object> params) {
+    public static void query(String sql, @NotNull List<Object> params) {
         prepare(sql);
         setParams(params);
     }
@@ -76,6 +82,7 @@ class Queries {
      * @throws SQLException This is an exception that provides information on a database access error or other errors
      */
     synchronized static void execute() throws SQLException {
+        assert pstmt != null;
         rs = pstmt.executeQuery();
     }
 
@@ -84,6 +91,7 @@ class Queries {
      * @throws SQLException This is an exception that provides information on a database access error or other errors
      */
     synchronized static void executeUpdate() throws SQLException {
+        assert pstmt != null;
         pstmt.executeUpdate();
     }
 

@@ -45,7 +45,7 @@ public class BackUpServerConnection extends BackUpConnection {
     /**
      * This function starts the server
      */
-    protected void startServer() {
+    void startServer() {
         SSLSocketFactory factory = (SSLSocketFactory) SSLSocketFactory.getDefault();
         try {
             SSLSocket sslSocket = (SSLSocket) factory.createSocket(BACKUP_IP, BACKUP_PORT);

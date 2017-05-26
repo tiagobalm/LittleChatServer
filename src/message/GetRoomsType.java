@@ -32,7 +32,7 @@ public class GetRoomsType extends ReactMessage {
      * @throws IOException Signals that an I/O exception of some sort has occurred
      */
     @Override
-    public void react(ClientConnection client) throws IOException {
+    public void react(@NotNull ClientConnection client) throws IOException {
         String[] params = message.getHeader().split(" ");
         if( params.length != getRoomsSize || client.getClientID() == null )
             return;
@@ -51,7 +51,7 @@ public class GetRoomsType extends ReactMessage {
      * @return A string with the user's information
      */
     @NotNull
-    private String getCompleteUserInfo(String str) {
+    private String getCompleteUserInfo(@NotNull String str) {
         String[] roomInfo = str.split("\0");
         int roomID = Integer.parseInt(roomInfo[0]);
         String roomName = roomInfo[1];
@@ -69,7 +69,7 @@ public class GetRoomsType extends ReactMessage {
         return new String(builder);
     }
 
-    protected void getMessageVariables(ClientConnection client) {
+    protected void getMessageVariables() {
     }
 
     protected boolean query(ClientConnection client) {
