@@ -1,9 +1,5 @@
 package message;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
@@ -20,10 +16,6 @@ public class Message implements Serializable {
      * Optional message
      */
     private List<String> optionalMessage;
-    /**
-     * Buffered image
-     */
-    private BufferedImage image;
 
     /**
      * Message's constructor
@@ -43,18 +35,6 @@ public class Message implements Serializable {
     public Message(String header, List<String> optionalMessage) {
         this.header = header;
         this.optionalMessage = optionalMessage;
-    }
-
-    /**
-     * Message's constructor
-     * @param path Image's path
-     */
-    public Message(String path) {
-        try {
-            this.image = ImageIO.read(new File(path));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     /**
@@ -88,13 +68,5 @@ public class Message implements Serializable {
      */
     public String getMessage() {
         return message;
-    }
-
-    /**
-     * This function gets the buffered image
-     * @return The buffered image
-     */
-    public BufferedImage getImage() {
-        return image;
     }
 }
