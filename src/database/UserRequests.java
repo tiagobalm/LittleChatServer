@@ -644,10 +644,6 @@ public class UserRequests {
         params.add(message.getHeader());
         params.add(message.getMessage());
 
-        System.out.println("Storing unsent");
-        System.out.println(message.getHeader());
-        System.out.println(message.getMessage());
-
         synchronized (Queries.class) {
             basicUpdate(sql, params);
             params.clear();

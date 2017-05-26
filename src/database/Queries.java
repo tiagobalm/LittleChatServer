@@ -49,6 +49,8 @@ class Queries {
                     pstmt.setInt(i, (Integer) o);
                 else if( o instanceof String )
                     pstmt.setString(i, (String) o);
+                else if( o instanceof Long )
+                    pstmt.setLong(i, (Long) o);
                 i++;
             }
         } catch (SQLException e) {

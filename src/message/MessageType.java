@@ -40,6 +40,8 @@ public class MessageType extends ReactMessage {
     public void react(ClientConnection client) throws IOException {
         if( checkToServer(client) )
             return;
+        System.out.println("MessageType message react after checkToServer");
+        System.out.println("MessageType message client id " + client.getClientID());
         String[] parameters = message.getHeader().split(" ");
         if (parameters.length != messageSize || client.getClientID() == null || !storeMessage(client))
             return ;
