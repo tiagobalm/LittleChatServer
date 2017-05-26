@@ -46,13 +46,18 @@ public class AnswerFriendType extends ReactMessage {
     }
 
     protected boolean query(ClientConnection client) {
+        if (toUserID == -1 || fromUserID == -1) return false;
         if (message.getMessage().equals("True")) {
             try {UserRequests.updateFriendshipStatus(fromUserID, toUserID);
-            } catch (SQLException e) {return false;
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return false;
             }
         } else {
             try {UserRequests.deleteFriendshipStatus(toUserID, fromUserID);
-            } catch (SQLException e) {return false;
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return false;
             }
         }
         return true;

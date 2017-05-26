@@ -57,6 +57,7 @@ public class AddRoomType extends ReactMessage {
             UserRequests.insertUserRoom(userID, roomID);
             UserRequests.insertUserRoom(client.getClientID(), roomID);
         } catch( SQLException e ) {
+            e.printStackTrace();
             return false;
         }
         return true;

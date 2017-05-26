@@ -51,8 +51,11 @@ public class AddToRoomType extends ReactMessage {
     }
 
     protected boolean query(ClientConnection client) {
+        if (userID == -1) return false;
         try { UserRequests.insertUserRoom(userID, roomID);
-        } catch( SQLException e ) { return false;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
         }
         return true;
     }
