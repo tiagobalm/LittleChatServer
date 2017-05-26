@@ -28,10 +28,12 @@ public class UserRequests {
      * @throws SQLException This is an exception that provides information on a database access error or other errors
      */
     private static void basicUpdate(String sql, List<Object> params) throws SQLException {
+        System.out.println("SQL " + sql);
         Queries.query(sql, params);
         try {
             Queries.executeUpdate();
         } catch (SQLException e) {
+            System.out.println("Couldn't store");
             Queries.close();
             throw e;
         }
