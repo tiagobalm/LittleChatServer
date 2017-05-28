@@ -2,7 +2,6 @@ package communication;
 
 import backupconnection.BackUpServerConnection;
 import backupconnection.MainServerConnection;
-import connectionListenner.SocketListener;
 import connectionListenner.SocketManager;
 import database.UserRequests;
 import message.MessagesQueue;
@@ -69,6 +68,11 @@ public class Server {
      * Variable that indicates if the server is backed up or not
      */
     private final boolean isBackUpServer;
+
+    /**
+     * Thread that will continuously run so it can accept new clients
+     */
+    private Thread acceptThread;
 
     /**
      * Socket manager that implements listeners for any connected client
@@ -161,6 +165,7 @@ public class Server {
         try {
             System.out.println("Close socket");
             socketManager.close();
+            acceptThread.interrupt();
             sslserversocket.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -218,7 +223,7 @@ public class Server {
      * Starts the acceptation of threads
      */
     private void startAcceptThread() {
-        Thread accept = new Thread(() -> {
+        acceptThread = new Thread(() -> {
             while(true) {
                 try {
                     SSLSocket sslsocket = (SSLSocket) sslserversocket.accept();
@@ -230,8 +235,8 @@ public class Server {
             }
         });
 
-        accept.setDaemon(true);
-        accept.start();
+        acceptThread.setDaemon(true);
+        acceptThread.start();
     }
 
     /**
