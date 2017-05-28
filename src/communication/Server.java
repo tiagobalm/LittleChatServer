@@ -70,6 +70,11 @@ public class Server {
     private final boolean isBackUpServer;
 
     /**
+     * Thread that will continuously run so it can accept new clients
+     */
+    private Thread acceptThread;
+
+    /**
      * Socket manager that implements listeners for any connected client
      */
     @NotNull
@@ -160,6 +165,7 @@ public class Server {
         try {
             System.out.println("Close socket");
             socketManager.close();
+            acceptThread.interrupt();
             sslserversocket.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -197,6 +203,7 @@ public class Server {
         SSLServerSocketFactory factory = (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
 
         try {
+            System.out.println("Start server for clients");
             sslserversocket = (SSLServerSocket) factory.createServerSocket();
             sslserversocket.setReuseAddress(true);
             sslserversocket.bind(new InetSocketAddress(port));
@@ -216,7 +223,7 @@ public class Server {
      * Starts the acceptation of threads
      */
     private void startAcceptThread() {
-        Thread accept = new Thread(() -> {
+        acceptThread = new Thread(() -> {
             while(true) {
                 try {
                     System.out.println("accept thread");
@@ -230,8 +237,8 @@ public class Server {
             }
         });
 
-        accept.setDaemon(true);
-        accept.start();
+        acceptThread.setDaemon(true);
+        acceptThread.start();
     }
 
     /**
