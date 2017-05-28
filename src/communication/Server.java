@@ -198,6 +198,7 @@ public class Server {
         SSLServerSocketFactory factory = (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
 
         try {
+            System.out.println("Start server for clients");
             sslserversocket = (SSLServerSocket) factory.createServerSocket();
             sslserversocket.setReuseAddress(true);
             sslserversocket.bind(new InetSocketAddress(port));

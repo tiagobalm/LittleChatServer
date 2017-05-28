@@ -76,6 +76,8 @@ public class BackUpConnectionStatus {
                 again = true;
             }
         } while (again);
+        try { Thread.sleep(500);
+        } catch (InterruptedException ignore) {}
         Server.getOurInstance().disconnectClients();
 
     }
