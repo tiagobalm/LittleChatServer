@@ -61,9 +61,11 @@ public class MessageType extends ReactMessage {
     private void send(Message message, int roomID, int userID) {
         List<Integer> roomUsers = UserRequests.getRoomUsers(roomID);
         if( roomUsers == null ) return;
-            for( Integer id : roomUsers )
-                if( id != userID )
-                    notifyUser(message, id);
+        for (Integer id : roomUsers)
+            if (id != userID) {
+                System.out.println("Notify user " + id);
+                notifyUser(message, id);
+            }
     }
 
     protected void getMessageVariables() {
