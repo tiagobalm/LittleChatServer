@@ -2,6 +2,8 @@ package communication;
 
 import backupconnection.BackUpServerConnection;
 import backupconnection.MainServerConnection;
+import connectionListenner.SocketListener;
+import connectionListenner.SocketManager;
 import database.UserRequests;
 import message.MessagesQueue;
 import org.jetbrains.annotations.Contract;
@@ -58,7 +60,6 @@ public class Server {
      * Worker threads' number
      */
     private static final int numberOfWorkerThreads = 20;
-
     /**
      * Instance of server
      */
@@ -68,16 +69,25 @@ public class Server {
      * Variable that indicates if the server is backed up or not
      */
     private final boolean isBackUpServer;
+
+    /**
+     * Socket manager that implements listeners for any connected client
+     */
+    @NotNull
+    private final SocketManager socketManager;
+
     /**
      * Known clients that are saved in this server
      */
     @NotNull
     private final Map<Integer, ClientConnection> knownClients;
+
     /**
      * Messages saved in this server
      */
     @NotNull
     private final MessagesQueue messages;
+
     /**
      * Socket that will be used in this server
      */
@@ -91,6 +101,7 @@ public class Server {
         this.isBackUpServer = isBackUpServer;
         knownClients = new HashMap<>();
         messages = new MessagesQueue();
+        socketManager = new SocketManager();
     }
 
     /**
@@ -148,6 +159,8 @@ public class Server {
 
     public void disconnectClients() {
         try {
+            System.out.println("Close socket");
+            socketManager.close();
             sslserversocket.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -208,7 +221,8 @@ public class Server {
             while(true) {
                 try {
                     SSLSocket sslsocket = (SSLSocket) sslserversocket.accept();
-                    new ClientConnection(sslsocket);
+                    ClientConnection clientConnection = new ClientConnection(sslsocket);
+                    socketManager.addListener(clientConnection);
                 } catch (IOException e) {
                     return;
                 }

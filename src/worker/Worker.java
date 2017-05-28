@@ -41,6 +41,7 @@ public class Worker implements Runnable {
      * @param message          Message that will be used
      */
     private void decode(@NotNull ClientConnection clientConnection, Message message) {
+        System.out.println("React message: " + message.getHeader());
         ReactMessage reactMessage = ReactMessage.getReactMessage(message);
         if( reactMessage == null ) return ;
         try { reactMessage.react(clientConnection);

@@ -44,20 +44,24 @@ public class BackUpConnectionStatus {
             BackUpConnection.getInstance().reconnected();
             if (BackUpConnection.getInstance() instanceof BackUpServerConnection)
                 disconnectClients = true;
+            System.out.println("Disconnect clients: " + disconnectClients);
             statusChange(ServerCommunicationStatus.SENDING_UNSENT);
         } else if (status == ServerCommunicationStatus.SENDING_UNSENT) {
-            statusChange(ServerCommunicationStatus.OK);
-            UserRequests.deleteUnsentMessages();
+            boolean waitEmpty = false;
+            Thread thread = null;
             if (BackUpConnection.getInstance() instanceof BackUpServerConnection &&
                 disconnectClients) {
+                waitEmpty = true;
                 disconnectClients = false;
-                Thread thread = new Thread(this::reactOnEmpty);
+                System.out.println("React on emtpy");
+                thread = new Thread(this::reactOnEmpty);
                 thread.setDaemon(true);
-                thread.start();
-            } else if (BackUpConnection.getInstance() instanceof MainServerConnection &&
-                Server.getOurInstance().isShutdown())
-                Server.getOurInstance().startClients();
-        }
+            }
+            statusChange(ServerCommunicationStatus.OK);
+            if(waitEmpty) thread.start();
+        } else if (BackUpConnection.getInstance() instanceof MainServerConnection &&
+            Server.getOurInstance().isShutdown())
+            Server.getOurInstance().startClients();
     }
 
     private void reactOnEmpty() {
@@ -65,7 +69,9 @@ public class BackUpConnectionStatus {
         do {
             try {
                 again = false;
+                System.out.println("react on empty: bf wait");
                 Server.getOurInstance().getMessages().waitEmpty();
+                System.out.println("react on empty: af wait");
             } catch (InterruptedException e) {
                 again = true;
             }

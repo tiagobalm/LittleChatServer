@@ -41,9 +41,11 @@ public class LoginType extends ReactMessage {
         if (storeMessage(client)) {
             Server.getOurInstance().addClientID(UserRequests.getUserID(username), client);
             assert client.getStreamMessage() != null;
+            System.out.println("True login for " + username + " pass: " + password);
             client.getStreamMessage().write(new Message("LOGIN", "True"));
         } else {
             assert client.getStreamMessage() != null;
+            System.out.println("False login for " + username + " pass: " + password);
             client.getStreamMessage().write(new Message("LOGIN", "False"));
         }
     }

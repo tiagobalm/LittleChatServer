@@ -2,6 +2,7 @@ package communication;
 
 import backupconnection.BackUpConnection;
 import backupconnection.BackUpConnectionStatus;
+import connectionListenner.SocketListener;
 import message.Message;
 import org.jetbrains.annotations.Nullable;
 
@@ -11,7 +12,7 @@ import java.io.IOException;
 /**
  * This class creates the connection on the client side
  */
-public class ClientConnection {
+public class ClientConnection implements SocketListener {
     public static final int serverID = -1;
     public static final int ownID = -2;
 
@@ -101,5 +102,11 @@ public class ClientConnection {
     @Nullable
     public StreamMessage getStreamMessage() {
         return streamMessage;
+    }
+
+    @Override
+    public void closeSocket() {
+        assert streamMessage != null;
+        streamMessage.close();
     }
 }
