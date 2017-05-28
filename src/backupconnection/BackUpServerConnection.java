@@ -18,7 +18,7 @@ public class BackUpServerConnection extends BackUpConnection {
     /**
      * Backup's internet protocol
      */
-    private static final String BACKUP_IP = "192.168.1.16";
+    private static final String BACKUP_IP = "127.0.0.1";
 
     private ScheduledExecutorService executeReconnect;
 
