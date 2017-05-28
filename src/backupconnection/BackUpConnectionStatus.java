@@ -1,7 +1,6 @@
 package backupconnection;
 
 import communication.Server;
-import database.UserRequests;
 
 public class BackUpConnectionStatus {
     private final Object statusObject = new Object();
@@ -44,7 +43,6 @@ public class BackUpConnectionStatus {
             BackUpConnection.getInstance().reconnected();
             if (BackUpConnection.getInstance() instanceof BackUpServerConnection)
                 disconnectClients = true;
-            System.out.println("Disconnect clients: " + disconnectClients);
             statusChange(ServerCommunicationStatus.SENDING_UNSENT);
         } else if (status == ServerCommunicationStatus.SENDING_UNSENT) {
             boolean waitEmpty = false;
@@ -53,15 +51,16 @@ public class BackUpConnectionStatus {
                 disconnectClients) {
                 waitEmpty = true;
                 disconnectClients = false;
-                System.out.println("React on emtpy");
                 thread = new Thread(this::reactOnEmpty);
                 thread.setDaemon(true);
             }
             statusChange(ServerCommunicationStatus.OK);
             if(waitEmpty) thread.start();
-        } else if (BackUpConnection.getInstance() instanceof MainServerConnection &&
-            Server.getOurInstance().isShutdown())
-            Server.getOurInstance().startClients();
+            else if (BackUpConnection.getInstance() instanceof MainServerConnection &&
+                    Server.getOurInstance().isShutdown()) {
+                Server.getOurInstance().startClients();
+            }
+        }
     }
 
     private void reactOnEmpty() {

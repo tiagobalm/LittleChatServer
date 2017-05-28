@@ -2,7 +2,6 @@ package communication;
 
 import backupconnection.BackUpServerConnection;
 import backupconnection.MainServerConnection;
-import connectionListenner.SocketListener;
 import connectionListenner.SocketManager;
 import database.UserRequests;
 import message.MessagesQueue;
@@ -220,7 +219,9 @@ public class Server {
         Thread accept = new Thread(() -> {
             while(true) {
                 try {
+                    System.out.println("accept thread");
                     SSLSocket sslsocket = (SSLSocket) sslserversocket.accept();
+                    System.out.println("new client");
                     ClientConnection clientConnection = new ClientConnection(sslsocket);
                     socketManager.addListener(clientConnection);
                 } catch (IOException e) {
