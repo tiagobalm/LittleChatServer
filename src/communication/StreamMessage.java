@@ -51,8 +51,7 @@ public class StreamMessage {
             is.close();
             os.close();
             sslSocket.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ignore) {
         }
     }
 
