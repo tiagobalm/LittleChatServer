@@ -106,7 +106,6 @@ public class ClientConnection implements SocketListener {
 
     @Override
     public void closeSocket() {
-        assert streamMessage != null;
-        streamMessage.close();
+        this.close();
     }
 }
